@@ -1,7 +1,7 @@
 ﻿#-----------------------------------------------------------------------------+
 # CMakeList.txt: 顶层 CMake 项目文件，在此处执行全局配置
 #------------------------------------------------------------------------------
-
+ 
 
 #-----------------------------------------------------------------------------+
 #     Config CMake Minimum Version
@@ -24,12 +24,8 @@ project (
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-if(MSVC)
-	add_compile_options(/Zc:preprocessor)
-endif() 
 
-include_directories("Source/Fantasia")
-
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/Include/")
 
 # 包含子项目。
 add_subdirectory ("Source/Runtime")

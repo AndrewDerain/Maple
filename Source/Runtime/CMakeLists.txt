@@ -9,10 +9,12 @@ cmake_minimum_required (VERSION 3.22)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-
-file(GLOB_RECURSE src "${CMAKE_CURRENT_SOURCE_DIR}/../Fantasia/*")
+file(GLOB_RECURSE src "${CMAKE_CURRENT_SOURCE_DIR}/../../Include/*")
 message(${src})
 
+if(MSVC)
+	add_compile_options(/Zc:preprocessor)
+endif() 
 
 # 将源代码添加到此项目的可执行文件。
 add_executable ("Fantasia.Runtime" "Runtime.cpp" ${src})
