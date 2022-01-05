@@ -24,22 +24,6 @@ struct CounterEnviroment
 };
 
 
-/// @brief 柜台链接网络协议
-struct CounterConnectionProtocol
-{
-    enum _Type
-    {
-        /// @brief 使用 TCP 协议与柜台建立通信链接
-        TCP,
-
-        /// @brief 使用 UDP 协议与柜台建立通信链接
-        UDP
-    };
-
-    EnumBasicAction(CounterConnectionProtocol, TCP, UDP)
-};
-
-
 // 基础证券类型
 struct SecuritiesCategory
 {
