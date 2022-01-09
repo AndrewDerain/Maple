@@ -1,9 +1,12 @@
 ﻿#pragma once
-#include <BasicConfigs.h>
-#include <Foundation/PackedEnum.h>
+#include <BasicConfigs.hxx>
+#include <Foundation/PackedEnum.hxx>
 
-_FANTASIA_WARNING_DISABLE
+#pragma warning(push)
+#pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
+#pragma pack(push, _FANTASIA_PACKING)
 _FANTASIA_BEGIN
+
 namespace Net
 {
 
@@ -25,4 +28,7 @@ namespace Net
 
 
 }
+
 _FANTASIA_END
+#pragma pack(pop)
+#pragma warning(pop)

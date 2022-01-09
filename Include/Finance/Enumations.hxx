@@ -1,9 +1,13 @@
 ﻿#pragma once
-#include <BasicConfigs.h>
-#include <Foundation/PackedEnum.h>
 
-_FANTASIA_WARNING_DISABLE
+#include <BasicConfigs.hxx>
+#include <Foundation/PackedEnum.hxx>
+
+#pragma warning(push)
+#pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
+#pragma pack(push, _FANTASIA_PACKING)
 _FANTASIA_BEGIN
+
 namespace Finance
 {
 
@@ -23,4 +27,7 @@ namespace Finance
     };
 
 }
+
 _FANTASIA_END
+#pragma pack(pop)
+#pragma warning(pop)

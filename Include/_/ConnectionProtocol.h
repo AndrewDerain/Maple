@@ -2,7 +2,9 @@
 #include <BasicConfigs.h>
 #include <Foundation/PackedEnum.h>
 
-_FANTASIA_WARNING_DISABLE
+#pragma warning(push)
+#pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
+#pragma pack(push, _FANTASIA_PACKING)
 _FANTASIA_BEGIN
 
 /// @brief 柜台交易环境
@@ -40,3 +42,5 @@ struct SecuritiesCategory
 };
 
 _FANTASIA_END
+#pragma pack(pop)
+#pragma warning(pop)

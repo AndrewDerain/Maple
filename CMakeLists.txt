@@ -1,7 +1,7 @@
 ﻿#-----------------------------------------------------------------------------+
 # CMakeList.txt: 顶层 CMake 项目文件，在此处执行全局配置
 #------------------------------------------------------------------------------
- 
+
 
 #-----------------------------------------------------------------------------+
 #     Config CMake Minimum Version
@@ -15,7 +15,7 @@ cmake_minimum_required (VERSION 3.22)
 project (
 	"Fantasia"
 	VERSION 1.0.0.0
-	DESCRIPTION "以拓展性为第一要义，为量化交易设计的 C++ 交易系统.")
+	DESCRIPTION "纯粹为了自己好玩")
 
 
 #-----------------------------------------------------------------------------+
@@ -25,7 +25,16 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 
+#-----------------------------------------------------------------------------+
+#    Config compile options
+#------------------------------------------------------------------------------
+if(MSVC)
+	add_compile_options(/Zc:preprocessor)
+endif()
+
+
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/Include/")
 
 # 包含子项目。
-add_subdirectory ("Source/Runtime")
+add_subdirectory("Source/Runtime")
+add_subdirectory("UnitTest")

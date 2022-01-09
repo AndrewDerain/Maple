@@ -1,14 +1,18 @@
 ﻿// runtime.cpp: 定义应用程序的入口点。
 //
 
-#include "runtime.h"
+#include "Runtime.hxx"
 
 #include <iostream>
 #include <memory>
 
-#include <_CompileTime/MacroFunction.h>
+#include <_CompileTime/MacroFunction.hxx>
+#include <Foundation/BaseOn.hxx>
 
+class B : Fantasia::Foundation::BaseOn<int>
+{
 
+};
 
 
 int main()

@@ -1,0 +1,20 @@
+{
+    "files.autoGuessEncoding": true,
+    "files.autoSave": "afterDelay",
+    "files.defaultLanguage": "C++",
+    "files.encoding": "utf8bom",
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.maxMemoryForLargeFilesMB": 8192,
+    "files.trimFinalNewlines": true,
+    "files.associations": {
+        "type_traits": "cpp",
+        "iostream": "cpp",
+        "ostream": "c",
+        "istream": "cpp",
+        "ios": "cpp",
+        "iosfwd": "cpp",
+        "streambuf": "cpp"
+    },
+    "files.autoSaveDelay": 5000
+}

@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include <_CompileTime/MacroFunction.h>
-#include <cstring>
+#include <_CompileTime/MacroFunction.hxx>
+#include <_CXX/Includes.hxx>
 
 
 #define _FANTASIA_ENUM_CTOR(_WRAP)                                                \
@@ -10,14 +10,14 @@
         inline _WRAP() = default;                                                 \
         inline _WRAP(const _WRAP& wrapper)  { _Value = wrapper._Value; }          \
         inline _WRAP(const _Type value)     { _Value = value; }                   \
-        inline operator _Type() const       { return _Value;}                     
+        inline operator _Type() const       { return _Value;}
 
 
 #define _FANTASIA_ENUM_TOSTR_BEG            switch(_Value) {
 #define _FANTASIA_ENUM_TOSTR_CASE(_ELE)         case _ELE: return #_ELE;
 #define _FANTASIA_ENUM_TOSTR_DEFA(_ELE)         default: return #_ELE;
 #define _FANTASIA_ENUM_TOSTR_END            }                                     \
-                                            return "";                           
+                                            return "";
 
 #define _FANTASIA_ENUM_FROMSTR_BEG
 #define _FANTASIA_ENUM_FROMSTR_CASE(_ELE)   if(strcmp(value, #_ELE) == 0) {       \
@@ -31,12 +31,12 @@
     inline const char* ToString() {                                               \
         _FANTASIA_ENUM_TOSTR_BEG                                                  \
             _FANTASIA_ENUM_TOSTR_CASE(_E1)                                        \
-            _FANTASIA_ENUM_TOSTR_END                                              \
+        _FANTASIA_ENUM_TOSTR_END                                                  \
     }                                                                             \
     inline void FromString(const char* value) {                                   \
         _FANTASIA_ENUM_FROMSTR_BEG                                                \
             _FANTASIA_ENUM_FROMSTR_CASE(_E1)                                      \
-            _FANTASIA_ENUM_FROMSTR_END                                            \
+        _FANTASIA_ENUM_FROMSTR_END                                                \
     }                                                                             \
 
 
@@ -45,13 +45,13 @@
         _FANTASIA_ENUM_TOSTR_BEG                                                  \
             _FANTASIA_ENUM_TOSTR_CASE(_E1)                                        \
             _FANTASIA_ENUM_TOSTR_CASE(_E2)                                        \
-            _FANTASIA_ENUM_TOSTR_END                                              \
+        _FANTASIA_ENUM_TOSTR_END                                                  \
     }                                                                             \
     inline void FromString(const char* value) {                                   \
         _FANTASIA_ENUM_FROMSTR_BEG                                                \
             _FANTASIA_ENUM_FROMSTR_CASE(_E1)                                      \
             _FANTASIA_ENUM_FROMSTR_CASE(_E2)                                      \
-            _FANTASIA_ENUM_FROMSTR_END                                            \
+        _FANTASIA_ENUM_FROMSTR_END                                                \
     }                                                                             \
 
 
@@ -61,17 +61,15 @@
             _FANTASIA_ENUM_TOSTR_CASE(_E1)                                        \
             _FANTASIA_ENUM_TOSTR_CASE(_E2)                                        \
             _FANTASIA_ENUM_TOSTR_CASE(_E3)                                        \
-            _FANTASIA_ENUM_TOSTR_END                                              \
+        _FANTASIA_ENUM_TOSTR_END                                                  \
     }                                                                             \
     inline void FromString(const char* value) {                                   \
-                                                                                  \
-            _FANTASIA_ENUM_FROMSTR_BEG                                            \
+        _FANTASIA_ENUM_FROMSTR_BEG                                                \
             _FANTASIA_ENUM_FROMSTR_CASE(_E1)                                      \
             _FANTASIA_ENUM_FROMSTR_CASE(_E2)                                      \
             _FANTASIA_ENUM_FROMSTR_CASE(_E3)                                      \
-            _FANTASIA_ENUM_FROMSTR_END                                            \
+        _FANTASIA_ENUM_FROMSTR_END                                                \
     }                                                                             \
-
 
 
 #define _FANTASIA_ENUM_CONVERTER_4(_E1, _E2, _E3, _E4)                            \
@@ -81,7 +79,7 @@
             _FANTASIA_ENUM_TOSTR_CASE(_E2)                                        \
             _FANTASIA_ENUM_TOSTR_CASE(_E3)                                        \
             _FANTASIA_ENUM_TOSTR_CASE(_E4)                                        \
-            _FANTASIA_ENUM_TOSTR_END                                              \
+        _FANTASIA_ENUM_TOSTR_END                                                  \
     }                                                                             \
     inline void FromString(const char* value) {                                   \
         _FANTASIA_ENUM_FROMSTR_BEG                                                \
@@ -89,7 +87,7 @@
             _FANTASIA_ENUM_FROMSTR_CASE(_E2)                                      \
             _FANTASIA_ENUM_FROMSTR_CASE(_E3)                                      \
             _FANTASIA_ENUM_FROMSTR_CASE(_E4)                                      \
-            _FANTASIA_ENUM_FROMSTR_END                                            \
+        _FANTASIA_ENUM_FROMSTR_END                                                \
     }                                                                             \
 
 
@@ -101,7 +99,7 @@
             _FANTASIA_ENUM_TOSTR_CASE(_E3)                                        \
             _FANTASIA_ENUM_TOSTR_CASE(_E4)                                        \
             _FANTASIA_ENUM_TOSTR_CASE(_E5)                                        \
-            _FANTASIA_ENUM_TOSTR_END                                              \
+        _FANTASIA_ENUM_TOSTR_END                                                  \
     }                                                                             \
     inline void FromString(const char* value) {                                   \
         _FANTASIA_ENUM_FROMSTR_BEG                                                \
@@ -110,7 +108,7 @@
             _FANTASIA_ENUM_FROMSTR_CASE(_E3)                                      \
             _FANTASIA_ENUM_FROMSTR_CASE(_E4)                                      \
             _FANTASIA_ENUM_FROMSTR_CASE(_E5)                                      \
-            _FANTASIA_ENUM_FROMSTR_END                                            \
+        _FANTASIA_ENUM_FROMSTR_END                                                \
     }                                                                             \
 
 
@@ -123,7 +121,7 @@
             _FANTASIA_ENUM_TOSTR_CASE(_E4)                                        \
             _FANTASIA_ENUM_TOSTR_CASE(_E5)                                        \
             _FANTASIA_ENUM_TOSTR_CASE(_E6)                                        \
-            _FANTASIA_ENUM_TOSTR_END                                              \
+        _FANTASIA_ENUM_TOSTR_END                                                  \
     }                                                                             \
     inline void FromString(const char* value) {                                   \
         _FANTASIA_ENUM_FROMSTR_BEG                                                \
@@ -133,7 +131,7 @@
             _FANTASIA_ENUM_FROMSTR_CASE(_E4)                                      \
             _FANTASIA_ENUM_FROMSTR_CASE(_E5)                                      \
             _FANTASIA_ENUM_FROMSTR_CASE(_E6)                                      \
-            _FANTASIA_ENUM_FROMSTR_END                                            \
+        _FANTASIA_ENUM_FROMSTR_END                                                \
     }                                                                             \
 
 
@@ -147,7 +145,7 @@
             _FANTASIA_ENUM_TOSTR_CASE(_E5)                                        \
             _FANTASIA_ENUM_TOSTR_CASE(_E6)                                        \
             _FANTASIA_ENUM_TOSTR_CASE(_E7)                                        \
-            _FANTASIA_ENUM_TOSTR_END                                              \
+        _FANTASIA_ENUM_TOSTR_END                                                  \
     }                                                                             \
     inline void FromString(const char* value) {                                   \
         _FANTASIA_ENUM_FROMSTR_BEG                                                \
@@ -158,7 +156,7 @@
             _FANTASIA_ENUM_FROMSTR_CASE(_E5)                                      \
             _FANTASIA_ENUM_FROMSTR_CASE(_E6)                                      \
             _FANTASIA_ENUM_FROMSTR_CASE(_E7)                                      \
-            _FANTASIA_ENUM_FROMSTR_END                                            \
+        _FANTASIA_ENUM_FROMSTR_END                                                \
     }                                                                             \
 
 
