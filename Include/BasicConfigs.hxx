@@ -9,7 +9,12 @@
 
 
 #define _FANTASIA_BEGIN              \
-                namespace Fantasia { \
-
+            namespace Fantasia {     
 #define _FANTASIA_END                \
-                }                    \
+            }                        
+
+
+#define _FANTASIA_DETAIL_BEGIN       \
+            namespace _Fantasia {    
+#define _FANTASIA_DETAIL_END         \
+            }

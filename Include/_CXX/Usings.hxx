@@ -10,5 +10,6 @@ using std::cout;
 using std::cin;
 using std::endl;
 using std::move;
+using std::size_t;
 
 _FANTASIA_END

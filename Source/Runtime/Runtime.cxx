@@ -7,19 +7,19 @@
 #include <memory>
 
 #include <_CompileTime/MacroFunction.hxx>
-#include <Foundation/BaseOn.hxx>
+#include <Foundation/Foundation.hxx>
 
-class B : Fantasia::Foundation::BaseOn<int>
-{
-
-};
-
+using namespace Fantasia::Foundation;
 
 int main()
 {
+    Int64 j;
+
+    Object* o = new Object;
+
+    std::cout << (o == nullptr) << std::endl;
 
     auto V = _FANTASIA_MF_ARG_COUNT(3);
-
 
     return 0;
 }
