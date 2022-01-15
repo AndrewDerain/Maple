@@ -5,28 +5,52 @@
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
+_FANTASIA_BEGIN
+namespace Foundation 
+{
+    struct Int64;
+}
+_FANTASIA_END
+
 _FANTASIA_DETAIL_BEGIN
 _FANTASIA_DETAIL_END
 
 _FANTASIA_BEGIN
 namespace Foundation 
 {
-    class Float64
+    
+    struct Float64
     {
-    private:
-        /* data */
     public:
-        Float64(/* args */);
-        ~Float64();
+        Float64() = default;
+        ~Float64() = default;
+
+        Float64(Float64 const& other);
+        Float64(Float64 const&& other);
+
+        Float64(double const& value);
+        Float64(double const&& value);
+
+        explicit operator double() const;
+
+    private:
+        double _Storage;
+
+    private:
+        friend Float64 operator+(Float64 const& left, Int64 const& right);
+        friend Float64 operator-(Float64 const& left, Int64 const& right);
+        // friend Float64 operator*(Float64 const& left, Int64 const& right);
+        // friend Float64 operator/(Float64 const& left, Int64 const& right);
+        // friend bool operator!=(Float64 const& left, Int64 const& right);
+        // friend bool operator==(Float64 const& left, Int64 const& right);
+        // friend bool operator>=(Float64 const& left, Int64 const& right);
+        // friend bool operator<=(Float64 const& left, Int64 const& right);
+        // friend bool operator>(Float64 const& left, Int64 const& right);
+        // friend bool operator<(Float64 const& left, Int64 const& right);
+
+
     };
-    
-    Float64::Float64(/* args */)
-    {
-    }
-    
-    Float64::~Float64()
-    {
-    }
+
     
 }
 _FANTASIA_END

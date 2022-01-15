@@ -363,4 +363,7 @@ MigrationBackup/
 FodyWeavers.xsd
 
 [Bb]uild
+[Bb]in
+[Ll]ib
+Compile.*
 .DS_Store

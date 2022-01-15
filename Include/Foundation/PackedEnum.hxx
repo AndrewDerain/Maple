@@ -1,4 +1,5 @@
 ﻿#pragma once
+
 #include <_CompileTime/MacroFunction.hxx>
 #include <_CXX/Includes.hxx>
 
@@ -18,6 +19,7 @@
 #define _FANTASIA_ENUM_TOSTR_DEFA(_ELE)         default: return #_ELE;
 #define _FANTASIA_ENUM_TOSTR_END            }                                     \
                                             return "";
+
 
 #define _FANTASIA_ENUM_FROMSTR_BEG
 #define _FANTASIA_ENUM_FROMSTR_CASE(_ELE)   if(strcmp(value, #_ELE) == 0) {       \
@@ -169,6 +171,8 @@
             )                                                                     \
 
 
-#define EnumBasicAction(_WRAP, ...)                                               \
+#define EnumBasicActions(_WRAP, ...)                                              \
             _FANTASIA_ENUM_CTOR(_WRAP)                                            \
             _FANTASIA_ENUM_STRING_CONVERTER(__VA_ARGS__)                          \
+
+#define EnumElements enum _Type : uint64_t

@@ -7,19 +7,22 @@
 #include <memory>
 
 #include <_CompileTime/MacroFunction.hxx>
-#include <Foundation/Foundation.hxx>
+#include <Foundation/Foundation>
 
 using namespace Fantasia::Foundation;
 
 int main()
 {
-    Int64 j;
+    Int64 j = (int64_t)8;
+    
+    std::cout << (long long)j << std::endl;
+    
+    Float64 height(8);
 
-    Object* o = new Object;
+    
+    std::to_string(5);
 
-    std::cout << (o == nullptr) << std::endl;
+    //height = 8;
 
-    auto V = _FANTASIA_MF_ARG_COUNT(3);
-
-    return 0;
+    return 0; 
 }

@@ -11,13 +11,24 @@ _FANTASIA_DETAIL_END
 
 _FANTASIA_BEGIN
 namespace Foundation 
-{
-    class Object
+{   
+    class Value
     {
     public:
         
     protected:
         void* operator new(size_t count);
+    };
+
+
+    class Object
+    {
+        
+    };
+
+    class Pointer
+    {
+
     };
 }
 _FANTASIA_END

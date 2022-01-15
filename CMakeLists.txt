@@ -33,6 +33,19 @@ if(MSVC)
 endif()
 
 
+#-----------------------------------------------------------------------------+
+#    Config compile options
+#------------------------------------------------------------------------------
+
+message("CMAKE_SYSTEM = ${APPLE}")
+
+set(CompileFolderPrefix "Compile.${CMAKE_BUILD_TYPE}")
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY 
+	"${CMAKE_SOURCE_DIR}/${CompileFolderPrefix}.Bin")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY 
+	"${CMAKE_SOURCE_DIR}/${CompileFolderPrefix}.Lib")
+
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/Include/")
 
 # 包含子项目。

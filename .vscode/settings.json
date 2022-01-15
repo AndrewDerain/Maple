@@ -14,7 +14,10 @@
         "istream": "cpp",
         "ios": "cpp",
         "iosfwd": "cpp",
-        "streambuf": "cpp"
+        "streambuf": "cpp",
+        "string": "cpp",
+        "bitset": "cpp",
+        "memory": "cpp"
     },
     "files.autoSaveDelay": 5000
 }
