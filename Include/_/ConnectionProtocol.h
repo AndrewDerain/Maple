@@ -1,6 +1,5 @@
 ﻿#pragma once
-#include <BasicConfigs.h>
-#include <Foundation/PackedEnum.h>
+#include <Fantasia.Foundation.Enum.hxx>
 
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
@@ -10,7 +9,7 @@ _FANTASIA_BEGIN
 /// @brief 柜台交易环境
 struct CounterEnviroment
 {
-    enum _Type
+    EnumElements
     {
         /// @brief 表示当前交易环境为仿真交易环境
         Simulation,

@@ -1,6 +1,5 @@
 ﻿#pragma once
-#include <BasicConfigs.hxx>
-#include <Foundation/PackedEnum.hxx>
+#include <Fantasia.Foundation.Enum.hxx>
 
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
@@ -13,7 +12,7 @@ namespace Net
     /// @brief 网络连接协议
     struct ConnectionProtocol
     {
-        enum _Type
+        EnumElements
         {
             /// @brief 使用 TCP 建立网络连接
             TCP,
@@ -24,8 +23,6 @@ namespace Net
 
         EnumBasicAction(ConnectionProtocol, TCP, UDP)
     };
-
-
 
 }
 

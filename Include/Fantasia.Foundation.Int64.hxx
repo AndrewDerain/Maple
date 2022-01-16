@@ -1,7 +1,23 @@
 ﻿#pragma once
+#include <Fantasia.Basic.Macro.Function.hxx>
+#include <Fantasia.Basic.CodeLang.CXX.hxx>
 
-#include <BasicConfigs.hxx>
-#include <_CXX/CXX.hxx>
+
+template<typename T>
+concept structural = std::is_class_v<T>;
+
+// template<structural S, integral T>
+// struct Integral
+// {
+// protected:
+//     T _Storage;
+
+// public:
+//     S operator+(T value) {
+//         return Value + value;
+//     }
+// };
+
 
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
@@ -37,6 +53,7 @@ namespace Foundation
 
         explicit operator int64_t() const;
         explicit operator int64_t const&();
+
 
     private:
         int64_t _Storage;

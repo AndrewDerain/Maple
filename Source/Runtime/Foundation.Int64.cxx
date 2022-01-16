@@ -1,6 +1,5 @@
 ﻿
-#include <Foundation/Int64.hxx>
-// #include <Foundation/Float64.hxx>
+#include <Fantasia.Foundation.Int64.hxx>
 
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)

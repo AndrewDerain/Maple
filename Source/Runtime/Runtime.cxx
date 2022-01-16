@@ -6,8 +6,7 @@
 #include <iostream>
 #include <memory>
 
-#include <_CompileTime/MacroFunction.hxx>
-#include <Foundation/Foundation>
+#include <Fantasia.Foundation>
 
 using namespace Fantasia::Foundation;
 
@@ -17,7 +16,7 @@ int main()
     
     std::cout << (long long)j << std::endl;
     
-    Float64 height(8);
+    //Float64 height(8);
 
     
     std::to_string(5);

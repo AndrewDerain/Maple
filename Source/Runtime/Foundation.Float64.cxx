@@ -1,6 +1,5 @@
 ﻿
-#include <Foundation/Int64.hxx>
-#include <Foundation/Float64.hxx>
+#include <Fantasia.Foundation.Float64.hxx>
 
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
@@ -30,11 +29,11 @@ namespace Foundation
     }
 
     // operator 
-    inline Float64 operator+(Float64 const& left, Int64 const& right) {
+    Float64 operator+(Float64 const& left, Int64 const& right) {
         return left._Storage + (int64_t const&)right;
     }
 
-    inline Float64 operator-(Float64 const& left, Int64 const& right) {
+    Float64 operator-(Float64 const& left, Int64 const& right) {
         return left._Storage - (int64_t const&)right;
     }
 
