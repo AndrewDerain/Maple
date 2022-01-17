@@ -1,5 +1,5 @@
-﻿#pragma once
-
+﻿
 #include <Fantasia.Foundation.Enum.hxx>
 #include <Fantasia.Foundation.Float64.hxx>
 #include <Fantasia.Foundation.Int64.hxx>
+#include <Fantasia.Foundation.Integral.hxx>

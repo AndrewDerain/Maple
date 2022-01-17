@@ -1,6 +1,6 @@
 ﻿#pragma once
-
 #include <Fantasia.Basic.Macro.ProjectDefine.hxx>
+
 
 #include <cstring>
 _FANTASIA_BEGIN
@@ -24,6 +24,13 @@ _FANTASIA_END
 
 #include <thread>
 _FANTASIA_BEGIN
+using std::thread;
+_FANTASIA_END
+
+
+#include <atomic>
+_FANTASIA_BEGIN
+using std::atomic;
 _FANTASIA_END
 
 
@@ -56,4 +63,12 @@ _FANTASIA_END
 #include <concepts>
 _FANTASIA_BEGIN
 using std::integral;
+_FANTASIA_END
+
+
+
+// 补充
+_FANTASIA_BEGIN
+template<typename T>
+concept structural = std::is_class_v<T>;
 _FANTASIA_END

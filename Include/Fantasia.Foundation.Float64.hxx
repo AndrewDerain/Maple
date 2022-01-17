@@ -19,40 +19,40 @@ _FANTASIA_BEGIN
 namespace Foundation 
 {
     
-    struct Float64
-    {
-    public:
-        Float64() = default;
-        ~Float64() = default;
+struct Float64
+{
+public:
+    Float64() = default;
+    ~Float64() = default;
 
-        Float64(Float64 const& other);
-        Float64(Float64 const&& other);
+    Float64(Float64 const& other);
+    Float64(Float64 const&& other);
 
-        Float64(double const& value);
-        Float64(double const&& value);
+    Float64(double const& value);
+    Float64(double const&& value);
 
-        explicit operator double() const;
+    explicit operator double() const;
 
-    private:
-        double _Storage;
+private:
+    double _Storage;
 
-    private:
-        friend Float64 operator+(Float64 const& left, Int64 const& right);
-        friend Float64 operator-(Float64 const& left, Int64 const& right);
-        // friend Float64 operator*(Float64 const& left, Int64 const& right);
-        // friend Float64 operator/(Float64 const& left, Int64 const& right);
-        // friend bool operator!=(Float64 const& left, Int64 const& right);
-        // friend bool operator==(Float64 const& left, Int64 const& right);
-        // friend bool operator>=(Float64 const& left, Int64 const& right);
-        // friend bool operator<=(Float64 const& left, Int64 const& right);
-        // friend bool operator>(Float64 const& left, Int64 const& right);
-        // friend bool operator<(Float64 const& left, Int64 const& right);
+private:
+    friend Float64 operator+(Float64 const& left, Int64 const& right);
+    friend Float64 operator-(Float64 const& left, Int64 const& right);
+    // friend Float64 operator*(Float64 const& left, Int64 const& right);
+    // friend Float64 operator/(Float64 const& left, Int64 const& right);
+    // friend bool operator!=(Float64 const& left, Int64 const& right);
+    // friend bool operator==(Float64 const& left, Int64 const& right);
+    // friend bool operator>=(Float64 const& left, Int64 const& right);
+    // friend bool operator<=(Float64 const& left, Int64 const& right);
+    // friend bool operator>(Float64 const& left, Int64 const& right);
+    // friend bool operator<(Float64 const& left, Int64 const& right);
 
 
-    };
+};
 
     
-}
+} // end of Foundation
 _FANTASIA_END
 #pragma pack(pop)
 #pragma warning(pop)

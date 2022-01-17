@@ -3,16 +3,17 @@
         {
             "name": "Mac",
             "includePath": [
-                "${workspaceFolder}/Include"
+                "${workspaceFolder}/Include/**"
             ],
             "defines": [],
             "macFrameworkPath": [],
-            "compilerPath": "/opt/homebrew/bin/gcc-11",
-            "cStandard": "gnu17",
-            "cppStandard": "gnu++20",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "c++20",
             "intelliSenseMode": "macos-gcc-arm64",
             "compileCommands": "${workspaceFolder}/.buildcache/compile_commands.json",
-            "configurationProvider": "ms-vscode.cmake-tools"
+            "configurationProvider": "ms-vscode.cmake-tools",
+            "mergeConfigurations": false
         }
     ],
     "version": 4

@@ -15,7 +15,7 @@ cmake_minimum_required (VERSION 3.22)
 project (
 	"Fantasia"
 	VERSION 1.0.0.0
-	DESCRIPTION "纯粹为了自己好玩")
+	DESCRIPTION "Morden C++ & for fun")
 
 
 #-----------------------------------------------------------------------------+
@@ -36,9 +36,6 @@ endif()
 #-----------------------------------------------------------------------------+
 #    Config compile options
 #------------------------------------------------------------------------------
-
-message("CMAKE_SYSTEM = ${APPLE}")
-
 set(CompileFolderPrefix "Compile.${CMAKE_BUILD_TYPE}")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY 
@@ -46,8 +43,15 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY 
 	"${CMAKE_SOURCE_DIR}/${CompileFolderPrefix}.Lib")
 
+
+#-----------------------------------------------------------------------------+
+#    Config common include folders
+#------------------------------------------------------------------------------
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/Include")
 
-# 包含子项目。
+
+#-----------------------------------------------------------------------------+
+#    Config subprojects
+#------------------------------------------------------------------------------
 add_subdirectory("Source/Runtime")
 add_subdirectory("UnitTest")

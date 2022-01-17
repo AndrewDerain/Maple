@@ -42,7 +42,8 @@
         "tuple": "cpp",
         "unordered_map": "cpp",
         "utility": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "chrono": "cpp"
     },
     "files.autoSaveDelay": 5000,
     "cmake.buildDirectory" :"${workspaceFolder}/.buildcache"
