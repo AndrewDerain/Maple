@@ -38,7 +38,7 @@ namespace Foundation
         explicit operator int64_t() const;
         explicit operator int64_t const&();
 
-
+        
     private:
         int64_t _Storage;
 

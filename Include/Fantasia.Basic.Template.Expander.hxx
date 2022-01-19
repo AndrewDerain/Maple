@@ -168,9 +168,6 @@ template<
 struct Expander: 
     virtual public Deliver<_Wrapper, _Basic, _ArgTys...> 
     {
-        void print(_ArgTy v) {
-            std::cout << __FUNCTION__ << v << std::endl;
-        }
     };
 }
 _FANTASIA_DETAIL_END

@@ -8,24 +8,24 @@ _FANTASIA_BEGIN
 namespace Foundation 
 {
     // constructor
-    Int64::Int64(const Int64& other) {
-        _Storage = other._Storage;
+    Int64::Int64(const Int64& other) :
+        _Storage(other._Storage) {
     }
 
-    Int64::Int64(const Int64&& other) {
-        _Storage = move(other._Storage);
+    Int64::Int64(const Int64&& other) :
+        _Storage(move(other._Storage)) {
     }
 
-    Int64::Int64(const int32_t& value) {
-        _Storage = value;
+    Int64::Int64(const int32_t& value) :
+        _Storage(value) {
     }
 
-    Int64::Int64(const int32_t&& value) {
-        _Storage = move(value);
+    Int64::Int64(const int32_t&& value) :
+        _Storage(move(value)) {
     }
 
-    Int64::Int64(const int64_t& value) {
-        _Storage = value;
+    Int64::Int64(const int64_t& value) :
+        _Storage(value) {
     }
 
     Int64::Int64(const int64_t&& value){
