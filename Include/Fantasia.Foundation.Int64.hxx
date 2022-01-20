@@ -23,22 +23,21 @@ namespace Foundation
     struct Int64 
     {
     public: 
-        Int64() = default;
-        ~Int64() = default;
+        Int64() noexcept = default;
+        ~Int64() noexcept = default;
 
-        Int64(const Int64& other);
-        Int64(const Int64&& other);
+        Int64(const Int64& other) noexcept;
+        Int64(Int64&& other) noexcept;
 
-        Int64(const int32_t& value);
-        Int64(const int32_t&& value);
+        Int64(const int32_t& value) noexcept;
+        Int64(int32_t&& value) noexcept;
 
-        Int64(const int64_t& value);
-        Int64(const int64_t&& value);
+        Int64(const int64_t& value) noexcept;
+        Int64(int64_t&& value) noexcept;
 
-        explicit operator int64_t() const;
-        explicit operator int64_t const&();
+        explicit operator int64_t() const noexcept;
+        explicit operator const int64_t &() noexcept;
 
-        
     private:
         int64_t _Storage;
 

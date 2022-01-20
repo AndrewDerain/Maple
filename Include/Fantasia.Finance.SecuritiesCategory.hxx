@@ -1,5 +1,4 @@
 ﻿#pragma once
-
 #include <Fantasia/Basic/Macro/ProjectDefine.hxx>
 #include <Fantasia/Runtime/Foundation/PackedEnum.hxx>
 

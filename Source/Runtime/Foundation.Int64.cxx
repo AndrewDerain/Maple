@@ -8,57 +8,57 @@ _FANTASIA_BEGIN
 namespace Foundation 
 {
     // constructor
-    Int64::Int64(const Int64& other) :
+    Int64::Int64(const Int64& other) noexcept :
         _Storage(other._Storage) {
     }
 
-    Int64::Int64(const Int64&& other) :
+    Int64::Int64(Int64&& other) noexcept :
         _Storage(move(other._Storage)) {
     }
 
-    Int64::Int64(const int32_t& value) :
+    Int64::Int64(const int32_t& value) noexcept : 
         _Storage(value) {
     }
 
-    Int64::Int64(const int32_t&& value) :
+    Int64::Int64(int32_t&& value) noexcept :
         _Storage(move(value)) {
     }
 
-    Int64::Int64(const int64_t& value) :
-        _Storage(value) {
+    Int64::Int64(const int64_t& value) noexcept {
+        _Storage = value;
     }
 
-    Int64::Int64(const int64_t&& value){
+    Int64::Int64(int64_t&& value) noexcept {
         _Storage = move(value);
     }
 
-    Int64::operator int64_t() const { 
+    Int64::operator int64_t() const noexcept {
         return _Storage; 
     }
 
-    Int64::operator int64_t const&() {
+    Int64::operator const int64_t &() noexcept {
         return _Storage;
     }
 
     // operators with self
     Int64 operator+(Int64 const& left, Int64 const& right) {
-        return left._Storage + right;
+        return left._Storage + right._Storage;
     }
 
     Int64 operator-(Int64 const& left, Int64 const& right) {
-        return left._Storage - right;
+        return left._Storage - right._Storage;
     }
 
     Int64 operator*(Int64 const& left, Int64 const& right) {
-        return left._Storage * right;
+        return left._Storage * right._Storage;
     }
 
     Int64 operator/(Int64 const& left, Int64 const& right) {
-        return left._Storage / right;
+        return left._Storage / right._Storage;
     }
 
     bool operator!=(Int64 const& left, Int64 const& right) {
-        return left._Storage != right;
+        return left._Storage != right._Storage;
     }
 
     bool operator==(Int64 const& left, Int64 const& right) {

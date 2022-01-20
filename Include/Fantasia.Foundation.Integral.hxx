@@ -48,6 +48,14 @@ public:
     
 };
 
+
+template<integral _Basal>
+struct NumerbicBasic
+{
+    
+};
+
+
 }
 _FANTASIA_END
 #pragma pack(pop)

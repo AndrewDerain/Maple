@@ -1,16 +1,15 @@
 ﻿{
   "configurations": [
     {
-      "name": "Windows-x64-Debug",
-      "generator": "Visual Studio 16 2019 Win64",
+      "name": "Win-ARM64-Debug",
+      "generator": "Ninja",
       "configurationType": "Debug",
-      "inheritEnvironments": [ "msvc_x64_x64" ],
-      "buildRoot": "${projectDir}\\Build\\${name}",
+      "inheritEnvironments": [ "msvc_arm64_x64" ],
+      "buildRoot": "${projectDir}\\.buildcache\\${name}",
       "installRoot": "${projectDir}\\Install\\${name}",
       "cmakeCommandArgs": "",
       "ctestCommandArgs": "",
-      "intelliSenseMode": "windows-msvc-x64",
-      "cmakeExecutable": "D:/Libraries/Programs/cmake/3.22.1-x86_64/bin/"
+      "intelliSenseMode": "windows-msvc-arm64"
     }
   ]
 }
