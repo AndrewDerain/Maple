@@ -1,6 +1,7 @@
 ﻿#pragma once
-#include <Fantasia.Basic.Macro.Function.hxx>
-#include <Fantasia.Basic.CodeLang.CXX.hxx>
+#include "Basic.Macro.Function.hxx"
+#include "Basic.CodeLang.CXX.hxx"
+
 
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)

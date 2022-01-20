@@ -10,6 +10,10 @@
 
 using namespace Fantasia::Foundation;
 
+
+
+
+
 int main()
 {
     Int64 j = (int64_t)8;

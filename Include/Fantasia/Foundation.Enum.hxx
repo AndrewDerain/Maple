@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include <Fantasia.Basic.Macro.ProjectDefine.hxx>
-#include <Fantasia.Basic.Macro.Function.hxx>
-#include <Fantasia.Basic.CodeLang.CXX.hxx>
+#include "Basic.Macro.ProjectDefine.hxx"
+#include "Basic.Macro.Function.hxx"
+#include "Basic.CodeLang.CXX.hxx"
 
 
 #define _FANTASIA_ENUM_CTOR(_WRAP)                                                \

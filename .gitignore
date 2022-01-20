@@ -365,8 +365,6 @@ FodyWeavers.xsd
 # Fantasia ignore
 [Bb]uild
 [Bb]uildCache*
-[Bb]in
-[Ll]ib
-Compile.*
+Compiled*
 .buildcache
 .DS_Store

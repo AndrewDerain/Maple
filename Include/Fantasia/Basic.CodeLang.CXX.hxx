@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include <Fantasia.Basic.Macro.ProjectDefine.hxx>
+#include "Basic.Macro.ProjectDefine.hxx"
 
 
 #include <cstring>
@@ -48,7 +48,6 @@ using std::is_integral_v;
 _FANTASIA_END
 
 
-
 #include <iostream>
 _FANTASIA_BEGIN
 using std::cin;
@@ -57,6 +56,12 @@ using std::endl;
 using std::ostream;
 using std::istream;
 using std::move;
+_FANTASIA_END
+
+
+#include <climits>
+_FANTASIA_BEGIN
+using std::numeric_limits;
 _FANTASIA_END
 
 

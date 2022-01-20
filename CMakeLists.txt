@@ -36,18 +36,22 @@ endif()
 #-----------------------------------------------------------------------------+
 #    Config compile options
 #------------------------------------------------------------------------------
-set(CompileFolderPrefix "Compile.${CMAKE_BUILD_TYPE}")
+set(CompileFolderPrefix "Compiled")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY 
-	"${CMAKE_SOURCE_DIR}/${CompileFolderPrefix}.Bin")
+	"${CMAKE_SOURCE_DIR}/${CompileFolderPrefix}")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY 
-	"${CMAKE_SOURCE_DIR}/${CompileFolderPrefix}.Lib")
+	"${CMAKE_SOURCE_DIR}/${CompileFolderPrefix}")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY
+	"${CMAKE_SOURCE_DIR}/${CompileFolderPrefix}")
 
 
 #-----------------------------------------------------------------------------+
 #    Config common include folders
 #------------------------------------------------------------------------------
-include_directories("${CMAKE_CURRENT_SOURCE_DIR}/Include")
+include_directories(
+	"${CMAKE_CURRENT_SOURCE_DIR}/Include"
+	"${CMAKE_CURRENT_SOURCE_DIR}/Include/Foundation")
 
 
 #-----------------------------------------------------------------------------+

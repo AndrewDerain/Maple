@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include <Fantasia/Basic/Macro/ProjectDefine.hxx>
-#include <Fantasia/Runtime/Foundation/PackedEnum.hxx>
+#include "Basic.Macro.ProjectDefine.hxx"
+#include "Foundation.Enum.hxx"
 
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)

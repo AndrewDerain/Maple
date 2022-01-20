@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include <Fantasia.Foundation.Enum.hxx>
+#include "Foundation.Enum.hxx"
 
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
