@@ -20,12 +20,6 @@ int main()
     
     std::cout << (long long)j << std::endl;
     
-    //Float64 height(8);
-
-    
-    //std::to_string(5);
-
-    //height = 8;
 
     return 0; 
 }
