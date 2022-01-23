@@ -18,3 +18,44 @@
             namespace _Fantasia {    
 #define _FANTASIA_DETAIL_END         \
             }
+
+#define _FANTASIA_INLINE inline
+
+#define _FANTASIA_EXPORT 
+
+
+// struct _PrintFunction
+// {
+//     _PrintFunction() {
+//         std::cout << scop << std::endl;
+//     }
+//     ~_PrintFunction() {
+//         std::cout << __FUNCTION__ << std::endl;
+//     }
+
+//     std::string scop;
+// };
+
+
+#define _PrintVar(_Val) \
+    std::cout << "Var [" << #_Val << "] = [" << _Val << "]" << std::endl;
+
+#define _PrintFunc \
+    std::cout << __FUNCTION__ << std::endl;
+
+// class T
+// {
+// public: 
+//     // static function
+//     // static variables
+
+//     // constructors
+//     // functions
+//     // operators
+
+//     // variables
+//     // inherited 
+// protected:
+
+// private:
+// };
