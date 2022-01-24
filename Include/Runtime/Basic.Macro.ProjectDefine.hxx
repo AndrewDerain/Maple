@@ -23,25 +23,8 @@
 
 #define _FANTASIA_EXPORT 
 
+#define _FANTASIA_TRACE
 
-// struct _PrintFunction
-// {
-//     _PrintFunction() {
-//         std::cout << scop << std::endl;
-//     }
-//     ~_PrintFunction() {
-//         std::cout << __FUNCTION__ << std::endl;
-//     }
-
-//     std::string scop;
-// };
-
-
-#define _PrintVar(_Val) \
-    std::cout << "Var [" << #_Val << "] = [" << _Val << "]" << std::endl;
-
-#define _PrintFunc \
-    std::cout << __FUNCTION__ << std::endl;
 
 // class T
 // {

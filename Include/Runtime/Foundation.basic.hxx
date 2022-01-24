@@ -1,7 +1,5 @@
 ﻿#pragma once
-#include "Basic.Macro.Function.hxx"
-#include "Basic.Macro.ProjectDefine.hxx"
-#include "Basic.CodeLang.CXX.hxx"
+#include <Fantasia.Basic>
 
 
 #define _FANTASIA_FOUNDATION_DETAIL_BEGIN \

@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include "Foundation.Int64.decl.hxx"
-#include "Foundation.Float64.decl.hxx"
+#include <Runtime/Foundation.Int64.hxx>
+#include <Runtime/Foundation.Float64.hxx>
 
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
@@ -24,7 +24,7 @@ Int64::Int64(const Int64& other) noexcept :
 
 _FANTASIA_INLINE 
 Int64::Int64(Int64&& other) noexcept :
-    _StoredValue(move(other)){
+    _StoredValue(move(other)) {
 }
 
 _FANTASIA_INLINE 

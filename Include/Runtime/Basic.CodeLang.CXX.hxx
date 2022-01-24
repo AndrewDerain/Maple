@@ -1,6 +1,11 @@
 ﻿#pragma once
 #include "Basic.Macro.ProjectDefine.hxx"
 
+#include <cmath>
+_FANTASIA_BEGIN
+using std::fabs;
+_FANTASIA_END
+
 
 #include <cstring>
 _FANTASIA_BEGIN

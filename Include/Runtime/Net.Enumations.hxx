@@ -22,7 +22,7 @@ namespace Net
             UDP
         };
 
-        EnumBasicAction(ConnectionProtocol, TCP, UDP)
+        EnumBasicActions(ConnectionProtocol, TCP, UDP)
     };
 
 }

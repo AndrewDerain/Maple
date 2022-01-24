@@ -16,12 +16,12 @@ namespace System
         {
             Windows,
             MacOS,
-            Linux,
+            Linux, 
             Ubuntu,
         };
         
         EnumBasicActions(OperatingSystem,
-            OpenGL, DirectX, Vulkan
+            Windows, MacOS, Linux
         );
     };
     

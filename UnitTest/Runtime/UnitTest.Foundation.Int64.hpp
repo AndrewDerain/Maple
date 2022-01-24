@@ -1,6 +1,7 @@
 ﻿
 #include <Runtime/Foundation.Int64.hxx>
 #include <Runtime/Foundation.Float64.hxx>
+#include <Runtime/Basic.Tracer.hxx>
 #include <iostream>
 
 namespace UnitTest::Foundation::TestInt64
@@ -11,7 +12,8 @@ namespace UnitTest::Foundation::TestInt64
     Float64 FloatValue;
 
     int RunAll() {
-        
+        TraceScope;
+
         std::string c;
         IntValue = 56;
 
@@ -26,9 +28,10 @@ namespace UnitTest::Foundation::TestInt64
 
         Val0 = Vala + Val2;
 
-        _PrintVar(Vala);
-        _PrintVar(Val2);
-        _PrintVar(Val0);
+        
+        TraceWriteVar(Vala);
+        TraceWriteVar(Val2);
+        TraceWriteVar(Val0);
 
         return 0;
     }
