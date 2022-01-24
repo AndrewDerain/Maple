@@ -54,4 +54,6 @@ _FANTASIA_FOUNDATION_END
 #pragma pack(pop)
 #pragma warning(pop)
 
-#include "../../Source/Runtime/Foundation.Int64.impl.hxx"
+#ifdef _FANTASIA_HEADER_ONLY
+#    include "../../Source/Runtime/Foundation.Int64.impl.hxx"
+#endif

@@ -19,12 +19,19 @@
 #define _FANTASIA_DETAIL_END         \
             }
 
-#define _FANTASIA_INLINE inline
 
 #define _FANTASIA_EXPORT 
 
 #define _FANTASIA_TRACE
 
+// #define _FANTASIA_HEADER_ONLY
+
+
+#ifdef _FANTASIA_HEADER_ONLY
+#    define _FANTASIA_INLINE inline
+#else
+#    define _FANTASIA_INLINE
+#endif
 
 // class T
 // {

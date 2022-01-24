@@ -101,7 +101,7 @@ bool
 operator<(
     Fantasia::Foundation::Float64& left, 
     Fantasia::Foundation::Float64& right) {
-        
+
     auto dif = (double)left - (double)right;
     return fabs(dif) > std::numeric_limits<double>::epsilon() && dif < 0;
 }
@@ -114,6 +114,16 @@ operator==(
 
     auto dif = (double)left - (double)right;
     return fabs(dif) <= std::numeric_limits<double>::epsilon();
+}
+
+_FANTASIA_INLINE
+bool
+operator!=(
+    Fantasia::Foundation::Float64& left, 
+    Fantasia::Foundation::Float64& right) {
+
+    auto dif = (double)left - (double)right;
+    return fabs(dif) > std::numeric_limits<double>::epsilon();
 }
 
 _FANTASIA_INLINE

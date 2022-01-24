@@ -1,4 +1,15 @@
-﻿
+﻿/// Fantasia Framework
+/// copyright 2021-2022 by Haojie Song.
+/// email: locomoco@yeah.net
+
+
+/// Macro Options Define
+
+/// Option: Header only or link to the lib 
+/// Remove comment below to enable header only
+// #define _FANTASIA_HEADER_ONLY
+
+
 #include <Runtime/Basic.Macro.ProjectDefine.hxx>
 #include <Runtime/Basic.Macro.Function.hxx>
 #include <Runtime/Basic.Tracer.hxx>

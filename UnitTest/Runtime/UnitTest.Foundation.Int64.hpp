@@ -28,6 +28,7 @@ namespace UnitTest::Foundation::TestInt64
 
         Val0 = Vala + Val2;
 
+        bool larger = Vala > Valb;
         
         TraceWriteVar(Vala);
         TraceWriteVar(Val2);

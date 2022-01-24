@@ -3,23 +3,15 @@
 
 #include "Runtime.hxx"
 
-#include <iostream>
-#include <memory>
-
-#include <Fantasia.Foundation>
+#include "Foundation.Float64.impl.hxx"
+#include "Foundation.Int64.impl.hxx"
 
 using namespace Fantasia::Foundation;
 
 
 
-
-
 int main()
 {
-    Int64 j = (int64_t)8;
-    
-    std::cout << (long long)j << std::endl;
-    
 
     return 0; 
 }

@@ -62,6 +62,11 @@ operator==(
     Fantasia::Foundation::Float64& right);
 
 bool
+operator!=(
+    Fantasia::Foundation::Float64& left, 
+    Fantasia::Foundation::Float64& right);
+
+bool
 operator>=(
     Fantasia::Foundation::Float64& left, 
     Fantasia::Foundation::Float64& right);
@@ -75,4 +80,6 @@ operator<=(
 #pragma pack(pop)
 #pragma warning(pop)
 
-#include "../../Source/Runtime/Foundation.Float64.impl.hxx"
+#ifdef _FANTASIA_HEADER_ONLY
+#    include "../../Source/Runtime/Foundation.Float64.impl.hxx"
+#endif

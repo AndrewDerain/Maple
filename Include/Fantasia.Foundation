@@ -2,3 +2,4 @@
 #include <Runtime/Foundation.Enum.hxx>
 #include <Runtime/Foundation.Float64.hxx>
 #include <Runtime/Foundation.Int64.hxx>
+#include <Runtime/Foundation.MarkupLang.hxx>
