@@ -9,12 +9,12 @@ _FANTASIA_FOUNDATION_BEGIN
 
 _FANTASIA_INLINE Int64 
 Int64::Max() {
-    return numeric_limits<int64_t>::max();
+    return std::numeric_limits<int64_t>::max();
 };
 
 _FANTASIA_INLINE Int64 
 Int64::Min() {
-    return numeric_limits<int64_t>::min();
+    return std::numeric_limits<int64_t>::min();
 }
 
 _FANTASIA_INLINE 
@@ -24,7 +24,7 @@ Int64::Int64(const Int64& other) noexcept :
 
 _FANTASIA_INLINE 
 Int64::Int64(Int64&& other) noexcept :
-    _StoredValue(move(other)) {
+    _StoredValue(std::move(other)) {
 }
 
 _FANTASIA_INLINE 
@@ -44,7 +44,7 @@ Int64::Int64(const int64_t& value) noexcept :
 
 _FANTASIA_INLINE 
 Int64::Int64(int64_t&& value) noexcept :
-    _StoredValue(move(value)) {
+    _StoredValue(std::move(value)) {
 }
 
 _FANTASIA_INLINE 
@@ -77,7 +77,7 @@ Int64::operator=(const int32_t& value) noexcept {
 
 _FANTASIA_INLINE const Int64& 
 Int64::operator=(int32_t&& value) noexcept {
-    _StoredValue = move(value);
+    _StoredValue = std::move(value);
     return *this;
 }
 

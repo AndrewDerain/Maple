@@ -11,19 +11,19 @@ _FANTASIA_FOUNDATION_BEGIN
 _FANTASIA_INLINE 
 Float64 
 Float64::Max() {
-    return numeric_limits<double>::max();
+    return std::numeric_limits<double>::max();
 }
 
 _FANTASIA_INLINE 
 Float64 
 Float64::Min() {
-    return numeric_limits<double>::min();
+    return std::numeric_limits<double>::min();
 }
 
 _FANTASIA_INLINE 
 Float64 
 Float64::Epsilon() {
-    return numeric_limits<double>::epsilon();
+    return std::numeric_limits<double>::epsilon();
 }
 
 _FANTASIA_INLINE 
@@ -33,7 +33,7 @@ Float64::Float64(const Float64& other) noexcept :
 
 _FANTASIA_INLINE 
 Float64::Float64(Float64&& other) noexcept: 
-    _StoredValue(move(other._StoredValue)) {
+    _StoredValue(std::move(other._StoredValue)) {
 }
 
 _FANTASIA_INLINE 
@@ -43,7 +43,7 @@ Float64::Float64(double const& value) noexcept :
 
 _FANTASIA_INLINE 
 Float64::Float64(double&& value) noexcept :
-    _StoredValue(move(value)) {
+    _StoredValue(std::move(value)) {
 }
 
 _FANTASIA_INLINE 
@@ -66,7 +66,7 @@ Float64::operator=(const Float64& other) {
 _FANTASIA_INLINE 
 Float64& 
 Float64::operator=(Float64&& other) {
-    _StoredValue = move(other._StoredValue);
+    _StoredValue = std::move(other._StoredValue);
     return *this;
 }
 
@@ -80,7 +80,7 @@ Float64::operator=(const double& value) {
 _FANTASIA_INLINE 
 Float64& 
 Float64::operator=(double&& value) {
-    _StoredValue = move(value);
+    _StoredValue = std::move(value);
     return *this;
 }
 _FANTASIA_FOUNDATION_END

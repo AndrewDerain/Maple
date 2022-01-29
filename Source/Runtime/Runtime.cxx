@@ -14,6 +14,6 @@ using namespace Fantasia::Foundation;
 int main()
 {
     Fantasia::Finance::EntrustStatus k;
-    k.AllTraded
+    k = k.AllTraded;
     return 0; 
 }

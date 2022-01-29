@@ -8,17 +8,17 @@ _FANTASIA_BEGIN
 class Tracer
 {
 public:
-    Tracer(string method) {
+    Tracer(std::string method) {
         _Method = method;
-        cout << _Method << " -- -> start" << endl;
+        std::cout << _Method << " -- -> start" << std::endl;
     }
 
     ~Tracer() {
-        cout << _Method << " -- -> end" << endl << endl;
+        std::cout << _Method << " -- -> end" << std::endl << std::endl;
     }
 
 private:
-    string _Method;
+    std::string _Method;
 };
 
 
