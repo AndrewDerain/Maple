@@ -12,11 +12,11 @@ namespace System
 {
     struct OperatingSystem
     {
-        EnumElements
+        enum EnumUnifyTypeName
         {
             Windows,
             MacOS,
-            Linux, 
+            Linux,
             Ubuntu,
         };
         

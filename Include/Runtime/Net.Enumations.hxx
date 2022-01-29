@@ -13,7 +13,7 @@ namespace Net
     /// @brief 网络连接协议
     struct ConnectionProtocol
     {
-        EnumElements
+        enum EnumUnifyTypeName
         {
             /// @brief 使用 TCP 建立网络连接
             TCP,

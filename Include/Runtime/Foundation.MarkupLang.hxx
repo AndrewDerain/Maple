@@ -5,23 +5,17 @@
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
 _FANTASIA_FOUNDATION_BEGIN
-class ExtendMarkupLang
+namespace Markup
 {
-private:
-    /* data */
-public:
-    ExtendMarkupLang(/* args */);
-    ~ExtendMarkupLang();
-};
+    
 
-ExtendMarkupLang::ExtendMarkupLang(/* args */)
-{
-}
-
-ExtendMarkupLang::~ExtendMarkupLang()
-{
-}
-
+    class IElement
+    {
+    public:
+        virtual bool OnSerialize() = 0;
+        virtual bool OnDeserialize() = 0;
+    };
+} // namespace Markup
 _FANTASIA_FOUNDATION_END
 #pragma pack(pop)
 #pragma warning(pop)

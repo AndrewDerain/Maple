@@ -12,7 +12,7 @@ namespace System
 {
     struct GraphicsDriverCategory
     {
-        EnumElements
+        enum EnumUnifyTypeName
         {
             OpenGL,
             DirectX,
