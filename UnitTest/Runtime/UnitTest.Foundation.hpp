@@ -96,6 +96,4 @@ namespace UnitTest::Foundation
             return 3;
         }
     }
-
-
 }

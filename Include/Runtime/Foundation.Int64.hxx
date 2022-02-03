@@ -49,7 +49,6 @@ public:
 protected:
     int64_t _StoredValue = 0;
 };
-
 _FANTASIA_FOUNDATION_END
 #pragma pack(pop)
 #pragma warning(pop)

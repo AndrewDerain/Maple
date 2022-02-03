@@ -20,6 +20,5 @@ protected:
     char* _StoredValue = nullptr;
 };
 _FANTASIA_FOUNDATION_END
-
 #pragma pack(pop)
 #pragma warning(pop)

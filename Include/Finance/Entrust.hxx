@@ -362,7 +362,7 @@ struct Currency
 /// @brief 订单量
 struct OrderVolume //: public Fantasia::Foundation::Float64
 {
-    
+
 };
 
 

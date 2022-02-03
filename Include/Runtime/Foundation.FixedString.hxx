@@ -10,11 +10,13 @@ template<size_t _FixedSize>
 class FixedString;
 _FANTASIA_FOUNDATION_END
 
+
 template<size_t _FixedSize>
 inline bool
 operator==(
     const Fantasia::Foundation::FixedString<_FixedSize>& _Left, 
     const char* const _Right);
+
 
 _FANTASIA_FOUNDATION_BEGIN
 /// @brief 以 '\0' 字符结尾的固定长度字符串
@@ -61,7 +63,8 @@ public:
 private:
     template<size_t _dest_size, size_t _small_size>
     struct _FixedString_assign_from_smaller {
-        inline static void assign(FixedString<_dest_size>* dest,
+        inline static void assign(
+            FixedString<_dest_size>* dest,
             FixedString<_small_size>& source) {
             strcpy(dest->data(), source.data());
         }
@@ -69,8 +72,10 @@ private:
 
     template<size_t _dest_size, size_t _larger_size>
     struct _FixedString_assign_from_larger {
-        inline static void assign(FixedString<_dest_size>* dest,
+        inline static void assign(
+            FixedString<_dest_size>* dest,
             FixedString<_larger_size>& source) {
+                
             size_t source_len = strnlen(source.c_str(), _larger_size) + 1;
 
             if (source_len <= _dest_size) {
@@ -93,6 +98,7 @@ private:
 };
 _FANTASIA_FOUNDATION_END
 
+
 template<size_t _FixedSize>
 inline bool
 operator==(
@@ -101,6 +107,7 @@ operator==(
         
     return (_Left._Equal(_Right));
 }
+
 
 #pragma pack(pop)
 #pragma warning(pop)
