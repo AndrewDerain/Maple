@@ -1,14 +1,13 @@
 ﻿
-#include "Runtime/UnitTest.Foundation.Int64.hpp"
+#include "Runtime/UnitTest.Foundation.hpp"
 
 #include <iostream>
 
 
 int main() {
-    
-    //UnitTest::Foundation::TestIntegral::RunAll(); 
 
     UnitTest::Foundation::TestInt64::RunAll(); 
+    UnitTest::Foundation::TestFixedString::RunAll();
     
     return 0;
 }

@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "Foundation.basic.hxx"
+#include "Foundation.Basic.hxx"
 
 
 #pragma warning(push)
@@ -41,7 +41,7 @@ public:
     Float64& operator=(double&& value);
 
 protected:
-    double _StoredValue;
+    double _StoredValue = 0;
 };
 _FANTASIA_FOUNDATION_END
 

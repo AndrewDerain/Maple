@@ -60,12 +60,14 @@ Int64::operator int64_t&() noexcept {
 _FANTASIA_INLINE const Int64& 
 Int64::operator=(const Int64& other) noexcept {
     _StoredValue = other._StoredValue;
+    TraceScope
     return *this;
 }
 
 _FANTASIA_INLINE const Int64&
 Int64::operator=(Int64&& other) noexcept {
     _StoredValue = other._StoredValue;
+    TraceScope
     return *this;
 }
 

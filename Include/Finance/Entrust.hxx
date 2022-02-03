@@ -274,9 +274,98 @@ struct EntrustStatus
         Canceled)
 };
 
-
-
     
+/// @brief 委托单类型
+struct EntrustCategoty
+{
+    enum EnumUnifyTypeName
+    {
+        /// @brief 限价单
+        Limit,
+
+        /// @brief 市价单
+        Market,
+
+        /// @brief 立即全部成交，否则立即全部撤销
+        FOK,
+
+        /// @brief 立即成交，剩余立即撤销
+        FAK
+    };
+
+    EnumBasicActions(EntrustCategoty, 
+        Limit, Market, FOK, FAK
+    )
+};
+
+
+/// @brief 委托单操作
+struct EntrustAction
+{
+    enum EnumUnifyTypeName
+    {
+        /// @brief 新订单
+        Insert,
+
+        /// @brief 修改订单
+        Modify,
+
+        /// @brief 移除订单
+        Delete
+    };
+
+    EnumBasicActions(EntrustAction, 
+        Insert, Modify, Delete
+    )
+};
+
+
+/// @brief 持仓方向
+struct PositionDirection
+{
+    enum EnumUnifyTypeName
+    {
+        /// @brief 多头仓位
+        Long,
+
+        /// @brief 空头仓位
+        Short
+    };
+
+    EnumBasicActions(PositionDirection,
+        Long, Short
+    )
+};
+
+
+/// @brief 货币种类
+struct Currency
+{
+    enum EnumUnifyTypeName
+    {
+        /// @brief 人民币
+        CNY,
+
+        /// @brief 美元
+        USD,
+
+        /// @brief 日元
+        JPY
+    };
+
+    EnumBasicActions(Currency,
+        CNY, USD, JPY
+    )
+};
+
+
+/// @brief 订单量
+struct OrderVolume //: public Fantasia::Foundation::Float64
+{
+    
+};
+
+
 }
 _FANTASIA_END
 #pragma pack(pop)

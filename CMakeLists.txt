@@ -50,8 +50,8 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY
 #    Config common include folders
 #------------------------------------------------------------------------------
 include_directories(
-	"${CMAKE_CURRENT_SOURCE_DIR}/Include"
-	"${CMAKE_CURRENT_SOURCE_DIR}/Include/Runtime")
+	"${CMAKE_SOURCE_DIR}/Include"
+	"${CMAKE_SOURCE_DIR}/Include/Runtime")
 
 
 #-----------------------------------------------------------------------------+

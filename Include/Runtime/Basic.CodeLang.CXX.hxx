@@ -1,34 +1,17 @@
 ﻿#pragma once
 #include "Basic.Macro.ProjectDefine.hxx"
 
+#include <cassert>
+#include <climits>
 #include <cmath>
-
-
+#include <cstdint>
 #include <cstring>
 
-
-#include <cstdint>
-
-
-#include <string>
-
-
-#include <thread>
-
-
+#include <array>
 #include <atomic>
-
-
-#include <memory>
-
-
-#include <type_traits>
-
-
-#include <iostream>
-
-
-#include <climits>
-
-
 #include <concepts>
+#include <iostream>
+#include <memory>
+#include <string>
+#include <thread>
+#include <type_traits>

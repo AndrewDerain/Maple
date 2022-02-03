@@ -5,15 +5,13 @@
 
 #include "Foundation.Float64.impl.hxx"
 #include "Foundation.Int64.impl.hxx"
-#include <Fantasia.Finance>
+
 
 using namespace Fantasia::Foundation;
 
 
-
 int main()
 {
-    Fantasia::Finance::EntrustStatus k;
-    k = k.AllTraded;
+    
     return 0; 
 }
