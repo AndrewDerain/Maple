@@ -32,7 +32,7 @@ public:
     const Bool& operator=(bool&& value) noexcept;
 
 protected:
-    bool _StoredValue;
+    bool _StoredValue = false;
 };
 _FANTASIA_FOUNDATION_END
 #pragma pack(pop)

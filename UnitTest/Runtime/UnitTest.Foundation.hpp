@@ -1,11 +1,12 @@
 ﻿
 #include <Runtime/Basic.Tracer.hxx>
+#define protected public
 #include <Fantasia.Foundation>
 #include <iostream>
 
 namespace UnitTest::Foundation
 {
-    using namespace Fantasia::Foundation;
+    using namespace Fantasia;//::Foundation;
     
 
     namespace TestInt64
@@ -52,6 +53,9 @@ namespace UnitTest::Foundation
             TraceWriteVar(c2.val1)
             TraceWriteVar(c2.h)
             
+            Int64 Val7, Val8;
+            TraceWriteVar(Val7);
+            TraceWriteVar(Val8);
             return 0;
         }
     }
@@ -60,7 +64,7 @@ namespace UnitTest::Foundation
     namespace TestFixedString
     {
         FixedString<26> Str0;
-
+        String cstr;
 
         int RunAll(){
             TraceScope
@@ -76,6 +80,7 @@ namespace UnitTest::Foundation
             Str0 = "123456789";
             TraceWriteVar(Str0.data())
             TraceWriteVar(Str0.Length())
+
             return 0;
         }
     }
@@ -95,5 +100,19 @@ namespace UnitTest::Foundation
             Val0 = 3 == 4;
             return 3;
         }
+    }
+
+    namespace TestString
+    {
+        String val1;
+
+        int RunAll(){
+            TraceScope
+
+            TraceWriteVar((int)'2');
+
+            return 3;
+        }
+
     }
 }

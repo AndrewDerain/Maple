@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <Runtime/Foundation.Bool.hxx>
 
+
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)

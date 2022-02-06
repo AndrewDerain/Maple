@@ -89,8 +89,8 @@ _FANTASIA_FOUNDATION_END
 _FANTASIA_INLINE
 bool
 operator>(
-    Fantasia::Foundation::Float64& left, 
-    Fantasia::Foundation::Float64& right) {
+    Fantasia::Float64& left, 
+    Fantasia::Float64& right) {
 
     auto dif = (double)left - (double)right;
     return fabs(dif) > std::numeric_limits<double>::epsilon() && dif > 0;
@@ -99,8 +99,8 @@ operator>(
 _FANTASIA_INLINE
 bool
 operator<(
-    Fantasia::Foundation::Float64& left, 
-    Fantasia::Foundation::Float64& right) {
+    Fantasia::Float64& left, 
+    Fantasia::Float64& right) {
 
     auto dif = (double)left - (double)right;
     return fabs(dif) > std::numeric_limits<double>::epsilon() && dif < 0;
@@ -109,8 +109,8 @@ operator<(
 _FANTASIA_INLINE
 bool
 operator==(
-    Fantasia::Foundation::Float64& left, 
-    Fantasia::Foundation::Float64& right) {
+    Fantasia::Float64& left, 
+    Fantasia::Float64& right) {
 
     auto dif = (double)left - (double)right;
     return fabs(dif) <= std::numeric_limits<double>::epsilon();
@@ -119,8 +119,8 @@ operator==(
 _FANTASIA_INLINE
 bool
 operator!=(
-    Fantasia::Foundation::Float64& left, 
-    Fantasia::Foundation::Float64& right) {
+    Fantasia::Float64& left, 
+    Fantasia::Float64& right) {
 
     auto dif = (double)left - (double)right;
     return fabs(dif) > std::numeric_limits<double>::epsilon();
@@ -129,8 +129,8 @@ operator!=(
 _FANTASIA_INLINE
 bool
 operator>=(
-    Fantasia::Foundation::Float64& left, 
-    Fantasia::Foundation::Float64& right) {
+    Fantasia::Float64& left, 
+    Fantasia::Float64& right) {
 
     auto dif = (double)left - (double)right;
 
@@ -143,8 +143,8 @@ operator>=(
 _FANTASIA_INLINE
 bool
 operator<=(
-    Fantasia::Foundation::Float64& left, 
-    Fantasia::Foundation::Float64& right) {
+    Fantasia::Float64& left, 
+    Fantasia::Float64& right) {
 
     auto dif = (double)left - (double)right;
 
@@ -154,6 +154,6 @@ operator<=(
         return dif < 0;
 }
     
-    
+
 #pragma pack(pop)
 #pragma warning(pop)

@@ -2,17 +2,20 @@
 #include <Runtime/Foundation.Int64.hxx>
 #include <Runtime/Foundation.Float64.hxx>
 
+
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
 _FANTASIA_FOUNDATION_BEGIN
 
-_FANTASIA_INLINE Int64 
+_FANTASIA_INLINE 
+Int64 
 Int64::Max() {
     return std::numeric_limits<int64_t>::max();
 };
 
-_FANTASIA_INLINE Int64 
+_FANTASIA_INLINE 
+Int64 
 Int64::Min() {
     return std::numeric_limits<int64_t>::min();
 }

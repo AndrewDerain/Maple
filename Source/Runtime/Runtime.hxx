@@ -8,3 +8,5 @@
 
 #include <Fantasia.Foundation>
 #include <Fantasia.Finance>
+
+using namespace Fantasia;

@@ -48,33 +48,33 @@ _FANTASIA_FOUNDATION_END
 
 bool 
 operator>(
-    Fantasia::Foundation::Float64& left, 
-    Fantasia::Foundation::Float64& right);
+    Fantasia::Float64& left, 
+    Fantasia::Float64& right);
     
 bool
 operator<(
-    Fantasia::Foundation::Float64& left, 
-    Fantasia::Foundation::Float64& right);
+    Fantasia::Float64& left, 
+    Fantasia::Float64& right);
 
 bool
 operator==(
-    Fantasia::Foundation::Float64& left, 
-    Fantasia::Foundation::Float64& right);
+    Fantasia::Float64& left, 
+    Fantasia::Float64& right);
 
 bool
 operator!=(
-    Fantasia::Foundation::Float64& left, 
-    Fantasia::Foundation::Float64& right);
+    Fantasia::Float64& left, 
+    Fantasia::Float64& right);
 
 bool
 operator>=(
-    Fantasia::Foundation::Float64& left, 
-    Fantasia::Foundation::Float64& right);
+    Fantasia::Float64& left, 
+    Fantasia::Float64& right);
 
 bool
 operator<=(
-    Fantasia::Foundation::Float64& left, 
-    Fantasia::Foundation::Float64& right);
+    Fantasia::Float64& left, 
+    Fantasia::Float64& right);
 
 
 #pragma pack(pop)

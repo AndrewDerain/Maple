@@ -14,7 +14,7 @@ _FANTASIA_FOUNDATION_END
 template<size_t _FixedSize>
 inline bool
 operator==(
-    const Fantasia::Foundation::FixedString<_FixedSize>& _Left, 
+    const Fantasia::FixedString<_FixedSize>& _Left, 
     const char* const _Right);
 
 
@@ -102,7 +102,7 @@ _FANTASIA_FOUNDATION_END
 template<size_t _FixedSize>
 inline bool
 operator==(
-    const Fantasia::Foundation::FixedString<_FixedSize>& _Left, 
+    const Fantasia::FixedString<_FixedSize>& _Left, 
     const char* const _Right) {
         
     return (_Left._Equal(_Right));
