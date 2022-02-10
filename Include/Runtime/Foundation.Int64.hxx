@@ -18,8 +18,8 @@ public:
     static Int64 Min();
 
 public:
-    Int64() noexcept = default;
-    ~Int64() noexcept = default;
+    Int64() = default;
+    ~Int64() = default;
 
     Int64(const Int64& other) noexcept;
     Int64(Int64&& other) noexcept;

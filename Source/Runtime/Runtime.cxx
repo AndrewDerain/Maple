@@ -3,15 +3,10 @@
 
 #include "Runtime.hxx"
 
-#include "Foundation.Float64.impl.hxx"
-#include "Foundation.Int64.impl.hxx"
-
-
-using namespace Fantasia::Foundation;
-
 
 int main()
 {
-    
+    Int64 v;
+    std::string k;
     return 0; 
 }

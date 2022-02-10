@@ -16,7 +16,7 @@ namespace UnitTest::Chrono
         {
             char str[]="20210223 13:44:54";
             dt1 = str;
-            TraceWriteVar(dt1._Storage.StrVal)
+            TraceWriteVar(dt1._Storage.StringValue.StoredValue)
             return 0;
         }
     }

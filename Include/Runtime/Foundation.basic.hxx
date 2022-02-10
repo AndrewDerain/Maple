@@ -13,8 +13,10 @@
 
 #define _FANTASIA_FOUNDATION_BEGIN \
     _FANTASIA_BEGIN \
-    namespace Foundation {
+    
+    //namespace Foundation {
 
 #define _FANTASIA_FOUNDATION_END \
     } \
-    _FANTASIA_END
+    
+    //_FANTASIA_END
