@@ -362,10 +362,13 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-# Fantasia ignore
-[Bb]uild
-[Bb]uildCache*
-Compiled*
-.buildcache
+# Fantasia ignore files
 .DS_Store
 .idea
+
+# Fantasia ignore folders
+.buildcache/
+[Oo]ut/
+[Ii]nstall/
+[Bb]uild/
+Compiled*/
