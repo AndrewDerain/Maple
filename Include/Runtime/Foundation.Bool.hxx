@@ -22,7 +22,7 @@ public:
     const char* ToString();
 
 public:
-    operator bool() const noexcept; 
+    operator bool const&() const noexcept; 
     operator bool&() noexcept;
 
     const Bool& operator=(const Bool& other) noexcept;

@@ -51,7 +51,7 @@ Int64::Int64(int64_t&& value) noexcept :
 }
 
 _FANTASIA_INLINE 
-Int64::operator int64_t() const noexcept {
+Int64::operator int64_t const&() const noexcept {
     return _StoredValue;
 }
 

@@ -14,10 +14,11 @@ Int64 String::MaxCapicity(){
 
 _FANTASIA_INLINE
 String::String(const char* value) {
-    constexpr auto s1 = sizeof(String::Storage::HeapStore);
-    constexpr auto s2 = sizeof(String::Storage::StackStore);
-
-    _Storage.IsOnStack = false;
+    auto vallen = strlen(value);
+    
+    if(vallen < _Fantasia::String::StackMaxCapicity) {
+        
+    }
 }
 
 _FANTASIA_INLINE 

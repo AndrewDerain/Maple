@@ -31,7 +31,7 @@ public:
 public:
 
 public:
-    operator double() const noexcept;
+    operator double const&() const noexcept;
     operator double&() noexcept;
 
     Float64& operator=(const Float64& other);

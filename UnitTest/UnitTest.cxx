@@ -8,14 +8,15 @@
 
 int main() {
 
-    UnitTest::Foundation::TestInt64::RunAll(); 
-   /* UnitTest::Foundation::TestFixedString::RunAll();
-    */
-    UnitTest::Chrono::TestDateTime::RunAll();
+    // UnitTest::Foundation::TestInt64::RunAll(); 
+    // UnitTest::Foundation::TestFixedString::RunAll();
+    // UnitTest::Chrono::TestDateTime::RunAll();
+    // UnitTest::Foundation::TestString::RunAll();
 
-    UnitTest::Foundation::TestString::RunAll();
+    const char* v = "汉子x";
+    std::cout << strlen(v) << std::endl;
 
-    // char8_t *c = u8"汗";
-    // TraceWriteVar((c[0]))
+    const wchar_t* v2 = L"汉子x";
+    std::cout << wcslen(v2) << std::endl;
     return 0;
 }

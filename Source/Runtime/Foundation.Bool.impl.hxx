@@ -37,7 +37,7 @@ Bool::ToString() {
 }
 
 _FANTASIA_INLINE 
-Bool::operator bool() const noexcept {
+Bool::operator bool const&() const noexcept {
     return _StoredValue;
 }
 

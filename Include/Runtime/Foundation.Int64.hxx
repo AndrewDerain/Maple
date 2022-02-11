@@ -34,7 +34,7 @@ public:
 
 
 public:
-    operator int64_t() const noexcept; 
+    operator int64_t const&() const noexcept; 
     operator int64_t&() noexcept;
 
     const Int64& operator=(const Int64& other) noexcept;

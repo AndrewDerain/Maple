@@ -47,7 +47,7 @@ Float64::Float64(double&& value) noexcept :
 }
 
 _FANTASIA_INLINE 
-Float64::operator double() const noexcept {
+Float64::operator double const&() const noexcept {
     return _StoredValue;
 }
 
