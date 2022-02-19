@@ -84,7 +84,12 @@
         "system_error": "cpp",
         "typeinfo": "cpp",
         "*.tcc": "cpp",
-        "stop_token": "cpp"
+        "stop_token": "cpp",
+        "*.basic": "cpp",
+        "*.chrono": "cpp",
+        "*.finance": "cpp",
+        "*.system": "cpp",
+        "*.foundation": "cpp"
     },
     "files.autoSaveDelay": 5000,
     "cmake.buildDirectory" :"${workspaceFolder}/.buildcache"
