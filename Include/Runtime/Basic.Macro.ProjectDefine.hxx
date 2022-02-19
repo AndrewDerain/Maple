@@ -22,30 +22,9 @@
 
 #define _FANTASIA_EXPORT 
 
-#define _FANTASIA_TRACE
-
-// #define _FANTASIA_HEADER_ONLY
-
 
 #ifdef _FANTASIA_HEADER_ONLY
 #    define _FANTASIA_INLINE inline
 #else
 #    define _FANTASIA_INLINE
 #endif
-
-// class T
-// {
-// public: 
-//     // static function
-//     // static variables
-
-//     // constructors
-//     // functions
-//     // operators
-
-//     // variables
-//     // inherited 
-// protected:
-
-// private:
-// };

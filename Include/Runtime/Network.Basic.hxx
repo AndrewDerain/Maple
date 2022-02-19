@@ -1,6 +1,5 @@
 ﻿#pragma once
-#include <Fantasia.Basic>
-#include <Runtime/Foundation.Enum.hxx>
+#include "Basic.hxx"
 
 
 #define _FANTASIA_NETWORK_DETAIL_BEGIN \

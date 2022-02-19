@@ -1,6 +1,7 @@
 ﻿#pragma once
-#include <Runtime/Foundation.Int64.hxx>
 #include <Runtime/Foundation.Float64.hxx>
+#include <Runtime/Foundation.String.hxx>
+#include <Runtime/Foundation.Int64.hxx>
 
 
 #pragma warning(push)
@@ -14,65 +15,81 @@ Int64::Max() {
     return std::numeric_limits<int64_t>::max();
 };
 
+
 _FANTASIA_INLINE 
 Int64 
 Int64::Min() {
     return std::numeric_limits<int64_t>::min();
 }
 
+
 _FANTASIA_INLINE 
 Int64::Int64(const Int64& other) noexcept :
     _StoredValue(other._StoredValue) {
 }
 
-_FANTASIA_INLINE 
+
+_FANTASIA_INLINE  
 Int64::Int64(Int64&& other) noexcept :
     _StoredValue(std::move(other)) {
 }
 
-_FANTASIA_INLINE 
-Int64::Int64(const int32_t& value) noexcept :
+
+_FANTASIA_INLINE  
+Int64::Int64(const int32_t value) noexcept :
     _StoredValue(value) {
 }
 
-_FANTASIA_INLINE 
-Int64::Int64(int32_t&& value) noexcept:
-    _StoredValue(value) {
-};
 
-_FANTASIA_INLINE 
-Int64::Int64(const int64_t& value) noexcept :
+_FANTASIA_INLINE  
+Int64::Int64(const int64_t value) noexcept :
     _StoredValue(value) {
 }
 
+
 _FANTASIA_INLINE 
-Int64::Int64(int64_t&& value) noexcept :
-    _StoredValue(std::move(value)) {
+Int64::Int64(const char value) noexcept { 
+    _StoredValue = value; 
 }
+
+
+_FANTASIA_INLINE 
+Int64::Int64(const short value) noexcept {
+    _StoredValue = value;
+}
+
+
+_FANTASIA_INLINE 
+Int64::Int64(const unsigned short value) noexcept {
+    _StoredValue = value;
+}
+
 
 _FANTASIA_INLINE 
 Int64::operator int64_t const&() const noexcept {
     return _StoredValue;
 }
 
+
 _FANTASIA_INLINE 
 Int64::operator int64_t&() noexcept {
     return _StoredValue;
 }
 
+
 _FANTASIA_INLINE const Int64& 
 Int64::operator=(const Int64& other) noexcept {
     _StoredValue = other._StoredValue;
-    TraceScope
     return *this;
 }
+
 
 _FANTASIA_INLINE const Int64&
 Int64::operator=(Int64&& other) noexcept {
     _StoredValue = other._StoredValue;
-    TraceScope
     return *this;
 }
+
 
 _FANTASIA_INLINE const Int64& 
 Int64::operator=(const int32_t& value) noexcept {
@@ -80,11 +97,13 @@ Int64::operator=(const int32_t& value) noexcept {
     return *this;
 }
 
+
 _FANTASIA_INLINE const Int64& 
 Int64::operator=(int32_t&& value) noexcept {
     _StoredValue = std::move(value);
     return *this;
 }
+
 
 _FANTASIA_INLINE const Float64& 
 Int64::operator=(const Float64& other) noexcept{

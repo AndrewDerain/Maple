@@ -7,42 +7,67 @@
 #pragma pack(push, _FANTASIA_PACKING)
 _FANTASIA_FOUNDATION_BEGIN
 struct Int64;
+struct String;
 _FANTASIA_FOUNDATION_END
 
 
+
 _FANTASIA_FOUNDATION_BEGIN
+
+/// @brief 64位浮点数
+/// @note 已对比较操作符进行重载，可直接比较大小
 struct Float64
 {
 public:
     static Float64 Max();
+
+
     static Float64 Min();
+
+
     static Float64 Epsilon();
 
-public:
+
     Float64() = default;
+
+
     ~Float64() = default;
 
+
     Float64(const Float64& other) noexcept;
+
+
     Float64(Float64&& other) noexcept;
 
+
     Float64(double const& value) noexcept;
+
+
     Float64(double&& value) noexcept;
 
-public:
 
-public:
     operator double const&() const noexcept;
+
+
     operator double&() noexcept;
 
+
     Float64& operator=(const Float64& other);
+
+
     Float64& operator=(Float64&& other);
 
+
     Float64& operator=(const double& value);
+
+
     Float64& operator=(double&& value);
+
 
 protected:
     double _StoredValue = 0;
 };
+
 _FANTASIA_FOUNDATION_END
 
 
@@ -51,25 +76,30 @@ operator>(
     Fantasia::Float64& left, 
     Fantasia::Float64& right);
     
+
 bool
 operator<(
     Fantasia::Float64& left, 
     Fantasia::Float64& right);
+
 
 bool
 operator==(
     Fantasia::Float64& left, 
     Fantasia::Float64& right);
 
+
 bool
 operator!=(
     Fantasia::Float64& left, 
     Fantasia::Float64& right);
 
+
 bool
 operator>=(
     Fantasia::Float64& left, 
     Fantasia::Float64& right);
+
 
 bool
 operator<=(
@@ -79,6 +109,8 @@ operator<=(
 
 #pragma pack(pop)
 #pragma warning(pop)
+
+
 
 #ifdef _FANTASIA_HEADER_ONLY
 #    include "../../Source/Runtime/Foundation.Float64.impl.hxx"

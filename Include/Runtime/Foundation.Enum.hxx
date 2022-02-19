@@ -405,6 +405,4 @@
             _FANTASIA_ENUM_STRING_CONVERTER(__VA_ARGS__)                          \
 
 
-//#define EnumElements enum _Type : uint64_t
-
-#define EnumUnifyTypeName _Type : uint64_t
+#define EnumUnifyTypeName _Type : std::int64_t

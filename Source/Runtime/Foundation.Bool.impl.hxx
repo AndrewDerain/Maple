@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <Runtime/Foundation.Bool.hxx>
+#include <Runtime/Foundation.String.hxx>
 
 
 #pragma warning(push)
@@ -28,7 +29,7 @@ Bool::Bool(bool&& value) noexcept:
 };
 
 _FANTASIA_INLINE 
-const char* 
+String
 Bool::ToString() {
     if(_StoredValue) 
         return "true";

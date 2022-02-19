@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include <Fantasia.Basic>
+#include "Basic.hxx"
 
 
 #define _FANTASIA_CHRONO_DETAIL_BEGIN \

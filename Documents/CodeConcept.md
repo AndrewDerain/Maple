@@ -1,0 +1,145 @@
+
+# 代码原则
+
+**简化语法**
+    
+- 用最简单的C++语法，完成目标。
+
+**语言及工具版本**
+
+- C++ 20
+- CMake 3.20
+
+**代码即注释！**
+- 多写有意义的注释
+- 如果你写的类的公开部分代码（public，protected）不能够让读者一眼看出来是做什么用的，请重构，反复斟酌每一个函数名，变量名。
+
+**词性与类型名字的含义**
+ | 类型 | 含义|词性  | 例子  |
+ |-----|:----|:-----:|:------|   
+ | 接口 |描述“可以做什么”| 形容词短语| IRunnable|
+ | 类 |描述“是什么” |  名词短语| Runner |
+ | 函数 |定义“做什么”| 动词短语| Run, Stop |
+ | 属性 |描述“状态”|名词短语 | Status, Height, Width|
+
+**保持命名空间干净**
+
+- Fantasia 命名空间只包含库的使用者需要用的东西，其余的放到 _Fantasia 命名空间里。
+
+**整数**
+    
+- 此项目中优先使用64位整数，不要单纯只是为了节省空间而节省空间。
+- 不要使用无符号整数，避免无符号数和有符号数之间的转换。
+
+**浮点数**
+
+- 此项目优先使用64位浮点数。
+- 请使用 Float64 类型进行浮点数运算和大小比较，此类型可以直接使用 `==, <=, >=, >, <` 符号来比较浮点数的大小
+
+**枚举**
+
+- 枚举优先使用64位整数，使用结构体进行包装，借助 EnumUnifyTypeName 和 EnumBasicActions 宏进行包装。
+``` c++
+struct TradeDirection
+{
+    enum EnumUnifyTypeName 
+    {
+        /// @brief 
+        BuyOpen,
+
+        /// @brief 
+        BuyClose,
+
+        /// @brief 
+        SellOpen,
+
+        /// @brief 
+        SellClose
+    };
+
+    EnumBasicActions(TradeDirection, 
+        BuyOpen, BuyClose, SellOpen, SellClose
+    )
+
+    inline bool IsBuy() const {
+        return _Value == BuyOpen || _Value == BuyClose;
+    }
+
+    inline bool IsSell() const {
+        return _Value == SellOpen || _Value == SellClose;
+    }
+
+    inline bool IsOpen() const {
+        return _Value == BuyOpen || _Value == SellOpen;
+    }
+
+    inline bool IsClose() const {
+        return _Value == BuyClose || _Value == SellClose;
+    }
+};
+
+#include <iostream>
+int main() {
+    TradeDirection Direction = {}; // ok
+    TradeDirection Direction = TradeDirection::SellOpen; // ok
+
+    // 现在你可以使用这样的语法对枚举进行赋值
+    Direction = Direction.BuyOpen; 
+    // 或这样
+    Direction = TradeDirection::BuyOpen;
+
+    // 并使用 ToString 函数将枚举值转换为字符串 
+    std::cout << Direction.ToString() << std::endl;
+
+    // 接着，你可以从字符串赋值
+    Direction.FromString("BuyOpen");
+    if(Direction == Direction.BuyOpen) {
+        std::cout << "Success assign from string!" << std::endl;
+    }
+    else {
+        std::cout << "Failed assign from string!" << std::endl;
+    }
+
+    // 调用枚举中的函数
+    if(Direction.IsBuy()) {
+        std::cout << "Direction is buy! [" << Direction.ToString() << "]" << std::endl;
+    }
+    else {
+        std::cout << "Direction is not buy! [" << Direction.ToString() << "]" << std::endl;
+    }
+
+    // 在 swith 中如原生枚举一般使用 TradeDirection 的对象
+    switch(Direction) {   
+        case TradeDirection::BuyOpen:
+            std::cout << "In switch scop: Direction is buy! [" << Direction.ToString() << "]" << std::endl;
+            break;
+    }
+
+    return 0；
+}
+```
+
+**类中成员的定义顺序**
+``` c++
+class YourClass 
+{
+public:
+    // 类型定义，使用 using 替代旧版本的 typedef 以定义新的类型
+
+    // 静态函数
+
+    // 属性
+
+    // 构造函数 析构函数
+
+    // 方法
+
+    // 重载的操作符
+
+protected:
+    // ...
+
+private:
+    // ...
+};
+```

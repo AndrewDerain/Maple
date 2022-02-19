@@ -5,6 +5,24 @@
 #include <string>
 #include <iostream>
 
+class AppImpl {
+public:
+    void print() {
+        std::cout << "AppImpl" << std::endl;
+    }
+};
+
+class App {
+public:
+    App() {
+
+    }
+    
+public:
+    void print() {
+        std::cout << "AppImpl" << std::endl;
+    }
+};
 
 int main() {
 
@@ -18,5 +36,11 @@ int main() {
 
     const wchar_t* v2 = L"汉子x";
     std::cout << wcslen(v2) << std::endl;
+
+
+    const char ByteFlagOnStack = 0x0011;
+
+    std::string v3 = "汉子x";
+    
     return 0;
 }

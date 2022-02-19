@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include <Fantasia.Basic>
+#include "Basic.hxx"
 
 
 #define _FANTASIA_FOUNDATION_DETAIL_BEGIN \
@@ -13,5 +13,4 @@
     _FANTASIA_BEGIN \
 
 #define _FANTASIA_FOUNDATION_END \
-    } \
-    
+    } 

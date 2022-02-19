@@ -8,8 +8,3 @@
 /// Option: Header only or link to the lib 
 /// Remove comment below to enable header only
 // #define _FANTASIA_HEADER_ONLY
-
-
-#include <Runtime/Basic.Macro.ProjectDefine.hxx>
-#include <Runtime/Basic.Macro.Function.hxx>
-#include <Runtime/Basic.Tracer.hxx>

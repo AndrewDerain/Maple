@@ -27,11 +27,11 @@ namespace UnitTest::Foundation
             std::string c;
             IntValue = 56;
 
-            Int64 Val0 = 12;
+            Int64 Val0 {12};
             Int64 Val1(24);
             Int64 Val2(Val0);
 
-            Val0 = Val1 + Val2 * IntValue / Val1 - Val2;
+            Val0 = Val1 + Val2 * IntValue / Val1 - Val2 - 1;
 
             Float64 Vala = 56.77;
             Float64 Valb = 3.4;

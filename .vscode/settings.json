@@ -1,11 +1,14 @@
 {
+    "cmake.buildDirectory": "${workspaceFolder}/.buildcache",
+    "cmake.installPrefix": "${workspaceFolder}/Install",
+
     "files.autoGuessEncoding": true,
     "files.autoSave": "afterDelay",
     "files.defaultLanguage": "C++",
     "files.encoding": "utf8bom",
     "files.eol": "\n",
-    "files.insertFinalNewline": true,
     "files.maxMemoryForLargeFilesMB": 8192,
+    "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.associations": {
         "type_traits": "cpp",
@@ -83,7 +86,6 @@
         "string_view": "cpp",
         "system_error": "cpp",
         "typeinfo": "cpp",
-        "*.tcc": "cpp",
         "stop_token": "cpp",
         "*.basic": "cpp",
         "*.chrono": "cpp",
@@ -91,6 +93,5 @@
         "*.system": "cpp",
         "*.foundation": "cpp"
     },
-    "files.autoSaveDelay": 5000,
-    "cmake.buildDirectory" :"${workspaceFolder}/.buildcache"
+    "files.autoSaveDelay": 5000
 }

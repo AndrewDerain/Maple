@@ -100,7 +100,8 @@ struct CounterEnviroment
     };
 
     EnumBasicActions(CounterEnviroment, 
-        Simulation, Emulation, Reality)
+        Simulation, Emulation, Reality
+    )
 };
 
 
@@ -117,8 +118,7 @@ struct OptionsRights
     };
 
     EnumBasicActions(OptionsRights,
-        Call, 
-        Put
+        Call, Put
     )
 };
 
@@ -271,51 +271,66 @@ struct EntrustStatus
         ExchangeRejected,
         PartTraded,
         AllTraded,
-        Canceled)
-};
-
-    
-/// @brief 委托单类型
-struct EntrustCategoty
-{
-    enum EnumUnifyTypeName
-    {
-        /// @brief 限价单
-        Limit,
-
-        /// @brief 市价单
-        Market,
-
-        /// @brief 立即全部成交，否则立即全部撤销
-        FOK,
-
-        /// @brief 立即成交，剩余立即撤销
-        FAK
-    };
-
-    EnumBasicActions(EntrustCategoty, 
-        Limit, Market, FOK, FAK
+        Canceled
     )
 };
 
 
-/// @brief 委托单操作
-struct EntrustAction
+/// @brief 委托单类别
+struct EntrustCategoty
 {
     enum EnumUnifyTypeName
     {
-        /// @brief 新订单
-        Insert,
+        /// @brief 市价单
+        Market,
 
-        /// @brief 修改订单
-        Modify,
+        /// @brief 限价单，需要指定 TimeRestriction
+        Limit,
 
-        /// @brief 移除订单
-        Delete
+        /// @brief 
+        //Stop,
+
+        /// @brief 全部成交，否则不成交，等待条件满足
+        //AON,
+
+        /// @brief 立即撮合，剩余立即撤销
+        FAK,
+
+        /// @brief 立即撮合，否则全部撤销
+        FOK,
+
+        /// @brief 
+        //StopLoss,
+
+        /// @brief 
+        //StopLimit,
+
+        /// @brief 
+        //TakeProfit
     };
 
-    EnumBasicActions(EntrustAction, 
-        Insert, Modify, Delete
+    EnumBasicActions(EntrustCategoty,
+        Market, Limit, FAK, FOK
+    )
+};
+
+
+struct TimeRestriction
+{
+    enum EnumUnifyTypeName
+    {
+        /// @brief Good 'til Canceled
+        GTC,
+        
+        /// @brief Good 'til Date
+        GTD,
+
+        /// @brief 
+        //Day
+    };
+
+    EnumBasicActions(TimeRestriction,
+        GTC, GTD
     )
 };
 
@@ -334,6 +349,24 @@ struct PositionDirection
 
     EnumBasicActions(PositionDirection,
         Long, Short
+    )
+};
+
+
+/// @brief 持有时间标记
+struct HoldDateFlag
+{
+    enum EnumUnifyTypeName 
+    {
+        /// @brief 今日仓位
+        Today,
+
+        /// @brief 历史仓位
+        History
+    };
+
+    EnumBasicActions(HoldDateFlag, 
+        Today, History
     )
 };
 
@@ -359,11 +392,6 @@ struct Currency
 };
 
 
-/// @brief 订单量
-struct OrderVolume //: public Fantasia::Foundation::Float64
-{
-
-};
 
 
 }

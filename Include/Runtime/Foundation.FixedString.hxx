@@ -19,6 +19,8 @@ operator==(
 
 
 _FANTASIA_FOUNDATION_BEGIN
+
+
 /// @brief 以 '\0' 字符结尾的固定长度字符串
 /// @param _FixedSize 字符串长度，包含 '\0' 字符
 template<size_t _FixedSize>
@@ -27,12 +29,16 @@ class FixedString :
 {
 public:
     FixedString() = default;
+
+
     ~FixedString() = default;
+
 
     inline void Assign(const char* str = "") {
         strncpy(this->data(), str, _FixedSize);
         this->data()[_FixedSize - 1] = '\0'; 
     }
+
 
     template<size_t _SourceSize>
     inline void Assign(FixedString<_SourceSize>& source_str) {
@@ -43,22 +49,27 @@ public:
         >::type::assign(this, source_str);
     }
 
+
     inline const char* c_str() {
         return this->data();
     }
+
 
     inline size_t Length() const {
         return strlen(this->data());
     }
 
+
     inline int Compare(const char* str) {
         return strcmp(this->data(), str);
     }
+
 
     inline FixedString<_FixedSize>& operator=(const char* str) {
         Assign(str);
         return *this;
     }
+
 
 private:
     template<size_t _dest_size, size_t _small_size>
@@ -69,6 +80,7 @@ private:
             strcpy(dest->data(), source.data());
         }
     };
+
 
     template<size_t _dest_size, size_t _larger_size>
     struct _FixedString_assign_from_larger {
@@ -88,10 +100,11 @@ private:
         }
     };
 
+
     template<size_t _Size>
     friend bool ::operator==(const FixedString<_Size>&, const char* const);
 
-private:
+
     inline bool _Equal(const char* const right) const {
         return strcmp(this->data(), right) == 0;
     }
