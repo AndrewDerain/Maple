@@ -20,7 +20,6 @@ operator==(
 
 _FANTASIA_FOUNDATION_BEGIN
 
-
 /// @brief 以 '\0' 字符结尾的固定长度字符串
 /// @param _FixedSize 字符串长度，包含 '\0' 字符
 template<size_t _FixedSize>
@@ -109,6 +108,7 @@ private:
         return strcmp(this->data(), right) == 0;
     }
 };
+
 _FANTASIA_FOUNDATION_END
 
 

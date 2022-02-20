@@ -7,4 +7,4 @@
 
 /// Option: Header only or link to the lib 
 /// Remove comment below to enable header only
-// #define _FANTASIA_HEADER_ONLY
+ #define _FANTASIA_HEADER_ONLY

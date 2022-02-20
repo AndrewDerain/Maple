@@ -8,10 +8,13 @@
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
 _FANTASIA_FOUNDATION_BEGIN
+
+_FANTASIA_INLINE
 String::String() {
 }
 
 
+_FANTASIA_INLINE
 String::~String() {
     if(!_Storage.IsOnStack)
         _Storage.Heap.Deallocate();
@@ -40,9 +43,7 @@ String::Length() const {
     else 
         return _Storage.Heap.Length;
 }
-/*
-    "cmake.buildDirectory" :"${workspaceFolder}/.buildcache"
-*/
+
 
 _FANTASIA_INLINE 
 String::operator char const* const() const noexcept {
@@ -112,6 +113,7 @@ HeapStore::Reset() {
 }
 
 
+_FANTASIA_INLINE
 void String::Storage::
 HeapStore::Set(const char* value, std::uint16_t len) {
 
@@ -133,6 +135,7 @@ HeapStore::Set(const char* value, std::uint16_t len) {
 }
 
 
+_FANTASIA_INLINE
 void String::Storage::
 HeapStore::Deallocate() {
 
@@ -141,6 +144,7 @@ HeapStore::Deallocate() {
        StoredValue = nullptr;
     }
 }
+
 _FANTASIA_FOUNDATION_END
 #pragma pack(pop)
 #pragma warning(pop)

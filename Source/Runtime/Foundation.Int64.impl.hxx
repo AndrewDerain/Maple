@@ -77,14 +77,16 @@ Int64::operator int64_t&() noexcept {
 }
 
 
-_FANTASIA_INLINE const Int64& 
+_FANTASIA_INLINE 
+const Int64& 
 Int64::operator=(const Int64& other) noexcept {
     _StoredValue = other._StoredValue;
     return *this;
 }
 
 
-_FANTASIA_INLINE const Int64&
+_FANTASIA_INLINE 
+const Int64&
 Int64::operator=(Int64&& other) noexcept {
     _StoredValue = other._StoredValue;
     return *this;
@@ -105,8 +107,9 @@ Int64::operator=(int32_t&& value) noexcept {
 }
 
 
-_FANTASIA_INLINE const Float64& 
-Int64::operator=(const Float64& other) noexcept{
+_FANTASIA_INLINE 
+const Float64& Int64::
+operator=(const Float64& other) noexcept {
     _StoredValue = (double)other;
     return other;
 }

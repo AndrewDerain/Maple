@@ -364,11 +364,11 @@ FodyWeavers.xsd
 
 # Fantasia ignore files
 .DS_Store
-.idea
 
 # Fantasia ignore folders
+.idea/
 .buildcache/
 [Oo]ut/
-[Ii]nstall/
 [Bb]uild/
-Compiled*/
+[Ii]nstall/
+[Cc]ompiled*/
