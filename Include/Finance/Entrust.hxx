@@ -1,11 +1,11 @@
 ﻿#pragma once
-#include <Runtime/Basic.Macro.ProjectDefine.hxx>
+#include <Runtime/Basic.hxx>
 #include <Runtime/Foundation.Enum.hxx>
 
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
-_FANTASIA_BEGIN
+__FANTASIA_BEGIN
 namespace Finance
 {
 
@@ -79,7 +79,7 @@ struct Counter
     };
     
     EnumBasicActions(Counter, 
-        None, CTP
+        None, CTP, CTPMini
     )
 };
 
@@ -395,6 +395,6 @@ struct Currency
 
 
 }
-_FANTASIA_END
+__FANTASIA_END
 #pragma pack(pop)
 #pragma warning(pop)

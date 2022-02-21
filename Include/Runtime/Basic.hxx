@@ -1,5 +1,6 @@
 ﻿
-#include <Fantasia.Basic>
-#include <Runtime/Basic.Macro.ProjectDefine.hxx>
-#include <Runtime/Basic.Macro.Function.hxx>
-#include <Runtime/Basic.Tracer.hxx>
+#include "../Fantasia.Basic"
+#include "Basic.CodeLang.CXX.hxx"
+#include "Basic.Macro.Decorate.hxx"
+#include "Basic.Macro.Function.hxx"
+#include "Basic.Tracer.hxx"

@@ -5,20 +5,20 @@
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
-_FANTASIA_FOUNDATION_BEGIN
+__FANTASIA_FOUNDATION_BEGIN
 template<size_t _FixedSize>
 class FixedString;
-_FANTASIA_FOUNDATION_END
+__FANTASIA_FOUNDATION_END
 
 
 template<size_t _FixedSize>
-inline bool
+__always_inine bool
 operator==(
     const Fantasia::FixedString<_FixedSize>& _Left, 
     const char* const _Right);
 
 
-_FANTASIA_FOUNDATION_BEGIN
+__FANTASIA_FOUNDATION_BEGIN
 
 /// @brief 以 '\0' 字符结尾的固定长度字符串
 /// @param _FixedSize 字符串长度，包含 '\0' 字符
@@ -104,16 +104,16 @@ private:
     friend bool ::operator==(const FixedString<_Size>&, const char* const);
 
 
-    inline bool _Equal(const char* const right) const {
+    __always_inine bool _Equal(const char* const right) const {
         return strcmp(this->data(), right) == 0;
     }
 };
 
-_FANTASIA_FOUNDATION_END
+__FANTASIA_FOUNDATION_END
 
 
 template<size_t _FixedSize>
-inline bool
+__always_inine bool
 operator==(
     const Fantasia::FixedString<_FixedSize>& _Left, 
     const char* const _Right) {

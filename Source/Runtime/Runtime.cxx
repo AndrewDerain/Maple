@@ -2,8 +2,17 @@
 //
 
 #include "Runtime.hxx"
+#include <Runtime/Foundation.MarkupLang.hxx>
 
-
+namespace Fantasia::Markup {
+    MarkupLang::MarkupLang(/* args */)
+    {
+    }
+    
+    MarkupLang::~MarkupLang()
+    {
+    }
+}
 int main()
 {
     Int64 v;

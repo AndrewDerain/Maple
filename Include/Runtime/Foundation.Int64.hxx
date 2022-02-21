@@ -5,14 +5,14 @@
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
-_FANTASIA_FOUNDATION_BEGIN
+__FANTASIA_FOUNDATION_BEGIN
 struct Float64;
 struct String;
-_FANTASIA_FOUNDATION_END
+__FANTASIA_FOUNDATION_END
 
 
 
-_FANTASIA_FOUNDATION_BEGIN
+__FANTASIA_FOUNDATION_BEGIN
 
 struct Int64 
 {
@@ -29,7 +29,7 @@ public:
 
     ~Int64() {};
 
-
+    
     Int64(const Int64& other) noexcept;
 
 
@@ -49,6 +49,10 @@ public:
 
 
     Int64(const unsigned short value) noexcept;
+
+
+    /// @brief 转换为字符串
+    String ToString();
 
 
     operator int64_t const&() const noexcept; 
@@ -79,11 +83,11 @@ protected:
     int64_t _StoredValue = 0;
 };
 
-_FANTASIA_FOUNDATION_END
+__FANTASIA_FOUNDATION_END
 #pragma pack(pop)
 #pragma warning(pop)
 
 
-#ifdef _FANTASIA_HEADER_ONLY
+#ifdef __FANTASIA_OPTION_INLINE
 #    include "../../Source/Runtime/Foundation.Int64.impl.hxx"
 #endif

@@ -3,8 +3,16 @@
 /// email: locomoco@yeah.net
 
 
-/// Macro Options Define
+/// 宏编译指令
 
-/// Option: Header only or link to the lib 
-/// Remove comment below to enable header only
- #define _FANTASIA_HEADER_ONLY
+
+/// 选项：部分内连
+/// 功能：支持将部分函数定义为内连函数，而不是导出函数
+/// 移除下方注释以启用功能
+#define fantasia_enable_inline
+
+
+/// 选项：Header only
+/// 功能：Header only
+/// 移除下方注释以启用功能, 赞时无法开启
+//#define fantasia_enable_header_only

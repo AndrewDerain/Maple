@@ -6,3 +6,10 @@ file(GLOB_RECURSE srcs "${CMAKE_CURRENT_SOURCE_DIR}/*")
 
 add_executable ("Fantasia.Runtime.Lancher" ${srcs} ${incs})
 add_library("Fantasia.Runtime" SHARED ${srcs} ${incs})
+
+set_target_properties(
+    "Fantasia.Runtime"
+    PROPERTIES 
+    CXX_VISIBILITY_PRESET      hidden
+    VISIBILITY_INLINES_HIDDEN  ON
+)

@@ -6,42 +6,48 @@
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
-_FANTASIA_FOUNDATION_BEGIN
+__FANTASIA_FOUNDATION_BEGIN
 struct Int64;
-_FANTASIA_FOUNDATION_END
+__FANTASIA_FOUNDATION_END
 
 
 
-_FANTASIA_FOUNDATION_BEGIN
+__FANTASIA_FOUNDATION_BEGIN
 
 /// @brief 以 '\0' 字符结尾的字符串, 深拷贝实现。
 class String
 {
 public:
     /// @brief 字符串所能存储的最大容量（以字节计算）。
+    __api_inline
     static Int64 MaxCapicity();
 
 
     /// @brief 默认构造函数。
+    __api_inline
     String();
 
 
     /// @brief 默认析构函数。
+    __api_inline
     ~String();
 
 
     /// @brief 使用 c 样式字符串进行初始化。
     /// @note 如果 value 是空指针，此对象会被初始化为空字符串（""）。
+    __api_inline
     String(const char* value);
 
 
     /// @brief 获取字符串的长度
     /// @note 如果存储的是中文以及其他多字节字符，则返回的是占用内存的大小（不包含结尾的 '\0' 字符）。
+    __api_inline
     Int64 Length() const;
 
 
     /// @brief 隐式转换为原始的 c 样式字符串。
     /// @note 此对象可以隐式转换为原始的 c 样式字符串，但不允许在此情况下对内容进行修改。
+    __api_inline
     operator char const* const() const noexcept;
 
 
@@ -73,10 +79,12 @@ protected:
 
             /// @brief 重置为空字符串
             /// @note 此函数只会设置 Length 和 StoredValue 属性
+            __api_inline
             void Reset();
 
 
             /// @note 此函数只会设置 Length 和 StoredValue 属性
+            __api_inline
             void Set(const char* value, char len);
         };
 
@@ -101,14 +109,17 @@ protected:
 
 
             /// @note 此函数只会设置 Length 和 StoredValue 属性
+            __api_inline
             void Reset();
 
 
             /// @note 此函数只会设置 Length 和 StoredValue 属性
+            __api
             void Set(const char* value, std::uint16_t len);
 
 
             /// @brief 释放堆上申请的内存
+            __api
             void Deallocate();
         };
 
@@ -124,14 +135,19 @@ protected:
 
     /// @brief 内部函数，使用 c 样式字符串进行初始化。
     /// @note 如果 value 是空指针，此对象会被初始化为空字符串（""）。
+    __api
     void _Assign(const char* value);
 };
 
-_FANTASIA_FOUNDATION_END
+__FANTASIA_FOUNDATION_END
 #pragma pack(pop)
 #pragma warning(pop)
 
 
-#ifdef _FANTASIA_HEADER_ONLY
-#    include "../../Source/Runtime/Foundation.String.impl.hxx"
+#ifdef __FANTASIA_OPTION_INLINE
+#    include "../../Source/Runtime/Foundation.String.iapi.hxx"
+#endif
+
+#ifdef __FANTASIA_OPTION_HEADER_ONLY
+#    include "../../Source/Runtime/Foundation.String.impl.cxx"
 #endif

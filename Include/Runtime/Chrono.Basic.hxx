@@ -2,19 +2,19 @@
 #include "Basic.hxx"
 
 
-#define _FANTASIA_CHRONO_DETAIL_BEGIN \
-    _FANTASIA_DETAIL_BEGIN \
+#define __FANTASIA_CHRONO_DETAIL_BEGIN \
+    __FANTASIA_DETAIL_BEGIN \
     namespace Chrono {
 
-#define _FANTASIA_CHRONO_DETAIL_END \
+#define __FANTASIA_CHRONO_DETAIL_END \
     } \
-    _FANTASIA_DETAIL_END
+    __FANTASIA_DETAIL_END
 
 
-#define _FANTASIA_CHRONO_BEGIN \
-    _FANTASIA_BEGIN \
+#define __FANTASIA_CHRONO_BEGIN \
+    __FANTASIA_BEGIN \
     namespace Chrono {
 
-#define _FANTASIA_CHRONO_END \
+#define __FANTASIA_CHRONO_END \
     } \
-    _FANTASIA_END
+    __FANTASIA_END

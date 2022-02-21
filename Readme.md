@@ -41,23 +41,8 @@ Fantasia（幻曲）' . '， 这个名字意味着这个库可能永远也不会
 
 
 ## 编译项目
-
-1. 创建目录，并下载此项目
-``` shell
-    mkdir ~/project
-    cd ~/project
-    git clone https://github.com/AndrewDerain/Fantasia.git
-```
-
-2. 创建 cmake build 缓存
-``` shell
-    cmake -S . -B .buildcache
-```
-
-3. 编译项目，程序会在 Compiled 文件夹中生成
-``` shell
-    cmake --build .buildcache
-```
+- Linux 环境
+    - [Ubuntu 20.04 LTS](Documents/CompileOnUbuntu.md)
 
 ## 参考
 [代码原则](Documents/CodeConcept.md)

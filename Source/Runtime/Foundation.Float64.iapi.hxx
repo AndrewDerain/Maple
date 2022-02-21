@@ -1,93 +1,105 @@
 ﻿#pragma once
 #include <Runtime/Foundation.Int64.hxx>
 #include <Runtime/Foundation.Float64.hxx>
+#include <Runtime/Foundation.Bool.hxx>
 
 
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
-_FANTASIA_FOUNDATION_BEGIN
+__FANTASIA_FOUNDATION_BEGIN
 
-_FANTASIA_INLINE 
-Float64 
+__api_inline
+Float64
 Float64::Max() {
     return std::numeric_limits<double>::max();
 }
 
-_FANTASIA_INLINE 
-Float64 
+__api_inline 
+Float64
 Float64::Min() {
     return std::numeric_limits<double>::min();
 }
 
-_FANTASIA_INLINE 
-Float64 
+__api_inline
+Float64
 Float64::Epsilon() {
     return std::numeric_limits<double>::epsilon();
 }
 
-_FANTASIA_INLINE 
+
+__api_inline
 Float64::Float64(const Float64& other) noexcept :
     _StoredValue(other._StoredValue) {
 }
 
-_FANTASIA_INLINE 
-Float64::Float64(Float64&& other) noexcept: 
+
+__api_inline
+Float64::Float64(Float64&& other) noexcept : 
     _StoredValue(std::move(other._StoredValue)) {
 }
 
-_FANTASIA_INLINE 
+
+__api_inline
 Float64::Float64(double const& value) noexcept :
     _StoredValue(value) {
 }
 
-_FANTASIA_INLINE 
+
+__api_inline
 Float64::Float64(double&& value) noexcept :
     _StoredValue(std::move(value)) {
 }
 
-_FANTASIA_INLINE 
+
+__api_inline
 Float64::operator double const&() const noexcept {
     return _StoredValue;
 }
 
-_FANTASIA_INLINE 
+
+__api_inline
 Float64::operator double&() noexcept {
     return _StoredValue;
 }
 
-_FANTASIA_INLINE 
+
+__api_inline
 Float64& 
 Float64::operator=(const Float64& other) {
     _StoredValue = other._StoredValue;
     return *this;
 }
 
-_FANTASIA_INLINE 
+
+__api_inline
 Float64& 
 Float64::operator=(Float64&& other) {
     _StoredValue = std::move(other._StoredValue);
     return *this;
 }
 
-_FANTASIA_INLINE 
+
+__api_inline
 Float64& 
 Float64::operator=(const double& value) {
     _StoredValue = value;
     return *this;
 }
 
-_FANTASIA_INLINE 
+
+__api_inline
 Float64& 
 Float64::operator=(double&& value) {
     _StoredValue = std::move(value);
     return *this;
 }
-_FANTASIA_FOUNDATION_END
+
+__FANTASIA_FOUNDATION_END
 
 
-_FANTASIA_INLINE
-bool
+__api_inline
+Fantasia::Bool 
 operator>(
     Fantasia::Float64& left, 
     Fantasia::Float64& right) {
@@ -96,8 +108,9 @@ operator>(
     return fabs(dif) > std::numeric_limits<double>::epsilon() && dif > 0;
 }
 
-_FANTASIA_INLINE
-bool
+
+__api_inline
+Fantasia::Bool 
 operator<(
     Fantasia::Float64& left, 
     Fantasia::Float64& right) {
@@ -106,8 +119,9 @@ operator<(
     return fabs(dif) > std::numeric_limits<double>::epsilon() && dif < 0;
 }
 
-_FANTASIA_INLINE
-bool
+
+__api_inline
+Fantasia::Bool 
 operator==(
     Fantasia::Float64& left, 
     Fantasia::Float64& right) {
@@ -116,8 +130,9 @@ operator==(
     return fabs(dif) <= std::numeric_limits<double>::epsilon();
 }
 
-_FANTASIA_INLINE
-bool
+
+__api_inline
+Fantasia::Bool 
 operator!=(
     Fantasia::Float64& left, 
     Fantasia::Float64& right) {
@@ -126,8 +141,9 @@ operator!=(
     return fabs(dif) > std::numeric_limits<double>::epsilon();
 }
 
-_FANTASIA_INLINE
-bool
+
+__api_inline
+Fantasia::Bool 
 operator>=(
     Fantasia::Float64& left, 
     Fantasia::Float64& right) {
@@ -140,8 +156,9 @@ operator>=(
         return dif > 0;
 }
 
-_FANTASIA_INLINE
-bool
+
+__api_inline
+Fantasia::Bool 
 operator<=(
     Fantasia::Float64& left, 
     Fantasia::Float64& right) {
@@ -153,7 +170,7 @@ operator<=(
     else 
         return dif < 0;
 }
-    
+
 
 #pragma pack(pop)
 #pragma warning(pop)

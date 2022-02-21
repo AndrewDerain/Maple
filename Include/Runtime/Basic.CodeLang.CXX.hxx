@@ -1,5 +1,4 @@
 ﻿#pragma once
-#include "Basic.Macro.ProjectDefine.hxx"
 
 #include <cassert>
 #include <climits>

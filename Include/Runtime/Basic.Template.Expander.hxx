@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "Basic.Macro.ProjectDefine.hxx"
+#include "Basic.Macro.Decorate.hxx"
 
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
@@ -120,7 +120,7 @@
 // _FANTASIA_END
 
 
-_FANTASIA_DETAIL_BEGIN
+__FANTASIA_DETAIL_BEGIN
 namespace Template::InheritanceChain
 {
 template<
@@ -170,16 +170,16 @@ struct Expander:
     {
     };
 }
-_FANTASIA_DETAIL_END
+__FANTASIA_DETAIL_END
 
 
-_FANTASIA_BEGIN
+__FANTASIA_BEGIN
 namespace Template
 {
 template<typename _Wrapper, template<typename _T1, typename _T2> typename _Basic, typename... _ArgTy>
 using InheritanceChainExpander = 
     _Fantasia::Template::InheritanceChain::Expander<_Wrapper, _Basic, _ArgTy...>;
 }
-_FANTASIA_END
+__FANTASIA_END
 #pragma pack(pop)
 #pragma warning(pop)

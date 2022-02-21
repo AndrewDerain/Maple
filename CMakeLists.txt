@@ -17,6 +17,8 @@ project (
 	VERSION 1.0.0.0
 	DESCRIPTION "Morden C++ Framework")
 
+enable_language(CXX)
+
 
 #-----------------------------------------------------------------------------+
 #    Config c++ standard
@@ -26,11 +28,28 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 
 #-----------------------------------------------------------------------------+
-#    Config compile options
+#    Config compiler 
 #------------------------------------------------------------------------------
-if(MSVC)
+if(CMAKE_CXX_COMPILER_ID STREQUAL MSVC)
 	add_compile_options(/Zc:preprocessor)
+	add_compile_definitions(__MSVC__)
 endif()
+
+if(CMAKE_CXX_COMPILER_ID STREQUAL GNU)
+	SET(CMAKE_CXX_COMPILER "g++-11")
+endif()
+
+if(CMAKE_CXX_COMPILER_ID STREQUAL Clang)
+endif()
+
+if(CMAKE_CXX_COMPILER_ID STREQUAL AppleClang)
+endif()
+
+
+#-----------------------------------------------------------------------------+
+#    Config Preprocessors
+#------------------------------------------------------------------------------
+add_compile_definitions(___FNATASIA_EXPORTS)
 
 
 #-----------------------------------------------------------------------------+

@@ -1,4 +1,11 @@
-﻿#pragma once
+﻿/// 
+/// @file Basic.Macro.UserDefinition.hxx
+/// 
+/// @brief 本文件定义宏运算相关宏
+/// 
+/// @date 2021-02-20
+/// 
+#pragma once
 
 
 #define _FANTASIA_MF_ARG(_ARG) _ARG
@@ -18,10 +25,13 @@
             _11, _12, _13, _14, _15, _16, _17, _18, _19, _20,            \
             _N, ...) _N                                                  \
 
+
 #define __FANTASIA_MF_ARG_COUNT_TRANS(...)                               \
             _FANTASIA_MF_ARG(                                            \
             __FANTASIA_MF_ARG_COUNT_N(__VA_ARGS__))                      \
 
+
+/// @brief 计算宏参数的个数
 #define _FANTASIA_MF_ARG_COUNT(...)                                      \
             __FANTASIA_MF_ARG_COUNT_TRANS(__VA_ARGS__,                   \
              20,  19,  18,  17,  16,  15,  14,  13,  12,  11,            \

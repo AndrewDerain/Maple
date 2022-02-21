@@ -24,6 +24,8 @@ public:
     }
 };
 
+using namespace Fantasia;
+
 int main() {
 
     // UnitTest::Foundation::TestInt64::RunAll(); 
@@ -42,5 +44,12 @@ int main() {
 
     std::string v3 = "汉子x";
     
+
+    Float64 val2 = 90;
+
+    Float64 val1 = 80;
+
+    std::cout << (val1 == val2).ToString() << std::endl;
+
     return 0;
 }

@@ -1,9 +1,9 @@
 ﻿#pragma once
 #include "Basic.CodeLang.CXX.hxx"
-#include "Basic.Macro.ProjectDefine.hxx"
+#include "Basic.Macro.Decorate.hxx"
 
 
-_FANTASIA_BEGIN
+__FANTASIA_BEGIN
 
 class Tracer
 {
@@ -31,4 +31,4 @@ private:
 #    define TraceWriteVar(_Val) 
 #endif
 
-_FANTASIA_END
+__FANTASIA_END
