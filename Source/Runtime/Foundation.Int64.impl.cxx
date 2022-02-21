@@ -1,5 +1,7 @@
-﻿
-#include "Foundation.Int64.impl.hxx"
+﻿#ifdef __FANTASIA_OPTION_HEADER_ONLY
+#    pragma once
+#endif
+#include "Foundation.Int64.iapi.hxx"
 
 
 #pragma warning(push)
@@ -7,6 +9,7 @@
 #pragma pack(push, _FANTASIA_PACKING)
 __FANTASIA_FOUNDATION_BEGIN
 
+__api
 String 
 Int64::ToString() {
     return "";

@@ -2,6 +2,7 @@
 #include <Runtime/Basic.hxx>
 #include <Runtime/Foundation.Enum.hxx>
 
+
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)

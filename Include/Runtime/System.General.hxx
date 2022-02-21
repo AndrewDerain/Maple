@@ -1,13 +1,14 @@
 #pragma once
-#include "Foundation.Enum.hxx"
+#include "System.Basic.hxx"
+
 
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
-_FANTASIA_DETAIL_BEGIN
-_FANTASIA_DETAIL_END
+__FANTASIA_DETAIL_BEGIN
+__FANTASIA_DETAIL_END
 
-_FANTASIA_BEGIN
+__FANTASIA_BEGIN
 namespace System
 {
     struct OperatingSystem
@@ -26,6 +27,6 @@ namespace System
     };
     
 }
-_FANTASIA_END
+__FANTASIA_END
 #pragma pack(pop)
 #pragma warning(pop)

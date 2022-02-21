@@ -1,20 +1,21 @@
 ﻿#pragma once
 #include "Basic.hxx"
+#include "Foundation.Enum.hxx"
 
 
-#define _FANTASIA_NETWORK_DETAIL_BEGIN \
-    _FANTASIA_DETAIL_BEGIN \
+#define __FANTASIA_NETWORK_DETAIL_BEGIN \
+    __FANTASIA_DETAIL_BEGIN \
     namespace Network {
 
-#define _FANTASIA_NETWORK_DETAIL_END \
+#define __FANTASIA_NETWORK_DETAIL_END \
     } \
-    _FANTASIA_DETAIL_END
+    __FANTASIA_DETAIL_END
 
 
-#define _FANTASIA_NETWORK_BEGIN \
-    _FANTASIA_BEGIN \
+#define __FANTASIA_NETWORK_BEGIN \
+    __FANTASIA_BEGIN \
     namespace Network {
 
-#define _FANTASIA_NETWORK_END \
+#define __FANTASIA_NETWORK_END \
     } \
-    _FANTASIA_END
+    __FANTASIA_END

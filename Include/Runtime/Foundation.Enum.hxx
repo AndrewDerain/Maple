@@ -2,6 +2,7 @@
 #include "Basic.Macro.Function.hxx"
 #include "Basic.CodeLang.CXX.hxx"
 
+
 #define _FANTASIA_ENUM_CTOR(_WRAP)                                                \
     private:                                                                      \
         _Type _Value;                                                             \

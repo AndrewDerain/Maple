@@ -1,2 +1,2 @@
-﻿
-#include <Finance/Entrust.hxx>
+﻿#pragma once
+#include <Finance/Quant.General.hxx>

@@ -3,7 +3,7 @@
 /// 
 /// @brief 本文件定义了布尔类型
 /// 
-/// @date 2021-02-03
+/// @date 2022-02-03
 /// 
 #pragma once
 #include "Foundation.Basic.hxx"
@@ -12,12 +12,6 @@
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
-__FANTASIA_FOUNDATION_BEGIN
-struct String;
-__FANTASIA_FOUNDATION_END
-
-
-
 __FANTASIA_FOUNDATION_BEGIN
 
 struct Bool 

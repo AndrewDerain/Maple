@@ -1,4 +1,4 @@
-﻿
+﻿#pragma once
 #include <Runtime/Foundation.Bool.hxx>
 #include <Runtime/Foundation.Enum.hxx>
 #include <Runtime/Foundation.FixedString.hxx>

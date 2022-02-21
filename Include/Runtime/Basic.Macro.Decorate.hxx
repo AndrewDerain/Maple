@@ -18,7 +18,7 @@
 /// @brief 此命名空间内放置非用户直接使用的类，枚举等等
 #define __FANTASIA_DETAIL_BEGIN   ___FANTASIA_DETAIL_BEGIN
 #define __FANTASIA_DETAIL_END     ___FANTASIA_DETAIL_END
-            
+
 
 /// @brief 此宏表示此项目的使用者希望所有文件都是 Header only 的
 #ifdef ___FANTASIA_OPTION_HEADER_ONLY

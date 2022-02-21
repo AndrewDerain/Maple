@@ -5,16 +5,18 @@
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
-_FANTASIA_NETWORK_DETAIL_BEGIN
+__FANTASIA_NETWORK_DETAIL_BEGIN
 struct IPv4
 {
     char Seg[4];
     unsigned short Port;
 };
-_FANTASIA_NETWORK_DETAIL_END
+__FANTASIA_NETWORK_DETAIL_END
 
 
-_FANTASIA_NETWORK_BEGIN
+
+__FANTASIA_NETWORK_BEGIN
+
 /// @brief 网络传输协议
 struct CommunicationsProtocol
 {
@@ -66,6 +68,7 @@ struct NetworkAddress
 
 
 };
-_FANTASIA_NETWORK_END
+
+__FANTASIA_NETWORK_END
 #pragma pack(pop)
 #pragma warning(pop)

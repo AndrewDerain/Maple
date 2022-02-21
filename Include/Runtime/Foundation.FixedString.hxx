@@ -11,11 +11,13 @@ class FixedString;
 __FANTASIA_FOUNDATION_END
 
 
+
 template<size_t _FixedSize>
 __always_inine bool
 operator==(
     const Fantasia::FixedString<_FixedSize>& _Left, 
     const char* const _Right);
+
 
 
 __FANTASIA_FOUNDATION_BEGIN

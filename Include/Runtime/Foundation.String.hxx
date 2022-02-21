@@ -1,4 +1,11 @@
-﻿#pragma once
+﻿///
+/// @file Foundation.String.hxx
+/// 
+/// @brief 本文件定义了字符串类型
+/// 
+/// @date 2022-02-03
+/// 
+#pragma once
 #include "Foundation.Basic.hxx"
 #include "Foundation.Enum.hxx"
 

@@ -15,3 +15,10 @@
 #define __FANTASIA_FOUNDATION_END \
     ___FANTASIA_END
 
+
+__FANTASIA_FOUNDATION_BEGIN
+struct Bool;
+struct Float64;
+struct Int64;
+struct String;
+__FANTASIA_FOUNDATION_END

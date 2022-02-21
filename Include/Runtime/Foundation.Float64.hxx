@@ -1,4 +1,11 @@
-﻿#pragma once
+﻿///
+/// @file Foundation.Float64.hxx
+/// 
+/// @brief 本文件定义了64位浮点数类型
+/// 
+/// @date 2022-01-22
+/// 
+#pragma once
 #include "Foundation.Basic.hxx"
 
 
@@ -6,27 +13,22 @@
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
 __FANTASIA_FOUNDATION_BEGIN
-struct Bool;
-struct Int64;
-struct String;
-__FANTASIA_FOUNDATION_END
-
-
-
-__FANTASIA_FOUNDATION_BEGIN
 
 /// @brief 64位浮点数
 /// @note 已对比较操作符进行重载，可直接比较大小
 struct Float64
 {
 public:
-    __api_inline static Float64 Max();
+    __api_inline 
+    static Float64 Max();
 
 
-    __api_inline static Float64 Min();
+    __api_inline 
+    static Float64 Min();
 
 
-    __api_inline static Float64 Epsilon();
+    __api_inline 
+    static Float64 Epsilon();
 
 
     __always_inine
