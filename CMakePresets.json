@@ -1,0 +1,61 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 20
+    },
+    "configurePresets": [
+        {
+            "name": "Base",
+            "hidden": true,
+            "binaryDir": "${sourceDir}/.buildcache/${presetName}",
+            "installDir": "${sourceDir}/Install/${presetName}"
+        },
+        {
+            "name": "Mac.Ninja.Base",
+            "hidden": true,
+            "inherits": [
+                "Base"
+            ],
+            "generator": "Ninja"
+        },
+        {
+            "name": "Mac.Ninja.Debug",
+            "displayName": "Mac.Ninja.Debug",
+            "inherits": [
+                "Mac.Ninja.Base"
+            ],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "Mac.Ninja.Release",
+            "displayName": "Mac.Ninja.Release",
+            "inherits": [
+                "Mac.Ninja.Base"
+            ],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "Mac.Xcode.Base",
+            "hidden": true,
+            "inherits": [
+                "Base"
+            ],
+            "generator": "Xcode"
+        },
+        {
+            "name": "Mac.Xcode.Debug",
+            "displayName": "Mac.Xcode.Debug",
+            "inherits": [
+                "Mac.Xcode.Base"
+            ],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        }
+    ]
+}
