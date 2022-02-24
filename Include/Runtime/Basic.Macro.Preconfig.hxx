@@ -77,9 +77,13 @@
 #define ___FANTASIA_ALWAYS_INLINE           inline
 
 
+/// @brief [___FANTASIA_ALWAYS_CONSTEXPR] 
+#define ___FANTASIA_ALWAYS_CONSTEXPR        constexpr
+
+
 /// @brief [___FANTASIA_API] - Api
 #if defined(___FANTASIA_OPTION_HEADER_ONLY)
-#    define ___FANTASIA_API                 inline
+#    define ___FANTASIA_API                 ___FANTASIA_ALWAYS_INLINE
 #else
 #    define ___FANTASIA_API                 ___FANTASIA_ALWAYS_EXPORT
 #endif
@@ -90,8 +94,20 @@
 #    define ___FANTASIA_API_INLINE          ___FANTASIA_ALWAYS_INLINE
 #else
 #    if defined(___FANTASIA_OPTION_INLINE)
-#        define ___FANTASIA_API_INLINE       ___FANTASIA_ALWAYS_INLINE
+#        define ___FANTASIA_API_INLINE      ___FANTASIA_ALWAYS_INLINE
 #    else
-#        define ___FANTASIA_API_INLINE       ___FANTASIA_ALWAYS_EXPORT
+#        define ___FANTASIA_API_INLINE      ___FANTASIA_ALWAYS_EXPORT
+#    endif
+#endif
+
+
+/// @brief 
+#if defined(___FANTASIA_OPTION_HEADER_ONLY)
+#    define ___FANTASIA_API_CONSTEXPR       ___FANTASIA_ALWAYS_CONSTEXPR
+#else
+#    if defined(___FANTASIA_OPTION_INLINE)
+#        define ___FANTASIA_API_CONSTEXPR   ___FANTASIA_ALWAYS_CONSTEXPR
+#    else
+#        define ___FANTASIA_API_CONSTEXPR   
 #    endif
 #endif

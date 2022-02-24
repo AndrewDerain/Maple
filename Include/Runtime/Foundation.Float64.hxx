@@ -19,39 +19,39 @@ __FANTASIA_FOUNDATION_BEGIN
 struct Float64
 {
 public:
-    __api_inline 
-    static Float64 Max();
+    __api_inline __api_constexpr
+    static Float64 Max() noexcept;
+
+
+    __api_inline __api_constexpr
+    static Float64 Min() noexcept;
+
+
+    __api_inline __api_constexpr
+    static Float64 Epsilon() noexcept;
+
+
+    __always_inine __always_constexpr
+    Float64() noexcept {};
+
+
+    __always_inine __always_constexpr
+    ~Float64() noexcept {};
 
 
     __api_inline 
-    static Float64 Min();
-
-
-    __api_inline 
-    static Float64 Epsilon();
-
-
-    __always_inine
-    Float64() {};
-
-
-    __always_inine
-    ~Float64() {};
-
-
-    __api_inline
     Float64(const Float64& other) noexcept;
 
 
-    __api_inline
+    __api_inline 
     Float64(Float64&& other) noexcept;
 
 
-    __api_inline
+    __api_inline __api_constexpr
     Float64(double const& value) noexcept;
 
 
-    __api_inline
+    __api_inline __api_constexpr
     Float64(double&& value) noexcept;
 
 

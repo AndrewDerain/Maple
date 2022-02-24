@@ -9,45 +9,45 @@
 #pragma pack(push, _FANTASIA_PACKING)
 __FANTASIA_FOUNDATION_BEGIN
 
-__api_inline
+__api_inline __api_constexpr
 Float64
-Float64::Max() {
+Float64::Max() noexcept {
     return std::numeric_limits<double>::max();
 }
 
-__api_inline 
+__api_inline __api_constexpr
 Float64
-Float64::Min() {
+Float64::Min() noexcept {
     return std::numeric_limits<double>::min();
 }
 
-__api_inline
+__api_inline __api_constexpr
 Float64
-Float64::Epsilon() {
+Float64::Epsilon() noexcept {
     return std::numeric_limits<double>::epsilon();
 }
 
 
 __api_inline
-Float64::Float64(const Float64& other) noexcept :
+Float64::Float64(const Float64& other) noexcept:
     _StoredValue(other._StoredValue) {
 }
 
 
 __api_inline
-Float64::Float64(Float64&& other) noexcept : 
+Float64::Float64(Float64&& other) noexcept: 
     _StoredValue(std::move(other._StoredValue)) {
 }
 
 
-__api_inline
-Float64::Float64(double const& value) noexcept :
+__api_inline __api_constexpr
+Float64::Float64(double const& value) noexcept:
     _StoredValue(value) {
 }
 
 
-__api_inline
-Float64::Float64(double&& value) noexcept :
+__api_inline __api_constexpr
+Float64::Float64(double&& value) noexcept:
     _StoredValue(std::move(value)) {
 }
 

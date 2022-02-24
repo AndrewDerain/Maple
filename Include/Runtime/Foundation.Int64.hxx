@@ -18,20 +18,20 @@ struct Int64
 {
 public:
     __api_inline
-    static Int64 Max();
+    static Int64 Max() noexcept;
 
 
     __api_inline
-    static Int64 Min();
+    static Int64 Min() noexcept;
 
 
 public:
-    __always_inine
-    Int64() {};
+    __always_inine __always_constexpr
+    Int64() noexcept {};
 
 
-    __always_inine
-    ~Int64() {};
+    __always_inine __always_constexpr
+    ~Int64() noexcept {};
 
     
     __api_inline
@@ -67,11 +67,11 @@ public:
     String ToString();
 
 
-    __api_inline
+    __api_inline __api_constexpr
     operator int64_t const&() const noexcept; 
 
 
-    __api_inline
+    __api_inline __api_constexpr
     operator int64_t&() noexcept;
 
 

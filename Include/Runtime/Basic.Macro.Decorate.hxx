@@ -33,12 +33,20 @@
 
 
 /// @brief 此宏指定某个函数在项目中总是被导出的
-#define __api           ___FANTASIA_API 
+#define __api                ___FANTASIA_API 
 
 
 /// @brief 此宏表示被修饰的函数适合内连，但也可以导出
-#define __api_inline    ___FANTASIA_API_INLINE
+#define __api_inline         ___FANTASIA_API_INLINE
 
 
 /// @brief 此宏指定某个函数在项目中总是内连的
-#define __always_inine  ___FANTASIA_ALWAYS_INLINE
+#define __always_inine       ___FANTASIA_ALWAYS_INLINE
+
+
+/// @brief 此宏表示被修饰的函数是常量表达式，但也可以导出
+#define __api_constexpr      ___FANTASIA_API_CONSTEXPR
+
+
+/// @brief 此宏指定某个函数在项目中总是一个常量表达式，不导出
+#define __always_constexpr   ___FANTASIA_ALWAYS_CONSTEXPR

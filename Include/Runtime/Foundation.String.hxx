@@ -14,12 +14,6 @@
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
 __FANTASIA_FOUNDATION_BEGIN
-struct Int64;
-__FANTASIA_FOUNDATION_END
-
-
-
-__FANTASIA_FOUNDATION_BEGIN
 
 /// @brief 以 '\0' 字符结尾的字符串, 深拷贝实现。
 class String
@@ -31,18 +25,18 @@ public:
 
 
     /// @brief 默认构造函数。
-    __api_inline
+    __api_inline __api_constexpr
     String();
 
 
     /// @brief 默认析构函数。
-    __api_inline
+    __api_inline __api_constexpr
     ~String();
 
 
     /// @brief 使用 c 样式字符串进行初始化。
     /// @note 如果 value 是空指针，此对象会被初始化为空字符串（""）。
-    __api_inline
+    __api_inline __api_constexpr
     String(const char* value);
 
 
@@ -91,7 +85,7 @@ protected:
 
 
             /// @note 此函数只会设置 Length 和 StoredValue 属性
-            __api_inline
+            __api_inline __api_constexpr
             void Set(const char* value, char len);
         };
 
@@ -142,13 +136,14 @@ protected:
 
     /// @brief 内部函数，使用 c 样式字符串进行初始化。
     /// @note 如果 value 是空指针，此对象会被初始化为空字符串（""）。
-    __api
+    __api 
     void _Assign(const char* value);
 };
 
 __FANTASIA_FOUNDATION_END
 #pragma pack(pop)
 #pragma warning(pop)
+
 
 
 #ifdef __FANTASIA_OPTION_INLINE

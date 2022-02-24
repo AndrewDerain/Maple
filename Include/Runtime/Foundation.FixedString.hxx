@@ -5,11 +5,6 @@
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
-__FANTASIA_FOUNDATION_BEGIN
-template<size_t _FixedSize>
-class FixedString;
-__FANTASIA_FOUNDATION_END
-
 
 
 template<size_t _FixedSize>
@@ -88,7 +83,7 @@ private:
         inline static void assign(
             FixedString<_dest_size>* dest,
             FixedString<_larger_size>& source) {
-                
+
             size_t source_len = strnlen(source.c_str(), _larger_size) + 1;
 
             if (source_len <= _dest_size) {

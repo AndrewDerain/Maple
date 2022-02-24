@@ -4,6 +4,7 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
 
 class AppImpl {
 public:
@@ -50,6 +51,12 @@ int main() {
     Float64 val1 = 80;
 
     std::cout << (val1 == val2).ToString() << std::endl;
+
+    std::vector<int> vec;
+    
+    std::begin(vec);
+
+    Fantasia::ArrayT<int, 3> arr;
 
     return 0;
 }

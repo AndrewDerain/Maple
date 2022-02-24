@@ -17,11 +17,11 @@ __FANTASIA_FOUNDATION_BEGIN
 struct Bool 
 {
 public:
-    __always_inine 
+    __always_inine __always_constexpr
     Bool() noexcept {};
 
 
-    __always_inine
+    __always_inine __always_constexpr
     ~Bool() noexcept {};
 
 
@@ -33,17 +33,17 @@ public:
     Bool(Bool&& other) noexcept;
 
 
-    __api_inline 
+    __api_inline __api_constexpr
     Bool(const bool& value) noexcept;
 
 
-    __api_inline 
+    __api_inline __api_constexpr
     Bool(bool&& value) noexcept;
 
     
     /// @brief 将布尔值转换为字符串
     /// @return 若值为 true 则返回 "true"，若为 false 则返回 "false"。
-    __api_inline 
+    __api_inline __always_constexpr
     String ToString();
 
 

@@ -20,19 +20,19 @@ Bool::Bool(Bool&& other) noexcept:
 }
 
 
-__api_inline 
+__api_inline __api_constexpr
 Bool::Bool(const bool& value) noexcept:
     _StoredValue(value) {
 }
 
 
-__api_inline 
+__api_inline __api_constexpr
 Bool::Bool(bool&& value) noexcept:
     _StoredValue(value) {
 };
 
 
-__api_inline 
+__api_inline __always_constexpr
 String Bool::ToString() {
     if(_StoredValue) 
         return "true";

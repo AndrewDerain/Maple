@@ -16,19 +16,19 @@ String::MaxCapicity() {
 }
 
 
-__api_inline
+__api_inline __api_constexpr
 String::String() {
 }
 
 
-__api_inline
+__api_inline __api_constexpr
 String::~String() {
     if(!_Storage.IsOnStack)
         _Storage.Heap.Deallocate();
 }
 
 
-__api_inline 
+__api_inline __api_constexpr
 String::String(const char* value) {
     _Assign(value);
 }
@@ -63,7 +63,7 @@ String::Storage::StackStore::Reset() {
 }
 
 
-__api_inline
+__api_inline __api_constexpr
 void 
 String::Storage::StackStore::Set(const char* value, char len) {
     strcpy(StoredValue, value);

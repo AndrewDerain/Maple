@@ -75,5 +75,5 @@ include_directories(
 #-----------------------------------------------------------------------------+
 #    Config subprojects
 #------------------------------------------------------------------------------
-add_subdirectory("Source/Runtime")
+#add_subdirectory("Source/Runtime")
 add_subdirectory("UnitTest")
