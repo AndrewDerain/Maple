@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Basic.hxx"
 #include "Foundation.Enum.hxx"
 

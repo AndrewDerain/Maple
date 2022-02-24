@@ -15,7 +15,7 @@
 __FANTASIA_FOUNDATION_BEGIN
 
 /// @brief 64位浮点数
-/// @note 已对比较操作符进行重载，可直接比较大小
+/// @note 操作符已进行重载，可直接比较大小
 struct Float64
 {
 public:
