@@ -12,7 +12,7 @@
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
-__FANTASIA_FOUNDATION_BEGIN
+__FANTASIA_FOUNDATION_DETAIL_BEGIN
 
 struct Bool 
 {
@@ -43,7 +43,7 @@ public:
     
     /// @brief 将布尔值转换为字符串
     /// @return 若值为 true 则返回 "true"，若为 false 则返回 "false"。
-    __api_inline __always_constexpr
+    __api_inline __api_constexpr
     String ToString();
 
 
@@ -75,6 +75,11 @@ protected:
     bool _StoredValue = false;
 };
 
+__FANTASIA_FOUNDATION_DETAIL_END
+
+
+__FANTASIA_FOUNDATION_BEGIN
+using _Fantasia::Bool;
 __FANTASIA_FOUNDATION_END
 #pragma pack(pop)
 #pragma warning(pop)

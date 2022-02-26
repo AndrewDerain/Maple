@@ -1,8 +1,8 @@
 ﻿#pragma once
+#include <Runtime/Foundation.Array.hxx>
 #include <Runtime/Foundation.Bool.hxx>
 #include <Runtime/Foundation.Enum.hxx>
 #include <Runtime/Foundation.FixedString.hxx>
-#include <Runtime/Foundation.FixedStringT.hxx>
 #include <Runtime/Foundation.Float64.hxx>
 #include <Runtime/Foundation.Int64.hxx>
 #include <Runtime/Foundation.MarkupLang.hxx>

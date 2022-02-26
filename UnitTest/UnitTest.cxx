@@ -6,33 +6,17 @@
 #include <iostream>
 #include <vector>
 
-class AppImpl {
-public:
-    void print() {
-        std::cout << "AppImpl" << std::endl;
-    }
-};
-
-class App {
-public:
-    App() {
-
-    }
-    
-public:
-    void print() {
-        std::cout << "AppImpl" << std::endl;
-    }
-};
 
 using namespace Fantasia;
 
 int main() {
 
     // UnitTest::Foundation::TestInt64::RunAll(); 
-    // UnitTest::Foundation::TestFixedString::RunAll();
+     UnitTest::Foundation::TestFixedString::RunAll();
     // UnitTest::Chrono::TestDateTime::RunAll();
-    // UnitTest::Foundation::TestString::RunAll();
+
+
+    UnitTest::Foundation::TestString::RunAll();
 
     const char* v = "汉子x";
     std::cout << strlen(v) << std::endl;
@@ -50,13 +34,13 @@ int main() {
 
     Float64 val1 = 80;
 
+    std::cout << (val1 > val2).ToString() << std::endl;
+
     std::cout << (val1 == val2).ToString() << std::endl;
 
     std::vector<int> vec;
     
     std::begin(vec);
-
-    Fantasia::ArrayT<int, 3> arr;
 
     return 0;
 }

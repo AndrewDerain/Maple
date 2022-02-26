@@ -6,7 +6,7 @@
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
-__FANTASIA_FOUNDATION_BEGIN
+__FANTASIA_FOUNDATION_DETAIL_BEGIN
 
 __api_inline 
 Bool::Bool(const Bool& other) noexcept:
@@ -32,7 +32,7 @@ Bool::Bool(bool&& value) noexcept:
 };
 
 
-__api_inline __always_constexpr
+__api_inline __api_constexpr
 String Bool::ToString() {
     if(_StoredValue) 
         return "true";
@@ -84,6 +84,6 @@ Bool::operator=(bool&& value) noexcept {
     return *this;
 }
 
-__FANTASIA_FOUNDATION_END
+__FANTASIA_FOUNDATION_DETAIL_END
 #pragma pack(pop)
 #pragma warning(pop)

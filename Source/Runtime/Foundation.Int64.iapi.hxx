@@ -7,7 +7,7 @@
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
-__FANTASIA_FOUNDATION_BEGIN
+__FANTASIA_FOUNDATION_DETAIL_BEGIN
 
 __api_inline 
 Int64 
@@ -23,25 +23,25 @@ Int64::Min() noexcept {
 }
 
 
-__api_inline 
+__api_inline __api_constexpr
 Int64::Int64(const Int64& other) noexcept:
     _StoredValue(other._StoredValue) {
 }
 
 
-__api_inline  
+__api_inline  __api_constexpr
 Int64::Int64(Int64&& other) noexcept:
     _StoredValue(std::move(other)) {
 }
 
 
-__api_inline  
+__api_inline  __api_constexpr
 Int64::Int64(const int32_t value) noexcept:
     _StoredValue(value) {
 }
 
 
-__api_inline  
+__api_inline  __api_constexpr
 Int64::Int64(const int64_t value) noexcept:
     _StoredValue(value) {
 }
@@ -114,6 +114,6 @@ operator=(const Float64& other) noexcept {
     return other;
 }
 
-__FANTASIA_FOUNDATION_END
+__FANTASIA_FOUNDATION_DETAIL_END
 #pragma pack(pop)
 #pragma warning(pop)

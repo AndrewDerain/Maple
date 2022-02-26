@@ -13,7 +13,7 @@
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
-__FANTASIA_FOUNDATION_BEGIN
+__FANTASIA_FOUNDATION_DETAIL_BEGIN
 
 /// @brief 以 '\0' 字符结尾的字符串, 深拷贝实现。
 class String
@@ -140,10 +140,14 @@ protected:
     void _Assign(const char* value);
 };
 
+__FANTASIA_FOUNDATION_DETAIL_END
+
+
+__FANTASIA_FOUNDATION_BEGIN
+using _Fantasia::String;
 __FANTASIA_FOUNDATION_END
 #pragma pack(pop)
 #pragma warning(pop)
-
 
 
 #ifdef __FANTASIA_OPTION_INLINE

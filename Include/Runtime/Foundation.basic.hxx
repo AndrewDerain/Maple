@@ -20,7 +20,9 @@
     ___FANTASIA_END
 
 
-__FANTASIA_FOUNDATION_BEGIN
+__FANTASIA_FOUNDATION_DETAIL_BEGIN
+using Size = std::int64_t;
+
 struct Bool;
 struct Int64;
 struct String;
@@ -28,4 +30,8 @@ struct Float64;
 
 template<size_t _FixedSize>
 class FixedString;
-__FANTASIA_FOUNDATION_END
+
+template<typename _Ty, Size _Size>
+struct ArrayT;
+
+__FANTASIA_FOUNDATION_DETAIL_END

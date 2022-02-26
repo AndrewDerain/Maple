@@ -1,6 +1,6 @@
 ﻿
 #include <Runtime/Basic.Tracer.hxx>
-#define protected public
+//#define protected public
 #include <Fantasia.Foundation>
 #include <iostream>
 
@@ -105,12 +105,22 @@ namespace UnitTest::Foundation
     namespace TestString
     {
         String val1;
+        ArrayT<double, 4> arr;
 
         int RunAll(){
             TraceScope
 
             TraceWriteVar((int)'2');
 
+            TraceWriteVar(arr.Count());
+            TraceWriteVar(arr[2]);
+
+            //auto b = std::begin(arr);
+
+            for(auto val: arr) {
+
+            }
+            
             return 3;
         }
 

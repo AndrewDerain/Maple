@@ -371,4 +371,6 @@ FodyWeavers.xsd
 [Oo]ut/
 [Bb]uild/
 [Ii]nstall/
-[Cc]ompiled*/
+[Cc]ompiled/
+[Dd]ocuments/html
+[Dd]ocuments/latex

@@ -7,7 +7,7 @@
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
-__FANTASIA_FOUNDATION_BEGIN
+__FANTASIA_FOUNDATION_DETAIL_BEGIN
 
 __api_inline __api_constexpr
 Float64
@@ -95,25 +95,18 @@ Float64::operator=(double&& value) {
     return *this;
 }
 
-__FANTASIA_FOUNDATION_END
-
-
 __api_inline
-Fantasia::Bool 
-operator>(
-    Fantasia::Float64& left, 
-    Fantasia::Float64& right) {
-
+Bool 
+operator>(Float64& left, Float64& right) {
+        TraceScope
     auto dif = (double)left - (double)right;
     return fabs(dif) > std::numeric_limits<double>::epsilon() && dif > 0;
 }
 
 
 __api_inline
-Fantasia::Bool 
-operator<(
-    Fantasia::Float64& left, 
-    Fantasia::Float64& right) {
+Bool 
+operator<(Float64& left, Float64& right) {
 
     auto dif = (double)left - (double)right;
     return fabs(dif) > std::numeric_limits<double>::epsilon() && dif < 0;
@@ -121,33 +114,25 @@ operator<(
 
 
 __api_inline
-Fantasia::Bool 
-operator==(
-    Fantasia::Float64& left, 
-    Fantasia::Float64& right) {
-
+Bool 
+operator==(Float64& left, Float64& right) {
     auto dif = (double)left - (double)right;
     return fabs(dif) <= std::numeric_limits<double>::epsilon();
 }
 
 
 __api_inline
-Fantasia::Bool 
-operator!=(
-    Fantasia::Float64& left, 
-    Fantasia::Float64& right) {
-
+Bool 
+operator!=(Float64& left, Float64& right) {
     auto dif = (double)left - (double)right;
     return fabs(dif) > std::numeric_limits<double>::epsilon();
 }
 
 
 __api_inline
-Fantasia::Bool 
-operator>=(
-    Fantasia::Float64& left, 
-    Fantasia::Float64& right) {
-
+Bool 
+operator>=(Float64& left, Float64& right) {
+    
     auto dif = (double)left - (double)right;
 
     if (fabs(dif) <= std::numeric_limits<double>::epsilon())
@@ -158,10 +143,8 @@ operator>=(
 
 
 __api_inline
-Fantasia::Bool 
-operator<=(
-    Fantasia::Float64& left, 
-    Fantasia::Float64& right) {
+Bool 
+operator<=(Float64& left, Float64& right) {
 
     auto dif = (double)left - (double)right;
 
@@ -171,6 +154,6 @@ operator<=(
         return dif < 0;
 }
 
-
+__FANTASIA_FOUNDATION_DETAIL_END
 #pragma pack(pop)
 #pragma warning(pop)

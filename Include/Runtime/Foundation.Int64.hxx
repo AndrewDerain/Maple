@@ -12,9 +12,9 @@
 #pragma warning(push)
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
-__FANTASIA_FOUNDATION_BEGIN
+__FANTASIA_FOUNDATION_DETAIL_BEGIN
 
-struct Int64 
+struct Int64
 {
 public:
     __api_inline
@@ -34,19 +34,19 @@ public:
     ~Int64() noexcept {};
 
     
-    __api_inline
+    __api_inline __api_constexpr
     Int64(const Int64& other) noexcept;
 
 
-    __api_inline
+    __api_inline __api_constexpr
     Int64(Int64&& other) noexcept;
 
 
-    __api_inline
+    __api_inline __api_constexpr
     Int64(const int32_t value) noexcept;
 
 
-    __api_inline
+    __api_inline __api_constexpr
     Int64(const int64_t value) noexcept;
 
 
@@ -103,6 +103,11 @@ protected:
     int64_t _StoredValue = 0;
 };
 
+__FANTASIA_FOUNDATION_DETAIL_END
+
+
+__FANTASIA_FOUNDATION_BEGIN
+using _Fantasia::Int64;
 __FANTASIA_FOUNDATION_END
 #pragma pack(pop)
 #pragma warning(pop)
