@@ -9,38 +9,54 @@
 __FANTASIA_FOUNDATION_DETAIL_BEGIN
 
 template<typename _Ty, Size _Size>
-__always_inine
+__always_inine __always_constexpr
 _Ty* begin(ArrayT<_Ty, _Size>& arr);
 
 
 template<typename _Ty, Size _Size>
-__always_inine
+__always_inine __always_constexpr
 _Ty* end(ArrayT<_Ty, _Size>& arr);
 
 
 template<typename _Ty, Size _Size>
+__always_inine __always_constexpr
+const _Ty* cbegin(const ArrayT<_Ty, _Size>& arr);
+
+
+template<typename _Ty, Size _Size>
+__always_inine __always_constexpr
+const _Ty* cend(const ArrayT<_Ty, _Size>& arr);
+
+
+/// @brief 数组
+template<typename _Ty, Size _Size>
 struct ArrayT
 {
 public:
-    __always_inine
+    __always_inine __always_constexpr
     ArrayT() : _Eles{} {};
 
 
-    __always_inine
+    __always_inine __always_constexpr
     ~ArrayT() {};
 
 
     __always_inine __always_constexpr
-    Int64 Count();
+    Int64 Count() const;
 
 
-    __always_inine 
+    __always_inine __always_constexpr
     _Ty& operator[](Int64 index);
 
 
 protected:
-    friend inline _Ty* _Fantasia::begin(ArrayT<_Ty, _Size>&);
-    friend inline _Ty* _Fantasia::end(ArrayT<_Ty, _Size>&);
+    friend __always_inine __always_constexpr 
+    _Ty* _Fantasia::begin(ArrayT<_Ty, _Size>&);
+
+
+    friend __always_inine __always_constexpr 
+    _Ty* _Fantasia::end(ArrayT<_Ty, _Size>&);
+
 
     _Ty _Eles[_Size];
 };
@@ -48,60 +64,37 @@ protected:
 
 template<typename _Ty, int64_t _Size>
 __always_inine __always_constexpr
-Int64 ArrayT<_Ty, _Size>::Count() {
+Int64 ArrayT<_Ty, _Size>::Count() const {
     return _Size;
 }
 
 
 template<typename _Ty, int64_t _Size>
-__always_inine
+__always_inine __always_constexpr
 _Ty& ArrayT<_Ty, _Size>::operator[](Int64 index) {
     return _Eles[index];
 }
 
 
 template<typename _Ty, Size _Size>
-__always_inine
+__always_inine __always_constexpr
 _Ty* begin(ArrayT<_Ty, _Size>& arr) {
     return arr._Eles;
 }
 
 
 template<typename _Ty, Size _Size>
-__always_inine
+__always_inine __always_constexpr
 _Ty* end(ArrayT<_Ty, _Size>& arr) {
     return arr._Eles + _Size;
-}
-
-
-/// @brief 以 '\0' 字符结尾的固定长度字符串
-/// @param _FixedSize 字符串长度，包含 '\0' 字符
-template<typename _Derivative, size_t _FixedSize>
-struct FixedStringT
-{
-public:
-    __always_inine
-    FixedStringT();
-
-
-    __always_inine
-    ~FixedStringT();
-
-
-};
-
-
-template<typename _Derivative, size_t _FixedSize>
-__always_inine
-FixedStringT<_Derivative, _FixedSize>::FixedStringT() {
-    
 }
 
 __FANTASIA_FOUNDATION_DETAIL_END
 
 
 __FANTASIA_FOUNDATION_BEGIN
-using _Fantasia::ArrayT;
+template<typename _Ty, _Fantasia::Size _Size>
+using Array = _Fantasia::ArrayT<_Ty, _Size>;
 __FANTASIA_FOUNDATION_END
 #pragma pack(pop)
 #pragma warning(pop)

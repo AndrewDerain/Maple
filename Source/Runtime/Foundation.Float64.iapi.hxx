@@ -28,13 +28,13 @@ Float64::Epsilon() noexcept {
 }
 
 
-__api_inline
+__api_inline 
 Float64::Float64(const Float64& other) noexcept:
     _StoredValue(other._StoredValue) {
 }
 
 
-__api_inline
+__api_inline 
 Float64::Float64(Float64&& other) noexcept: 
     _StoredValue(std::move(other._StoredValue)) {
 }
@@ -52,13 +52,13 @@ Float64::Float64(double&& value) noexcept:
 }
 
 
-__api_inline
+__api_inline 
 Float64::operator double const&() const noexcept {
     return _StoredValue;
 }
 
 
-__api_inline
+__api_inline 
 Float64::operator double&() noexcept {
     return _StoredValue;
 }
@@ -132,7 +132,7 @@ operator!=(Float64& left, Float64& right) {
 __api_inline
 Bool 
 operator>=(Float64& left, Float64& right) {
-    
+
     auto dif = (double)left - (double)right;
 
     if (fabs(dif) <= std::numeric_limits<double>::epsilon())

@@ -92,7 +92,10 @@
         "*.finance": "cpp",
         "*.system": "cpp",
         "*.foundation": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "shared_mutex": "cpp"
     },
     "files.autoSaveDelay": 5000
 }

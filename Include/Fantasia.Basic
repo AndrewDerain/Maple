@@ -11,7 +11,7 @@
 /// 选项：部分内连
 /// 功能：支持将部分函数定义为内连函数，而不是导出函数
 /// 移除下方注释以启用功能
-#define fantasia_enable_inline
+//#define fantasia_enable_inline
 
 
 /// 选项：Header only

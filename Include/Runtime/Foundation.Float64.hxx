@@ -13,7 +13,6 @@
 #pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, _FANTASIA_PACKING)
 __FANTASIA_FOUNDATION_DETAIL_BEGIN
-using namespace Fantasia;
 
 /// @brief 64位浮点数
 /// @note 操作符已进行重载，可直接比较大小
@@ -113,7 +112,6 @@ operator>=(Float64& left, Float64& right);
 __api_inline
 Bool 
 operator<=(Float64& left, Float64& right);
-
 
 __FANTASIA_FOUNDATION_DETAIL_END
 

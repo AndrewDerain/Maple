@@ -22,7 +22,7 @@ namespace UnitTest::Foundation
         
 
         int RunAll() {
-            TraceScope;
+            //TraceScope;
 
             std::string c;
             IntValue = 56;
@@ -40,9 +40,9 @@ namespace UnitTest::Foundation
 
             bool larger = Vala > Valb;
             
-            TraceWriteVar(Vala);
-            TraceWriteVar(Val2);
-            TraceWriteVar(Val0);
+            // TraceWriteVar(Vala);
+            // TraceWriteVar(Val2);
+            // TraceWriteVar(Val0);
 
             Cop c1;
             c1.val1 = 9;
@@ -50,8 +50,8 @@ namespace UnitTest::Foundation
 
             Cop c2;
             c2 = c1;
-            TraceWriteVar(c2.val1)
-            TraceWriteVar(c2.h)
+            // TraceWriteVar(c2.val1)
+            // TraceWriteVar(c2.h)
             
             Int64 Val7, Val8;
             TraceWriteVar(Val7);
@@ -67,7 +67,7 @@ namespace UnitTest::Foundation
         String cstr;
 
         int RunAll(){
-            TraceScope
+            //TraceScope
 
             Str0 = "io23";
             TraceWriteVar(Str0.data())
@@ -105,10 +105,10 @@ namespace UnitTest::Foundation
     namespace TestString
     {
         String val1;
-        ArrayT<double, 4> arr;
+        Array<double, 4> arr;
 
         int RunAll(){
-            TraceScope
+            //TraceScope
 
             TraceWriteVar((int)'2');
 

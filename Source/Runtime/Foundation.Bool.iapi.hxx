@@ -8,13 +8,13 @@
 #pragma pack(push, _FANTASIA_PACKING)
 __FANTASIA_FOUNDATION_DETAIL_BEGIN
 
-__api_inline 
+__api_inline __api_constexpr
 Bool::Bool(const Bool& other) noexcept:
     _StoredValue(other._StoredValue) {
 }
 
 
-__api_inline 
+__api_inline __api_constexpr
 Bool::Bool(Bool&& other) noexcept:
     _StoredValue(std::move(other)) {
 }
@@ -41,19 +41,19 @@ String Bool::ToString() {
 }
 
 
-__api_inline 
+__api_inline __api_constexpr
 Bool::operator bool const&() const noexcept {
     return _StoredValue;
 }
 
 
-__api_inline
+__api_inline __api_constexpr
 Bool::operator bool&() noexcept {
     return _StoredValue;
 }
 
 
-__api_inline
+__api_inline __api_constexpr
 const Bool& 
 Bool::operator=(const Bool& other) noexcept {
     _StoredValue = other._StoredValue;
@@ -61,7 +61,7 @@ Bool::operator=(const Bool& other) noexcept {
 }
 
 
-__api_inline
+__api_inline __api_constexpr
 const Bool& 
 Bool::operator=(Bool&& other) noexcept {
     _StoredValue = other._StoredValue;
@@ -69,7 +69,7 @@ Bool::operator=(Bool&& other) noexcept {
 }
 
 
-__api_inline
+__api_inline __api_constexpr
 const Bool& 
 Bool::operator=(const bool& value) noexcept {
     _StoredValue = value;
@@ -77,7 +77,7 @@ Bool::operator=(const bool& value) noexcept {
 }
 
 
-__api_inline
+__api_inline __api_constexpr
 const Bool& 
 Bool::operator=(bool&& value) noexcept {
     _StoredValue = std::move(value);

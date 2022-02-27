@@ -25,11 +25,11 @@ public:
     ~Bool() noexcept {};
 
 
-    __api_inline 
+    __api_inline __api_constexpr
     Bool(const Bool& other) noexcept;
 
     
-    __api_inline 
+    __api_inline __api_constexpr
     Bool(Bool&& other) noexcept;
 
 
@@ -47,27 +47,27 @@ public:
     String ToString();
 
 
-    __api_inline 
+    __api_inline __api_constexpr
     operator bool const&() const noexcept;
 
 
-    __api_inline
+    __api_inline __api_constexpr
     operator bool&() noexcept;
 
 
-    __api_inline
+    __api_inline __api_constexpr
     const Bool& operator=(const Bool& other) noexcept;
 
 
-    __api_inline
+    __api_inline __api_constexpr
     const Bool& operator=(Bool&& other) noexcept;
 
 
-    __api_inline
+    __api_inline __api_constexpr
     const Bool& operator=(const bool& value) noexcept;
 
 
-    __api_inline
+    __api_inline __api_constexpr
     const Bool& operator=(bool&& value) noexcept;
 
 

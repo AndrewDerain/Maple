@@ -4,15 +4,12 @@
 #include "Runtime.hxx"
 #include <Runtime/Foundation.MarkupLang.hxx>
 
-namespace Fantasia::Markup {
-    MarkupLang::MarkupLang(/* args */)
-    {
-    }
-    
-    MarkupLang::~MarkupLang()
-    {
-    }
-}
+
+__api
+std::atomic_int64_t 
+    _Fantasia::Tracer::SerialNumberCounter = 0;
+
+
 int main()
 {
     Int64 v;
