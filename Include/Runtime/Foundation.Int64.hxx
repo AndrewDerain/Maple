@@ -25,21 +25,16 @@ public:
     static Int64 Min() noexcept;
 
 
-public:
-    __always_inine __always_constexpr
-    Int64() noexcept {};
+    /// @brief 构造函数。设为 default 以支持 standard_layout 和 trival。
+    Int64() = default;
 
 
-    __always_inine __always_constexpr
-    ~Int64() noexcept {};
+    /// @brief 析构函数。设为 default 以支持 standard_layout 和 trival。
+    ~Int64() = default;
 
     
-    __api_inline __api_constexpr
-    Int64(const Int64& other) noexcept;
-
-
-    __api_inline __api_constexpr
-    Int64(Int64&& other) noexcept;
+    /// @brief 拷贝构造函数。设为 default 以支持 standard_layout 和 trival。
+    Int64(const Int64&) = default;
 
 
     __api_inline __api_constexpr
@@ -75,33 +70,30 @@ public:
     operator int64_t&() noexcept;
 
 
-    __api_inline
-    const Int64& operator=(const Int64& other) noexcept;
+    /// @brief 赋值操作符。设为 default 以支持 standard_layout 和 trival。
+    Int64& operator=(const Int64&) = default;
 
 
     __api_inline
-    const Int64& operator=(Int64&& other) noexcept;
+    Int64& operator=(const int32_t& value) noexcept;
 
 
     __api_inline
-    const Int64& operator=(const int32_t& value) noexcept;
-
-
-    __api_inline
-    const Int64& operator=(int32_t&& value) noexcept;
+    Int64& operator=(int32_t&& value) noexcept;
 
 
     __api_inline
     const Float64& operator=(const Float64& other) noexcept;
 
 
-    __api_inline
-    const Float64& operator=(Float64&& other) noexcept;
-
-
 protected:
-    int64_t _StoredValue = 0;
+    int64_t _StoredValue;
 };
+
+
+// POD 校验。standard layout and trival。
+static_assert(std::is_trivial_v<Int64>, "Int64 must be trival!");
+static_assert(std::is_standard_layout_v<_Fantasia::Int64>, "Int64 must be standard layout!");
 
 __FANTASIA_FOUNDATION_DETAIL_END
 

@@ -1,21 +1,21 @@
 ﻿#pragma once
 #include "Basic.CodeLang.CXX.hxx"
-#include "Basic.Macro.Decorate.hxx"
+#include "Basic.Macro.Preconfig.hxx"
 
 
-__FANTASIA_DETAIL_BEGIN
+#pragma warning(push)
+#pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
+#pragma pack(push, _FANTASIA_PACKING)
+___FANTASIA_DETAIL_BEGIN
 
 class Tracer
 {
 public:
-    Tracer() {
-        _Brief.ThreadID     = std::this_thread::get_id();
-        _Brief.SerialNumber = ++SerialNumberCounter;
-        _Brief.Hierarchy    = 0;
-    };
+    ___FANTASIA_API
+    Tracer();
 
 
-    Tracer(Tracer& tracer) {
+    Tracer(const Tracer& tracer): Tracer() {
         _Brief      = tracer._Brief;
         _Parent     = tracer._Parent;
         _Signature  = tracer._Signature;
@@ -23,7 +23,7 @@ public:
 
 
     template<size_t _Size>
-    Tracer(const char (&signature)[_Size]) {
+    Tracer(const char (&signature)[_Size]): Tracer() {
         _Signature = signature;
     
         _WriteScopStart();
@@ -31,7 +31,7 @@ public:
 
 
     template<size_t _Size>
-    Tracer(const char (&signature)[_Size], const Tracer& parent) {
+    Tracer(const char (&signature)[_Size], const Tracer& parent): Tracer() {
         _Signature = signature;
 
         _Parent = parent._Brief;
@@ -47,7 +47,7 @@ public:
         std::stringstream content;
         _GenLineHead(content);
         content << " | " << line ;
-        _WriteLine(content.str());
+        _WriteLine(content.str().c_str());
     }
 
 
@@ -65,25 +65,26 @@ private:
         int64_t         Hierarchy;
     };
 
+
     struct LineContent
     {
 
     };
 
-    __api
-    static std::atomic_int64_t SerialNumberCounter;
+
+    /// @brief 函数签名
+    const char* _Signature;
 
 
-    std::string _Signature;
-
-
+    /// @brief 域信息
     Brief _Brief;
 
 
+    /// @brief 父域信息
     Brief _Parent;
 
-
-    inline 
+ 
+    ___FANTASIA_ALWAYS_INLINE
     void _GenLineHead(std::stringstream& content) const noexcept {
         content 
             << "[ti:" << _Brief.ThreadID << "] " 
@@ -93,41 +94,18 @@ private:
     }
 
 
-    inline 
-    void _WriteScopStart() const noexcept {
-        std::stringstream content;
-        _GenLineHead(content);
-        content << " ---  -> start";
-        _WriteLine(content.str());
-    }
+    ___FANTASIA_API 
+    void _WriteScopStart() const noexcept;
 
 
-    inline 
-    void _WriteScopEnd() const noexcept {
-        std::stringstream content;
-        _GenLineHead(content);
-        content << " ---  -> end";
-        _WriteLine(content.str());
-    }
+    ___FANTASIA_API 
+    void _WriteScopEnd() const noexcept;
 
     
-    inline 
-    void _WriteLine(const std::string& content) const noexcept {
-        std::cout << content << std::endl;
-    }
+    ___FANTASIA_API 
+    static void _WriteLine(const char* content) noexcept;
 };
 
-
-#ifdef _FANTASIA_TRACE
-#    define TraceArg , ___ParentTracer
-#    define TraceScope Fantasia::Tracer ___Tracer(__PRETTY_FUNCTION__);
-#    define TraceScopeAndCallStack \
-    Fantasia::Tracer ___Tracer(__PRETTY_FUNCTION__, ___ParentTracer);
-#    define TraceWriteVar(_Val) \
-        std::cout << " |  Var [" << #_Val << "] = [" << _Val << "]" << std::endl;
-#else
-#    define TraceScope
-#    define TraceWriteVar(_Val)
-#endif
-
-__FANTASIA_DETAIL_END
+___FANTASIA_DETAIL_END
+#pragma pack(pop)
+#pragma warning(pop)

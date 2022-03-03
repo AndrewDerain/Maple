@@ -8,37 +8,41 @@
 #pragma pack(push, _FANTASIA_PACKING)
 __FANTASIA_FOUNDATION_DETAIL_BEGIN
 
-template<typename _Ty, Size _Size>
+template<typename _Ty, Size _Count>
 __always_inine __always_constexpr
-_Ty* begin(ArrayT<_Ty, _Size>& arr);
+_Ty* begin(ArrayT<_Ty, _Count>& arr);
 
 
-template<typename _Ty, Size _Size>
+template<typename _Ty, Size _Count>
 __always_inine __always_constexpr
-_Ty* end(ArrayT<_Ty, _Size>& arr);
+_Ty* end(ArrayT<_Ty, _Count>& arr);
 
 
-template<typename _Ty, Size _Size>
+template<typename _Ty, Size _Count>
 __always_inine __always_constexpr
-const _Ty* cbegin(const ArrayT<_Ty, _Size>& arr);
+const _Ty* cbegin(const ArrayT<_Ty, _Count>& arr);
 
 
-template<typename _Ty, Size _Size>
+template<typename _Ty, Size _Count>
 __always_inine __always_constexpr
-const _Ty* cend(const ArrayT<_Ty, _Size>& arr);
+const _Ty* cend(const ArrayT<_Ty, _Count>& arr);
 
 
 /// @brief 数组
-template<typename _Ty, Size _Size>
+template<typename _Ty, Size _Count>
 struct ArrayT
 {
 public:
-    __always_inine __always_constexpr
-    ArrayT() : _Eles{} {};
+    /// @brief 构造函数。设为 default 以支持 standard_layout 和 trival。
+    ArrayT() = default;
 
 
-    __always_inine __always_constexpr
-    ~ArrayT() {};
+    /// @brief 析构函数。设为 default 以支持 standard_layout 和 trival。
+    ~ArrayT() = default;
+
+
+    /// @brief 拷贝构造函数。设为 default 以支持 standard_layout 和 trival。
+    ArrayT(const ArrayT&) = default;
 
 
     __always_inine __always_constexpr
@@ -49,52 +53,56 @@ public:
     _Ty& operator[](Int64 index);
 
 
+    /// @brief 赋值操作符。设为 default 以支持 standard_layout 和 trival。
+    ArrayT& operator=(const ArrayT&) = default;
+
+
 protected:
     friend __always_inine __always_constexpr 
-    _Ty* _Fantasia::begin(ArrayT<_Ty, _Size>&);
+    _Ty* _Fantasia::begin(ArrayT<_Ty, _Count>&);
 
 
     friend __always_inine __always_constexpr 
-    _Ty* _Fantasia::end(ArrayT<_Ty, _Size>&);
+    _Ty* _Fantasia::end(ArrayT<_Ty, _Count>&);
 
 
-    _Ty _Eles[_Size];
+    _Ty _Eles[_Count];
 };
 
 
-template<typename _Ty, int64_t _Size>
+template<typename _Ty, int64_t _Count>
 __always_inine __always_constexpr
-Int64 ArrayT<_Ty, _Size>::Count() const {
-    return _Size;
+Int64 ArrayT<_Ty, _Count>::Count() const {
+    return _Count;
 }
 
 
-template<typename _Ty, int64_t _Size>
+template<typename _Ty, int64_t _Count>
 __always_inine __always_constexpr
-_Ty& ArrayT<_Ty, _Size>::operator[](Int64 index) {
+_Ty& ArrayT<_Ty, _Count>::operator[](Int64 index) {
     return _Eles[index];
 }
 
 
-template<typename _Ty, Size _Size>
+template<typename _Ty, Size _Count>
 __always_inine __always_constexpr
-_Ty* begin(ArrayT<_Ty, _Size>& arr) {
+_Ty* begin(ArrayT<_Ty, _Count>& arr) {
     return arr._Eles;
 }
 
 
-template<typename _Ty, Size _Size>
+template<typename _Ty, Size _Count>
 __always_inine __always_constexpr
-_Ty* end(ArrayT<_Ty, _Size>& arr) {
-    return arr._Eles + _Size;
+_Ty* end(ArrayT<_Ty, _Count>& arr) {
+    return arr._Eles + _Count;
 }
 
 __FANTASIA_FOUNDATION_DETAIL_END
 
 
 __FANTASIA_FOUNDATION_BEGIN
-template<typename _Ty, _Fantasia::Size _Size>
-using Array = _Fantasia::ArrayT<_Ty, _Size>;
+template<typename _Ty, _Fantasia::Size _Count>
+using Array = _Fantasia::ArrayT<_Ty, _Count>;
 __FANTASIA_FOUNDATION_END
 #pragma pack(pop)
 #pragma warning(pop)

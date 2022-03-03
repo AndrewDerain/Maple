@@ -9,18 +9,6 @@
 __FANTASIA_FOUNDATION_DETAIL_BEGIN
 
 __api_inline __api_constexpr
-Bool::Bool(const Bool& other) noexcept:
-    _StoredValue(other._StoredValue) {
-}
-
-
-__api_inline __api_constexpr
-Bool::Bool(Bool&& other) noexcept:
-    _StoredValue(std::move(other)) {
-}
-
-
-__api_inline __api_constexpr
 Bool::Bool(const bool& value) noexcept:
     _StoredValue(value) {
 }
@@ -54,23 +42,7 @@ Bool::operator bool&() noexcept {
 
 
 __api_inline __api_constexpr
-const Bool& 
-Bool::operator=(const Bool& other) noexcept {
-    _StoredValue = other._StoredValue;
-    return *this;
-}
-
-
-__api_inline __api_constexpr
-const Bool& 
-Bool::operator=(Bool&& other) noexcept {
-    _StoredValue = other._StoredValue;
-    return *this;
-}
-
-
-__api_inline __api_constexpr
-const Bool& 
+Bool& 
 Bool::operator=(const bool& value) noexcept {
     _StoredValue = value;
     return *this;
@@ -78,7 +50,7 @@ Bool::operator=(const bool& value) noexcept {
 
 
 __api_inline __api_constexpr
-const Bool& 
+Bool& 
 Bool::operator=(bool&& value) noexcept {
     _StoredValue = std::move(value);
     return *this;

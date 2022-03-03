@@ -3,7 +3,6 @@
         {
             "name": "Mac",
             "includePath": [
-                "${workspaceFolder}/**",
                 "${workspaceFolder}/Include"
             ],
             "defines": [],
@@ -13,7 +12,12 @@
             "cppStandard": "c++20",
             "intelliSenseMode": "macos-gcc-arm64",
             "configurationProvider": "ms-vscode.cmake-tools",
-            "mergeConfigurations": true
+            "mergeConfigurations": false,
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/Include/*"
+                ]
+            }
         }
     ],
     "version": 4

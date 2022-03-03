@@ -1,5 +1,5 @@
 ﻿/// 
-/// @file Basic.Macro.Precofig.hxx
+/// @file Basic.Macro.Trace.hxx
 /// 
 /// @brief 本文件定义了 Trace 相关宏
 /// 
@@ -27,8 +27,7 @@
         __PRETTY_FUNCTION__, ___ParentTracer)
 
 
-#define ___FANTASIA_TRACE_WRITE_VAR(_VAR) \
-    ___Tracer.WriteVar(#_VAR, _VAR)
+#define ___FANTASIA_TRACE_WRITE_VAR(_VAR) 
 
 
 #define ___FANTASIA_TRACE_WRITE_LINE(_CONTENT) \
@@ -37,10 +36,3 @@
         content << _CONTENT; \
         ___Tracer.WriteLine(content.str()); \
     }
-
-
-#if defined(___FNATASIA_EXPORTS)
-#    define ___FANTASIA_
-#else
-
-#endif

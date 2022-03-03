@@ -17,20 +17,16 @@ __FANTASIA_FOUNDATION_DETAIL_BEGIN
 struct Bool 
 {
 public:
-    __always_inine __always_constexpr
-    Bool() noexcept {};
+    /// @brief 构造函数。设为 default 以支持 standard_layout 和 trival。
+    Bool() = default;
 
 
-    __always_inine __always_constexpr
-    ~Bool() noexcept {};
+    /// @brief 析构函数。设为 default 以支持 standard_layout 和 trival。
+    ~Bool() = default;
 
 
-    __api_inline __api_constexpr
-    Bool(const Bool& other) noexcept;
-
-    
-    __api_inline __api_constexpr
-    Bool(Bool&& other) noexcept;
+    /// @brief 拷贝构造函数。设为 default 以支持 standard_layout 和 trival。
+    Bool(const Bool&) = default;
 
 
     __api_inline __api_constexpr
@@ -55,25 +51,26 @@ public:
     operator bool&() noexcept;
 
 
-    __api_inline __api_constexpr
-    const Bool& operator=(const Bool& other) noexcept;
+    /// @brief 赋值操作符。设为 default 以支持 standard_layout 和 trival。
+    Bool& operator=(const Bool&) = default;
 
 
     __api_inline __api_constexpr
-    const Bool& operator=(Bool&& other) noexcept;
+    Bool& operator=(const bool& value) noexcept;
 
 
     __api_inline __api_constexpr
-    const Bool& operator=(const bool& value) noexcept;
-
-
-    __api_inline __api_constexpr
-    const Bool& operator=(bool&& value) noexcept;
+    Bool& operator=(bool&& value) noexcept;
 
 
 protected:
-    bool _StoredValue = false;
+    bool _StoredValue;
 };
+
+
+// POD 校验。standard layout and trival。
+static_assert(std::is_trivial_v<Bool>, "Bool must be trival!");
+static_assert(std::is_standard_layout_v<_Fantasia::Bool>, "Bool must be standard layout!");
 
 __FANTASIA_FOUNDATION_DETAIL_END
 

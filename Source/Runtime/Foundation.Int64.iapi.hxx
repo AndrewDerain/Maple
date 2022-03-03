@@ -23,18 +23,6 @@ Int64::Min() noexcept {
 }
 
 
-__api_inline __api_constexpr
-Int64::Int64(const Int64& other) noexcept:
-    _StoredValue(other._StoredValue) {
-}
-
-
-__api_inline  __api_constexpr
-Int64::Int64(Int64&& other) noexcept:
-    _StoredValue(std::move(other)) {
-}
-
-
 __api_inline  __api_constexpr
 Int64::Int64(const int32_t value) noexcept:
     _StoredValue(value) {
@@ -77,30 +65,14 @@ Int64::operator int64_t&() noexcept {
 }
 
 
-__api_inline 
-const Int64& 
-Int64::operator=(const Int64& other) noexcept {
-    _StoredValue = other._StoredValue;
-    return *this;
-}
-
-
-__api_inline 
-const Int64&
-Int64::operator=(Int64&& other) noexcept {
-    _StoredValue = other._StoredValue;
-    return *this;
-}
-
-
-__api_inline const Int64& 
+__api_inline Int64& 
 Int64::operator=(const int32_t& value) noexcept {
     _StoredValue = value;
     return *this;
 }
 
 
-__api_inline const Int64& 
+__api_inline Int64& 
 Int64::operator=(int32_t&& value) noexcept {
     _StoredValue = std::move(value);
     return *this;

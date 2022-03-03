@@ -19,7 +19,6 @@ file(GLOB_RECURSE srcs "${CMAKE_CURRENT_SOURCE_DIR}/*")
 #------------------------------------------------------------------------------
 add_library("Fantasia.Runtime" SHARED ${srcs} ${incs})
 
-
 set_target_properties(
     "Fantasia.Runtime"
     PROPERTIES 

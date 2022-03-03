@@ -31,20 +31,16 @@ public:
     static Float64 Epsilon() noexcept;
 
 
-    __always_inine __always_constexpr
-    Float64() noexcept {};
+    /// @brief 构造函数。设为 default 以支持 standard_layout 和 trival。
+    Float64() = default;
 
 
-    __always_inine __always_constexpr
-    ~Float64() noexcept {};
+    /// @brief 析构函数。设为 default 以支持 standard_layout 和 trival。
+    ~Float64() = default;
 
 
-    __api_inline 
-    Float64(const Float64& other) noexcept;
-
-
-    __api_inline 
-    Float64(Float64&& other) noexcept;
+    /// @brief 拷贝构造函数。设为 default 以支持 standard_layout 和 trival。
+    Float64(const Float64&) = default;
 
 
     __api_inline __api_constexpr
@@ -63,12 +59,8 @@ public:
     operator double&() noexcept;
 
 
-    __api_inline
-    Float64& operator=(const Float64& other);
-
-
-    __api_inline
-    Float64& operator=(Float64&& other);
+    /// @brief 赋值操作符。设为 default 以支持 standard_layout 和 trival。
+    Float64& operator=(const Float64&) = default;
 
 
     __api_inline
@@ -80,8 +72,13 @@ public:
 
 
 protected:
-    double _StoredValue = 0;
+    double _StoredValue;
 };
+
+
+// POD 校验。standard layout and trival。
+static_assert(std::is_trivial_v<Float64>, "Float64 must be trival!");
+static_assert(std::is_standard_layout_v<_Fantasia::Float64>, "Float64 must be standard layout!");
 
 
 __api_inline

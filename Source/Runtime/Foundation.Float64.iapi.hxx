@@ -28,18 +28,6 @@ Float64::Epsilon() noexcept {
 }
 
 
-__api_inline 
-Float64::Float64(const Float64& other) noexcept:
-    _StoredValue(other._StoredValue) {
-}
-
-
-__api_inline 
-Float64::Float64(Float64&& other) noexcept: 
-    _StoredValue(std::move(other._StoredValue)) {
-}
-
-
 __api_inline __api_constexpr
 Float64::Float64(double const& value) noexcept:
     _StoredValue(value) {
@@ -66,22 +54,6 @@ Float64::operator double&() noexcept {
 
 __api_inline
 Float64& 
-Float64::operator=(const Float64& other) {
-    _StoredValue = other._StoredValue;
-    return *this;
-}
-
-
-__api_inline
-Float64& 
-Float64::operator=(Float64&& other) {
-    _StoredValue = std::move(other._StoredValue);
-    return *this;
-}
-
-
-__api_inline
-Float64& 
 Float64::operator=(const double& value) {
     _StoredValue = value;
     return *this;
@@ -98,7 +70,6 @@ Float64::operator=(double&& value) {
 __api_inline
 Bool 
 operator>(Float64& left, Float64& right) {
-        TraceScope
     auto dif = (double)left - (double)right;
     return fabs(dif) > std::numeric_limits<double>::epsilon() && dif > 0;
 }
@@ -107,7 +78,6 @@ operator>(Float64& left, Float64& right) {
 __api_inline
 Bool 
 operator<(Float64& left, Float64& right) {
-
     auto dif = (double)left - (double)right;
     return fabs(dif) > std::numeric_limits<double>::epsilon() && dif < 0;
 }

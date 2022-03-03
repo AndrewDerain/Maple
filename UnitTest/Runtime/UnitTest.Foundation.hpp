@@ -1,6 +1,5 @@
 ﻿
 #include <Runtime/Basic.Tracer.hxx>
-//#define protected public
 #include <Fantasia.Foundation>
 #include <iostream>
 
@@ -54,8 +53,6 @@ namespace UnitTest::Foundation
             // TraceWriteVar(c2.h)
             
             Int64 Val7, Val8;
-            TraceWriteVar(Val7);
-            TraceWriteVar(Val8);
             return 0;
         }
     }
@@ -70,16 +67,10 @@ namespace UnitTest::Foundation
             //TraceScope
 
             Str0 = "io23";
-            TraceWriteVar(Str0.data())
-            TraceWriteVar(Str0.Length())
 
             Str0 = "j";
-            TraceWriteVar(Str0.data())
-            TraceWriteVar(Str0.Length())
 
             Str0 = "123456789";
-            TraceWriteVar(Str0.data())
-            TraceWriteVar(Str0.Length())
 
             return 0;
         }
@@ -105,24 +96,33 @@ namespace UnitTest::Foundation
     namespace TestString
     {
         String val1;
-        Array<double, 4> arr;
 
         int RunAll(){
             //TraceScope
 
-            TraceWriteVar((int)'2');
-
-            TraceWriteVar(arr.Count());
-            TraceWriteVar(arr[2]);
-
             //auto b = std::begin(arr);
 
-            for(auto val: arr) {
-
-            }
             
             return 3;
         }
 
+    }
+
+    namespace TestArray
+    {
+        Array<double, 4> arr0;
+        Array<double, 4> arr1;
+        
+        int RunAll() 
+        {
+            arr0 = arr1;
+
+            for(const auto val: arr0) 
+            {
+
+            }
+
+            return 0;
+        }
     }
 }

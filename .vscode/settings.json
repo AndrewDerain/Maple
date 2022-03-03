@@ -1,7 +1,8 @@
 {
     "cmake.buildDirectory": "${workspaceFolder}/.buildcache",
     "cmake.installPrefix": "${workspaceFolder}/Install",
-
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs":"active",
     "files.autoGuessEncoding": true,
     "files.autoSave": "afterDelay",
     "files.defaultLanguage": "C++",
@@ -95,7 +96,8 @@
         "*.tcc": "cpp",
         "list": "cpp",
         "map": "cpp",
-        "shared_mutex": "cpp"
+        "shared_mutex": "cpp",
+        "__tree": "cpp"
     },
     "files.autoSaveDelay": 5000
 }

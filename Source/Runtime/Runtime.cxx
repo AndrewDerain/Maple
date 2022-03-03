@@ -5,9 +5,6 @@
 #include <Runtime/Foundation.MarkupLang.hxx>
 
 
-__api
-std::atomic_int64_t 
-    _Fantasia::Tracer::SerialNumberCounter = 0;
 
 
 int main()
