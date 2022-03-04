@@ -1,11 +1,12 @@
 ﻿
 #include <Runtime/Basic.Tracer.hxx>
+#include <Runtime/Basic.Macro.Trace.hxx>
 #include <Fantasia.Foundation>
 #include <iostream>
 
 namespace UnitTest::Foundation
 {
-    using namespace Fantasia;//::Foundation;
+    using namespace Fantasia; //::Foundation;
     
 
     namespace TestInt64
@@ -95,14 +96,28 @@ namespace UnitTest::Foundation
 
     namespace TestString
     {
+        const char * content = "This is a long text , for string test. 2021-02-21 17:34:21! ";
         String val1;
+        String val2;
+
+
+        void Append() {
+            ___FANTASIA_TRACE_SCOPE
+
+            val1.Append("1-");
+            val1.Append("334-").Append(content);
+
+            ___FANTASIA_TRACE_WRITE_VAR(val1);
+
+
+
+        }
+
 
         int RunAll(){
-            //TraceScope
-
-            //auto b = std::begin(arr);
-
             
+            Append();
+
             return 3;
         }
 

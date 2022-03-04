@@ -71,6 +71,43 @@ String::_Assign(const char* value) {
     }
 }
 
+
+ __api 
+void String::_MoveToHeap(int64_t reserved_space) {
+    
+    int64_t HeapSize    = reserved_space + ReservedSpaceCapicity;
+    char*   StrVal      = new char[HeapSize];
+    auto    Len         = _Storage.Stack.Length;
+    
+    memcpy(StrVal, _Storage.Stack.StoredValue, StackMaxCapicity);
+
+    _Storage.Heap.IsOnStack     = false;
+    _Storage.Heap.Length        = Len;
+    _Storage.Heap.Capicity      = HeapSize;
+    _Storage.Heap.StoredValue   = StrVal;
+}
+
+
+__api
+void String::_AppendOnHeap(const char* value, int64_t len) {
+
+    if(_Storage.Heap.Capicity <= _Storage.Heap.Length + len) {
+        int64_t NewCapicity = _Storage.Heap.Length + len + ReservedSpaceCapicity;
+        char*   StrVal      = new char[NewCapicity];
+        
+        strcpy(StrVal, _Storage.Heap.StoredValue);
+        delete _Storage.Heap.StoredValue;
+        
+        _Storage.Heap.StoredValue   = StrVal;
+        _Storage.Heap.Capicity      = NewCapicity;
+        _Storage.Heap.Length        = _Storage.Heap.Length + len;
+    }
+    else {
+        strcat(_Storage.Heap.StoredValue, value);
+        _Storage.Heap.Length = _Storage.Heap.Length + len;
+    }
+}
+
 __FANTASIA_FOUNDATION_DETAIL_END
 #pragma pack(pop)
 #pragma warning(pop)

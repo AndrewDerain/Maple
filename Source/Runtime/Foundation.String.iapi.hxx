@@ -34,7 +34,7 @@ String::String(const char* value) {
 }
 
 
-__api_inline 
+__api_inline __api_constexpr
 Int64
 String::Length() const {
 
@@ -42,6 +42,25 @@ String::Length() const {
         return _Storage.Stack.Length;
     else 
         return _Storage.Heap.Length;
+}
+
+
+__api_inline __api_constexpr
+String& String::Append(const String& value) {
+    if(_Storage.IsOnStack) {
+        if(value.Length() < StackMaxCapicity - _Storage.Stack.Length) {
+            _AppendOnStack(value, value.Length());
+        }
+        else {
+            _MoveToHeap(value.Length());
+            _AppendOnHeap(value, value.Length());
+        }
+    }
+    else {
+        _AppendOnHeap(value, value.Length());
+    }
+
+    return *this;
 }
 
 
@@ -81,6 +100,12 @@ String::Storage::HeapStore::Reset() {
     Deallocate();
 }
 
+
+__api_inline __api_constexpr
+void String::_AppendOnStack(const char* value, int64_t len) {
+    strcat(_Storage.Stack.StoredValue, value);
+    _Storage.Stack.Length += len;
+}
 
 __FANTASIA_FOUNDATION_DETAIL_END
 #pragma pack(pop)

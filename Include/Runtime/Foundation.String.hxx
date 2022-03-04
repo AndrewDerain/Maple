@@ -42,8 +42,13 @@ public:
 
     /// @brief 获取字符串的长度
     /// @note 如果存储的是中文以及其他多字节字符，则返回的是占用内存的大小（不包含结尾的 '\0' 字符）。
-    __api_inline
+    __api_inline __api_constexpr
     Int64 Length() const;
+
+
+    /// @brief 追加内容
+    __api_inline __api_constexpr
+    String& Append(const String& value);
 
 
     /// @brief 隐式转换为原始的 c 样式字符串。
@@ -55,7 +60,10 @@ public:
 protected:
     enum {
         /// @brief Stack 上可以存储值的最大空间。
-        StackMaxCapicity = 14
+        StackMaxCapicity = 14,
+
+        /// @brief 额外预分配空间
+        ReservedSpaceCapicity = StackMaxCapicity * 5
     };
 
 
@@ -138,6 +146,22 @@ protected:
     /// @note 如果 value 是空指针，此对象会被初始化为空字符串（""）。
     __api 
     void _Assign(const char* value);
+
+
+    /// @brief 内部函数，将 Stack 上的内容转移到 Heap 上。
+    /// @param reserved_space 需要预分配的空间大小
+    __api 
+    void _MoveToHeap(int64_t reserved_space);
+
+
+    /// @brief 追加内容到栈上
+    __api_inline __api_constexpr
+    void _AppendOnStack(const char* value, int64_t len);
+
+
+    /// @brief 追加内容到堆上
+    __api
+    void _AppendOnHeap(const char* value, int64_t len);
 };
 
 __FANTASIA_FOUNDATION_DETAIL_END

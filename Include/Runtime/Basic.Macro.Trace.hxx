@@ -27,7 +27,12 @@
         __PRETTY_FUNCTION__, ___ParentTracer)
 
 
-#define ___FANTASIA_TRACE_WRITE_VAR(_VAR) 
+#define ___FANTASIA_TRACE_WRITE_VAR(_VAR) \
+    { \
+        std::stringstream content; \
+        content << "[" << #_VAR << "] -> [" << _VAR << "]"; \
+        ___Tracer.WriteLine(content.str()); \
+    }
 
 
 #define ___FANTASIA_TRACE_WRITE_LINE(_CONTENT) \

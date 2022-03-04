@@ -5,6 +5,7 @@
     "editor.guides.bracketPairs":"active",
     "files.autoGuessEncoding": true,
     "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 5000,
     "files.defaultLanguage": "C++",
     "files.encoding": "utf8bom",
     "files.eol": "\n",
@@ -97,7 +98,7 @@
         "list": "cpp",
         "map": "cpp",
         "shared_mutex": "cpp",
-        "__tree": "cpp"
-    },
-    "files.autoSaveDelay": 5000
+        "__tree": "cpp",
+        "__memory": "cpp"
+    }
 }
