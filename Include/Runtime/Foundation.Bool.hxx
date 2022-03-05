@@ -40,7 +40,7 @@ public:
     /// @brief 将布尔值转换为字符串
     /// @return 若值为 true 则返回 "true"，若为 false 则返回 "false"。
     __api_inline __api_constexpr
-    String ToString();
+    String ToString() const;
 
 
     __api_inline __api_constexpr

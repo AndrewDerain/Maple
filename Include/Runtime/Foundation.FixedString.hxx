@@ -8,7 +8,7 @@
 __FANTASIA_FOUNDATION_DETAIL_BEGIN
 
 template<size_t _FixedSize>
-__always_inine bool
+__always_inline bool
 operator==(
     const FixedString<_FixedSize>& _Left, 
     const char* const _Right);
@@ -98,14 +98,14 @@ private:
     friend bool operator==(const FixedString<_Size>&, const char* const);
 
 
-    __always_inine bool _Equal(const char* const right) const {
+    __always_inline bool _Equal(const char* const right) const {
         return strcmp(this->data(), right) == 0;
     }
 };
 
 
 template<size_t _FixedSize>
-__always_inine bool
+__always_inline bool
 operator==(
     const FixedString<_FixedSize>& _Left, 
     const char* const _Right) {

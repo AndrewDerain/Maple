@@ -11,7 +11,7 @@ __FANTASIA_FOUNDATION_DETAIL_BEGIN
 
 __api
 String 
-Int64::ToString() {
+Int64::ToString() const {
     return "";
 }
 

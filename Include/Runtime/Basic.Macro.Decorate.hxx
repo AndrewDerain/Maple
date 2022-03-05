@@ -41,7 +41,7 @@
 
 
 /// @brief 此宏指定某个函数在项目中总是内连的
-#define __always_inine       ___FANTASIA_ALWAYS_INLINE
+#define __always_inline       ___FANTASIA_ALWAYS_INLINE
 
 
 /// @brief 此宏表示被修饰的函数是常量表达式，但也可以导出
@@ -50,3 +50,6 @@
 
 /// @brief 此宏指定某个函数在项目中总是一个常量表达式，不导出
 #define __always_constexpr   ___FANTASIA_ALWAYS_CONSTEXPR
+
+
+#define Property

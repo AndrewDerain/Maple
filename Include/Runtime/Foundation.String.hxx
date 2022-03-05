@@ -20,8 +20,19 @@ class String
 {
 public:
     /// @brief 字符串所能存储的最大容量（以字节计算）。
-    __api_inline
+    __api_inline __api_constexpr
     static Int64 MaxCapicity();
+
+
+    /// @brief 获取字符串的长度
+    /// @note 如果存储的是中文以及其他多字节字符，则返回的是占用内存的大小（不包含结尾的 '\0' 字符）。
+    __api_inline __api_constexpr
+    Property Int64 Length() const;
+
+
+    /// @brief 字符串占用的内存空间
+    __api_inline __api_constexpr
+    Property Int64 Capicity() const;
 
 
     /// @brief 默认构造函数。
@@ -40,20 +51,30 @@ public:
     String(const char* value);
 
 
-    /// @brief 获取字符串的长度
-    /// @note 如果存储的是中文以及其他多字节字符，则返回的是占用内存的大小（不包含结尾的 '\0' 字符）。
+    /// @brief 追加内容
     __api_inline __api_constexpr
-    Int64 Length() const;
+    String& Append(const String& value);
+ 
+
+    /// @brief 追加内容
+    __api_inline __api_constexpr
+    String& Append(const Bool& value);
+
+
+    /// @brief 追加内容
+    template<size_t _Size>
+    __always_inline  __always_constexpr
+    String& Append(const char (&value)[_Size]);
 
 
     /// @brief 追加内容
     __api_inline __api_constexpr
-    String& Append(const String& value);
+    String& Append(const char* value);
 
 
     /// @brief 隐式转换为原始的 c 样式字符串。
     /// @note 此对象可以隐式转换为原始的 c 样式字符串，但不允许在此情况下对内容进行修改。
-    __api_inline
+    __api_inline __api_constexpr
     operator char const* const() const noexcept;
 
 
@@ -138,14 +159,19 @@ protected:
     };
 
 
-    /// @brief 内部对象
+    /// @brief 内部对象, 存储字符串的值
     Storage _Storage;
 
 
     /// @brief 内部函数，使用 c 样式字符串进行初始化。
     /// @note 如果 value 是空指针，此对象会被初始化为空字符串（""）。
-    __api 
+    __api_inline __api_constexpr 
     void _Assign(const char* value);
+
+
+    /// @brief 内部函数，追加内容
+    __api_inline __api_constexpr
+    void _Append(const char* value, int64_t len);
 
 
     /// @brief 内部函数，将 Stack 上的内容转移到 Heap 上。
@@ -163,6 +189,14 @@ protected:
     __api
     void _AppendOnHeap(const char* value, int64_t len);
 };
+
+
+template<size_t _Size>
+__always_inline  __always_constexpr
+String& String::Append(const char (&value)[_Size]) {
+    _Append(value, strlen(value));
+    return *this;
+}
 
 __FANTASIA_FOUNDATION_DETAIL_END
 

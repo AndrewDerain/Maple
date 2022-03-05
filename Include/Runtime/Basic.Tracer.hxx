@@ -37,24 +37,13 @@ public:
         _Parent = parent._Brief;
     }
 
-
-    ~Tracer() {
-        _WriteScopEnd();
-    }
-
-
-    void WriteLine(const std::string& line) {
-        std::stringstream content;
-        _GenLineHead(content);
-        content << " | " << line ;
-        _WriteLine(content.str().c_str());
-    }
+    
+    ___FANTASIA_API
+    ~Tracer();
 
 
-    template<typename _T>
-    void WriteVar(const char* var_name, _T& var) {
-        std::cout << " |  Var [" << var_name << "] = [" << var << "]" << std::endl;
-    }
+    ___FANTASIA_API
+    void WriteLine(const char* line);
 
 
 private:
@@ -63,12 +52,6 @@ private:
         std::thread::id ThreadID;
         int64_t         SerialNumber;
         int64_t         Hierarchy;
-    };
-
-
-    struct LineContent
-    {
-
     };
 
 
@@ -83,15 +66,15 @@ private:
     /// @brief 父域信息
     Brief _Parent;
 
- 
-    ___FANTASIA_ALWAYS_INLINE
-    void _GenLineHead(std::stringstream& content) const noexcept {
-        content 
-            << "[ti:" << _Brief.ThreadID << "] " 
-            << "[hc:" << _Brief.Hierarchy << "] "
-            << "[sn:" << _Brief.SerialNumber << "] "
-            << "[si:" << _Signature << "] ";
-    }
+
+    /// @brief 计算单一线程内进入的次数
+    ___FANTASIA_API
+    int _EnterTimes(bool pluse = false, bool minus = false) const;
+
+
+    /// @brief   生成行头
+    ___FANTASIA_API
+    char* _LineHead(int back = 0) const noexcept;
 
 
     ___FANTASIA_API 

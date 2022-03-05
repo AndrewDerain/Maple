@@ -41,37 +41,6 @@ void String::Storage::HeapStore::Deallocate() {
 }
 
 
-__api
-void 
-String::_Assign(const char* value) {
-
-    if(nullptr == value) {
-        if(!_Storage.IsOnStack) {
-            _Storage.Heap.Reset();
-        }
-
-        _Storage.Stack.Reset();
-        _Storage.IsOnStack = true;
-
-        return;
-    }
-
-    std::uint16_t len = strlen(value);
-    if(len < StackMaxCapicity) {
-        if(!_Storage.IsOnStack) {
-            _Storage.Heap.Reset();
-        }
-        
-        _Storage.Stack.Set(value, len);
-        _Storage.IsOnStack = true;
-    }
-    else {
-        _Storage.Heap.Set(value, len);
-        _Storage.IsOnStack = false;
-    }
-}
-
-
  __api 
 void String::_MoveToHeap(int64_t reserved_space) {
     

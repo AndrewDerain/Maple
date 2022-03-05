@@ -59,7 +59,7 @@ public:
 
     /// @brief 转换为字符串
     __api
-    String ToString();
+    String ToString() const;
 
 
     __api_inline __api_constexpr

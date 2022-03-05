@@ -21,7 +21,7 @@ Bool::Bool(bool&& value) noexcept:
 
 
 __api_inline __api_constexpr
-String Bool::ToString() {
+String Bool::ToString() const {
     if(_StoredValue) 
         return "true";
     else

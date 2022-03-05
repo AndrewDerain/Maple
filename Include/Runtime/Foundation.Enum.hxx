@@ -29,7 +29,7 @@
 
 
 #define _FANTASIA_ENUM_CONVERTER_1(_E01)                                          \
-    inline const char* ToString() {                                               \
+    inline const char* ToString() const {                                         \
         _FANTASIA_ENUM_TOSTR_BEG                                                  \
             _FANTASIA_ENUM_TOSTR_CASE(_E01)                                       \
         _FANTASIA_ENUM_TOSTR_END                                                  \
@@ -42,7 +42,7 @@
 
 
 #define _FANTASIA_ENUM_CONVERTER_2(_E01, _E02)                                    \
-    inline const char* ToString() {                                               \
+    inline const char* ToString() const {                                         \
         _FANTASIA_ENUM_TOSTR_BEG                                                  \
             _FANTASIA_ENUM_TOSTR_CASE(_E01)                                       \
             _FANTASIA_ENUM_TOSTR_CASE(_E02)                                       \
@@ -57,7 +57,7 @@
 
 
 #define _FANTASIA_ENUM_CONVERTER_3(_E01, _E02, _E03)                              \
-    inline const char* ToString() {                                               \
+    inline const char* ToString() const {                                         \
         _FANTASIA_ENUM_TOSTR_BEG                                                  \
             _FANTASIA_ENUM_TOSTR_CASE(_E01)                                       \
             _FANTASIA_ENUM_TOSTR_CASE(_E02)                                       \
@@ -74,7 +74,7 @@
 
 
 #define _FANTASIA_ENUM_CONVERTER_4(_E01, _E02, _E03, _E04)                        \
-    inline const char* ToString() {                                               \
+    inline const char* ToString() const {                                         \
         _FANTASIA_ENUM_TOSTR_BEG                                                  \
             _FANTASIA_ENUM_TOSTR_CASE(_E01)                                       \
             _FANTASIA_ENUM_TOSTR_CASE(_E02)                                       \
@@ -93,7 +93,7 @@
 
 
 #define _FANTASIA_ENUM_CONVERTER_5(_E01, _E02, _E03, _E04, _E05)                  \
-    inline const char* ToString() {                                               \
+    inline const char* ToString() const {                                         \
         _FANTASIA_ENUM_TOSTR_BEG                                                  \
             _FANTASIA_ENUM_TOSTR_CASE(_E01)                                       \
             _FANTASIA_ENUM_TOSTR_CASE(_E02)                                       \
@@ -114,7 +114,7 @@
 
 
 #define _FANTASIA_ENUM_CONVERTER_6(_E01, _E02, _E03, _E04, _E05, _E06)            \
-    inline const char* ToString() {                                               \
+    inline const char* ToString() const {                                         \
         _FANTASIA_ENUM_TOSTR_BEG                                                  \
             _FANTASIA_ENUM_TOSTR_CASE(_E01)                                       \
             _FANTASIA_ENUM_TOSTR_CASE(_E02)                                       \
@@ -137,7 +137,7 @@
 
 
 #define _FANTASIA_ENUM_CONVERTER_7(_E01, _E02, _E03, _E04, _E05, _E06, _E07)      \
-    inline const char* ToString() {                                               \
+    inline const char* ToString() const {                                         \
         _FANTASIA_ENUM_TOSTR_BEG                                                  \
             _FANTASIA_ENUM_TOSTR_CASE(_E01)                                       \
             _FANTASIA_ENUM_TOSTR_CASE(_E02)                                       \
@@ -162,7 +162,7 @@
 
 #define _FANTASIA_ENUM_CONVERTER_8(_E01, _E02, _E03, _E04, _E05, _E06, _E07,      \
                                    _E08)                                          \
-    inline const char* ToString() {                                               \
+    inline const char* ToString() const {                                         \
         _FANTASIA_ENUM_TOSTR_BEG                                                  \
             _FANTASIA_ENUM_TOSTR_CASE(_E01)                                       \
             _FANTASIA_ENUM_TOSTR_CASE(_E02)                                       \
@@ -189,7 +189,7 @@
 
 #define _FANTASIA_ENUM_CONVERTER_9(_E01, _E02, _E03, _E04, _E05, _E06, _E07,      \
                                    _E08, _E09)                                    \
-    inline const char* ToString() {                                               \
+    inline const char* ToString() const {                                         \
         _FANTASIA_ENUM_TOSTR_BEG                                                  \
             _FANTASIA_ENUM_TOSTR_CASE(_E01)                                       \
             _FANTASIA_ENUM_TOSTR_CASE(_E02)                                       \
@@ -218,7 +218,7 @@
 
 #define _FANTASIA_ENUM_CONVERTER_10(_E01, _E02, _E03, _E04, _E05, _E06, _E07,     \
                                     _E08, _E09, _E10)                             \
-    inline const char* ToString() {                                               \
+    inline const char* ToString() const {                                         \
         _FANTASIA_ENUM_TOSTR_BEG                                                  \
             _FANTASIA_ENUM_TOSTR_CASE(_E01)                                       \
             _FANTASIA_ENUM_TOSTR_CASE(_E02)                                       \
@@ -249,7 +249,7 @@
 
 #define _FANTASIA_ENUM_CONVERTER_11(_E01, _E02, _E03, _E04, _E05, _E06, _E07,     \
                                     _E08, _E09, _E10, _E11)                       \
-    inline const char* ToString() {                                               \
+    inline const char* ToString() const {                                         \
         _FANTASIA_ENUM_TOSTR_BEG                                                  \
             _FANTASIA_ENUM_TOSTR_CASE(_E01)                                       \
             _FANTASIA_ENUM_TOSTR_CASE(_E02)                                       \
@@ -282,7 +282,7 @@
 
 #define _FANTASIA_ENUM_CONVERTER_12(_E01, _E02, _E03, _E04, _E05, _E06, _E07,     \
                                     _E08, _E09, _E10, _E11, _E12)                 \
-    inline const char* ToString() {                                               \
+    inline const char* ToString() const {                                         \
         _FANTASIA_ENUM_TOSTR_BEG                                                  \
             _FANTASIA_ENUM_TOSTR_CASE(_E01)                                       \
             _FANTASIA_ENUM_TOSTR_CASE(_E02)                                       \
@@ -317,7 +317,7 @@
 
 #define _FANTASIA_ENUM_CONVERTER_13(_E01, _E02, _E03, _E04, _E05, _E06, _E07,     \
                                     _E08, _E09, _E10, _E11, _E12, _E13)           \
-    inline const char* ToString() {                                               \
+    inline const char* ToString() const {                                         \
         _FANTASIA_ENUM_TOSTR_BEG                                                  \
             _FANTASIA_ENUM_TOSTR_CASE(_E01)                                       \
             _FANTASIA_ENUM_TOSTR_CASE(_E02)                                       \
@@ -354,7 +354,7 @@
 
 #define _FANTASIA_ENUM_CONVERTER_14(_E01, _E02, _E03, _E04, _E05, _E06, _E07,     \
                                     _E08, _E09, _E10, _E11, _E12, _E13, _E14)     \
-    inline const char* ToString() {                                               \
+    inline const char* ToString() const {                                         \
         _FANTASIA_ENUM_TOSTR_BEG                                                  \
             _FANTASIA_ENUM_TOSTR_CASE(_E01)                                       \
             _FANTASIA_ENUM_TOSTR_CASE(_E02)                                       \

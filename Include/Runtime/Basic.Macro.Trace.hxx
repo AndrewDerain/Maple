@@ -30,14 +30,19 @@
 #define ___FANTASIA_TRACE_WRITE_VAR(_VAR) \
     { \
         std::stringstream content; \
-        content << "[" << #_VAR << "] -> [" << _VAR << "]"; \
-        ___Tracer.WriteLine(content.str()); \
+        content << "Name=\"" << #_VAR << "\"" << " Content=\"" << _VAR << "\""; \
+        ___Tracer.WriteLine(content.str().c_str()); \
     }
 
 
 #define ___FANTASIA_TRACE_WRITE_LINE(_CONTENT) \
     { \
         std::stringstream content; \
-        content << _CONTENT; \
+        content << " Content=\"" << _CONTENT << "\""; \
         ___Tracer.WriteLine(content.str()); \
     }
+
+
+#define _InternalTraceScope          ___FANTASIA_TRACE_SCOPE
+#define _InternalTraceVar(_VAR)      ___FANTASIA_TRACE_WRITE_VAR(_VAR)
+#define _InternalTraceLine(_LINE)    ___FANTASIA_TRACE_WRITE_LINE(_LINE)

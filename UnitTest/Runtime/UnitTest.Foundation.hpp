@@ -97,20 +97,23 @@ namespace UnitTest::Foundation
     namespace TestString
     {
         const char * content = "This is a long text , for string test. 2021-02-21 17:34:21! ";
+        
         String val1;
         String val2;
 
 
         void Append() {
-            ___FANTASIA_TRACE_SCOPE
+            _InternalTraceScope;
 
+            _InternalTraceVar(val1);
+            
             val1.Append("1-");
-            val1.Append("334-").Append(content);
+            val1.Append("334-")
+                .Append(content)
+                .Append(true)
+                .Append(234);
 
-            ___FANTASIA_TRACE_WRITE_VAR(val1);
-
-
-
+            _InternalTraceVar(val1);
         }
 
 

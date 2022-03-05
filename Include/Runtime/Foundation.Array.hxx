@@ -9,22 +9,22 @@
 __FANTASIA_FOUNDATION_DETAIL_BEGIN
 
 template<typename _Ty, Size _Count>
-__always_inine __always_constexpr
+__always_inline __always_constexpr
 _Ty* begin(ArrayT<_Ty, _Count>& arr);
 
 
 template<typename _Ty, Size _Count>
-__always_inine __always_constexpr
+__always_inline __always_constexpr
 _Ty* end(ArrayT<_Ty, _Count>& arr);
 
 
 template<typename _Ty, Size _Count>
-__always_inine __always_constexpr
+__always_inline __always_constexpr
 const _Ty* cbegin(const ArrayT<_Ty, _Count>& arr);
 
 
 template<typename _Ty, Size _Count>
-__always_inine __always_constexpr
+__always_inline __always_constexpr
 const _Ty* cend(const ArrayT<_Ty, _Count>& arr);
 
 
@@ -45,11 +45,11 @@ public:
     ArrayT(const ArrayT&) = default;
 
 
-    __always_inine __always_constexpr
+    __always_inline __always_constexpr
     Int64 Count() const;
 
 
-    __always_inine __always_constexpr
+    __always_inline __always_constexpr
     _Ty& operator[](Int64 index);
 
 
@@ -58,11 +58,11 @@ public:
 
 
 protected:
-    friend __always_inine __always_constexpr 
+    friend __always_inline __always_constexpr 
     _Ty* _Fantasia::begin(ArrayT<_Ty, _Count>&);
 
 
-    friend __always_inine __always_constexpr 
+    friend __always_inline __always_constexpr 
     _Ty* _Fantasia::end(ArrayT<_Ty, _Count>&);
 
 
@@ -71,28 +71,28 @@ protected:
 
 
 template<typename _Ty, int64_t _Count>
-__always_inine __always_constexpr
+__always_inline __always_constexpr
 Int64 ArrayT<_Ty, _Count>::Count() const {
     return _Count;
 }
 
 
 template<typename _Ty, int64_t _Count>
-__always_inine __always_constexpr
+__always_inline __always_constexpr
 _Ty& ArrayT<_Ty, _Count>::operator[](Int64 index) {
     return _Eles[index];
 }
 
 
 template<typename _Ty, Size _Count>
-__always_inine __always_constexpr
+__always_inline __always_constexpr
 _Ty* begin(ArrayT<_Ty, _Count>& arr) {
     return arr._Eles;
 }
 
 
 template<typename _Ty, Size _Count>
-__always_inine __always_constexpr
+__always_inline __always_constexpr
 _Ty* end(ArrayT<_Ty, _Count>& arr) {
     return arr._Eles + _Count;
 }
