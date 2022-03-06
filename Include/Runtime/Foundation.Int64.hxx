@@ -14,47 +14,64 @@
 #pragma pack(push, _FANTASIA_PACKING)
 __FANTASIA_FOUNDATION_DETAIL_BEGIN
 
+/// @brief 64位整数类型
 struct Int64
 {
 public:
-    __api_inline
+    __api_inline __api_constexpr
     static Int64 Max() noexcept;
 
 
-    __api_inline
+    __api_inline __api_constexpr
     static Int64 Min() noexcept;
 
 
-    /// @brief 构造函数。设为 default 以支持 standard_layout 和 trival。
+    /// @brief 构造函数。设为 default 以支持 standard_layout 和 trivial。
     Int64() = default;
 
 
-    /// @brief 析构函数。设为 default 以支持 standard_layout 和 trival。
+    /// @brief 析构函数。设为 default 以支持 standard_layout 和 trivial。
     ~Int64() = default;
 
-    
-    /// @brief 拷贝构造函数。设为 default 以支持 standard_layout 和 trival。
+
+    /// @brief 拷贝构造函数。设为 default 以支持 standard_layout 和 trivial。
     Int64(const Int64&) = default;
 
 
     __api_inline __api_constexpr
-    Int64(const int32_t value) noexcept;
+    Int64(int64_t value) noexcept;
+
+
+	__api_inline
+	explicit Int64(uint64_t value);
 
 
     __api_inline __api_constexpr
-    Int64(const int64_t value) noexcept;
+    explicit Int64(char value) noexcept;
 
 
-    __api_inline
-    Int64(const char value) noexcept;
+	__api_inline __api_constexpr
+	explicit Int64(signed char value) noexcept;
 
 
-    __api_inline
-    Int64(const short value) noexcept;
+	__api_inline __api_constexpr
+	explicit Int64(unsigned char value) noexcept;
 
 
-    __api_inline
-    Int64(const unsigned short value) noexcept;
+    __api_inline __api_constexpr
+    explicit Int64(short value) noexcept;
+
+
+    __api_inline __api_constexpr
+    explicit Int64(unsigned short value) noexcept;
+
+
+    __api_inline __api_constexpr
+    explicit Int64(int32_t value) noexcept;
+
+
+	__api_inline __api_constexpr
+	explicit Int64(uint32_t value) noexcept;
 
 
     /// @brief 转换为字符串
@@ -63,27 +80,39 @@ public:
 
 
     __api_inline __api_constexpr
-    operator int64_t const&() const noexcept; 
+    operator int64_t const&() const noexcept;
 
 
     __api_inline __api_constexpr
     operator int64_t&() noexcept;
 
 
-    /// @brief 赋值操作符。设为 default 以支持 standard_layout 和 trival。
+    /// @brief 赋值操作符。设为 default 以支持 standard_layout 和 trivial。
     Int64& operator=(const Int64&) = default;
 
 
-    __api_inline
-    Int64& operator=(const int32_t& value) noexcept;
+    __api_inline __api_constexpr
+    Int64& operator=(Float64 other) noexcept;
 
 
-    __api_inline
-    Int64& operator=(int32_t&& value) noexcept;
+	__api_inline __api_constexpr
+	Int64& operator=(short value) noexcept;
 
 
-    __api_inline
-    const Float64& operator=(const Float64& other) noexcept;
+    __api_inline __api_constexpr
+    Int64& operator=(unsigned short value) noexcept;
+
+
+    __api_inline __api_constexpr
+    Int64& operator=(int32_t value) noexcept;
+
+
+    __api_inline __api_constexpr
+    Int64& operator=(long long int value) noexcept;
+
+
+    __api_inline __api_constexpr
+    Int64& operator=(double value) noexcept;
 
 
 protected:
@@ -91,9 +120,9 @@ protected:
 };
 
 
-// POD 校验。standard layout and trival。
-static_assert(std::is_trivial_v<Int64>, "Int64 must be trival!");
-static_assert(std::is_standard_layout_v<_Fantasia::Int64>, "Int64 must be standard layout!");
+// POD 校验。standard layout and trivial。
+static_assert(std::is_trivial_v<Int64>, "Int64 must be trivial!");
+static_assert(std::is_standard_layout_v<Int64>, "Int64 must be standard layout!");
 
 __FANTASIA_FOUNDATION_DETAIL_END
 

@@ -36,6 +36,13 @@ namespace UnitTest::Foundation
             Float64 Vala = 56.77;
             Float64 Valb = 3.4;
 
+			try {
+				Int64 Val88(std::numeric_limits<uint64_t>::max());
+			}
+			catch (...) {
+
+			}
+
             Val0 = Vala + Val2;
 
             bool larger = Vala > Valb;
@@ -106,12 +113,15 @@ namespace UnitTest::Foundation
             _InternalTraceScope;
 
             _InternalTraceVar(val1);
-            
+            std ::string input;
+			std::cin >> input;
+
             val1.Append("1-");
             val1.Append("334-")
                 .Append(content)
                 .Append(true)
-                .Append(234);
+                .Append(234)
+				.Append((input.c_str()));
 
             _InternalTraceVar(val1);
         }
@@ -135,7 +145,7 @@ namespace UnitTest::Foundation
         {
             arr0 = arr1;
 
-            for(const auto val: arr0) 
+            for(const auto& val: arr0)
             {
 
             }

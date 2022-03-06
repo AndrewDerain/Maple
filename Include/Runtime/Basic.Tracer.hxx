@@ -12,7 +12,7 @@ class Tracer
 {
 public:
     ___FANTASIA_API
-    Tracer();
+	Tracer();
 
 
     Tracer(const Tracer& tracer): Tracer() {

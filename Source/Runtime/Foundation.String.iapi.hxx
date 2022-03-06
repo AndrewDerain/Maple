@@ -27,12 +27,12 @@ String::Length() const {
 }
 
 
-__api_inline __api_constexpr
+ __api_inline __api_constexpr
 Property Int64 
 String::Capicity() const {
     
     if(_Storage.IsOnStack)
-        return StackMaxCapicity;
+        return Int64(StackMaxCapicity);
     else 
         return _Storage.Heap.Capicity;
 }
@@ -61,7 +61,6 @@ String::String(const char* value) {
 __api_inline __api_constexpr
 String& 
 String::Append(const String& value) {
-    _InternalTraceScope;
     _Append(value, value.Length());
     return *this;
 }
@@ -70,7 +69,6 @@ String::Append(const String& value) {
 __api_inline __api_constexpr
 String& 
 String::Append(const Bool& value) {
-    _InternalTraceScope;
     Append(value.ToString());
     return *this;
 }

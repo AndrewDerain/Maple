@@ -44,18 +44,14 @@ public:
 
 
     __api_inline __api_constexpr
-    Float64(double const& value) noexcept;
+    Float64(double value) noexcept;
 
 
     __api_inline __api_constexpr
-    Float64(double&& value) noexcept;
-
-
-    __api_inline
     operator double const&() const noexcept;
 
 
-    __api_inline
+    __api_inline __api_constexpr
     operator double&() noexcept;
 
 
@@ -63,12 +59,8 @@ public:
     Float64& operator=(const Float64&) = default;
 
 
-    __api_inline
-    Float64& operator=(const double& value);
-
-
-    __api_inline
-    Float64& operator=(double&& value);
+    __api_inline __api_constexpr
+    Float64& operator=(double value);
 
 
 protected:
@@ -78,7 +70,7 @@ protected:
 
 // POD 校验。standard layout and trival。
 static_assert(std::is_trivial_v<Float64>, "Float64 must be trival!");
-static_assert(std::is_standard_layout_v<_Fantasia::Float64>, "Float64 must be standard layout!");
+static_assert(std::is_standard_layout_v<Float64>, "Float64 must be standard layout!");
 
 
 __api_inline

@@ -9,14 +9,14 @@
 #pragma pack(push, _FANTASIA_PACKING)
 __FANTASIA_FOUNDATION_DETAIL_BEGIN
 
-__api_inline 
+__api_inline __api_constexpr
 Int64 
 Int64::Max() noexcept {
     return std::numeric_limits<int64_t>::max();
 };
 
 
-__api_inline 
+__api_inline __api_constexpr
 Int64 
 Int64::Min() noexcept {
     return std::numeric_limits<int64_t>::min();
@@ -24,32 +24,60 @@ Int64::Min() noexcept {
 
 
 __api_inline  __api_constexpr
-Int64::Int64(const int32_t value) noexcept:
+Int64::Int64(int64_t value) noexcept:
+    _StoredValue(value) {
+}
+
+
+__api_inline
+Int64::Int64(uint64_t value) {
+	if(value <= Max())
+		_StoredValue = value;
+	else
+		throw std::out_of_range(
+				"value whitch type is uint64_t is larger than max value of Int64");
+}
+
+
+__api_inline __api_constexpr
+Int64::Int64(char value) noexcept {
+    _StoredValue = (unsigned char)value;
+}
+
+
+__api_inline __api_constexpr
+Int64::Int64(signed char value) noexcept {
+	_StoredValue = value;
+}
+
+
+__api_inline __api_constexpr
+Int64::Int64(unsigned char value) noexcept {
+	_StoredValue = value;
+}
+
+
+__api_inline __api_constexpr
+Int64::Int64(short value) noexcept {
+    _StoredValue = value;
+}
+
+
+__api_inline __api_constexpr
+Int64::Int64(unsigned short value) noexcept {
+    _StoredValue = value;
+}
+
+
+__api_inline  __api_constexpr
+Int64::Int64(int32_t value) noexcept:
     _StoredValue(value) {
 }
 
 
 __api_inline  __api_constexpr
-Int64::Int64(const int64_t value) noexcept:
-    _StoredValue(value) {
-}
-
-
-__api_inline 
-Int64::Int64(const char value) noexcept { 
-    _StoredValue = value; 
-}
-
-
-__api_inline 
-Int64::Int64(const short value) noexcept {
-    _StoredValue = value;
-}
-
-
-__api_inline 
-Int64::Int64(const unsigned short value) noexcept {
-    _StoredValue = value;
+Int64::Int64(uint32_t value) noexcept:
+		_StoredValue(value) {
 }
 
 
@@ -65,25 +93,51 @@ Int64::operator int64_t&() noexcept {
 }
 
 
-__api_inline Int64& 
-Int64::operator=(const int32_t& value) noexcept {
+__api_inline __api_constexpr
+Int64& Int64::
+operator=(Float64 other) noexcept {
+    _StoredValue = (double)other;
+    return *this;
+}
+
+
+__api_inline __api_constexpr
+Int64&
+Int64::operator=(short value) noexcept {
+	_StoredValue = value;
+	return *this;
+}
+
+
+__api_inline __api_constexpr
+Int64&
+Int64::operator=(unsigned short value) noexcept {
     _StoredValue = value;
     return *this;
 }
 
 
-__api_inline Int64& 
-Int64::operator=(int32_t&& value) noexcept {
-    _StoredValue = std::move(value);
+__api_inline __api_constexpr
+Int64&
+Int64::operator=(int32_t value) noexcept {
+    _StoredValue = value;
     return *this;
 }
 
 
-__api_inline 
-const Float64& Int64::
-operator=(const Float64& other) noexcept {
-    _StoredValue = (double)other;
-    return other;
+__api_inline __api_constexpr
+Int64&
+Int64::operator=(long long int value) noexcept {
+    _StoredValue = value;
+    return *this;
+}
+
+
+__api_inline __api_constexpr
+Int64&
+Int64::operator=(double value) noexcept {
+    _StoredValue = value;
+    return *this;
 }
 
 __FANTASIA_FOUNDATION_DETAIL_END

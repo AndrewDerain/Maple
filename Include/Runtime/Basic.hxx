@@ -1,4 +1,5 @@
-﻿
+﻿#pragma once
+
 #include "../Fantasia.Basic"
 #include "Basic.CodeLang.CXX.hxx"
 #include "Basic.Macro.Decorate.hxx"

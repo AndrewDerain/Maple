@@ -14,6 +14,7 @@
 #pragma pack(push, _FANTASIA_PACKING)
 __FANTASIA_FOUNDATION_DETAIL_BEGIN
 
+/// @brief 布尔类型
 struct Bool 
 {
 public:
@@ -30,11 +31,7 @@ public:
 
 
     __api_inline __api_constexpr
-    Bool(const bool& value) noexcept;
-
-
-    __api_inline __api_constexpr
-    Bool(bool&& value) noexcept;
+    Bool(bool value) noexcept;
 
     
     /// @brief 将布尔值转换为字符串
@@ -56,11 +53,7 @@ public:
 
 
     __api_inline __api_constexpr
-    Bool& operator=(const bool& value) noexcept;
-
-
-    __api_inline __api_constexpr
-    Bool& operator=(bool&& value) noexcept;
+    Bool& operator=(bool value) noexcept;
 
 
 protected:
@@ -70,7 +63,7 @@ protected:
 
 // POD 校验。standard layout and trival。
 static_assert(std::is_trivial_v<Bool>, "Bool must be trival!");
-static_assert(std::is_standard_layout_v<_Fantasia::Bool>, "Bool must be standard layout!");
+static_assert(std::is_standard_layout_v<Bool>, "Bool must be standard layout!");
 
 __FANTASIA_FOUNDATION_DETAIL_END
 

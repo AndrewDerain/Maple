@@ -28,7 +28,7 @@
 
 /// @brief 此宏表示此项目的使用者希望尽可能多的函数被定义为内连
 #ifdef ___FANTASIA_OPTION_INLINE
-#   define __FANTASIA_OPTION_INLINE
+#   define __FANTASIA_OPTION_INLINE 1
 #endif
 
 

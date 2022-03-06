@@ -20,18 +20,21 @@ class String
 {
 public:
     /// @brief 字符串所能存储的最大容量（以字节计算）。
-    __api_inline __api_constexpr
+	[[maybe_unused]]
+	__api_inline __api_constexpr
     static Int64 MaxCapicity();
 
 
     /// @brief 获取字符串的长度
     /// @note 如果存储的是中文以及其他多字节字符，则返回的是占用内存的大小（不包含结尾的 '\0' 字符）。
-    __api_inline __api_constexpr
+	[[maybe_unused]]
+	__api_inline __api_constexpr
     Property Int64 Length() const;
 
 
     /// @brief 字符串占用的内存空间
-    __api_inline __api_constexpr
+    [[maybe_unused]]
+	__api_inline __api_constexpr
     Property Int64 Capicity() const;
 
 
@@ -54,17 +57,11 @@ public:
     /// @brief 追加内容
     __api_inline __api_constexpr
     String& Append(const String& value);
- 
+
 
     /// @brief 追加内容
     __api_inline __api_constexpr
     String& Append(const Bool& value);
-
-
-    /// @brief 追加内容
-    template<size_t _Size>
-    __always_inline  __always_constexpr
-    String& Append(const char (&value)[_Size]);
 
 
     /// @brief 追加内容
@@ -78,6 +75,14 @@ public:
     operator char const* const() const noexcept;
 
 
+	/// @brief 追加内容
+	template<Size _Size>
+	__always_inline  __always_constexpr
+	String& Append(const char (&value)[_Size]) {
+		_Append(value, strlen(value));
+		return *this;
+	}
+
 protected:
     enum {
         /// @brief Stack 上可以存储值的最大空间。
@@ -90,13 +95,14 @@ protected:
 
     /// @brief 存储结构，负责存储字符串的值以及长度和已申请的内存容量信息。
     /// 短字符串在 Stack 上存储，长字符串在 Heap 上存储。
-    union Storage 
+    union Storage
     {
         /// @brief 栈存储器，使用此对象在栈上保存数据
-        struct StackStore 
+        struct StackStore
         {
             /// @note 仅用于在联合体中进行内存对齐
-            bool IsOnStack;
+			[[maybe_unused]]
+			bool IsOnStack;
 
 
             /// @brief 字符串中的字符数量
@@ -120,10 +126,11 @@ protected:
 
 
         /// @brief 堆存储器，使用此对象在堆上保存数据
-        struct HeapStore 
+        struct HeapStore
         {
             /// @note 仅用于在联合体中进行内存对齐
-            bool          IsOnStack;
+			[[maybe_unused]]
+			bool          IsOnStack;
 
 
             /// @brief 字符串中的字符数量
@@ -165,7 +172,7 @@ protected:
 
     /// @brief 内部函数，使用 c 样式字符串进行初始化。
     /// @note 如果 value 是空指针，此对象会被初始化为空字符串（""）。
-    __api_inline __api_constexpr 
+    __api_inline __api_constexpr
     void _Assign(const char* value);
 
 
@@ -176,7 +183,7 @@ protected:
 
     /// @brief 内部函数，将 Stack 上的内容转移到 Heap 上。
     /// @param reserved_space 需要预分配的空间大小
-    __api 
+    __api
     void _MoveToHeap(int64_t reserved_space);
 
 
@@ -189,14 +196,6 @@ protected:
     __api
     void _AppendOnHeap(const char* value, int64_t len);
 };
-
-
-template<size_t _Size>
-__always_inline  __always_constexpr
-String& String::Append(const char (&value)[_Size]) {
-    _Append(value, strlen(value));
-    return *this;
-}
 
 __FANTASIA_FOUNDATION_DETAIL_END
 

@@ -14,6 +14,7 @@ int main() {
 
     
     UnitTest::Foundation::TestString::RunAll();
+	UnitTest::Foundation::TestInt64::RunAll();
 
     return 0;
 }

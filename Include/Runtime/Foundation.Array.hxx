@@ -44,7 +44,7 @@ public:
     /// @brief 拷贝构造函数。设为 default 以支持 standard_layout 和 trival。
     ArrayT(const ArrayT&) = default;
 
-
+	[[maybe_unused]]
     __always_inline __always_constexpr
     Int64 Count() const;
 
@@ -71,7 +71,7 @@ protected:
 
 
 template<typename _Ty, int64_t _Count>
-__always_inline __always_constexpr
+[[maybe_unused]] __always_inline __always_constexpr
 Int64 ArrayT<_Ty, _Count>::Count() const {
     return _Count;
 }

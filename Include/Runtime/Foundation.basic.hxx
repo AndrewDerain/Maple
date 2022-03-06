@@ -20,16 +20,27 @@
     ___FANTASIA_END
 
 
+
 __FANTASIA_FOUNDATION_DETAIL_BEGIN
+
 using Size = std::int64_t;
 
+
 struct Bool;
+
+
 struct Int64;
+
+
 struct String;
+
+
 struct Float64;
+
 
 template<size_t _FixedSize>
 class FixedString;
+
 
 template<typename _Ty, Size _Size>
 struct ArrayT;

@@ -21,6 +21,7 @@ Float64::Min() noexcept {
     return std::numeric_limits<double>::min();
 }
 
+
 __api_inline __api_constexpr
 Float64
 Float64::Epsilon() noexcept {
@@ -29,43 +30,30 @@ Float64::Epsilon() noexcept {
 
 
 __api_inline __api_constexpr
-Float64::Float64(double const& value) noexcept:
+Float64::Float64(double value) noexcept:
     _StoredValue(value) {
 }
 
 
 __api_inline __api_constexpr
-Float64::Float64(double&& value) noexcept:
-    _StoredValue(std::move(value)) {
-}
-
-
-__api_inline 
 Float64::operator double const&() const noexcept {
     return _StoredValue;
 }
 
 
-__api_inline 
+__api_inline __api_constexpr
 Float64::operator double&() noexcept {
     return _StoredValue;
 }
 
 
-__api_inline
+__api_inline __api_constexpr
 Float64& 
-Float64::operator=(const double& value) {
+Float64::operator=(double value) {
     _StoredValue = value;
     return *this;
 }
 
-
-__api_inline
-Float64& 
-Float64::operator=(double&& value) {
-    _StoredValue = std::move(value);
-    return *this;
-}
 
 __api_inline
 Bool 

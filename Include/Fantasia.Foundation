@@ -5,5 +5,4 @@
 #include <Runtime/Foundation.FixedString.hxx>
 #include <Runtime/Foundation.Float64.hxx>
 #include <Runtime/Foundation.Int64.hxx>
-#include <Runtime/Foundation.MarkupLang.hxx>
 #include <Runtime/Foundation.String.hxx>
