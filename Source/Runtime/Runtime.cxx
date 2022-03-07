@@ -8,7 +8,5 @@
 
 int main()
 {
-    Int64 v;
-    std::string k;
     return 0; 
 }

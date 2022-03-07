@@ -119,11 +119,6 @@ protected:
     int64_t _StoredValue;
 };
 
-
-// POD 校验。standard layout and trivial。
-static_assert(std::is_trivial_v<Int64>, "Int64 must be trivial!");
-static_assert(std::is_standard_layout_v<Int64>, "Int64 must be standard layout!");
-
 __FANTASIA_FOUNDATION_DETAIL_END
 
 

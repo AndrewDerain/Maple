@@ -79,7 +79,7 @@ operator>(Float64& left, Float64& right);
 
 
 __api_inline
-Bool  
+Bool
 operator<(Float64& left, Float64& right);
 
 

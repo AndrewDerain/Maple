@@ -72,7 +72,7 @@ private:
     int _EnterTimes(bool pluse = false, bool minus = false) const;
 
 
-    /// @brief   生成行头
+    /// @brief 生成行头
     ___FANTASIA_API
     char* _LineHead(int back = 0) const noexcept;
 

@@ -81,7 +81,7 @@ void Tracer::_WriteScopStart() const noexcept {
 
     snprintf(
         LineContent, LineContentSize, 
-        "%s<Scope Serial=\"%04lld\" Hierarchy=\"%lld\" Thread=\"%lld\" Signature:\"%s\">", 
+        "%s<Scope Serial=\"%04lld\" Hierarchy=\"%lld\" Thread=\"%lld\" Signature=\"%s\">",
         _LineHead(1), 
         _Brief.SerialNumber,
         _Brief.Hierarchy,
