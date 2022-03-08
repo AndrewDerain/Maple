@@ -89,6 +89,44 @@ private:
     static void _WriteLine(const char* content) noexcept;
 };
 
+
+
+
+/// @brief 一下宏和类型用于满足单元测试中的一些特别需求。
+/// @details 需求1：检测是否调用了正确的重载函数。
+#ifdef ___FANTASIA_ENABLE_UNITTEST
+	class UnitTestHelper
+	{
+	private:
+		std::string _OverloadFunctionName;
+
+	public:
+		std::string OverloadFunctionName() {
+			return _OverloadFunctionName;
+		}
+
+		void OverloadFunctionName(std::string name) {
+			_OverloadFunctionName = name;
+		}
+
+	};
+
+#	define protected 	public
+#	define private 	public
+
+#	define ___FANTASIA_UnitTestHelper_(_TYPE) \
+		_Fantasia::UnitTestHelper UnitTestHelper_##_TYPE;
+
+#	define ___FANTASIA_UnitTestHelper_OverloadFunctionName(_TYPE, _NAME) \
+	{                                               \
+		UnitTestHelper_##_TYPE.OverloadFunctionName(_NAME); \
+	}
+
+#else
+#	define ___FANTASIA_UnitTestHelper
+#	define ___FANTASIA_UnitTestHelper_OverloadFunctionName(_NAME)
+#endif
+
 ___FANTASIA_DETAIL_END
 #pragma pack(pop)
 #pragma warning(pop)

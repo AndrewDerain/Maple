@@ -25,59 +25,105 @@ Int64::Min() noexcept {
 
 __api_inline  __api_constexpr
 Int64::Int64(int64_t value) noexcept:
-    _StoredValue(value) {
+    _StoredValue(value)
+{
+#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
+	UnitTestHelper_Int64.OverloadFunctionName(
+		"Int64::Int64(int64_t value) noexcept");
+#endif
 }
 
 
 __api_inline
-Int64::Int64(uint64_t value) {
+Int64::Int64(uint64_t value)
+{
+#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
+	UnitTestHelper_Int64.OverloadFunctionName(
+			"Int64::Int64(uint64_t value)");
+#endif
+
 	if(value <= Max())
 		_StoredValue = value;
 	else
 		throw std::out_of_range(
-				"value whitch type is uint64_t is larger than max value of Int64");
+			"value whitch type is uint64_t is larger than max value of Int64");
 }
 
 
 __api_inline __api_constexpr
-Int64::Int64(char value) noexcept {
-    _StoredValue = (unsigned char)value;
+Int64::Int64(char value) noexcept:
+	_StoredValue(value)
+{
+#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
+	UnitTestHelper_Int64.OverloadFunctionName(
+		"Int64::Int64(char value) noexcept");
+#endif
 }
 
 
 __api_inline __api_constexpr
-Int64::Int64(signed char value) noexcept {
-	_StoredValue = value;
+Int64::Int64(signed char value) noexcept:
+	_StoredValue(value)
+{
+#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
+	UnitTestHelper_Int64.OverloadFunctionName(
+		"Int64::Int64(signed char value) noexcept");
+#endif
 }
 
 
 __api_inline __api_constexpr
-Int64::Int64(unsigned char value) noexcept {
-	_StoredValue = value;
+Int64::Int64(unsigned char value) noexcept:
+	_StoredValue(value)
+{
+#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
+	UnitTestHelper_Int64.OverloadFunctionName(
+		"Int64::Int64(unsigned char value) noexcept");
+#endif
 }
 
 
 __api_inline __api_constexpr
-Int64::Int64(short value) noexcept {
-    _StoredValue = value;
+Int64::Int64(short value) noexcept:
+	_StoredValue(value)
+{
+#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
+	UnitTestHelper_Int64.OverloadFunctionName(
+		"Int64::Int64(short value) noexcept");
+#endif
 }
 
 
 __api_inline __api_constexpr
-Int64::Int64(unsigned short value) noexcept {
-    _StoredValue = value;
+Int64::Int64(unsigned short value) noexcept:
+	_StoredValue(value)
+{
+#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
+	UnitTestHelper_Int64.OverloadFunctionName(
+		"Int64::Int64(unsigned short value) noexcept");
+#endif
 }
 
 
 __api_inline  __api_constexpr
 Int64::Int64(int32_t value) noexcept:
-    _StoredValue(value) {
+    _StoredValue(value)
+{
+#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
+	UnitTestHelper_Int64.OverloadFunctionName(
+		"Int64::Int64(int32_t value) noexcept");
+#endif
 }
 
 
 __api_inline  __api_constexpr
 Int64::Int64(uint32_t value) noexcept:
-		_StoredValue(value) {
+	_StoredValue(value)
+{
+#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
+	UnitTestHelper_Int64.OverloadFunctionName(
+			"Int64::Int64(uint32_t value) noexcept");
+#endif
 }
 
 
@@ -127,7 +173,7 @@ Int64::operator=(int32_t value) noexcept {
 
 __api_inline __api_constexpr
 Int64&
-Int64::operator=(long long int value) noexcept {
+Int64::operator=(int64_t value) noexcept {
     _StoredValue = value;
     return *this;
 }

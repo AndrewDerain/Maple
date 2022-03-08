@@ -25,13 +25,12 @@ link_directories(
     "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}"
 )
 
-add_executable(
-    FantasiaUnitTester ${srcs}
+link_libraries(
+    "Fantasia.Runtime" Catch2::Catch2WithMain
 )
 
-target_link_libraries(
-    FantasiaUnitTester
-    PRIVATE "Fantasia.Runtime" Catch2::Catch2WithMain
+add_executable(
+    FantasiaUnitTester ${srcs}
 )
 
 

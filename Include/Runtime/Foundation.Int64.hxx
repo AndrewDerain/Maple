@@ -39,39 +39,39 @@ public:
 
 
     __api_inline __api_constexpr
-    Int64(int64_t value) noexcept;
+	Int64(int64_t value) noexcept;
 
 
 	__api_inline
-	explicit Int64(uint64_t value);
+	Int64(uint64_t value);
 
 
     __api_inline __api_constexpr
-    explicit Int64(char value) noexcept;
+	Int64(char value) noexcept;
 
 
 	__api_inline __api_constexpr
-	explicit Int64(signed char value) noexcept;
+	Int64(signed char value) noexcept;
 
 
 	__api_inline __api_constexpr
-	explicit Int64(unsigned char value) noexcept;
+	Int64(unsigned char value) noexcept;
 
 
     __api_inline __api_constexpr
-    explicit Int64(short value) noexcept;
+	Int64(short value) noexcept;
 
 
     __api_inline __api_constexpr
-    explicit Int64(unsigned short value) noexcept;
+	Int64(unsigned short value) noexcept;
 
 
     __api_inline __api_constexpr
-    explicit Int64(int32_t value) noexcept;
+	Int64(int32_t value) noexcept;
 
 
 	__api_inline __api_constexpr
-	explicit Int64(uint32_t value) noexcept;
+	Int64(uint32_t value) noexcept;
 
 
     /// @brief 转换为字符串
@@ -108,7 +108,7 @@ public:
 
 
     __api_inline __api_constexpr
-    Int64& operator=(long long int value) noexcept;
+    Int64& operator=(int64_t value) noexcept;
 
 
     __api_inline __api_constexpr
