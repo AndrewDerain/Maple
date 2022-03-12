@@ -42,10 +42,10 @@
 
 **5. 创建 cmake build 缓存**
 ```
-    $ cmake -S. -B.buildcache
+    $ cmake -S. -BBuildCache
 ```
 
 **6. 编译项目，程序会在 Compiled 文件夹中生成**
 ```
-    $ cmake --build .buildcache
+    $ cmake --build BuildCache
 ```
