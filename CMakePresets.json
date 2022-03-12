@@ -9,7 +9,7 @@
             "name": "Base",
             "description": "全平台通用的配置",
             "hidden": true,
-            "binaryDir": "${sourceDir}/.buildcache/${presetName}",
+            "binaryDir": "${sourceDir}/BuildCache/${presetName}",
             "installDir": "${sourceDir}/Install/${presetName}"
         },
         {

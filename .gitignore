@@ -367,7 +367,7 @@ FodyWeavers.xsd
 
 # Fantasia ignore folders
 .idea/
-.buildcache/
+[Bb]uildcache/
 [Oo]ut/
 [Bb]uild/
 [Ii]nstall/
