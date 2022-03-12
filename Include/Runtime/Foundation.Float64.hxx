@@ -113,7 +113,7 @@ __FANTASIA_FOUNDATION_END
 
 
 #ifdef __FANTASIA_OPTION_INLINE
-#    include "../../Source/Runtime/Foundation.Float64.iapi.hxx"
+#    include "../../Source/Runtime/Foundation.Float64.iapi.hpp"
 #endif
 
 #ifdef __FANTASIA_OPTION_HEADER_ONLY
