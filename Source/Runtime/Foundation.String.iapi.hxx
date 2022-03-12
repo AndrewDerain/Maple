@@ -5,8 +5,8 @@
 
 
 #pragma warning(push)
-#pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
-#pragma pack(push, _FANTASIA_PACKING)
+#pragma warning(disable: ___FANTASIA_WARNING_DISABLE_IDS)
+#pragma pack(push, ___FANTASIA_PACKING)
 __FANTASIA_FOUNDATION_DETAIL_BEGIN
 
 __api_inline __api_constexpr
@@ -32,13 +32,13 @@ Property Int64
 String::Capicity() const {
     
     if(_Storage.IsOnStack)
-        return Int64(StackMaxCapicity);
+        return Int64(_StackMaxCapicity);
     else 
         return _Storage.Heap.Capicity;
 }
 
 
-__api_inline __api_constexpr
+__api_inline 
 String::String() {
     _Storage.IsOnStack = true;
     _Storage.Stack.Reset();
@@ -102,7 +102,7 @@ String::Storage::StackStore::Reset() {
 }
 
 
-__api_inline __api_constexpr
+__api_inline
 void 
 String::Storage::StackStore::Set(const char* value, char len) {
     strcpy(StoredValue, value);
@@ -137,7 +137,7 @@ String::_Assign(const char* value) {
     }
 
     std::uint16_t len = strlen(value);
-    if(len < StackMaxCapicity) {
+    if(len < _StackMaxCapicity) {
         if(!_Storage.IsOnStack) {
             _Storage.Heap.Reset();
         }
@@ -157,7 +157,7 @@ void
 String::_Append(const char* value, int64_t len) {
 
     if(_Storage.IsOnStack) {
-        if(len < StackMaxCapicity - _Storage.Stack.Length) {
+        if(len < _StackMaxCapicity - _Storage.Stack.Length) {
             _AppendOnStack(value, len);
         }
         else {
@@ -170,7 +170,7 @@ String::_Append(const char* value, int64_t len) {
     }
 }
 
-__api_inline __api_constexpr
+__api_inline
 void String::_AppendOnStack(const char* value, int64_t len) {
     strcat(_Storage.Stack.StoredValue, value);
     _Storage.Stack.Length += len;

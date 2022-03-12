@@ -5,8 +5,8 @@
 
 
 #pragma warning(push)
-#pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
-#pragma pack(push, _FANTASIA_PACKING)
+#pragma warning(disable: ___FANTASIA_WARNING_DISABLE_IDS)
+#pragma pack(push, ___FANTASIA_PACKING)
 __FANTASIA_FOUNDATION_DETAIL_BEGIN
 
 __api_inline __api_constexpr
@@ -34,14 +34,14 @@ Int64::Int64(int64_t value) noexcept:
 }
 
 
-__api_inline
+__api_inline __api_constexpr
 Int64::Int64(uint64_t value)
 {
 #ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
 	UnitTestHelper_Int64.OverloadFunctionName(
 			"Int64::Int64(uint64_t value)");
 #endif
-
+	
 	if(value <= Max())
 		_StoredValue = value;
 	else
@@ -149,7 +149,13 @@ operator=(Float64 other) noexcept {
 
 __api_inline __api_constexpr
 Int64&
-Int64::operator=(short value) noexcept {
+Int64::operator=(short value) noexcept
+{
+#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
+	UnitTestHelper_Int64.OverloadFunctionName(
+			"Int64& Int64::operator=(short value) noexcept");
+#endif
+
 	_StoredValue = value;
 	return *this;
 }
@@ -157,8 +163,14 @@ Int64::operator=(short value) noexcept {
 
 __api_inline __api_constexpr
 Int64&
-Int64::operator=(unsigned short value) noexcept {
-    _StoredValue = value;
+Int64::operator=(unsigned short value) noexcept
+{
+#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
+	UnitTestHelper_Int64.OverloadFunctionName(
+			"Int64& Int64::operator=(unsigned short value) noexcept");
+#endif
+
+	_StoredValue = value;
     return *this;
 }
 
@@ -173,9 +185,25 @@ Int64::operator=(int32_t value) noexcept {
 
 __api_inline __api_constexpr
 Int64&
+Int64::operator=(uint32_t value) noexcept {
+	_StoredValue = value;
+	return *this;
+}
+
+
+__api_inline __api_constexpr
+Int64&
 Int64::operator=(int64_t value) noexcept {
     _StoredValue = value;
     return *this;
+}
+
+
+__api_inline __api_constexpr
+Int64&
+Int64::operator=(uint64_t value) noexcept {
+	_StoredValue = value;
+	return *this;
 }
 
 

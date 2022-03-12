@@ -4,14 +4,19 @@
 #include "Foundation.Int64.iapi.hxx"
 
 
+__api
+___FANTASIA_UnitTestHelper_Int64;
+
+
 #pragma warning(push)
-#pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
-#pragma pack(push, _FANTASIA_PACKING)
+#pragma warning(disable: ___FANTASIA_WARNING_DISABLE_IDS)
+#pragma pack(push, ___FANTASIA_PACKING)
 __FANTASIA_FOUNDATION_DETAIL_BEGIN
 
 __api
 String 
 Int64::ToString() const {
+
     return "";
 }
 

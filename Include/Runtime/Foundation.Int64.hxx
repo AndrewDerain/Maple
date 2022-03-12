@@ -10,8 +10,8 @@
 
 
 #pragma warning(push)
-#pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
-#pragma pack(push, _FANTASIA_PACKING)
+#pragma warning(disable: ___FANTASIA_WARNING_DISABLE_IDS)
+#pragma pack(push, ___FANTASIA_PACKING)
 __FANTASIA_FOUNDATION_DETAIL_BEGIN
 
 /// @brief 64位整数类型
@@ -42,7 +42,7 @@ public:
 	Int64(int64_t value) noexcept;
 
 
-	__api_inline
+	__api_inline __api_constexpr
 	Int64(uint64_t value);
 
 
@@ -107,8 +107,16 @@ public:
     Int64& operator=(int32_t value) noexcept;
 
 
+	__api_inline __api_constexpr
+	Int64& operator=(uint32_t value) noexcept;
+
+
     __api_inline __api_constexpr
     Int64& operator=(int64_t value) noexcept;
+
+
+	__api_inline __api_constexpr
+	Int64& operator=(uint64_t value) noexcept;
 
 
     __api_inline __api_constexpr

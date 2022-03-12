@@ -65,7 +65,7 @@ __FANTASIA_FOUNDATION_DETAIL_END
 #   define ___FANTASIA_UnitTestHelper_Int64 \
 		___FANTASIA_UnitTestHelper_(Int64)
 
-	extern ___FANTASIA_UnitTestHelper_Int64;
+	extern __api ___FANTASIA_UnitTestHelper_Int64;
 #else
 #	define ___FANTASIA_UnitTestHelper_Int64
 #	define ___FANTASIA_UnitTestHelper_Int64_OverloadFunctionName(_NAME)

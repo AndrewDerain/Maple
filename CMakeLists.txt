@@ -30,9 +30,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 #-----------------------------------------------------------------------------+
 #    Config compiler 
 #------------------------------------------------------------------------------
-if(CMAKE_CXX_COMPILER_ID STREQUAL MSVC)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 	add_compile_options(/Zc:preprocessor)
-	add_compile_definitions(__MSVC__)
 endif()
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL GNU)

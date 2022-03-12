@@ -4,8 +4,8 @@
 
 
 #pragma warning(push)
-#pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
-#pragma pack(push, _FANTASIA_PACKING)
+#pragma warning(disable: ___FANTASIA_WARNING_DISABLE_IDS)
+#pragma pack(push, ___FANTASIA_PACKING)
 ___FANTASIA_DETAIL_BEGIN
 
 class Tracer
@@ -98,21 +98,20 @@ private:
 	class UnitTestHelper
 	{
 	private:
-		std::string _OverloadFunctionName;
+		const char* _OverloadFunctionName;
 
 	public:
-		std::string OverloadFunctionName() {
+		const char* OverloadFunctionName() {
 			return _OverloadFunctionName;
 		}
 
-		void OverloadFunctionName(std::string name) {
+		constexpr void OverloadFunctionName(const char* name) {
 			_OverloadFunctionName = name;
 		}
-
 	};
 
 #	define protected 	public
-#	define private 	public
+#	define private 	    public
 
 #	define ___FANTASIA_UnitTestHelper_(_TYPE) \
 		_Fantasia::UnitTestHelper UnitTestHelper_##_TYPE;

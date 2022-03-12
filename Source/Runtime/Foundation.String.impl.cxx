@@ -5,8 +5,8 @@
 
 
 #pragma warning(push)
-#pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
-#pragma pack(push, _FANTASIA_PACKING)
+#pragma warning(disable: ___FANTASIA_WARNING_DISABLE_IDS)
+#pragma pack(push, ___FANTASIA_PACKING)
 __FANTASIA_FOUNDATION_DETAIL_BEGIN
 
 __api
@@ -44,11 +44,11 @@ void String::Storage::HeapStore::Deallocate() {
  __api 
 void String::_MoveToHeap(int64_t reserved_space) {
     
-    int64_t HeapSize    = reserved_space + ReservedSpaceCapicity;
+    int64_t HeapSize    = reserved_space + _ReservedSpaceCapicity;
     char*   StrVal      = new char[HeapSize];
     auto    Len         = _Storage.Stack.Length;
     
-    memcpy(StrVal, _Storage.Stack.StoredValue, StackMaxCapicity);
+    memcpy(StrVal, _Storage.Stack.StoredValue, _StackMaxCapicity);
 
     _Storage.Heap.IsOnStack     = false;
     _Storage.Heap.Length        = Len;
@@ -61,7 +61,7 @@ __api
 void String::_AppendOnHeap(const char* value, int64_t len) {
 
     if(_Storage.Heap.Capicity <= _Storage.Heap.Length + len) {
-        int64_t NewCapicity = _Storage.Heap.Length + len + ReservedSpaceCapicity;
+        int64_t NewCapicity = _Storage.Heap.Length + len + _ReservedSpaceCapicity;
         char*   StrVal      = new char[NewCapicity];
         
         strcpy(StrVal, _Storage.Heap.StoredValue);

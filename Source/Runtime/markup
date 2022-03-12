@@ -33,3 +33,19 @@ using Fantasia.Foundation
 //
 full MainWindow:Window 
     Num:Int64=89 -> Num=89 -> Num:=89 ->
+
+
+[Window] Window
+{
+    Url.Name {"ddfff"}
+
+    Height {34} Width {77} 
+
+    Content
+    {
+        [Grid] MyGrid
+        {
+
+        }
+    }
+}

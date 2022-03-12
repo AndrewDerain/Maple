@@ -20,14 +20,8 @@ namespace Utility
 			return _Name;
 		}
 
-		static const char* CtorName() {
-
-			return _Ctor;
-		}
-
 	private:
 		static char _Name[256];
-		static char _Ctor[256];
 
 		static void _PraseTypeName() {
 			char 		slenv[5];
@@ -61,15 +55,10 @@ namespace Utility
 					}
 				}
 			}
-			//_Name[usrnmp] = '\0';
 		}
 	};
 
 	template<typename _T>
 	char Type<_T>::_Name[256] = "";
 
-	template<typename _T>
-	char Type<_T>::_Ctor[256] = "";
 };
-
-

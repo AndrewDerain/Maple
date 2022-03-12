@@ -4,8 +4,8 @@
 
 
 #pragma warning(push)
-#pragma warning(disable: _FANTASIA_WARNING_DISABLE_IDS)
-#pragma pack(push, _FANTASIA_PACKING)
+#pragma warning(disable: ___FANTASIA_WARNING_DISABLE_IDS)
+#pragma pack(push, ___FANTASIA_PACKING)
 __FANTASIA_CHRONO_DETAIL_BEGIN
 namespace DateTime
 {
@@ -27,13 +27,7 @@ struct Month
 
 struct Year
 {
-    std::int16_t _StoredValue;
-
-    std::string ToString();
-    std::u8string s;
-    char8_t ss;
-    // Decade
-    // Century
+    
 };
 
 

@@ -6,9 +6,9 @@
     "configurations": [
         {
             "name": "(lldb) 启动 Test",
-            "type": "cppdbg",
+            "type": "lldb",
             "request": "launch",
-            "program": "${workspaceFolder}/Compiled/Fantasia.Test",
+            "program": "${workspaceFolder}/Compiled/FantasiaUnitTester",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/Compiled",

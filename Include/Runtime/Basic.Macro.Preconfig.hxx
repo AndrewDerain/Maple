@@ -55,7 +55,7 @@
 #           define ___FANTASIA_ALWAYS_EXPORT __attribute__ ((dllimport))
 #       endif
 #   endif
-#   if defined(__MSVC__)
+#   if defined(_MSC_VER)
 #       if defined(___FNATASIA_EXPORTS)
 #           define ___FANTASIA_ALWAYS_EXPORT __declspec (dllexport)
 #       else
