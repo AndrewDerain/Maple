@@ -1,2 +1,7 @@
-﻿#pragma once
+﻿/// 
+/// Fantasia Framework
+/// copyright 2021-2022 by Haojie Song.
+/// email: locomoco@yeah.net
+///
+#pragma once
 #include <Runtime/Chrono.DateTime.hxx>

@@ -13,16 +13,16 @@ cmake_minimum_required (VERSION 3.20)
 #    Config project name.
 #------------------------------------------------------------------------------
 project (
-	"Fantasia"
+	Fantasia
 	VERSION 1.0.0.0
 	DESCRIPTION "Morden C++ Framework")
-
-enable_language(CXX)
 
 
 #-----------------------------------------------------------------------------+
 #    Config c++ standard
 #------------------------------------------------------------------------------
+enable_language(CXX)
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
@@ -48,7 +48,11 @@ endif()
 #-----------------------------------------------------------------------------+
 #    Config compile options
 #------------------------------------------------------------------------------
-set(CompileFolderPrefix "Compiled")
+if(CMAKE_HOST_APPLE)
+	set(CompileFolderPrefix "Compiled/${CMAKE_BUILD_TYPE}")
+else()
+	set(CompileFolderPrefix "Compiled")
+endif()
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY 
 	"${CMAKE_SOURCE_DIR}/${CompileFolderPrefix}")
@@ -68,5 +72,5 @@ include_directories(
 #-----------------------------------------------------------------------------+
 #    Config subprojects
 #------------------------------------------------------------------------------
-add_subdirectory("Source/Runtime")
+add_subdirectory("Source")
 add_subdirectory("UnitTest")

@@ -368,6 +368,7 @@ FodyWeavers.xsd
 # Fantasia ignore folders
 .idea/
 [Bb]uildcache/
+[Ff]etchedContent/
 [Oo]ut/
 [Bb]uild/
 [Ii]nstall/

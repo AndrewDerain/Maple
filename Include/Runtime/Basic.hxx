@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../Fantasia.Basic"
+//#include "../Fantasia.CompileConfig"
 #include "Basic.CodeLang.CXX.hxx"
 #include "Basic.Macro.Decorate.hxx"
 #include "Basic.Macro.Function.hxx"

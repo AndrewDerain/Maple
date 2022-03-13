@@ -94,6 +94,7 @@
         "*.finance": "cpp",
         "*.system": "cpp",
         "*.foundation": "cpp",
+        "*.compileconfig": "cpp",
         "*.tcc": "cpp",
         "list": "cpp",
         "map": "cpp",

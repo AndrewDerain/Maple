@@ -8,7 +8,7 @@
 /// @date 2021-02-20
 /// 
 #pragma once
-#include "../Fantasia.Basic"
+#include "../Fantasia.CompileConfig"
 
 
 /// @brief 用户设定的 header only 模式

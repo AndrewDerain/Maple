@@ -18,5 +18,7 @@
 /// 功能：Header only
 //#define fantasia_enable_header_only
 
+
+/// 选项：单元测试相关宏定义
 #define ___FANTASIA_ENABLE_UNITTEST
 #define ___FANTASIA_ENABLE_UNITTEST_Int64
