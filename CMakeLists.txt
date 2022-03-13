@@ -48,10 +48,11 @@ endif()
 #-----------------------------------------------------------------------------+
 #    Config compile options
 #------------------------------------------------------------------------------
-if(CMAKE_HOST_APPLE)
-	set(CompileFolderPrefix "Compiled/${CMAKE_BUILD_TYPE}")
+if(CMAKE_GENERATOR MATCHES "^(Xcode|Visual Studio)")
+	set(CompileFolderPrefix "Compiled/${CMAKE_GENERATOR}")
+	message("-- [DBG] ${CompileFolderPrefix}")
 else()
-	set(CompileFolderPrefix "Compiled")
+	set(CompileFolderPrefix "Compiled/${CMAKE_GENERATOR}/${CMAKE_BUILD_TYPE}")
 endif()
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY 

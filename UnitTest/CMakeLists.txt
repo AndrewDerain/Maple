@@ -10,8 +10,6 @@ project(UnitTester)
 #------------------------------------------------------------------------------
 Include(FetchContent)
 
-set(FETCHCONTENT_BASE_DIR "${CMAKE_SOURCE_DIR}/FetchedContent")
-
 
 #-----------------------------------------------------------------------------+
 #    Fetch Catch2
@@ -22,8 +20,10 @@ FetchContent_Declare(
         GIT_TAG        v3.0.0-preview3
 )
 
-message("-- [Note] Fetching Catch2 library.")
+message("-- [Note] Fetching Catch2 library...")
 FetchContent_MakeAvailable(Catch2)
+message("-- [Note] Fetch Catch2 library done!")
+
 
 #-----------------------------------------------------------------------------+
 #    单元测试程序

@@ -4,6 +4,7 @@
         "major": 3,
         "minor": 20
     },
+    
     "configurePresets": [
         {
             "name": "Base",
@@ -22,11 +23,26 @@
         },
         {
             "name": "Unix.Debug",
-            "hidden": false,
-            "description": "",
+            "description": "使用 Unix Makefiles 编译 Debug 版本的程序",
             "inherits":["Unix.Base"],
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "Unix.Release",
+            "description": "使用 Unix Makefiles 编译 Release 版本的程序",
+            "inherits":["Unix.Base"],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "Unix.MinSizeRel",
+            "description": "使用 Unix Makefiles 编译 MinSizeRel 版本的程序",
+            "inherits":["Unix.Base"],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "MinSizeRel"
             }
         },
 
@@ -58,19 +74,76 @@
 
 
         {
-            "name": "Mac.Xcode.Base",
+            "name": "Xcode.Base",
             "hidden": true,
             "inherits": ["Base"],
             "generator": "Xcode"
         },
         {
-            "name": "Mac.Xcode.Debug",
-            "displayName": "Mac.Xcode.Debug",
+            "name": "Xcode.Debug",
+            "displayName": "Xcode.Debug",
             "description": "使用 Xcode 工具链编译 Debug 版本的程序（Apple）",
-            "inherits": ["Mac.Xcode.Base"],
+            "inherits": ["Xcode.Base"],
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug"
             }
+        },
+        {
+            "name": "Xcode.Release",
+            "displayName": "Xcode.Release",
+            "description": "使用 Xcode 工具链编译 Release 版本的程序（Apple）",
+            "inherits": ["Xcode.Base"],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        }
+    ],
+
+
+    "buildPresets": [
+        {
+            "name": "Runtime.Base",
+            "hidden": true,
+            "targets":["Fantasia.Runtime"]
+        },
+        {
+            "name": "All.Base",
+            "hidden": true,
+            "targets":["Fantasia.Runtime", "FantasiaUnitTester"]
+        },
+
+
+        {
+            "name": "All",
+            "inherits":["All.Base"],
+            "configurePreset": "Unix.Debug"
+        },
+        {
+            "name": "All",
+            "inherits":["All.Base"],
+            "configurePreset": "Unix.Release"
+        },
+        {
+            "name": "All",
+            "inherits":["All.Base"],
+            "configurePreset": "Unix.MinSizeRel"
+        },
+
+
+        {
+            "name": "All",
+            "inherits":["All.Base"],
+            "configurePreset": "Ninja.Debug"
+        },
+        {
+            "name": "All",
+            "inherits":["All.Base"],
+            "configurePreset": "Ninja.Release"
+        },
+        {
+            "name": "All",
+            "inherits":["All.Base"],
+            "configurePreset": "Ninja.Debug"
         }
     ]
 }
