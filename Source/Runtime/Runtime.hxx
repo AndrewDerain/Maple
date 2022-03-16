@@ -5,4 +5,4 @@
 
 #include <Fantasia.Foundation>
 
-using namespace Fantasia;
+//using namespace Fantasia;

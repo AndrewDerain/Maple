@@ -8,7 +8,7 @@
 /// @date 2021-02-20
 /// 
 #pragma once
-#include "../Fantasia.CompileConfig"
+#include "../../../Fantasia.CompileConfig"
 
 
 /// @brief 用户设定的 header only 模式
@@ -33,17 +33,17 @@
 
 
 /// @brief 项目根命名空间
-#define ___FANTASIA_BEGIN              \
-            namespace Fantasia {     
-#define ___FANTASIA_END                \
-            }                        
+// #define ___FANTASIA_BEGIN              \
+//             namespace Fantasia {     
+// #define ___FANTASIA_END                \
+//             }                        
 
 
 /// @brief 此命名空间内放置非用户直接使用的类，枚举等等
-#define ___FANTASIA_DETAIL_BEGIN       \
-            namespace _Fantasia {    
-#define ___FANTASIA_DETAIL_END         \
-            }
+//#define ___FANTASIA_DETAIL_BEGIN       \
+//             namespace _Fantasia {    
+// #define ___FANTASIA_DETAIL_END         \
+//             }
 
 
 /// @brief [___FANTASIA_ALWAYS_EXPORT] - Always export

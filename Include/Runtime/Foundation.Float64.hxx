@@ -6,114 +6,113 @@
 /// @date 2022-01-22
 /// 
 #pragma once
-#include "Foundation.Basic.hxx"
+#include "_Detail/Foundation/Predeclars.hpp"
 
 
 #pragma warning(push)
 #pragma warning(disable: ___FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, ___FANTASIA_PACKING)
-__FANTASIA_FOUNDATION_DETAIL_BEGIN
-
-/// @brief 64位浮点数
-/// @note 操作符已进行重载，可直接比较大小
-struct Float64
+namespace _Fantasia::Foundation
 {
-public:
-    __api_inline __api_constexpr
-    static Float64 Max() noexcept;
+
+    /// @brief 64位浮点数
+    /// @note 操作符已进行重载，可直接比较大小
+    struct Float64
+    {
+    public:
+        /// @brief Float64 可表示的最大值
+        __api_inline __api_constexpr
+        static Float64 Max() noexcept;
 
 
-    __api_inline __api_constexpr
-    static Float64 Min() noexcept;
+        /// @brief Float64 可表示的最小值
+        __api_inline __api_constexpr
+        static Float64 Min() noexcept;
 
 
-    __api_inline __api_constexpr
-    static Float64 Epsilon() noexcept;
+        /// @brief 可区分两个 Float64 值的最小变化量 
+        __api_inline __api_constexpr
+        static Float64 Epsilon() noexcept;
 
 
-    /// @brief 构造函数。设为 default 以支持 standard_layout 和 trival。
-    Float64() = default;
+        /// @brief 构造函数。设为 default 以支持 standard_layout 和 trival。
+        Float64() = default;
 
 
-    /// @brief 析构函数。设为 default 以支持 standard_layout 和 trival。
-    ~Float64() = default;
+        /// @brief 析构函数。设为 default 以支持 standard_layout 和 trival。
+        ~Float64() = default;
 
 
-    /// @brief 拷贝构造函数。设为 default 以支持 standard_layout 和 trival。
-    Float64(const Float64&) = default;
+        /// @brief 拷贝构造函数。设为 default 以支持 standard_layout 和 trival。
+        Float64(const Float64&) = default;
 
 
-    __api_inline __api_constexpr
-    Float64(double value) noexcept;
+        __api_inline __api_constexpr
+        Float64(double value) noexcept;
 
 
-    __api_inline __api_constexpr
-    operator double const&() const noexcept;
+        __api_inline __api_constexpr
+        operator double const&() const noexcept;
 
 
-    __api_inline __api_constexpr
-    operator double&() noexcept;
+        __api_inline __api_constexpr
+        operator double&() noexcept;
 
 
-    /// @brief 赋值操作符。设为 default 以支持 standard_layout 和 trival。
-    Float64& operator=(const Float64&) = default;
+        /// @brief 赋值操作符。设为 default 以支持 standard_layout 和 trival。
+        Float64& operator=(const Float64&) = default;
 
 
-    __api_inline __api_constexpr
-    Float64& operator=(double value);
+        __api_inline __api_constexpr
+        Float64& operator=(double value);
 
 
-protected:
-    double _StoredValue;
-};
+    protected:
+        double _StoredValue;
+    };
 
 
-// POD 校验。standard layout and trival。
-static_assert(std::is_trivial_v<Float64>, "Float64 must be trival!");
-static_assert(std::is_standard_layout_v<Float64>, "Float64 must be standard layout!");
+    // POD 校验。standard layout and trival。
+    static_assert(std::is_trivial_v<Float64>, "Float64 must be trival!");
+    static_assert(std::is_standard_layout_v<Float64>, "Float64 must be standard layout!");
 
 
-__api_inline
-Bool  
-operator>(Float64& left, Float64& right);
+    __api_inline
+    Bool  
+    operator>(Float64& left, Float64& right);
 
 
-__api_inline
-Bool
-operator<(Float64& left, Float64& right);
+    __api_inline
+    Bool
+    operator<(Float64& left, Float64& right);
 
 
-__api_inline
-Bool 
-operator==(Float64& left, Float64& right);
+    __api_inline
+    Bool 
+    operator==(Float64& left, Float64& right);
 
 
-__api_inline
-Bool 
-operator!=(Float64& left, Float64& right);
+    __api_inline
+    Bool 
+    operator!=(Float64& left, Float64& right);
 
 
-__api_inline
-Bool 
-operator>=(Float64& left, Float64& right);
+    __api_inline
+    Bool 
+    operator>=(Float64& left, Float64& right);
 
 
-__api_inline
-Bool 
-operator<=(Float64& left, Float64& right);
+    __api_inline
+    Bool 
+    operator<=(Float64& left, Float64& right);
 
-__FANTASIA_FOUNDATION_DETAIL_END
-
-
-__FANTASIA_FOUNDATION_BEGIN
-using _Fantasia::Float64;
-__FANTASIA_FOUNDATION_END
+} // namespace _Fantasia::Foundation
 #pragma pack(pop)
 #pragma warning(pop)
 
 
 #ifdef __FANTASIA_OPTION_INLINE
-#    include "../../Source/Runtime/Foundation.Float64.iapi.hpp"
+#    include "_Detail/Foundation/Float64.iapi.hpp"
 #endif
 
 #ifdef __FANTASIA_OPTION_HEADER_ONLY

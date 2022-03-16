@@ -1,6 +1,5 @@
 ﻿#pragma once
-#include "Basic.Macro.Function.hxx"
-#include "Basic.CodeLang.CXX.hxx"
+#include "_Detail/Foundation/Predeclars.hpp"
 
 
 #define _FANTASIA_ENUM_CTOR(_WRAP)                                                \
@@ -393,11 +392,11 @@
 
 
 #define _FANTASIA_ENUM_STRING_CONVERTER(...)                                      \
-            _FANTASIA_MF_ARG(                                                     \
-                _FANTASIA_MF_CAT(                                                 \
+            ___FANTASIA_MF_ARG(                                                     \
+                ___FANTASIA_MF_CAT(                                                 \
                     _FANTASIA_ENUM_CONVERTER_,                                    \
-                    _FANTASIA_MF_ARG_COUNT(__VA_ARGS__)                           \
-                )_FANTASIA_MF_VAARGS_TRANS(__VA_ARGS__)                           \
+                    ___FANTASIA_MF_ARG_COUNT(__VA_ARGS__)                           \
+                )___FANTASIA_MF_VAARGS_TRANS(__VA_ARGS__)                           \
             )                                                                     \
 
 

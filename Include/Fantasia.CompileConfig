@@ -20,5 +20,5 @@
 
 
 /// 选项：单元测试相关宏定义
-#define ___FANTASIA_ENABLE_UNITTEST
-#define ___FANTASIA_ENABLE_UNITTEST_Int64
+//#define ___FANTASIA_ENABLE_UNITTEST
+//#define ___FANTASIA_ENABLE_UNITTEST_Int64

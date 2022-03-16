@@ -139,11 +139,6 @@
             "name": "All",
             "inherits":["All.Base"],
             "configurePreset": "Ninja.Release"
-        },
-        {
-            "name": "All",
-            "inherits":["All.Base"],
-            "configurePreset": "Ninja.Debug"
         }
     ]
 }

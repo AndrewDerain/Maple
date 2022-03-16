@@ -1,51 +1,35 @@
 ﻿#pragma once
-#include "Basic.hxx"
+#include "../Basic/CodeLang.CXX.hxx"
+#include "../Basic/Macro.Preconfig.hxx"
+#include "../Basic/Macro.Decorate.hxx"
 
 
-// namespace _Fantasia
-#define __FANTASIA_FOUNDATION_DETAIL_BEGIN \
-    ___FANTASIA_DETAIL_BEGIN
+namespace _Fantasia::Foundation
+{
+
+    using Size = std::int64_t;
 
 
-#define __FANTASIA_FOUNDATION_DETAIL_END \
-    ___FANTASIA_DETAIL_END
+    struct Bool;
 
 
-// namespace Fantasia
-#define __FANTASIA_FOUNDATION_BEGIN \
-    ___FANTASIA_BEGIN \
+    struct Int64;
 
 
-#define __FANTASIA_FOUNDATION_END \
-    ___FANTASIA_END
+    struct String;
 
 
-// Foundation 前置声明
-__FANTASIA_FOUNDATION_DETAIL_BEGIN
-
-using Size = std::int64_t;
+    struct Float64;
 
 
-struct Bool;
+    template<size_t _FixedSize>
+    class FixedString;
 
 
-struct Int64;
+    template<typename _Ty, Size _Size>
+    struct ArrayT;
 
-
-struct String;
-
-
-struct Float64;
-
-
-template<size_t _FixedSize>
-class FixedString;
-
-
-template<typename _Ty, Size _Size>
-struct ArrayT;
-
-__FANTASIA_FOUNDATION_DETAIL_END
+} // _Fantasia::Foundation
 
 
 // Bool的单元测试辅助宏
