@@ -110,11 +110,6 @@ namespace _Fantasia::Foundation
 #pragma pack(pop)
 #pragma warning(pop)
 
-
 #ifdef __FANTASIA_OPTION_INLINE
-#    include "_Detail/Foundation/Float64.iapi.hpp"
-#endif
-
-#ifdef __FANTASIA_OPTION_HEADER_ONLY
-#    include "../../Source/Runtime/Foundation.Float64.impl.cxx"
+#    include "_Detail/Foundation/Float64.inli.hpp"
 #endif

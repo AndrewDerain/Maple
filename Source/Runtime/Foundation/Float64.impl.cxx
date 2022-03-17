@@ -1,7 +1,5 @@
-﻿#ifdef __FANTASIA_OPTION_HEADER_ONLY
-#    pragma once
-#endif
-#include <Runtime/_Detail/Foundation/Float64.iapi.hpp>
+﻿
+#include <Runtime/_Detail/Foundation/Float64.inli.hpp>
 
 
 #pragma warning(push)

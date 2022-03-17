@@ -71,5 +71,5 @@ namespace _Fantasia::Foundation
 #pragma warning(pop)
 
 #ifdef __FANTASIA_OPTION_INLINE
-#    include "_Detail/Foundation/Bool.iapi.hpp"
+#    include "_Detail/Foundation/Bool.inli.hpp"
 #endif

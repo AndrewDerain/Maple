@@ -61,10 +61,10 @@
 
 
 #define ___FANTASIA_DECORATE_0  
-#define ___FANTASIA_DECORATE_1(_D1)                 _D1
-#define ___FANTASIA_DECORATE_2(_D1, _D2)            _D1 ## _ ## _D2
-#define ___FANTASIA_DECORATE_3(_D1, _D2, _D3)       _D1 ## _ ## _D2 ## _ ## _D3
-#define ___FANTASIA_DECORATE_4(_D1, _D2, _D3, _D4)    _D1 ## _ ## _D2 ## _ ## _D3 ## _ ## _D4
+#define ___FANTASIA_DECORATE_1(_D1)                     _D1
+#define ___FANTASIA_DECORATE_2(_D1, _D2)                _D1 ## _ ## _D2
+#define ___FANTASIA_DECORATE_3(_D1, _D2, _D3)           _D1 ## _ ## _D2 ## _ ## _D3
+#define ___FANTASIA_DECORATE_4(_D1, _D2, _D3, _D4)      _D1 ## _ ## _D2 ## _ ## _D3 ## _ ## _D4
 
 
 #define ___FANTASIA_DECORATE(...) \

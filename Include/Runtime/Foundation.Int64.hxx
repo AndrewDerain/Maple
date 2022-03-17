@@ -136,7 +136,6 @@ namespace _Fantasia::Foundation
 #pragma pack(pop)
 #pragma warning(pop)
 
-
 #ifdef __FANTASIA_OPTION_INLINE
-#    include "_Detail/Foundation/Int64.iapi.hpp"
+#    include "_Detail/Foundation/Int64.inli.hpp"
 #endif

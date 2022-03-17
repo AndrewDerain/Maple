@@ -180,7 +180,3 @@ namespace _Fantasia::Foundation
 } // namespace _Fantasia::Foundation
 #pragma pack(pop)
 #pragma warning(pop)
-
-#ifdef __FANTASIA_OPTION_HEADER_ONLY
-#    include "../../../Source/Runtime/Foundation.String.impl.cxx"
-#endif

@@ -1,11 +1,9 @@
-﻿#ifdef __FANTASIA_OPTION_HEADER_ONLY
-#    pragma once
-#endif
-#include <Runtime/_Detail/Foundation/Int64.iapi.hpp>
+﻿
+#include <Runtime/_Detail/Foundation/Int64.inli.hpp>
 
 
-__api
-___FANTASIA_UnitTestHelper_Int64;
+// __api
+// ___FANTASIA_UnitTestHelper_Int64;
 
 
 #pragma warning(push)

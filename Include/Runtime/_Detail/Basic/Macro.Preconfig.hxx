@@ -11,12 +11,6 @@
 #include "../../../Fantasia.CompileConfig"
 
 
-/// @brief 用户设定的 header only 模式
-#ifdef fantasia_enable_header_only
-#   define ___FANTASIA_OPTION_HEADER_ONLY
-#endif
-
-
 /// @brief 用户设定的项目内连等级
 #if defined(fantasia_enable_inline)
 #   define ___FANTASIA_OPTION_INLINE

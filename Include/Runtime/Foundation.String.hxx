@@ -226,5 +226,5 @@ namespace _Fantasia::Foundation
 #pragma warning(pop)
 
 #ifdef __FANTASIA_OPTION_INLINE
-#    include "_Detail/Foundation/String.iapi.hpp"
+#    include "_Detail/Foundation/String.inli.hpp"
 #endif
