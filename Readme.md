@@ -15,8 +15,8 @@ Fantasia（幻曲）' . '， 这个名字意味着这个库可能永远也不会
 
 |类型| 文件夹| 说明 | Git 管理 |
 |----|------|------|:----------:|
-|文件夹|.buildcache|cmake 配置缓存|无，CMake自动生成|
 |文件夹|.vscode|Visual Studio Code 配置文件|有|
+|文件夹|out|cmake 配置缓存|无，CMake自动生成|
 |文件夹|Compiled|此项目生成的可执行文件和库文件|无|
 |文件夹|Install|此项目的cmake安装目录|无|
 |文件夹|Include|对外提供的包含目录|有|

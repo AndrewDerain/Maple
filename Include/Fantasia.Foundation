@@ -15,30 +15,27 @@
 
 namespace Fantasia::Foundation
 {
-    /// 表示数据的大小 满足 standa layout 和 trival
+    /// 表示数据的大小 满足 standard layout 和 trival
     using Size      = _Fantasia::Foundation::Size;
 
 
-    /// 数组 满足 standa layout 和 trival
+    /// 数组 满足 standard layout 和 trival
     template<typename _Ty, Size _Count>
     using Array     = _Fantasia::Foundation::ArrayT<_Ty, _Count>;
 
 
-    /// 布尔类型 满足 standa layout 和 trival
+    /// 布尔类型 满足 standard layout 和 trival
     using Bool      = _Fantasia::Foundation::Bool;
 
 
-    /// 64位整数 满足 standa layout 和 trival
+    /// 64位整数 满足 standard layout 和 trival
     using Int64     = _Fantasia::Foundation::Int64;
 
 
-    /// 64位浮点数 满足 standa layout 和 trival
+    /// 64位浮点数 满足 standard layout 和 trival
     using Float64   = _Fantasia::Foundation::Float64;
 
 
-    /// 字符串 满足 standa layout
+    /// 字符串 满足 standard layout
     using String    = _Fantasia::Foundation::String;
-
-
-    /// 
 }

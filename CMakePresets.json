@@ -10,8 +10,8 @@
             "name": "Base",
             "description": "全平台通用的配置",
             "hidden": true,
-            "binaryDir": "${sourceDir}/BuildCache/${presetName}",
-            "installDir": "${sourceDir}/Install/${presetName}"
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "installDir": "${sourceDir}/out/install/${presetName}"
         },
 
 
@@ -43,6 +43,14 @@
             "inherits":["Unix.Base"],
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "MinSizeRel"
+            }
+        },
+        {
+            "name": "Unix.RelWithDebInfo",
+            "description": "使用 Unix Makefiles 编译 RelWithDebInfo 版本的程序",
+            "inherits":["Unix.Base"],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
             }
         },
 

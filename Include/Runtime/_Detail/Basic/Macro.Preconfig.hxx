@@ -26,20 +26,6 @@
             26812
 
 
-/// @brief 项目根命名空间
-// #define ___FANTASIA_BEGIN              \
-//             namespace Fantasia {     
-// #define ___FANTASIA_END                \
-//             }                        
-
-
-/// @brief 此命名空间内放置非用户直接使用的类，枚举等等
-//#define ___FANTASIA_DETAIL_BEGIN       \
-//             namespace _Fantasia {    
-// #define ___FANTASIA_DETAIL_END         \
-//             }
-
-
 /// @brief [___FANTASIA_ALWAYS_EXPORT] - Always export
 #if defined(_WIN32) || defined(__CYGWIN__)
 #   if defined(__GNUC__)

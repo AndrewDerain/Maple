@@ -28,7 +28,7 @@ message("-- [Note] Fetch Catch2 library done!")
 #-----------------------------------------------------------------------------+
 #    单元测试程序
 #------------------------------------------------------------------------------
-#[[file(GLOB_RECURSE srcs "${CMAKE_CURRENT_SOURCE_DIR}/*")
+file(GLOB_RECURSE srcs "${CMAKE_CURRENT_SOURCE_DIR}/*")
 
 link_directories(
     "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}"
@@ -40,9 +40,9 @@ link_libraries(
 
 add_executable(
     FantasiaUnitTester ${srcs}
-)]]
+)
 
-add_executable(ExpAttr "Runtime/ExpAttr.cxx")
+#add_executable(ExpAttr "Runtime/ExpAttr.cxx")
 
 #-----------------------------------------------------------------------------+
 #    Catch2 测试

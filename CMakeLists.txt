@@ -31,11 +31,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 #    Config compiler 
 #------------------------------------------------------------------------------
 if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-	add_compile_options(/Zc:preprocessor)
+	add_compile_options(/Zc:preprocessor /ZI /INCREMENTAL)
 endif()
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-	SET(CMAKE_CXX_COMPILER "g++-11")
 endif()
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
@@ -48,30 +47,32 @@ endif()
 #-----------------------------------------------------------------------------+
 #    Config compile options
 #------------------------------------------------------------------------------
-if(CMAKE_GENERATOR MATCHES "^(Xcode|Visual Studio)")
-	set(CompileFolderPrefix "Compiled/${CMAKE_GENERATOR}")
-	message("-- [DBG] ${CompileFolderPrefix}")
+#[[if(CMAKE_GENERATOR MATCHES "^(Xcode|Visual Studio)")
+	set(CompileFolderPrefix "test/compiled/${CMAKE_GENERATOR}")	
 else()
-	set(CompileFolderPrefix "Compiled/${CMAKE_GENERATOR}/${CMAKE_BUILD_TYPE}")
+	set(CompileFolderPrefix "out/compiled/${CMAKE_GENERATOR}/${CMAKE_BUILD_TYPE}")
 endif()
+message("-- [DBG] ${CompileFolderPrefix}")]]
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY 
-	"${CMAKE_SOURCE_DIR}/${CompileFolderPrefix}")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY 
-	"${CMAKE_SOURCE_DIR}/${CompileFolderPrefix}")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG 		"${CMAKE_SOURCE_DIR}/bin")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE 		"${CMAKE_SOURCE_DIR}/bin")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL 	"${CMAKE_SOURCE_DIR}/bin")
+
+#[[set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG 		"${CMAKE_SOURCE_DIR}/lib")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY
-	"${CMAKE_SOURCE_DIR}/${CompileFolderPrefix}")
+	"${CMAKE_SOURCE_DIR}/${CompileFolderPrefix}")]]
+
 
 
 #-----------------------------------------------------------------------------+
 #    Config common include folders
 #------------------------------------------------------------------------------
 include_directories(
-	"${CMAKE_SOURCE_DIR}/Include")
+	"${CMAKE_SOURCE_DIR}/include")
 
 
 #-----------------------------------------------------------------------------+
 #    Config subprojects
 #------------------------------------------------------------------------------
-add_subdirectory("Source")
-#add_subdirectory("UnitTest")
+add_subdirectory("src")
+add_subdirectory("ut")
