@@ -42,7 +42,7 @@
 
 **5. 更新依赖的子模块**
 ```
-    $ git submodule update --init --recursive
+    $ python3 ./init_thirdparty.py
 ```
 
 **6. 创建 cmake build 缓存**
