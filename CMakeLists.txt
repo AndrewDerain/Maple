@@ -14,7 +14,7 @@ cmake_minimum_required (VERSION 3.20)
 #------------------------------------------------------------------------------
 project (
 	Fantasia
-	VERSION 1.0.0.0
+	VERSION 0.0.0.0
 	DESCRIPTION "Morden C++ Framework")
 
 
@@ -28,7 +28,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 
 #-----------------------------------------------------------------------------+
-#    Config compiler 
+#    Config compiler settings
 #------------------------------------------------------------------------------
 if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 	add_compile_options(/Zc:preprocessor /ZI /INCREMENTAL)
@@ -45,30 +45,40 @@ endif()
 
 
 #-----------------------------------------------------------------------------+
-#    Config compile options
+#    Config golbal config
 #------------------------------------------------------------------------------
-#[[if(CMAKE_GENERATOR MATCHES "^(Xcode|Visual Studio)")
-	set(CompileFolderPrefix "test/compiled/${CMAKE_GENERATOR}")	
+set(fantasia_runtime_out_dir 	"${CMAKE_SOURCE_DIR}/bin")
+set(fantasia_library_out_dir 	"${CMAKE_SOURCE_DIR}/lib")
+set(fantasia_archive_out_dir 	"${CMAKE_SOURCE_DIR}/lib")
+
+set(fantasia_third_party_dir				"${CMAKE_SOURCE_DIR}/thirdparty")
+set(fantasia_third_party_cmake_source_dir	"${CMAKE_SOURCE_DIR}/thirdparty/src")
+set(fantasia_third_party_cmake_binary_dir	"${CMAKE_BINARY_DIR}/thirdparty/src")
+
+if(CMAKE_BUILD_TYPE STREQUAL Debug)
+	set(fantasia_target_postfix "d")
 else()
-	set(CompileFolderPrefix "out/compiled/${CMAKE_GENERATOR}/${CMAKE_BUILD_TYPE}")
+	set(fantasia_target_postfix "")
 endif()
-message("-- [DBG] ${CompileFolderPrefix}")]]
-
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG 		"${CMAKE_SOURCE_DIR}/bin")
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE 		"${CMAKE_SOURCE_DIR}/bin")
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL 	"${CMAKE_SOURCE_DIR}/bin")
-
-#[[set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG 		"${CMAKE_SOURCE_DIR}/lib")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY
-	"${CMAKE_SOURCE_DIR}/${CompileFolderPrefix}")]]
-
-
 
 #-----------------------------------------------------------------------------+
-#    Config common include folders
+#    Config global include folders
 #------------------------------------------------------------------------------
 include_directories(
 	"${CMAKE_SOURCE_DIR}/include")
+
+
+#-----------------------------------------------------------------------------+
+#    Config golbal rpath
+#------------------------------------------------------------------------------
+set(CMAKE_INSTALL_RPATH ".:../lib")
+set(CMAKE_BUILD_RPATH	".:../lib")
+
+
+#-----------------------------------------------------------------------------+
+#    Config third party libraries
+#------------------------------------------------------------------------------
+include(cmake/prepare_thirdparty.cmake)
 
 
 #-----------------------------------------------------------------------------+

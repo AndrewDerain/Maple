@@ -1,5 +1,5 @@
 ﻿
-#include <Runtime/_Detail/Foundation/String.inli.hpp>
+#include <Runtime/_Detail/Foundation/String.inli.hxx>
 
 
 #pragma warning(push)

@@ -6,7 +6,7 @@
 /// @date 2022-02-03
 /// 
 #pragma once
-#include "_Detail/Foundation/Predeclars.hpp"
+#include "_Detail/Foundation/Predeclars.hxx"
 
 
 #pragma warning(push)
@@ -71,5 +71,5 @@ namespace _Fantasia::Foundation
 #pragma warning(pop)
 
 #ifdef __FANTASIA_OPTION_INLINE
-#    include "_Detail/Foundation/Bool.inli.hpp"
+#    include "_Detail/Foundation/Bool.inli.hxx"
 #endif

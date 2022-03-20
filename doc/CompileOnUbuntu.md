@@ -40,12 +40,17 @@
     $ cd Fantasia
 ```
 
-**5. 创建 cmake build 缓存**
+**5. 更新依赖的子模块**
 ```
-    $ cmake -S. -BBuildCache
+    $ git submodule update --init --recursive
 ```
 
-**6. 编译项目，程序会在 Compiled 文件夹中生成**
+**6. 创建 cmake build 缓存**
 ```
-    $ cmake --build BuildCache
+    $ cmake --preset="Unix.Release" .
+```
+
+**7. 编译项目，程序会在 Compiled 文件夹中生成**
+```
+    $ cmake --build --preset="Unix.Release.All"
 ```

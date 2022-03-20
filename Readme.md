@@ -42,10 +42,10 @@ Fantasia（幻曲）' . '， 这个名字意味着这个库可能永远也不会
 
 ## 编译项目
 - Linux 环境
-    - [Ubuntu 20.04 LTS](Documents/CompileOnUbuntu.md)
+    - [Ubuntu 20.04 LTS](doc/CompileOnUbuntu.md)
 
 ## 参考
-[代码原则](Documents/CodeConcept.md)
+[代码原则](doc/CodeConcept.md)
 
 ---
 > 仅以此项目，献给一直支持和鼓励我的韦女士 :)

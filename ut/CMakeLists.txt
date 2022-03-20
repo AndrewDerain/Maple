@@ -6,48 +6,57 @@ project(UnitTester)
 
 
 #-----------------------------------------------------------------------------+
-#    添加 FetchContent 支持
+#    引用第三方库
 #------------------------------------------------------------------------------
-Include(FetchContent)
+find_package(Catch2 3 REQUIRED)
 
 
 #-----------------------------------------------------------------------------+
-#    Fetch Catch2
+#    配置源代码文件
 #------------------------------------------------------------------------------
-FetchContent_Declare(
-        Catch2
-        GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-        GIT_TAG        v3.0.0-preview3
-)
-
-message("-- [Note] Fetching Catch2 library...")
-FetchContent_MakeAvailable(Catch2)
-message("-- [Note] Fetch Catch2 library done!")
+file(GLOB_RECURSE srcs "${CMAKE_CURRENT_SOURCE_DIR}/*")
 
 
 #-----------------------------------------------------------------------------+
 #    单元测试程序
 #------------------------------------------------------------------------------
-file(GLOB_RECURSE srcs "${CMAKE_CURRENT_SOURCE_DIR}/*")
+set(target_name_unit_test "ut${fantasia_target_postfix}")
+
+include_directories(
+    "${fantasia_third_party_dir}/include"
+)
 
 link_directories(
-    "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}"
+    "${fantasia_library_out_dir}"
+    "${fantasia_third_party_dir}/lib"
 )
 
 link_libraries(
-    "Fantasia.Runtime" Catch2::Catch2WithMain
+    "Fantasia.Runtime${fantasia_target_postfix}" "Catch2::Catch2WithMain"
 )
 
 add_executable(
-    FantasiaUnitTester ${srcs}
+    ${target_name_unit_test} ${srcs}
 )
 
+set_target_properties(
+    ${target_name_unit_test}
+    PROPERTIES
+
+    CXX_VISIBILITY_PRESET               hidden
+    VISIBILITY_INLINES_HIDDEN           ON
+
+    RUNTIME_OUTPUT_DIRECTORY_DEBUG          "${fantasia_runtime_out_dir}"
+    RUNTIME_OUTPUT_DIRECTORY_RELEASE        "${fantasia_runtime_out_dir}"
+    RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL     "${fantasia_runtime_out_dir}"
+    RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO "${fantasia_runtime_out_dir}"
+)
 #add_executable(ExpAttr "Runtime/ExpAttr.cxx")
+
 
 #-----------------------------------------------------------------------------+
 #    Catch2 测试
 #------------------------------------------------------------------------------
-list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
 include(CTest)
 include(Catch)
 #catch_discover_tests(FantasiaUnitTester)

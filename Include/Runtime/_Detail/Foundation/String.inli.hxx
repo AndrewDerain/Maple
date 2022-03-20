@@ -18,7 +18,7 @@ namespace _Fantasia::Foundation
 
 
     __api_inline __api_constexpr
-    Property Int64
+	Int64
     String::Length() const {
 
         if(_Storage.IsOnStack)
@@ -29,7 +29,7 @@ namespace _Fantasia::Foundation
 
 
     __api_inline __api_constexpr
-    Property Int64 
+	Int64
     String::Capicity() const {
         
         if(_Storage.IsOnStack)

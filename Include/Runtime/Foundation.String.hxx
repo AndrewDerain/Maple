@@ -6,7 +6,7 @@
 /// @date 2022-02-03
 /// 
 #pragma once
-#include "_Detail/Foundation/Predeclars.hpp"
+#include "_Detail/Foundation/Predeclars.hxx"
 
 
 #pragma warning(push)
@@ -29,13 +29,13 @@ namespace _Fantasia::Foundation
         /// @note 如果存储的是中文以及其他多字节字符，则返回的是占用内存的大小（不包含结尾的 '\0' 字符）。
         [[maybe_unused]]
         __api_inline __api_constexpr
-        Property Int64 Length() const;
+        Int64 Length() const;
 
 
         /// @brief 字符串占用的内存空间
         [[maybe_unused]]
         __api_inline __api_constexpr
-        Property Int64 Capicity() const;
+        Int64 Capicity() const;
 
 
         /// @brief 默认构造函数。
@@ -190,6 +190,10 @@ namespace _Fantasia::Foundation
         Storage _Storage;
 
 
+        __api_inline 
+        void _Assign(const String& other);
+
+
         /// @brief 内部函数，使用 c 样式字符串进行初始化。
         /// @note 如果 value 是空指针，此对象会被初始化为空字符串（""）。
         __api_inline __api_constexpr
@@ -218,13 +222,48 @@ namespace _Fantasia::Foundation
     };
 
 
-    // static_assert(std::is_trivial_v<String>, "Int64 must be trival!");
     static_assert(std::is_standard_layout_v<String>, "String must be standard layout!");
+
+
+    __always_inline
+    bool operator==(const String& left, const String& right) {
+        return strcmp(left, right) == 0;
+    }
+
+
+    __always_inline
+    bool operator!=(const String& left, const String& right) {
+        return strcmp(left, right) != 0;
+    }
+
+
+    __always_inline
+    bool operator>(const String& left, const String& right) {
+        return strcmp(left, right) > 0;
+    }
+
+
+    __always_inline
+    bool operator<(const String& left, const String& right) {
+        return strcmp(left, right) < 0;
+    }
+
+
+    __always_inline
+    bool operator>=(const String& left, const String& right) {
+        return strcmp(left, right) >= 0;
+    }
+
+
+    __always_inline
+    bool operator<=(const String& left, const String& right) {
+        return strcmp(left, right) <= 0;
+    }
 
 } // namespace _Fantasia::Foundation
 #pragma pack(pop)
 #pragma warning(pop)
 
 #ifdef __FANTASIA_OPTION_INLINE
-#    include "_Detail/Foundation/String.inli.hpp"
+#    include "_Detail/Foundation/String.inli.hxx"
 #endif

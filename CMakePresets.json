@@ -2,9 +2,10 @@
     "version": 3,
     "cmakeMinimumRequired": {
         "major": 3,
-        "minor": 20
+        "minor": 18
     },
-    
+
+
     "configurePresets": [
         {
             "name": "Base",
@@ -14,7 +15,7 @@
             "installDir": "${sourceDir}/out/install/${presetName}"
         },
 
-
+        
         {
             "name": "Unix.Base",
             "hidden": true,
@@ -117,34 +118,34 @@
         {
             "name": "All.Base",
             "hidden": true,
-            "targets":["Fantasia.Runtime", "FantasiaUnitTester"]
+            "targets":["Fantasia.Runtime", "fantasia", "Thirdparty", "ut"]
         },
 
 
         {
-            "name": "All",
+            "name": "Unix.Debug.All",
             "inherits":["All.Base"],
             "configurePreset": "Unix.Debug"
         },
         {
-            "name": "All",
+            "name": "Unix.Release.All",
             "inherits":["All.Base"],
             "configurePreset": "Unix.Release"
         },
         {
-            "name": "All",
+            "name": "Unix.MinSizeRel.All",
             "inherits":["All.Base"],
             "configurePreset": "Unix.MinSizeRel"
         },
 
 
         {
-            "name": "All",
+            "name": "Ninja.Debug.All",
             "inherits":["All.Base"],
             "configurePreset": "Ninja.Debug"
         },
         {
-            "name": "All",
+            "name": "Ninja.Release.All",
             "inherits":["All.Base"],
             "configurePreset": "Ninja.Release"
         }

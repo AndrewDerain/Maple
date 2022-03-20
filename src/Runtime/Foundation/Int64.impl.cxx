@@ -1,5 +1,5 @@
 ﻿
-#include <Runtime/_Detail/Foundation/Int64.inli.hpp>
+#include <Runtime/_Detail/Foundation/Int64.inli.hxx>
 
 
 // __api

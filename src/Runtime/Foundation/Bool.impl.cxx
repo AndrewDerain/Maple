@@ -1,5 +1,5 @@
 ﻿
-#include <Runtime/_Detail/Foundation/Bool.inli.hpp>
+#include <Runtime/_Detail/Foundation/Bool.inli.hxx>
 
 
 #pragma warning(push)

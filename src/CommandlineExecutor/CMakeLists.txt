@@ -3,7 +3,7 @@
 #    Config project name.
 #------------------------------------------------------------------------------
 project (
-	CommandExecutor
+	CommandlineExecutor
 	VERSION 1.0.0.0
 	DESCRIPTION "Morden C++ Framework Commandline executor")
 
@@ -17,11 +17,34 @@ file(GLOB_RECURSE srcs "${CMAKE_CURRENT_SOURCE_DIR}/*")
 #-----------------------------------------------------------------------------+
 #    配置项目输出库文件
 #------------------------------------------------------------------------------
-add_executable(vint ${srcs})
+set(target_name_command_executor "fantasia${fantasia_target_postfix}")
+
+link_directories(
+    "${fantasia_library_out_dir}"
+)
+
+link_libraries(
+    "Fantasia.Runtime${fantasia_target_postfix}"
+)
+
+add_executable(
+    ${target_name_command_executor} ${srcs}
+)
 
 set_target_properties(
-    vint 
+    ${target_name_command_executor} 
     PROPERTIES 
+    
     CXX_VISIBILITY_PRESET      hidden
     VISIBILITY_INLINES_HIDDEN  ON
+
+    RUNTIME_OUTPUT_DIRECTORY_DEBUG          "${fantasia_runtime_out_dir}"
+    RUNTIME_OUTPUT_DIRECTORY_RELEASE        "${fantasia_runtime_out_dir}"
+    RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL     "${fantasia_runtime_out_dir}"
+    RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO "${fantasia_runtime_out_dir}"
 )
+
+
+#-----------------------------------------------------------------------------+
+#    项目安装配置
+#------------------------------------------------------------------------------
