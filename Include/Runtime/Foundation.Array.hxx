@@ -71,6 +71,11 @@ namespace _Fantasia::Foundation
     };
 
 
+    // POD 校验。standard layout and trivial。
+    static_assert(std::is_trivial_v<ArrayT<int, 5>>, "ArrayT must be trivial!");
+    static_assert(std::is_standard_layout_v<ArrayT<int, 5>>, "ArrayT must be standard layout!");
+
+
     template<typename _Ty, int64_t _Count>
     [[maybe_unused]] __always_inline __always_constexpr
     Int64 ArrayT<_Ty, _Count>::Count() const {

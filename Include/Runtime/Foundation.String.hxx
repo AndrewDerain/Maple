@@ -22,7 +22,7 @@ namespace _Fantasia::Foundation
         /// @brief 字符串所能存储的最大容量（以字节计算）。
         [[maybe_unused]]
         __api_inline __api_constexpr
-        static Int64 MaxCapicity();
+        static Int64 MaxCapacity();
 
 
         /// @brief 获取字符串的长度
@@ -35,7 +35,7 @@ namespace _Fantasia::Foundation
         /// @brief 字符串占用的内存空间
         [[maybe_unused]]
         __api_inline __api_constexpr
-        Int64 Capicity() const;
+        Int64 Capacity() const;
 
 
         /// @brief 默认构造函数。
@@ -86,30 +86,30 @@ namespace _Fantasia::Foundation
 
     protected:
         /// @brief Stack 上可以存储值的最大空间（包含'\0'）。
-        static constexpr const int64_t _StackMaxCapicity 		= 14;
+        static constexpr const int64_t _StackMaxCapacity 		= 14;
 
 
         /// @brief 额外预分配空间
-        static constexpr const int64_t _ReservedSpaceCapicity	= _StackMaxCapicity * 5;
+        static constexpr const int64_t _ReservedSpaceCapacity	= _StackMaxCapacity * 5;
 
 
         /// @brief Stack 上可存储的最大整数
-        /// @see _StackMaxCapicity
+        /// @see _StackMaxCapacity
         static constexpr const int64_t _MaxIntegerValueOnStack 	= 9999999999999;
 
 
         /// @brief Stack 上可存储的最小整数
-        /// @see _StackMaxCapicity
+        /// @see _StackMaxCapacity
         static constexpr const int64_t _MinIntegerValueOnStack 	= -999999999999;
 
 
         /// @brief Stack 上可存储的最大浮点数（非科学计数法）
-        /// @see _StackMaxCapicity
+        /// @see _StackMaxCapacity
         static constexpr const double _MaxFloatValueOnStack 	= 9999999999999;
 
 
         /// @brief Stack 上可存储的最小浮点数（非科学计数法）
-        /// @see _StackMaxCapicity
+        /// @see _StackMaxCapacity
         static constexpr const double _MinFloatValueOnStack    	= -0.0000000001;
 
 
@@ -130,7 +130,7 @@ namespace _Fantasia::Foundation
 
 
                 /// @brief 栈上存储的字符串值
-                char StoredValue[_StackMaxCapicity];
+                char StoredValue[_StackMaxCapacity];
 
 
                 /// @brief 重置为空字符串
@@ -158,7 +158,7 @@ namespace _Fantasia::Foundation
 
 
                 /// @brief 在堆上已申请的内存空间大小
-                std::uint16_t Capicity;
+                std::uint16_t Capacity;
 
 
                 /// @brief 堆起始地址

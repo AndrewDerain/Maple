@@ -12,7 +12,7 @@ namespace _Fantasia::Foundation
 
     __api_inline __api_constexpr
     Int64 
-    String::MaxCapicity() {
+    String::MaxCapacity() {
         return std::numeric_limits<std::uint16_t>::max();    
     }
 
@@ -30,12 +30,12 @@ namespace _Fantasia::Foundation
 
     __api_inline __api_constexpr
 	Int64
-    String::Capicity() const {
+    String::Capacity() const {
         
         if(_Storage.IsOnStack)
-            return Int64(_StackMaxCapicity);
+            return Int64(_StackMaxCapacity);
         else 
-            return _Storage.Heap.Capicity;
+            return _Storage.Heap.Capacity;
     }
 
 
@@ -116,7 +116,7 @@ namespace _Fantasia::Foundation
     String::Storage::HeapStore::Reset() {
 
         Length = 0;
-        Capicity = 0;
+        Capacity = 0;
 
         Deallocate();
     }
@@ -138,7 +138,7 @@ namespace _Fantasia::Foundation
         }
 
         std::uint16_t len = strlen(value);
-        if(len < _StackMaxCapicity) {
+        if(len < _StackMaxCapacity) {
             if(!_Storage.IsOnStack) {
                 _Storage.Heap.Reset();
             }
@@ -158,7 +158,7 @@ namespace _Fantasia::Foundation
     String::_Append(const char* value, int64_t len) {
 
         if(_Storage.IsOnStack) {
-            if(len < _StackMaxCapicity - _Storage.Stack.Length) {
+            if(len < _StackMaxCapacity - _Storage.Stack.Length) {
                 _AppendOnStack(value, len);
             }
             else {

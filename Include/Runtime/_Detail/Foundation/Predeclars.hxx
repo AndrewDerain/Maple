@@ -4,6 +4,9 @@
 #include "../Basic/Macro.Decorate.hxx"
 
 
+#pragma warning(push)
+#pragma warning(disable: ___FANTASIA_WARNING_DISABLE_IDS)
+#pragma pack(push, ___FANTASIA_PACKING)
 namespace _Fantasia::Foundation
 {
 
@@ -30,6 +33,8 @@ namespace _Fantasia::Foundation
     struct ArrayT;
 
 } // _Fantasia::Foundation
+#pragma pack(pop)
+#pragma warning(pop)
 
 
 // Bool的单元测试辅助宏

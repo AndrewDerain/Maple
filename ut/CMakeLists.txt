@@ -57,6 +57,6 @@ set_target_properties(
 #-----------------------------------------------------------------------------+
 #    Catch2 测试
 #------------------------------------------------------------------------------
-include(CTest)
-include(Catch)
+#include(CTest)
+#include(Catch)
 #catch_discover_tests(FantasiaUnitTester)

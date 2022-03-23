@@ -12,7 +12,7 @@ namespace _Fantasia::Foundation
     void 
     String::Storage::HeapStore::Set(const char* value, std::uint16_t len) {
 
-        if(Capicity > len) {
+        if(Capacity > len) {
             strcpy(StoredValue, value);
             Length = len;
         }
@@ -22,8 +22,8 @@ namespace _Fantasia::Foundation
             }
 
             Length = len;
-            Capicity = len + 1;
-            StoredValue = new char[Capicity];
+            Capacity = len + 1;
+            StoredValue = new char[Capacity];
 
             strcpy(StoredValue, value);
         }
@@ -43,15 +43,15 @@ namespace _Fantasia::Foundation
     __api 
     void String::_MoveToHeap(int64_t reserved_space) {
         
-        int64_t HeapSize    = reserved_space + _ReservedSpaceCapicity;
+        int64_t HeapSize    = reserved_space + _ReservedSpaceCapacity;
         char*   StrVal      = new char[HeapSize];
         auto    Len         = _Storage.Stack.Length;
         
-        memcpy(StrVal, _Storage.Stack.StoredValue, _StackMaxCapicity);
+        memcpy(StrVal, _Storage.Stack.StoredValue, _StackMaxCapacity);
 
         _Storage.Heap.IsOnStack     = false;
         _Storage.Heap.Length        = Len;
-        _Storage.Heap.Capicity      = HeapSize;
+        _Storage.Heap.Capacity      = HeapSize;
         _Storage.Heap.StoredValue   = StrVal;
     }
 
@@ -59,15 +59,15 @@ namespace _Fantasia::Foundation
     __api
     void String::_AppendOnHeap(const char* value, int64_t len) {
 
-        if(_Storage.Heap.Capicity <= _Storage.Heap.Length + len) {
-            int64_t NewCapicity = _Storage.Heap.Length + len + _ReservedSpaceCapicity;
+        if(_Storage.Heap.Capacity <= _Storage.Heap.Length + len) {
+            int64_t NewCapicity = _Storage.Heap.Length + len + _ReservedSpaceCapacity;
             char*   StrVal      = new char[NewCapicity];
             
             strcpy(StrVal, _Storage.Heap.StoredValue);
             delete _Storage.Heap.StoredValue;
             
             _Storage.Heap.StoredValue   = StrVal;
-            _Storage.Heap.Capicity      = NewCapicity;
+            _Storage.Heap.Capacity      = NewCapicity;
             _Storage.Heap.Length        = _Storage.Heap.Length + len;
         }
         else {

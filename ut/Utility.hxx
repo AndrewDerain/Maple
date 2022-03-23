@@ -7,6 +7,8 @@
 #include <vector>
 #include <iostream>
 
+class pr1;
+
 namespace Utility
 {
 	template<class _T>

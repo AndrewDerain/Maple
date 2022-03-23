@@ -7,6 +7,7 @@
 #include <Fantasia.Foundation>
 #include <typeinfo>
 
+
 constexpr bool IsEqual(const char* lstr, const char* rstr)
 {
 	for(int i = 0; lstr[i] != '\0' && rstr[i] != '\0'; i++)
@@ -14,8 +15,6 @@ constexpr bool IsEqual(const char* lstr, const char* rstr)
 	return true;
 }
 
-#define ARG(X) X
-#define NM(...)  # __VA_ARGS__
 
 template<typename _T, bool _False >
 struct no_partial_specialization
@@ -353,4 +352,100 @@ namespace UnitTest::Foundation::TestInt64
 	// 			  	"Int64& Int64::operator=(unsigned short value) noexcept"));
 	// 	}
 	// } // end of TEST_CASE("Int64 assign" ...
+}
+
+#include <unordered_map>
+
+namespace PropertyTest
+{
+
+    template<typename ParentTy, typename ValueTy>
+    class xxx
+    {
+        friend ParentTy;
+
+        struct Pair
+        {
+            std::function<void (ValueTy&)> Setter;
+            std::function<ValueTy& (void)> Getter;
+        };
+
+        static Pair map[100];
+
+    public:
+        template<class _Fty>
+        xxx(_Fty _f) {
+            //_f(34);
+            map[Index()] = Pair{std::move(_f), nullptr};
+        }
+
+        xxx() {
+
+        }
+
+        void operator=(ValueTy value) {
+            map[Index()].Setter(value);
+        }
+
+        int Index() {
+            return (uint64_t)(&_Height) % 100;
+        }
+
+    private:
+        ValueTy _Height;
+    };
+
+    /*
+     * auto Height = property();
+     *
+     *
+     * */
+
+    template<typename ParentTy, typename ValueTy>
+    typename xxx<ParentTy, ValueTy>::Pair xxx<ParentTy, ValueTy>::map[100];
+
+    int p1() {
+
+    }
+
+    class Dog
+    {
+    public:
+        xxx<Dog, int> Height =
+        {
+            [](int v){ std::cout << v << std::endl; }
+        };
+
+        std::function<void(int v)> mm = {
+                [](int v){ std::cout << v << std::endl; }
+        };
+
+    public:
+
+        void set_height(int height) {
+
+        }
+    };
+
+    template<class _Fty, class ...>
+    void fmm(_Fty&& _f) {
+        //std::cout << v << std::endl;
+        std::cout << __PRETTY_FUNCTION__ << std::endl;
+        _f(34);
+    }
+
+    TEST_CASE("DemoProp", "Demo1")
+    {
+        std::cout << sizeof(int) << std::endl;
+        std::cout << sizeof(xxx<Dog, int>) << std::endl;
+        std::cout << sizeof(Dog) << std::endl;
+
+        std::function<void(int v)> mm;
+        mm = [](int v){ std::cout << v << std::endl; };
+
+        fmm([](int v){ std::cout << v << std::endl; });
+
+        Dog wc;
+        wc.Height = 90;
+    }
 }

@@ -12,7 +12,7 @@
 
 
 /// @brief 用户设定的项目内连等级
-#if defined(fantasia_enable_inline)
+#if defined(fantasia_option_enable_inline)
 #   define ___FANTASIA_OPTION_INLINE
 #endif
 

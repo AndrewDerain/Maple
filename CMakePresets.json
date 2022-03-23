@@ -118,12 +118,12 @@
         {
             "name": "All.Debug.Base",
             "hidden": true,
-            "targets":["Fantasia.Runtimed", "fantasiad", "Thirdparty", "utd"]
+            "targets":["Fantasia.Runtimed", "fantasiad", "utd"]
         },
         {
             "name": "All.Base",
             "hidden": true,
-            "targets":["Fantasia.Runtime", "fantasia", "Thirdparty", "ut"]
+            "targets":["Fantasia.Runtime", "fantasia", "ut"]
         },
 
 
