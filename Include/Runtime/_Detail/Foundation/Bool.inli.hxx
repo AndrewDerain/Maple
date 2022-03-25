@@ -1,6 +1,5 @@
 ﻿#pragma once
-#include <Runtime/Foundation.Bool.hxx>
-#include <Runtime/Foundation.String.hxx>
+#include "../../Foundation/String.hxx"
 
 
 #pragma warning(push)
@@ -9,13 +8,13 @@
 namespace _Fantasia::Foundation
 {
 
-    __api_inline __api_constexpr
+    inline constexpr
     Bool::Bool(bool value) noexcept:
         _StoredValue(value) {
     };
 
 
-    __api_inline __api_constexpr
+    inline constexpr
     String Bool::ToString() const {
         if(_StoredValue) 
             return "true";
@@ -24,21 +23,20 @@ namespace _Fantasia::Foundation
     }
 
 
-    __api_inline __api_constexpr
+    inline constexpr
     Bool::operator bool const&() const noexcept {
         return _StoredValue;
     }
 
 
-    __api_inline __api_constexpr
+    inline constexpr
     Bool::operator bool&() noexcept {
         return _StoredValue;
     }
 
 
-    __api_inline __api_constexpr
-    Bool& 
-    Bool::operator=(bool value) noexcept {
+    inline constexpr
+    Bool& Bool::operator=(bool value) noexcept {
         _StoredValue = value;
         return *this;
     }
@@ -46,7 +44,3 @@ namespace _Fantasia::Foundation
 } // namespace _Fantasia::Foundation
 #pragma pack(pop)
 #pragma warning(pop)
-
-#ifdef __FANTASIA_OPTION_HEADER_ONLY
-#    include "../../../Source/Runtime/Foundation.Bool.impl.cxx"
-#endif

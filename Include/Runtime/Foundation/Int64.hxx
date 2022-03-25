@@ -6,7 +6,7 @@
 /// @date 2022-01-22
 /// 
 #pragma once
-#include "_Detail/Foundation/Predeclars.hxx"
+#include "../_Detail/Foundation/Predeclars.hxx"
 
 
 #pragma warning(push)
@@ -19,11 +19,11 @@ namespace _Fantasia::Foundation
     struct Int64
     {
     public:
-        __api_inline __api_constexpr
+        inline constexpr
         static Int64 Max() noexcept;
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         static Int64 Min() noexcept;
 
 
@@ -39,52 +39,52 @@ namespace _Fantasia::Foundation
         Int64(const Int64&) = default;
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         Int64(int64_t value) noexcept;
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         Int64(uint64_t value);
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         Int64(char value) noexcept;
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         Int64(signed char value) noexcept;
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         Int64(unsigned char value) noexcept;
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         Int64(short value) noexcept;
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         Int64(unsigned short value) noexcept;
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         Int64(int32_t value) noexcept;
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         Int64(uint32_t value) noexcept;
 
 
         /// @brief 转换为字符串
-        __api
+        __decorate(Fantasia, api)
         String ToString() const;
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         operator int64_t const&() const noexcept;
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         operator int64_t&() noexcept;
 
 
@@ -92,35 +92,35 @@ namespace _Fantasia::Foundation
         Int64& operator=(const Int64&) = default;
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         Int64& operator=(Float64 other) noexcept;
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         Int64& operator=(short value) noexcept;
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         Int64& operator=(unsigned short value) noexcept;
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         Int64& operator=(int32_t value) noexcept;
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         Int64& operator=(uint32_t value) noexcept;
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         Int64& operator=(int64_t value) noexcept;
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         Int64& operator=(uint64_t value) noexcept;
 
 
-        __api_inline __api_constexpr
+        inline constexpr
         Int64& operator=(double value) noexcept;
 
 
@@ -137,6 +137,5 @@ namespace _Fantasia::Foundation
 #pragma pack(pop)
 #pragma warning(pop)
 
-#ifdef __FANTASIA_OPTION_INLINE
-#    include "_Detail/Foundation/Int64.inli.hxx"
-#endif
+
+#include "../_Detail/Foundation/Int64.inli.hxx"

@@ -24,14 +24,6 @@ namespace _Fantasia::Foundation
 
     struct Float64;
 
-
-    template<size_t _FixedSize>
-    class FixedString;
-
-
-    template<typename _Ty, Size _Size>
-    struct ArrayT;
-
 } // _Fantasia::Foundation
 #pragma pack(pop)
 #pragma warning(pop)

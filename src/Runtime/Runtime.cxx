@@ -3,6 +3,7 @@
 
 #include "Runtime.hxx"
 
+#include <Fantasia.Foundation>
 
 
 

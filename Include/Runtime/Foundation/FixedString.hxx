@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "_Detail/Foundation/Predeclars.hxx"
+#include "../_Detail/Foundation/Predeclars.hxx"
 
 
 #pragma warning(push)
@@ -7,10 +7,13 @@
 #pragma pack(push, ___FANTASIA_PACKING)
 namespace _Fantasia::Foundation
 {
+    template<size_t _FixedSize>
+    class FixedString;
+
 
     template<size_t _FixedSize>
-    __always_inline bool
-    operator==(
+    inline constexpr
+    Bool operator==(
         const FixedString<_FixedSize>& _Left, 
         const char* const _Right);
 
@@ -96,18 +99,19 @@ namespace _Fantasia::Foundation
 
 
         template<size_t _Size>
-        friend bool operator==(const FixedString<_Size>&, const char* const);
+        inline constexpr
+        friend Bool operator==(const FixedString<_Size>&, const char* const);
 
 
-        __always_inline bool _Equal(const char* const right) const {
+        bool _Equal(const char* const right) const {
             return strcmp(this->data(), right) == 0;
         }
     };
 
 
     template<size_t _FixedSize>
-    __always_inline bool
-    operator==(
+    inline constexpr
+    Bool operator==(
         const FixedString<_FixedSize>& _Left, 
         const char* const _Right) {
             

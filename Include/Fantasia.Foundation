@@ -4,35 +4,35 @@
 /// email: locomoco@yeah.net
 ///
 #pragma once
-#include <Runtime/Foundation.Array.hxx>
-#include <Runtime/Foundation.Bool.hxx>
-#include <Runtime/Foundation.Enum.hxx>
-#include <Runtime/Foundation.FixedString.hxx>
-#include <Runtime/Foundation.Float64.hxx>
-#include <Runtime/Foundation.Int64.hxx>
-#include <Runtime/Foundation.String.hxx>
+#include <Runtime/Foundation/Array.hxx>
+#include <Runtime/Foundation/Bool.hxx>
+#include <Runtime/Foundation/Enum.hxx>
+#include <Runtime/Foundation/FixedString.hxx>
+#include <Runtime/Foundation/Float64.hxx>
+#include <Runtime/Foundation/Int64.hxx>
+#include <Runtime/Foundation/String.hxx>
 
 
 namespace Fantasia::Foundation
 {
-    /// 表示数据的大小 满足 standard layout 和 trival
+    /// 表示数据的大小 满足 standard layout 和 trivial
     using Size      = _Fantasia::Foundation::Size;
 
 
-    /// 数组 满足 standard layout 和 trival
+    /// 数组 满足 standard layout 和 trivial
     template<typename _Ty, Size _Count>
     using Array     = _Fantasia::Foundation::ArrayT<_Ty, _Count>;
 
 
-    /// 布尔类型 满足 standard layout 和 trival
+    /// 布尔类型 满足 standard layout 和 trivial
     using Bool      = _Fantasia::Foundation::Bool;
 
 
-    /// 64位整数 满足 standard layout 和 trival
+    /// 64位整数 满足 standard layout 和 trivial
     using Int64     = _Fantasia::Foundation::Int64;
 
 
-    /// 64位浮点数 满足 standard layout 和 trival
+    /// 64位浮点数 满足 standard layout 和 trivial
     using Float64   = _Fantasia::Foundation::Float64;
 
 

@@ -1,5 +1,5 @@
 ﻿
-#include <Runtime/_Detail/Foundation/Int64.inli.hxx>
+#include <Runtime/Foundation/Int64.hxx>
 
 
 // __api
@@ -12,7 +12,7 @@
 namespace _Fantasia::Foundation
 {
 
-    __api
+    __decorate(Fantasia, api)
     String 
     Int64::ToString() const {
 

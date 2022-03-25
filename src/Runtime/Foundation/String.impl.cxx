@@ -1,5 +1,5 @@
 ﻿
-#include <Runtime/_Detail/Foundation/String.inli.hxx>
+#include <Runtime/Foundation/String.hxx>
 
 
 #pragma warning(push)
@@ -8,73 +8,85 @@
 namespace _Fantasia::Foundation
 {
 
-    __api
-    void 
-    String::Storage::HeapStore::Set(const char* value, std::uint16_t len) {
+#pragma region StringHeapStorage
 
-        if(Capacity > len) {
-            strcpy(StoredValue, value);
-            Length = len;
+    __decorate(Fantasia, api)
+    void StringHeapStorage::Set(const char* value, std::uint16_t len) {
+
+        if(_Capacity > len) {
+            strcpy(_StoredValue, value);
+            _Length = len;
         }
         else {
-            if(StoredValue) {
-                delete StoredValue;
+            if(_StoredValue) {
+                delete _StoredValue;
             }
 
-            Length = len;
-            Capacity = len + 1;
-            StoredValue = new char[Capacity];
+            _Length      = len;
+            _Capacity    = len + 1 + 50;
+            _StoredValue = new char[_Capacity];
 
-            strcpy(StoredValue, value);
+            strcpy(_StoredValue, value);
+        }
+
+        _IsOnStack = false;
+    }
+
+
+    __decorate(Fantasia, api)
+    void StringHeapStorage::Deallocate() {
+
+        if(_StoredValue) {
+            delete _StoredValue;
+            _StoredValue = nullptr;
         }
     }
 
 
-    __api
-    void String::Storage::HeapStore::Deallocate() {
+    void StringHeapStorage::Extend(std::uint64_t size) {
 
-        if(StoredValue) {
-        delete StoredValue;
-        StoredValue = nullptr;
-        }
+        int64_t capacity    = _Capacity + size + 50;
+        char*   memory      = new char[capacity];
+
+        memcpy(memory, _StoredValue, _Length + 1);
+        delete _StoredValue;
+
+        Replace(memory, _Length, capacity);
     }
+#pragma endregion // StringHeapStorage
 
 
-    __api 
+
+
+#pragma region String
+
+    __decorate(Fantasia, api) 
     void String::_MoveToHeap(int64_t reserved_space) {
         
-        int64_t HeapSize    = reserved_space + _ReservedSpaceCapacity;
-        char*   StrVal      = new char[HeapSize];
-        auto    Len         = _Storage.Stack.Length;
+        int64_t capacity    = reserved_space + 14 * 5;
+        char*   memory      = new char[capacity];
+        Int64   len         = _Storage.Stack().Length();
         
-        memcpy(StrVal, _Storage.Stack.StoredValue, _StackMaxCapacity);
+        memcpy(memory,
+               _Storage.Stack().StoredValue(),
+               _Storage.Stack().Capacity());
 
-        _Storage.Heap.IsOnStack     = false;
-        _Storage.Heap.Length        = Len;
-        _Storage.Heap.Capacity      = HeapSize;
-        _Storage.Heap.StoredValue   = StrVal;
+        _Storage.Heap().Initialize();
+        _Storage.Heap().Replace(memory, len, capacity);
     }
 
 
-    __api
+    __decorate(Fantasia, api)
     void String::_AppendOnHeap(const char* value, int64_t len) {
 
-        if(_Storage.Heap.Capacity <= _Storage.Heap.Length + len) {
-            int64_t NewCapicity = _Storage.Heap.Length + len + _ReservedSpaceCapacity;
-            char*   StrVal      = new char[NewCapicity];
-            
-            strcpy(StrVal, _Storage.Heap.StoredValue);
-            delete _Storage.Heap.StoredValue;
-            
-            _Storage.Heap.StoredValue   = StrVal;
-            _Storage.Heap.Capacity      = NewCapicity;
-            _Storage.Heap.Length        = _Storage.Heap.Length + len;
+        if(_Storage.Heap().Capacity() <= _Storage.Heap().Length() + len) {
+            _Storage.Heap().Extend(len);
         }
-        else {
-            strcat(_Storage.Heap.StoredValue, value);
-            _Storage.Heap.Length = _Storage.Heap.Length + len;
-        }
+
+        _Storage.Heap().Catenate(value, len);
     }
+
+#pragma endregion // String
 
 } // namespace _Fantasia::Foundation
 #pragma pack(pop)

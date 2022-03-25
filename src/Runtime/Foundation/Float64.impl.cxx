@@ -1,5 +1,5 @@
 ﻿
-#include <Runtime/_Detail/Foundation/Float64.inli.hxx>
+#include <Runtime/Foundation/Float64.hxx>
 
 
 #pragma warning(push)

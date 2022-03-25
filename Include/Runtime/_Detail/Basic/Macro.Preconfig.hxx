@@ -8,13 +8,6 @@
 /// @date 2021-02-20
 /// 
 #pragma once
-#include "../../../Fantasia.CompileConfig"
-
-
-/// @brief 用户设定的项目内连等级
-#if defined(fantasia_option_enable_inline)
-#   define ___FANTASIA_OPTION_INLINE
-#endif
 
 
 /// @brief 全局字节对齐选项，此项目默认为 8 字节对齐
@@ -26,68 +19,49 @@
             26812
 
 
-/// @brief [___FANTASIA_ALWAYS_EXPORT] - Always export
+/// @brief [___FANTASIA_API]
+/// @details 此宏指定某个函数在项目中是被导出的
 #if defined(_WIN32) || defined(__CYGWIN__)
 #   if defined(__GNUC__)
 #       if defined(___FNATASIA_EXPORTS)
-#           define ___FANTASIA_ALWAYS_EXPORT __attribute__ ((dllexport))
+#           define ___FANTASIA_API __attribute__ ((dllexport))
 #       else
-#           define ___FANTASIA_ALWAYS_EXPORT __attribute__ ((dllimport))
+#           define ___FANTASIA_API __attribute__ ((dllimport))
 #       endif
 #   endif
 #   if defined(_MSC_VER)
 #       if defined(___FNATASIA_EXPORTS)
-#           define ___FANTASIA_ALWAYS_EXPORT __declspec (dllexport)
+#           define ___FANTASIA_API __declspec (dllexport)
 #       else
-#           define ___FANTASIA_ALWAYS_EXPORT __declspec (dllimport)
+#           define ___FANTASIA_API __declspec (dllimport)
 #       endif
 #   endif
 #else
 #   if defined(__GNUC__)
 #       if defined(___FNATASIA_EXPORTS)
-#           define ___FANTASIA_ALWAYS_EXPORT __attribute__ ((visibility ("default")))
+#           define ___FANTASIA_API __attribute__ ((visibility ("default")))
 #       else
-#           define ___FANTASIA_ALWAYS_EXPORT __attribute__ ((visibility ("default")))
+#           define ___FANTASIA_API __attribute__ ((visibility ("default")))
 #       endif
 #   endif
 #endif
 
-
-/// @brief [___FANTASIA_ALWAYS_INLINE] - Always inline
-#define ___FANTASIA_ALWAYS_INLINE           inline
+#define ___FANTASIA_DECORATE_Fantasia_api               ___FANTASIA_API
 
 
-/// @brief [___FANTASIA_ALWAYS_CONSTEXPR] 
-#define ___FANTASIA_ALWAYS_CONSTEXPR        constexpr
-
-
-/// @brief [___FANTASIA_API] - Api
-#if defined(___FANTASIA_OPTION_HEADER_ONLY)
-#    define ___FANTASIA_API                 ___FANTASIA_ALWAYS_INLINE
-#else
-#    define ___FANTASIA_API                 ___FANTASIA_ALWAYS_EXPORT
-#endif
-
-
-/// @brief [___FANTASIA_API_INLINE] - Api inline
-#if defined(___FANTASIA_OPTION_HEADER_ONLY)
-#    define ___FANTASIA_API_INLINE          ___FANTASIA_ALWAYS_INLINE
-#else
-#    if defined(___FANTASIA_OPTION_INLINE)
-#        define ___FANTASIA_API_INLINE      ___FANTASIA_ALWAYS_INLINE
-#    else
-#        define ___FANTASIA_API_INLINE      ___FANTASIA_ALWAYS_EXPORT
-#    endif
-#endif
-
-
-/// @brief 
-#if defined(___FANTASIA_OPTION_HEADER_ONLY)
-#    define ___FANTASIA_API_CONSTEXPR       ___FANTASIA_ALWAYS_CONSTEXPR
-#else
-#    if defined(___FANTASIA_OPTION_INLINE)
-#        define ___FANTASIA_API_CONSTEXPR   ___FANTASIA_ALWAYS_CONSTEXPR
-#    else
-#        define ___FANTASIA_API_CONSTEXPR   
-#    endif
-#endif
+//
+///// @brief [___FANTASIA_INLINE]
+///// @details 此宏指定某个函数是内连的
+//#define ___FANTASIA_INLINE              inline
+//#define ___FANTASIA_DECORATE_Fantasia_inline            ___FANTASIA_INLINE
+//
+//
+///// @brief [___FANTASIA_CONSTEXPR]
+///// @details 此宏指定某个函数在项目中总是一个常量表达式，不导出
+//#define ___FANTASIA_CONSTEXPR           constexpr
+//#define ___FANTASIA_DECORATE_Fantasia_constexpr         ___FANTASIA_CONSTEXPR
+//
+//
+//#define ___FANTASIA_INLINE_CONSTEXPR    inline constexpr
+//#define ___FANTASIA_DECORATE_Fantasia_inline_constexpr  ___FANTASIA_INLINE_CONSTEXPR
+//

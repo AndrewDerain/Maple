@@ -1,7 +1,6 @@
 ﻿#pragma once
-#include <Runtime/Foundation.Float64.hxx>
-#include <Runtime/Foundation.String.hxx>
-#include <Runtime/Foundation.Int64.hxx>
+#include "../../Foundation/Float64.hxx"
+#include "../../Foundation/String.hxx"
 
 
 #pragma warning(push)
@@ -9,22 +8,19 @@
 #pragma pack(push, ___FANTASIA_PACKING)
 namespace _Fantasia::Foundation
 {
-
-	__api_inline __api_constexpr
-	Int64 
-	Int64::Max() noexcept {
+    inline constexpr
+	Int64 Int64::Max() noexcept {
 		return std::numeric_limits<int64_t>::max();
 	};
 
 
-	__api_inline __api_constexpr
-	Int64 
-	Int64::Min() noexcept {
+    inline constexpr
+	Int64 Int64::Min() noexcept {
 		return std::numeric_limits<int64_t>::min();
 	}
 
 
-	__api_inline  __api_constexpr
+    inline constexpr
 	Int64::Int64(int64_t value) noexcept:
 		_StoredValue(value)
 	{
@@ -35,8 +31,8 @@ namespace _Fantasia::Foundation
 	}
 
 
-	__api_inline __api_constexpr
-	Int64::Int64(uint64_t value)
+    inline constexpr
+    Int64::Int64(uint64_t value)
 	{
 	#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
 		UnitTestHelper_Int64.OverloadFunctionName(
@@ -51,8 +47,8 @@ namespace _Fantasia::Foundation
 	}
 
 
-	__api_inline __api_constexpr
-	Int64::Int64(char value) noexcept:
+    inline constexpr
+    Int64::Int64(char value) noexcept:
 		_StoredValue(value)
 	{
 	#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
@@ -62,8 +58,8 @@ namespace _Fantasia::Foundation
 	}
 
 
-	__api_inline __api_constexpr
-	Int64::Int64(signed char value) noexcept:
+    inline constexpr
+    Int64::Int64(signed char value) noexcept:
 		_StoredValue(value)
 	{
 	#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
@@ -73,8 +69,8 @@ namespace _Fantasia::Foundation
 	}
 
 
-	__api_inline __api_constexpr
-	Int64::Int64(unsigned char value) noexcept:
+    inline constexpr
+    Int64::Int64(unsigned char value) noexcept:
 		_StoredValue(value)
 	{
 	#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
@@ -84,8 +80,8 @@ namespace _Fantasia::Foundation
 	}
 
 
-	__api_inline __api_constexpr
-	Int64::Int64(short value) noexcept:
+    inline constexpr
+    Int64::Int64(short value) noexcept:
 		_StoredValue(value)
 	{
 	#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
@@ -95,8 +91,8 @@ namespace _Fantasia::Foundation
 	}
 
 
-	__api_inline __api_constexpr
-	Int64::Int64(unsigned short value) noexcept:
+    inline constexpr
+    Int64::Int64(unsigned short value) noexcept:
 		_StoredValue(value)
 	{
 	#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
@@ -106,8 +102,8 @@ namespace _Fantasia::Foundation
 	}
 
 
-	__api_inline  __api_constexpr
-	Int64::Int64(int32_t value) noexcept:
+    inline constexpr
+    Int64::Int64(int32_t value) noexcept:
 		_StoredValue(value)
 	{
 	#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
@@ -117,8 +113,8 @@ namespace _Fantasia::Foundation
 	}
 
 
-	__api_inline  __api_constexpr
-	Int64::Int64(uint32_t value) noexcept:
+    inline constexpr
+    Int64::Int64(uint32_t value) noexcept:
 		_StoredValue(value)
 	{
 	#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
@@ -128,29 +124,27 @@ namespace _Fantasia::Foundation
 	}
 
 
-	__api_inline __api_constexpr
-	Int64::operator int64_t const&() const noexcept {
+    inline constexpr
+    Int64::operator int64_t const&() const noexcept {
 		return _StoredValue;
 	}
 
 
-	__api_inline __api_constexpr
-	Int64::operator int64_t&() noexcept {
+    inline constexpr
+    Int64::operator int64_t&() noexcept {
 		return _StoredValue;
 	}
 
 
-	__api_inline __api_constexpr
-	Int64& Int64::
-	operator=(Float64 other) noexcept {
+    inline constexpr
+    Int64& Int64::operator=(Float64 other) noexcept {
 		_StoredValue = (double)other;
 		return *this;
 	}
 
 
-	__api_inline __api_constexpr
-	Int64&
-	Int64::operator=(short value) noexcept
+    inline constexpr
+    Int64& Int64::operator=(short value) noexcept
 	{
 	#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
 		UnitTestHelper_Int64.OverloadFunctionName(
@@ -162,9 +156,8 @@ namespace _Fantasia::Foundation
 	}
 
 
-	__api_inline __api_constexpr
-	Int64&
-	Int64::operator=(unsigned short value) noexcept
+    inline constexpr
+    Int64& Int64::operator=(unsigned short value) noexcept
 	{
 	#ifdef ___FANTASIA_ENABLE_UNITTEST_Int64
 		UnitTestHelper_Int64.OverloadFunctionName(
@@ -176,41 +169,36 @@ namespace _Fantasia::Foundation
 	}
 
 
-	__api_inline __api_constexpr
-	Int64&
-	Int64::operator=(int32_t value) noexcept {
+    inline constexpr
+    Int64& Int64::operator=(int32_t value) noexcept {
 		_StoredValue = value;
 		return *this;
 	}
 
 
-	__api_inline __api_constexpr
-	Int64&
-	Int64::operator=(uint32_t value) noexcept {
+    inline constexpr
+    Int64& Int64::operator=(uint32_t value) noexcept {
 		_StoredValue = value;
 		return *this;
 	}
 
 
-	__api_inline __api_constexpr
-	Int64&
-	Int64::operator=(int64_t value) noexcept {
+    inline constexpr
+    Int64& Int64::operator=(int64_t value) noexcept {
 		_StoredValue = value;
 		return *this;
 	}
 
 
-	__api_inline __api_constexpr
-	Int64&
-	Int64::operator=(uint64_t value) noexcept {
+    inline constexpr
+    Int64& Int64::operator=(uint64_t value) noexcept {
 		_StoredValue = value;
 		return *this;
 	}
 
 
-	__api_inline __api_constexpr
-	Int64&
-	Int64::operator=(double value) noexcept {
+    inline constexpr
+    Int64& Int64::operator=(double value) noexcept {
 		_StoredValue = value;
 		return *this;
 	}

@@ -7,58 +7,57 @@
 #include <Fantasia.Foundation>
 #include <typeinfo>
 
+namespace Exp {
+    constexpr bool IsEqual(const char *lstr, const char *rstr) {
+        for (int i = 0; lstr[i] != '\0' && rstr[i] != '\0'; i++)
+            if (lstr[i] != rstr[i]) return false;
+        return true;
+    }
 
-constexpr bool IsEqual(const char* lstr, const char* rstr)
-{
-	for(int i = 0; lstr[i] != '\0' && rstr[i] != '\0'; i++)
-		if(lstr[i] != rstr[i]) return false;
-	return true;
+
+    template<typename _T, bool _False>
+    struct no_partial_specialization {
+        no_partial_specialization() {
+            static_assert(_False, "no partial specialization for this type.");
+        }
+    };
+
+
+    template<typename _T, typename _F>
+    _T cast(_F &src) {
+        no_partial_specialization<_F, false>();
+        return _T();
+    }
+
+
+    template<>
+    int64_t cast<int64_t, uint64_t>(uint64_t &src) {
+        return src;
+    }
+
+
+    template<>
+    char cast<char, uint64_t>(uint64_t &src) {
+        //std::cout << __PRETTY_FUNCTION__ << std::endl;
+        return src;
+    }
+
+
+    TEST_CASE("Demo"){
+        uint64_t uintv = 23;
+        int64_t intv = 0;
+
+        intv = cast<int64_t>(uintv);
+        auto m = cast<char>(uintv);
+        //intv = cast<double>(uintv);
+        CHECK(intv == uintv);
+    }
+
 }
-
-
-template<typename _T, bool _False >
-struct no_partial_specialization
-{
-	no_partial_specialization(){
-		static_assert(_False, "no partial specialization for this type.");
-	}
-};
-
-
-template<typename _T, typename _F>
-_T cast(_F& src){
-	no_partial_specialization<_F, false>();
-	return _T();
-}
-
-
-template<>
-int64_t cast<int64_t, uint64_t>(uint64_t& src){
-	return src;
-}
-
-
-template<>
-char cast<char, uint64_t>(uint64_t& src){
-	//std::cout << __PRETTY_FUNCTION__ << std::endl;
-	return src;
-}
-
 
 namespace UnitTest::Foundation::TestInt64
 {
 	using ::Fantasia::Foundation::Int64;
-
-
-	TEST_CASE("Demo"){
-		uint64_t uintv = 23;
-		int64_t intv = 0;
-
-		intv = cast<int64_t>(uintv);
-		auto m = cast<char>(uintv);
-		//intv = cast<double>(uintv);
-		CHECK(intv == uintv);
-	}
 
 
 	TEST_CASE("Int64 shoule be plain old data type", "[Foundation][Int64]")
@@ -354,98 +353,39 @@ namespace UnitTest::Foundation::TestInt64
 	// } // end of TEST_CASE("Int64 assign" ...
 }
 
-#include <unordered_map>
 
-namespace PropertyTest
+namespace UnitTest::Foundation::TestString
 {
+    using namespace _Fantasia::Foundation;
 
-    template<typename ParentTy, typename ValueTy>
-    class xxx
-    {
-        friend ParentTy;
 
-        struct Pair
-        {
-            std::function<void (ValueTy&)> Setter;
-            std::function<ValueTy& (void)> Getter;
-        };
+    TEST_CASE("StringCompare", "[Foundation][String]") {
 
-        static Pair map[100];
+        SECTION("non constexpr behavior") {
+            String Val1 = "12345";
+            String Val2 = "12345";
+            String Val3 = "24689";
 
-    public:
-        template<class _Fty>
-        xxx(_Fty _f) {
-            //_f(34);
-            map[Index()] = Pair{std::move(_f), nullptr};
+            CHECK(CompareString(Val1, Val2) == 0);
+            CHECK(CompareString(Val1, Val3) != 0);
+
+            CHECK(CompareString(Val2, Val3) < 0);
+            CHECK(CompareString(Val3, Val2) > 0);
         }
 
-        xxx() {
+        SECTION("constexpr behavior") {
+            constexpr auto size = sizeof(String);
+            //CHECK(size == 16);
+            CHECK(sizeof(StringHeapStorage) == sizeof(StringStackStorage));
 
+            constexpr String Val1 = "123456";
+            constexpr String Val2 = "24689";
+
+            constexpr Bool cmp_r1 = Val1 == Val2;
+            CHECK(cmp_r1 == false);
         }
-
-        void operator=(ValueTy value) {
-            map[Index()].Setter(value);
-        }
-
-        int Index() {
-            return (uint64_t)(&_Height) % 100;
-        }
-
-    private:
-        ValueTy _Height;
-    };
-
-    /*
-     * auto Height = property();
-     *
-     *
-     * */
-
-    template<typename ParentTy, typename ValueTy>
-    typename xxx<ParentTy, ValueTy>::Pair xxx<ParentTy, ValueTy>::map[100];
-
-    int p1() {
 
     }
 
-    class Dog
-    {
-    public:
-        xxx<Dog, int> Height =
-        {
-            [](int v){ std::cout << v << std::endl; }
-        };
 
-        std::function<void(int v)> mm = {
-                [](int v){ std::cout << v << std::endl; }
-        };
-
-    public:
-
-        void set_height(int height) {
-
-        }
-    };
-
-    template<class _Fty, class ...>
-    void fmm(_Fty&& _f) {
-        //std::cout << v << std::endl;
-        std::cout << __PRETTY_FUNCTION__ << std::endl;
-        _f(34);
-    }
-
-    TEST_CASE("DemoProp", "Demo1")
-    {
-        std::cout << sizeof(int) << std::endl;
-        std::cout << sizeof(xxx<Dog, int>) << std::endl;
-        std::cout << sizeof(Dog) << std::endl;
-
-        std::function<void(int v)> mm;
-        mm = [](int v){ std::cout << v << std::endl; };
-
-        fmm([](int v){ std::cout << v << std::endl; });
-
-        Dog wc;
-        wc.Height = 90;
-    }
 }

@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include "_Detail/Foundation/Predeclars.hxx"
-#include "Foundation.Int64.hxx"
+#include "../_Detail/Foundation/Predeclars.hxx"
+#include "Int64.hxx"
 
 
 #pragma warning(push)
@@ -8,24 +8,23 @@
 #pragma pack(push, ___FANTASIA_PACKING)
 namespace _Fantasia::Foundation
 {
+    template<typename _Ty, Size _Count>
+    struct ArrayT;
+
 
     template<typename _Ty, Size _Count>
-    __always_inline __always_constexpr
     _Ty* begin(ArrayT<_Ty, _Count>& arr);
 
 
     template<typename _Ty, Size _Count>
-    __always_inline __always_constexpr
     _Ty* end(ArrayT<_Ty, _Count>& arr);
 
 
     template<typename _Ty, Size _Count>
-    __always_inline __always_constexpr
     const _Ty* cbegin(const ArrayT<_Ty, _Count>& arr);
 
 
     template<typename _Ty, Size _Count>
-    __always_inline __always_constexpr
     const _Ty* cend(const ArrayT<_Ty, _Count>& arr);
 
 
@@ -46,11 +45,9 @@ namespace _Fantasia::Foundation
         ArrayT(const ArrayT&) = default;
 
         [[maybe_unused]]
-        __always_inline __always_constexpr
         Int64 Count() const;
 
 
-        __always_inline __always_constexpr
         _Ty& operator[](Int64 index);
 
 
@@ -59,11 +56,11 @@ namespace _Fantasia::Foundation
 
 
     protected:
-        friend __always_inline __always_constexpr 
+        friend 
         _Ty* _Fantasia::Foundation::begin(ArrayT<_Ty, _Count>&);
 
 
-        friend __always_inline __always_constexpr 
+        friend 
         _Ty* _Fantasia::Foundation::end(ArrayT<_Ty, _Count>&);
 
 
@@ -77,28 +74,28 @@ namespace _Fantasia::Foundation
 
 
     template<typename _Ty, int64_t _Count>
-    [[maybe_unused]] __always_inline __always_constexpr
+    [[maybe_unused]] 
     Int64 ArrayT<_Ty, _Count>::Count() const {
         return _Count;
     }
 
 
     template<typename _Ty, int64_t _Count>
-    __always_inline __always_constexpr
+    
     _Ty& ArrayT<_Ty, _Count>::operator[](Int64 index) {
         return _Eles[index];
     }
 
 
     template<typename _Ty, Size _Count>
-    __always_inline __always_constexpr
+    
     _Ty* begin(ArrayT<_Ty, _Count>& arr) {
         return arr._Eles;
     }
 
 
     template<typename _Ty, Size _Count>
-    __always_inline __always_constexpr
+    
     _Ty* end(ArrayT<_Ty, _Count>& arr) {
         return arr._Eles + _Count;
     }
