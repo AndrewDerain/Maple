@@ -354,14 +354,22 @@ namespace UnitTest::Foundation::TestInt64
 }
 
 
+
+
 namespace UnitTest::Foundation::TestString
 {
     using namespace _Fantasia::Foundation;
+
+    TEST_CASE("StringStorage", "[Foundation][String]") {
+        constexpr auto size = sizeof(String);
+        CHECK(sizeof(StringHeapStorage) == sizeof(StringStackStorage));
+    }
 
 
     TEST_CASE("StringCompare", "[Foundation][String]") {
 
         SECTION("non constexpr behavior") {
+
             String Val1 = "12345";
             String Val2 = "12345";
             String Val3 = "24689";
@@ -374,18 +382,34 @@ namespace UnitTest::Foundation::TestString
         }
 
         SECTION("constexpr behavior") {
-            constexpr auto size = sizeof(String);
-            //CHECK(size == 16);
-            CHECK(sizeof(StringHeapStorage) == sizeof(StringStackStorage));
+            auto s = CountStringLength("123456");
 
             constexpr String Val1 = "123456";
             constexpr String Val2 = "24689";
+            constexpr String Val3 = "123456";
 
             constexpr Bool cmp_r1 = Val1 == Val2;
             CHECK(cmp_r1 == false);
+
+
+            constexpr Bool cmp_r2 = Val1 == Val3;
+            CHECK(cmp_r2 == true);
+
+
+            std::cout << "-1-Val3.Value   [" << Val3 << "]" << std::endl;
+            std::cout << "-1-Val3:.Length [" << Val3.Length() << "]" << std::endl;
+
+            Val3.Append("6");
+
+            std::cout << "-2-Val3.Value   [" << Val3 << "]" << std::endl;
+            std::cout << "-2-Val3:.Length [" << Val3.Length() << "]" << std::endl;
+
+            std::string str = (const char*)Val3;
+
+            std::cout << "s.Value   [" << s << "]" << std::endl;
+            std::cout << "Val3.Value   [" << str << "]" << std::endl;
+            std::cout << "Val3:.Length [" << str.length() << "]" << std::endl;
         }
-
     }
-
 
 }

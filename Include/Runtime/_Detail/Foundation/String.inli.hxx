@@ -95,7 +95,7 @@ namespace _Fantasia::Foundation
     }
 
 
-    inline constexpr
+    inline
     void StringStackStorage::Catenate(const char* value, int64_t len) {
 
         CatenateString(
@@ -106,6 +106,20 @@ namespace _Fantasia::Foundation
                 len);
 
         _Length += len;
+    }
+
+
+    inline constexpr
+    void StringStackStorage::Catenate(const char* value, int64_t len) const {
+
+        CatenateString(
+                const_cast<char*>(_StoredValue),
+                _Length,
+                _StackMaxCapacity,
+                value,
+                len);
+
+        *const_cast<std::int8_t*>(&_Length) = _Length + len;
     }
 
 #pragma endregion // StringStackStorage
@@ -168,13 +182,14 @@ namespace _Fantasia::Foundation
 
         CatenateString(
                 _StoredValue,
-                _Length + sizeof('\0'),
+                _Length,
                 _Capacity,
                 value,
                 len);
 
         _Length += len;
     }
+
 #pragma endregion // StringHeapStorage
 
 
@@ -217,6 +232,7 @@ namespace _Fantasia::Foundation
 
 
 #pragma region String
+
     inline constexpr
     Int64 String::MaxCapacity() {
         return std::numeric_limits<std::uint16_t>::max();    
@@ -279,7 +295,24 @@ namespace _Fantasia::Foundation
     inline constexpr
     String& String::Append(const char* value) {
         if(value) {
-            _Append(value, strlen(value));
+            _Append(value, CountStringLength(value));
+        }
+        return *this;
+    }
+
+
+    inline constexpr
+    const String& String::Append(const char* value) const {
+
+        if(value) {
+            auto len = CountStringLength(value);
+
+            if(_Storage.IsOnStack()) {
+                if (len < _Storage.Stack().Capacity() - _Storage.Stack().Length()) {
+                    _Storage.Stack().Catenate(value, len);
+                }
+            }
+
         }
         return *this;
     }
@@ -288,7 +321,7 @@ namespace _Fantasia::Foundation
     template<Size _Size>
     inline constexpr
     String& String::Append(const char (&value)[_Size]) {
-        _Append(value, strlen(value));
+        _Append(value, CountStringLength(value));
         return *this;
     }
 
@@ -358,7 +391,7 @@ namespace _Fantasia::Foundation
     Int64 CountStringLength(const char* string) noexcept {
         Int64 len = 0;
         while(string[len] != '\0') len++;
-        return len - 1;
+        return len;
     }
 
 
@@ -374,6 +407,7 @@ namespace _Fantasia::Foundation
                     return left[i] - right[i];
             }
         }
+
         return 0;
     }
 
@@ -395,22 +429,21 @@ namespace _Fantasia::Foundation
     }
 
 
-
     inline constexpr
     void CatenateString(
             char*           left,
-            std::int64_t    left_size,
+            std::int64_t    left_length,
             std::int64_t    left_capacity,
             const char*     right,
             std::int64_t    right_length) {
 
         int i = 0;
 
-        for(; i < left_capacity && i <= right_length; ++i) {
-            left[i + left_size] = right[i];
+        for(; i < left_capacity && i < right_length; ++i) {
+            left[i + left_length] = right[i];
         }
 
-        left[i] = '\0';
+        left[i + left_length] = '\0';
     }
 
 #pragma endregion
@@ -420,9 +453,39 @@ namespace _Fantasia::Foundation
 
 #pragma region
 
-inline constexpr
+    inline constexpr
     Bool operator==(const String& left, const String& right) noexcept {
         return CompareString(left, right) == 0;
+    }
+
+
+    inline constexpr
+    Bool operator!=(const String& left, const String& right) noexcept {
+        return CompareString(left, right) != 0;
+    }
+
+
+    inline constexpr
+    Bool operator>(const String& left, const String& right) noexcept {
+        return CompareString(left, right) > 0;
+    }
+
+
+    inline constexpr
+    Bool operator<(const String& left, const String& right) noexcept {
+        return CompareString(left, right) < 0;
+    }
+
+
+    inline constexpr
+    Bool operator>=(const String& left, const String& right) noexcept {
+        return CompareString(left, right) >= 0;
+    }
+
+
+    inline constexpr
+    Bool operator<=(const String& left, const String& right) noexcept {
+        return CompareString(left, right) <= 0;
     }
 
 #pragma endregion

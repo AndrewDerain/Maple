@@ -83,9 +83,12 @@ namespace _Fantasia::Foundation
         void Set(const char* value, std::int8_t len);
 
 
-        inline constexpr
+        inline
         void Catenate(const char* value, int64_t len);
 
+
+        inline constexpr
+        void Catenate(const char* value, int64_t len) const;
 
     protected:
         /// @brief Stack 上可以存储值的最大空间（包含'\0'）。
@@ -116,12 +119,12 @@ namespace _Fantasia::Foundation
         static constexpr const double _MinFloatValueOnStack    	= -0.0000000001;
 
 
-        /// @note 仅用于进行内存对齐
-        [[maybe_unused]]
+        /// @note 也用于进行内存对齐
         bool _IsOnStack;
 
 
         /// @brief 字符串中的字符数量
+        /// @note 不包含结束符 '\0'
         std::int8_t _Length;
 
 
@@ -149,8 +152,10 @@ namespace _Fantasia::Foundation
         inline constexpr
         const char* StoredValue() const;
 
+
         inline
         void Initialize();
+
 
         /// @note 此函数只会设置 Length 和 StoredValue 属性
         inline
@@ -181,8 +186,7 @@ namespace _Fantasia::Foundation
 
 
     protected:
-        /// @note 仅用于在联合体中进行内存对齐
-        [[maybe_unused]]
+        /// @note 也用于进行内存对齐
         bool          _IsOnStack;
 
 
@@ -293,6 +297,10 @@ namespace _Fantasia::Foundation
         String& Append(const char* value);
 
 
+        inline constexpr
+        const String& Append(const char* value) const;
+
+
         /// @brief 追加内容
         template<Size _Size> inline constexpr
         String& Append(const char (&value)[_Size]);
@@ -329,11 +337,6 @@ namespace _Fantasia::Foundation
         void _MoveToHeap(int64_t reserved_space);
 
 
-        /// @brief 追加内容到栈上
-        inline constexpr
-        void _AppendOnStack(const char* value, int64_t len);
-
-
         /// @brief 追加内容到堆上
         __decorate(Fantasia, api)
         void _AppendOnHeap(const char* value, int64_t len);
@@ -359,13 +362,10 @@ namespace _Fantasia::Foundation
             std::int64_t    right_len);
 
 
-    /// @param left_size 字符串 left 的大小 (length + sizeof('\0'))
-    /// @param left_capacity 字符串 left 的已分配容量
-    /// @param right_length 字符串 right 的长度
     inline constexpr
     void CatenateString(
             char*           left,
-            std::int64_t    left_size,
+            std::int64_t    left_length,
             std::int64_t    left_capacity,
             const char*     right,
             std::int64_t    right_length);
@@ -375,29 +375,24 @@ namespace _Fantasia::Foundation
     Bool operator==(const String& left, const String& right) noexcept;
 
 
-    inline bool operator!=(const String& left, const String& right) {
-        return strcmp(left, right) != 0;
-    }
+    inline constexpr
+    Bool operator!=(const String& left, const String& right) noexcept;
 
 
-    inline bool operator>(const String& left, const String& right) {
-        return strcmp(left, right) > 0;
-    }
+    inline constexpr
+    Bool operator>(const String& left, const String& right) noexcept;
 
 
-    inline bool operator<(const String& left, const String& right) {
-        return strcmp(left, right) < 0;
-    }
+    inline constexpr
+    Bool operator<(const String& left, const String& right) noexcept;
 
 
-    inline bool operator>=(const String& left, const String& right) {
-        return strcmp(left, right) >= 0;
-    }
+    inline constexpr
+    Bool operator>=(const String& left, const String& right) noexcept;
 
 
-    inline bool operator<=(const String& left, const String& right) {
-        return strcmp(left, right) <= 0;
-    }
+    inline constexpr
+    Bool operator<=(const String& left, const String& right) noexcept;
 
 } // namespace _Fantasia::Foundation
 #pragma pack(pop)
