@@ -90,6 +90,7 @@ namespace _Fantasia::Foundation
         inline constexpr
         void Catenate(const char* value, int64_t len) const;
 
+
     protected:
         /// @brief Stack 上可以存储值的最大空间（包含'\0'）。
         static constexpr const int64_t _StackMaxCapacity 		= 14;
@@ -284,26 +285,26 @@ namespace _Fantasia::Foundation
 
         /// @brief 追加内容
         inline constexpr
-        String& Append(const String& value);
+        String& Catenate(const String& value);
 
 
         /// @brief 追加内容
         inline constexpr
-        String& Append(const Bool& value);
+        String& Catenate(const Bool& value);
 
 
         /// @brief 追加内容
-        inline constexpr
-        String& Append(const char* value);
+        inline
+        String& Catenate(const char* value);
 
 
         inline constexpr
-        const String& Append(const char* value) const;
+        const String& Catenate(const char* value) const;
 
 
         /// @brief 追加内容
         template<Size _Size> inline constexpr
-        String& Append(const char (&value)[_Size]);
+        String& Catenate(const char (&value)[_Size]);
 
 
         /// @brief 隐式转换为原始的 c 样式字符串。
@@ -323,12 +324,12 @@ namespace _Fantasia::Foundation
         /// @brief 内部函数，使用 c 样式字符串进行初始化。
         /// @note 如果 value 是空指针，此对象会被初始化为空字符串（""）。
         inline constexpr
-        void _Assign(const char* value);
+        void _Catenate(const char* value);
 
 
         /// @brief 内部函数，追加内容
         inline constexpr
-        void _Append(const char* value, int64_t len);
+        void _Catenate(const char* value, int64_t len);
 
 
         /// @brief 内部函数，将 Stack 上的内容转移到 Heap 上。

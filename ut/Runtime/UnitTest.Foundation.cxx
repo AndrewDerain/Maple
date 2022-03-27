@@ -360,15 +360,113 @@ namespace UnitTest::Foundation::TestString
 {
     using namespace _Fantasia::Foundation;
 
-    TEST_CASE("StringStorage", "[Foundation][String]") {
+
+    const char* Tag = "[Foundation][String]";
+
+
+
+
+    TEST_CASE("CountStringLength", Tag) {
+
+        CHECK(CountStringLength("")             == 0);
+        CHECK(CountStringLength("2")            == 1);
+        CHECK(CountStringLength("1234567890")   == 10);
+    }
+
+
+
+
+    TEST_CASE("CompareString", Tag) {
+
+        String Val1 = "12345";
+        String Val2 = "12345";
+        String Val3 = "24689";
+
+        CHECK(CompareString(Val1, Val2) == 0);
+        CHECK(CompareString(Val1, Val3) != 0);
+
+        CHECK(CompareString(Val2, Val3) < 0);
+        CHECK(CompareString(Val3, Val2) > 0);
+    }
+
+
+
+
+    TEST_CASE("StringStorage", Tag) {
         constexpr auto size = sizeof(String);
         CHECK(sizeof(StringHeapStorage) == sizeof(StringStackStorage));
     }
 
 
-    TEST_CASE("StringCompare", "[Foundation][String]") {
 
-        SECTION("non constexpr behavior") {
+
+    TEST_CASE("String::MaxCapacity", Tag) {
+
+        CHECK(String::MaxCapacity() == std::numeric_limits<std::uint16_t>::max());
+
+        constexpr Int64 capacity = String::MaxCapacity();
+        CHECK(String::MaxCapacity() == capacity);
+    }
+
+
+
+
+    TEST_CASE("String::Length", Tag) {
+
+        SECTION("Normal") {
+            std::string val_str =
+                    "This is a random number ["
+                    + std::to_string(random()) + "]";
+
+            String Target = val_str.c_str();
+
+            CHECK(bool(Target._Storage.IsOnStack()) == false);
+            CHECK(Target.Length() == val_str.length());
+        }
+
+
+        SECTION("Constexpr") {
+            constexpr String string = "Hello, world!";
+            CHECK(string.Length() == sizeof("Hello, world!") - 1);
+        }
+    }
+
+
+
+
+    TEST_CASE("String::Capacity", Tag) {
+
+        SECTION("On stack") {
+            String Target = "Hello, world!";
+            CHECK(Target.Capacity() == StringStackStorage::Capacity());
+        }
+
+
+        SECTION("On stack with constexpr ") {
+            constexpr String Target = "Hello, world!";
+            CHECK(Target.Capacity() == StringStackStorage::Capacity());
+        }
+
+
+        SECTION("On Heap") {
+            std::string val_str =
+                    "This is a random number ["
+                    + std::to_string(random()) + "]";
+
+            String Target = val_str.c_str();
+            //std::cout << val_str << std::endl;
+
+            CHECK(bool(Target._Storage.IsOnStack()) == false);
+            CHECK(Target.Capacity() == Target._Storage.Heap().Capacity());
+        }
+    }
+
+
+
+
+    TEST_CASE("String constructor", "[Foundation][String]") {
+
+        SECTION("Normal") {
 
             String Val1 = "12345";
             String Val2 = "12345";
@@ -381,35 +479,81 @@ namespace UnitTest::Foundation::TestString
             CHECK(CompareString(Val3, Val2) > 0);
         }
 
-        SECTION("constexpr behavior") {
-            auto s = CountStringLength("123456");
+
+        SECTION("Constant expression Initialize") {
 
             constexpr String Val1 = "123456";
             constexpr String Val2 = "24689";
             constexpr String Val3 = "123456";
 
-            constexpr Bool cmp_r1 = Val1 == Val2;
-            CHECK(cmp_r1 == false);
+
+            SECTION("basic") {
+
+                CHECK(Val1.Length() == sizeof("123456") - 1);
+                CHECK(Val2.Length() == sizeof("24689") - 1);
+                CHECK(Val3.Length() == sizeof("123456") - 1);
+
+                constexpr Bool cmp_r1 = Val1 == Val2;
+                CHECK(cmp_r1 == false);
+
+                constexpr Bool cmp_r2 = Val1 == Val3;
+                CHECK(cmp_r2 == true);
+            }
 
 
-            constexpr Bool cmp_r2 = Val1 == Val3;
-            CHECK(cmp_r2 == true);
+            SECTION("Constexpr Catenate") {
 
+                Val3.Catenate("6");
 
-            std::cout << "-1-Val3.Value   [" << Val3 << "]" << std::endl;
-            std::cout << "-1-Val3:.Length [" << Val3.Length() << "]" << std::endl;
-
-            Val3.Append("6");
-
-            std::cout << "-2-Val3.Value   [" << Val3 << "]" << std::endl;
-            std::cout << "-2-Val3:.Length [" << Val3.Length() << "]" << std::endl;
-
-            std::string str = (const char*)Val3;
-
-            std::cout << "s.Value   [" << s << "]" << std::endl;
-            std::cout << "Val3.Value   [" << str << "]" << std::endl;
-            std::cout << "Val3:.Length [" << str.length() << "]" << std::endl;
+                CHECK(Val3.Length() == sizeof("1234566") - 1);
+                CHECK(CompareString(Val3, "1234566") == 0);
+            }
         }
     }
 
+
+
+
+    TEST_CASE("String::Catenate(const char* value)", Tag) {
+
+        SECTION("Normal on stack") {
+            std::string_view val1 = "Constant ...";
+            String Target = "Constant ...";
+
+            CHECK(bool(Target._Storage.IsOnStack()) == true);
+            CHECK(Target.Length() == sizeof("Constant ...") - 1);
+            CHECK(CompareString(Target, "Constant ...") == 0);
+
+            Target.Catenate("m");
+            CHECK(bool(Target._Storage.IsOnStack()) == true);
+            CHECK(Target.Length() == sizeof("Constant ...m") - 1);
+            CHECK(CompareString(Target, "Constant ...") > 0);
+        }
+
+
+        SECTION("Normal on heap") {
+            std::string val1 = "Normal behavior while value is on the heap.";
+            String Target = "Normal behavior while value is on the heap.";
+
+            CHECK(!Target._Storage.IsOnStack());
+            CHECK(Target.Length() == val1.length());
+            CHECK(strcmp(Target, val1.c_str()) == 0);
+        }
+
+
+        SECTION("Constant expression on stack") {
+
+            constexpr std::string_view val1 = "Constant ...";
+            constexpr String Target = "Constant ...";
+
+            CHECK(bool(Target._Storage.IsOnStack()) == true);
+            CHECK(Target.Length() == sizeof("Constant ...") - 1);
+            CHECK(CompareString(Target, val1.begin()) == 0);
+
+            Target.Catenate("m");
+            CHECK(bool(Target._Storage.IsOnStack()) == true);
+            CHECK(Target.Length() == sizeof("Constant ...m") - 1);
+            CHECK(CompareString(Target, val1.begin()) > 0);
+        }
+    }
 }

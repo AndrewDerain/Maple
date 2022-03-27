@@ -100,7 +100,7 @@ namespace _Fantasia::Foundation
 
         CatenateString(
                 _StoredValue,
-                _Length + sizeof('\0'),
+                _Length,
                 _StackMaxCapacity,
                 value,
                 len);
@@ -274,35 +274,37 @@ namespace _Fantasia::Foundation
 
     inline constexpr
     String::String(const char* value) {
-        _Assign(value);
+        _Catenate(value);
     }
 
 
     inline constexpr
-    String& String::Append(const String& value) {
-        _Append(value, value.Length());
+    String& String::Catenate(const String& value) {
+        _Catenate(value, value.Length());
         return *this;
     }
 
 
     inline constexpr
-    String& String::Append(const Bool& value) {
-        Append(value.ToString());
+    String& String::Catenate(const Bool& value) {
+        Catenate(value.ToString());
         return *this;
     }
 
 
-    inline constexpr
-    String& String::Append(const char* value) {
+    inline
+    String& String::Catenate(const char* value) {
+
         if(value) {
-            _Append(value, CountStringLength(value));
+            _Catenate(value, CountStringLength(value));
         }
+
         return *this;
     }
 
 
     inline constexpr
-    const String& String::Append(const char* value) const {
+    const String& String::Catenate(const char* value) const {
 
         if(value) {
             auto len = CountStringLength(value);
@@ -312,16 +314,16 @@ namespace _Fantasia::Foundation
                     _Storage.Stack().Catenate(value, len);
                 }
             }
-
         }
+
         return *this;
     }
 
 
     template<Size _Size>
     inline constexpr
-    String& String::Append(const char (&value)[_Size]) {
-        _Append(value, CountStringLength(value));
+    String& String::Catenate(const char (&value)[_Size]) {
+        _Catenate(value, CountStringLength(value));
         return *this;
     }
 
@@ -337,9 +339,10 @@ namespace _Fantasia::Foundation
 
 
     inline constexpr
-    void String::_Assign(const char* value) {
+    void String::_Catenate(const char* value) {
 
         if(nullptr == value) {
+
             if(!_Storage.IsOnStack()) {
                 _Storage.Heap().Reset();
             }
@@ -349,6 +352,7 @@ namespace _Fantasia::Foundation
         }
 
         std::uint16_t len = CountStringLength(value);
+
         if(len < _Storage.Stack().Capacity()) {
 
             if(!_Storage.IsOnStack()) {
@@ -364,9 +368,10 @@ namespace _Fantasia::Foundation
 
 
     inline constexpr
-    void String::_Append(const char* value, std::int64_t len) {
+    void String::_Catenate(const char* value, std::int64_t len) {
 
         if(_Storage.IsOnStack()) {
+
             if(len < _Storage.Stack().Capacity() - _Storage.Stack().Length()) {
                 _Storage.Stack().Catenate(value, len);
             }
