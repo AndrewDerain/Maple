@@ -11,7 +11,7 @@ namespace _Fantasia::Foundation
 #pragma region StringHeapStorage
 
     __decorate(Fantasia, api)
-    void StringHeapStorage::Set(const char* value, std::uint16_t len) {
+    void StringHeapStorage::Assign(const char* value, std::uint16_t len) {
 
         if(_Capacity > len) {
             strcpy(_StoredValue, value);
@@ -43,7 +43,7 @@ namespace _Fantasia::Foundation
     }
 
 
-    void StringHeapStorage::Extend(std::uint64_t size) {
+    void StringHeapStorage::_Extend(std::uint64_t size) {
 
         int64_t capacity    = _Capacity + size + 50;
         char*   memory      = new char[capacity];
@@ -53,6 +53,7 @@ namespace _Fantasia::Foundation
 
         Replace(memory, _Length, capacity);
     }
+
 #pragma endregion // StringHeapStorage
 
 
@@ -68,7 +69,7 @@ namespace _Fantasia::Foundation
         Int64   len         = _Storage.Stack().Length();
         
         memcpy(memory,
-               _Storage.Stack().StoredValue(),
+               _Storage.Stack().Data(),
                _Storage.Stack().Capacity());
 
         _Storage.Heap().Initialize();
@@ -77,10 +78,10 @@ namespace _Fantasia::Foundation
 
 
     __decorate(Fantasia, api)
-    void String::_AppendOnHeap(const char* value, int64_t len) {
+    void String::_CatenateOnHeap(const char* value, int64_t len) {
 
         if(_Storage.Heap().Capacity() <= _Storage.Heap().Length() + len) {
-            _Storage.Heap().Extend(len);
+            _Storage.Heap()._Extend(len);
         }
 
         _Storage.Heap().Catenate(value, len);

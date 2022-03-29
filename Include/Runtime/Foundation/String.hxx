@@ -64,31 +64,21 @@ namespace _Fantasia::Foundation
 
         /// @brief 值
         inline constexpr
-        char* StoredValue();
-
-
-        /// @brief 值
-        inline constexpr
-        const char* StoredValue() const;
+        const char* Data() const;
 
 
         /// @brief 重置为空字符串
-        /// @note 此函数只会设置 Length 和 StoredValue 属性
         inline constexpr
         void Reset();
 
 
         /// @note 此函数只会设置 Length 和 StoredValue 属性
         inline constexpr
-        void Set(const char* value, std::int8_t len);
-
-
-        inline
-        void Catenate(const char* value, int64_t len);
+        void Assign(const char* value, int8_t len);
 
 
         inline constexpr
-        void Catenate(const char* value, int64_t len) const;
+        void Catenate(const char* value, int8_t len);
 
 
     protected:
@@ -121,16 +111,16 @@ namespace _Fantasia::Foundation
 
 
         /// @note 也用于进行内存对齐
-        bool _IsOnStack;
+        bool    _IsOnStack;
 
 
         /// @brief 字符串中的字符数量
         /// @note 不包含结束符 '\0'
-        std::int8_t _Length;
+        int8_t  _Length;
 
 
         /// @brief 栈上存储的字符串值
-        char _StoredValue[_StackMaxCapacity];
+        char    _StoredValue[_StackMaxCapacity];
     };
 
 
@@ -140,17 +130,17 @@ namespace _Fantasia::Foundation
     {
     public:
         /// @brief 在堆上已申请的内存空间大小
-        inline constexpr
+        inline
         Int64 Capacity() const;
 
 
         /// @brief 字符串中的字符数量
-        inline constexpr
+        inline
         Int64 Length() const;
 
 
         /// @brief 值
-        inline constexpr
+        inline
         const char* StoredValue() const;
 
 
@@ -165,12 +155,12 @@ namespace _Fantasia::Foundation
 
         /// @note 此函数只会设置 Length 和 StoredValue 属性
         __decorate(Fantasia, api)
-        void Set(const char* value, std::uint16_t len);
+        void Assign(const char* value, uint16_t len);
 
 
         /// @brief 直接使用外部申请的内存空间进行替换
-        inline constexpr
-        void Replace(char* memory, std::uint16_t length, std::uint16_t capacity);
+        inline
+        void Replace(char* memory, uint16_t length, uint16_t capacity);
 
 
         /// @brief 释放堆上申请的内存
@@ -178,29 +168,29 @@ namespace _Fantasia::Foundation
         void Deallocate();
 
 
-        /// #brief 增大堆空间
-        void Extend(std::uint64_t size);
-
-
-        inline constexpr
+        inline
         void Catenate(const char* value, int64_t len);
+
+
+        /// #brief 增大堆空间
+        void _Extend(std::uint64_t size);
 
 
     protected:
         /// @note 也用于进行内存对齐
-        bool          _IsOnStack;
+        bool        _IsOnStack;
 
 
         /// @brief 字符串中的字符数量
-        std::uint16_t _Length;
+        uint16_t    _Length;
 
 
         /// @brief 在堆上已申请的内存空间大小
-        std::uint16_t _Capacity;
+        uint16_t    _Capacity;
 
 
         /// @brief 堆起始地址
-        char*         _StoredValue;
+        char*       _StoredValue;
     };
 
 
@@ -277,6 +267,10 @@ namespace _Fantasia::Foundation
         ~String();
 
 
+        inline constexpr
+        String(const String& other) ;
+
+
         /// @brief 使用 c 样式字符串进行初始化。
         /// @note 如果 value 是空指针，此对象会被初始化为空字符串（""）。
         inline constexpr
@@ -284,12 +278,12 @@ namespace _Fantasia::Foundation
 
 
         /// @brief 追加内容
-        inline constexpr
+        inline
         String& Catenate(const String& value);
 
 
         /// @brief 追加内容
-        inline constexpr
+        inline
         String& Catenate(const Bool& value);
 
 
@@ -298,12 +292,13 @@ namespace _Fantasia::Foundation
         String& Catenate(const char* value);
 
 
+        [[nodiscard]]
         inline constexpr
-        const String& Catenate(const char* value) const;
+        const String Catenate(const char* value) const;
 
 
         /// @brief 追加内容
-        template<Size _Size> inline constexpr
+        template<Size _Size> inline
         String& Catenate(const char (&value)[_Size]);
 
 
@@ -318,17 +313,19 @@ namespace _Fantasia::Foundation
         StringStorage _Storage;
 
 
-        //void _Assign(const String& other);
-
-
-        /// @brief 内部函数，使用 c 样式字符串进行初始化。
+        /// @brief 使用 c 样式字符串进行初始化。
         /// @note 如果 value 是空指针，此对象会被初始化为空字符串（""）。
         inline constexpr
+        void _Assign(const char* value);
+
+
+        /// @brief 追加内容到字符串末尾
+        inline
         void _Catenate(const char* value);
 
 
-        /// @brief 内部函数，追加内容
-        inline constexpr
+        /// @brief 追加内容到字符串末尾
+        inline
         void _Catenate(const char* value, int64_t len);
 
 
@@ -340,7 +337,7 @@ namespace _Fantasia::Foundation
 
         /// @brief 追加内容到堆上
         __decorate(Fantasia, api)
-        void _AppendOnHeap(const char* value, int64_t len);
+        void _CatenateOnHeap(const char* value, int64_t len);
     };
 
 
@@ -355,21 +352,33 @@ namespace _Fantasia::Foundation
     Int64 CompareString(const String& left, const String& right) noexcept;
 
 
+    /// @param left_capacity 必须大于0
     inline constexpr
     void CopyString(
             char*           left,
-            std::int64_t    left_capacity,
+            int64_t         left_capacity,
             const char*     right,
-            std::int64_t    right_len);
+            int64_t         right_length);
 
 
+    /// @param left_capacity 必须大于0
     inline constexpr
     void CatenateString(
             char*           left,
-            std::int64_t    left_length,
-            std::int64_t    left_capacity,
+            int8_t&         left_length,
+            int8_t          left_capacity,
             const char*     right,
-            std::int64_t    right_length);
+            int8_t          right_length);
+
+
+    /// @param left_capacity 必须大于0
+    inline constexpr
+    void CatenateString(
+            char*           left,
+            uint16_t&       left_length,
+            uint16_t        left_capacity,
+            const char*     right,
+            uint16_t        right_length);
 
 
     inline constexpr

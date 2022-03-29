@@ -51,7 +51,7 @@ namespace _Fantasia::Foundation
     StringStackStorage::StringStackStorage():
         _IsOnStack{true},
         _Length{0},
-        _StoredValue{} {
+        _StoredValue{""} {
     }
 
 
@@ -68,13 +68,7 @@ namespace _Fantasia::Foundation
 
 
     inline constexpr
-    char* StringStackStorage::StoredValue() {
-        return _StoredValue;
-    }
-
-
-    inline constexpr
-    const char* StringStackStorage::StoredValue() const {
+    const char* StringStackStorage::Data() const {
         return _StoredValue;
     }
 
@@ -88,15 +82,19 @@ namespace _Fantasia::Foundation
 
 
     inline constexpr
-    void StringStackStorage::Set(const char* value, int8_t len) {
-        CopyString(_StoredValue, _StackMaxCapacity, value, len);
+    void StringStackStorage::Assign(const char* value, int8_t len) {
+
+        CopyString(
+                _StoredValue, _StackMaxCapacity,
+                value, len);
+
         _Length     = len;
         _IsOnStack  = true;
     }
 
 
-    inline
-    void StringStackStorage::Catenate(const char* value, int64_t len) {
+    inline constexpr
+    void StringStackStorage::Catenate(const char* value, int8_t len) {
 
         CatenateString(
                 _StoredValue,
@@ -104,22 +102,6 @@ namespace _Fantasia::Foundation
                 _StackMaxCapacity,
                 value,
                 len);
-
-        _Length += len;
-    }
-
-
-    inline constexpr
-    void StringStackStorage::Catenate(const char* value, int64_t len) const {
-
-        CatenateString(
-                const_cast<char*>(_StoredValue),
-                _Length,
-                _StackMaxCapacity,
-                value,
-                len);
-
-        *const_cast<std::int8_t*>(&_Length) = _Length + len;
     }
 
 #pragma endregion // StringStackStorage
@@ -129,19 +111,19 @@ namespace _Fantasia::Foundation
 
 #pragma region StringHeapStorage
 
-    inline constexpr
+    inline
     Int64 StringHeapStorage::Capacity() const {
         return _Capacity;
     };
 
 
-    inline constexpr
+    inline
     Int64 StringHeapStorage::Length() const {
         return _Length;
     }
 
 
-    inline constexpr
+    inline
     const char* StringHeapStorage::StoredValue() const {
         return _StoredValue;
     }
@@ -169,15 +151,15 @@ namespace _Fantasia::Foundation
     }
 
 
-    inline constexpr
-    void StringHeapStorage::Replace(char* memory, std::uint16_t length, std::uint16_t capacity) {
+    inline
+    void StringHeapStorage::Replace(char* memory, uint16_t length, uint16_t capacity) {
         _StoredValue    = memory;
         _Length         = length;
         _Capacity       = capacity;
     }
 
 
-    inline constexpr
+    inline
     void StringHeapStorage::Catenate(const char* value, int64_t len) {
 
         CatenateString(
@@ -187,7 +169,7 @@ namespace _Fantasia::Foundation
                 value,
                 len);
 
-        _Length += len;
+        //_Length += len;
     }
 
 #pragma endregion // StringHeapStorage
@@ -235,7 +217,7 @@ namespace _Fantasia::Foundation
 
     inline constexpr
     Int64 String::MaxCapacity() {
-        return std::numeric_limits<std::uint16_t>::max();    
+        return std::numeric_limits<uint16_t>::max();
     }
 
 
@@ -273,19 +255,25 @@ namespace _Fantasia::Foundation
 
 
     inline constexpr
-    String::String(const char* value) {
-        _Catenate(value);
+    String::String(const String& other) {
+        _Assign(other);
     }
 
 
     inline constexpr
+    String::String(const char* value) {
+        _Assign(value);
+    }
+
+
+    inline
     String& String::Catenate(const String& value) {
         _Catenate(value, value.Length());
         return *this;
     }
 
 
-    inline constexpr
+    inline
     String& String::Catenate(const Bool& value) {
         Catenate(value.ToString());
         return *this;
@@ -294,36 +282,27 @@ namespace _Fantasia::Foundation
 
     inline
     String& String::Catenate(const char* value) {
-
         if(value) {
             _Catenate(value, CountStringLength(value));
         }
-
         return *this;
     }
 
 
     inline constexpr
-    const String& String::Catenate(const char* value) const {
+    const String String::Catenate(const char* value) const{
+        String Target = {};
 
-        if(value) {
-            auto len = CountStringLength(value);
+        Target._Storage.Stack().Assign(_Storage.Stack().Data(), _Storage.Stack().Length());
+        Target._Storage.Stack().Catenate(value, CountStringLength(value));
 
-            if(_Storage.IsOnStack()) {
-                if (len < _Storage.Stack().Capacity() - _Storage.Stack().Length()) {
-                    _Storage.Stack().Catenate(value, len);
-                }
-            }
-        }
-
-        return *this;
+        return Target;
     }
 
 
-    template<Size _Size>
-    inline constexpr
+    template<Size _Size> inline
     String& String::Catenate(const char (&value)[_Size]) {
-        _Catenate(value, CountStringLength(value));
+        _Catenate(value, _Size);
         return *this;
     }
 
@@ -332,19 +311,19 @@ namespace _Fantasia::Foundation
     String::operator char const* const() const noexcept {
 
         if(_Storage.IsOnStack())
-            return _Storage.Stack().StoredValue();
+            return _Storage.Stack().Data();
         else 
             return _Storage.Heap().StoredValue();
     }
 
 
     inline constexpr
-    void String::_Catenate(const char* value) {
+    void String::_Assign(const char* value) {
 
         if(nullptr == value) {
 
             if(!_Storage.IsOnStack()) {
-                _Storage.Heap().Reset();
+                _Storage.Heap().Deallocate();
             }
 
             _Storage.Stack().Reset();
@@ -358,16 +337,22 @@ namespace _Fantasia::Foundation
             if(!_Storage.IsOnStack()) {
                 _Storage.Heap().Deallocate();
             }
-            
-            _Storage.Stack().Set(value, len);
+
+            _Storage.Stack().Assign(value, len);
         }
         else {
-            _Storage.Heap().Set(value, len);
+            _Storage.Heap().Assign(value, len);
         }
     }
 
 
-    inline constexpr
+    inline
+    void String::_Catenate(const char* value) {
+        _Catenate(value, CountStringLength(value));
+    }
+
+
+    inline
     void String::_Catenate(const char* value, std::int64_t len) {
 
         if(_Storage.IsOnStack()) {
@@ -377,11 +362,11 @@ namespace _Fantasia::Foundation
             }
             else {
                 _MoveToHeap(len);
-                _AppendOnHeap(value, len);
+                _CatenateOnHeap(value, len);
             }
         }
         else {
-            _AppendOnHeap(value, len);
+            _CatenateOnHeap(value, len);
         }
     }
 
@@ -420,13 +405,13 @@ namespace _Fantasia::Foundation
     inline constexpr
     void CopyString(
             char*           left,
-            std::int64_t    left_capacity,
+            int64_t         left_capacity,
             const char*     right,
-            std::int64_t    right_len) {
+            int64_t         right_length) {
 
-        int i = 0;
+        int i = 0; --left_capacity;
 
-        for(; i < left_capacity && i <= right_len && right[i] != '\0'; ++i) {
+        for(; i < left_capacity && i < right_length; ++i) {
             left[i] = right[i];
         }
 
@@ -434,21 +419,47 @@ namespace _Fantasia::Foundation
     }
 
 
+    template<typename _LeftLenTy, typename _RightLenTy>
+    inline constexpr
+    void CatenateStringT(
+            char*           left,
+            _LeftLenTy&     left_length,
+            _LeftLenTy      left_capacity,
+            const char*     right,
+            _RightLenTy     right_length) {
+
+        int li = left_length, ri = 0; --left_capacity;
+
+        for(; li < left_capacity && ri < right_length; ++li, ++ri) {
+            left[li] = right[ri];
+        }
+
+        left[li] = '\0';
+        left_length = li;
+    }
+
+
     inline constexpr
     void CatenateString(
             char*           left,
-            std::int64_t    left_length,
-            std::int64_t    left_capacity,
+            int8_t&         left_length,
+            int8_t          left_capacity,
             const char*     right,
-            std::int64_t    right_length) {
+            int8_t          right_length) {
 
-        int i = 0;
+        CatenateStringT(left, left_length, left_capacity, right, right_length);
+    }
 
-        for(; i < left_capacity && i < right_length; ++i) {
-            left[i + left_length] = right[i];
-        }
 
-        left[i + left_length] = '\0';
+    inline constexpr
+    void CatenateString(
+            char*           left,
+            uint16_t&       left_length,
+            uint16_t        left_capacity,
+            const char*     right,
+            uint16_t        right_length) {
+
+        CatenateStringT(left, left_length, left_capacity, right, right_length);
     }
 
 #pragma endregion
