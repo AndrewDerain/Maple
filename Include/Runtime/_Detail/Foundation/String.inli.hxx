@@ -168,8 +168,6 @@ namespace _Fantasia::Foundation
                 _Capacity,
                 value,
                 len);
-
-        //_Length += len;
     }
 
 #pragma endregion // StringHeapStorage
@@ -300,13 +298,6 @@ namespace _Fantasia::Foundation
     }
 
 
-    template<Size _Size> inline
-    String& String::Catenate(const char (&value)[_Size]) {
-        _Catenate(value, _Size);
-        return *this;
-    }
-
-
     inline constexpr
     String::operator char const* const() const noexcept {
 
@@ -314,6 +305,13 @@ namespace _Fantasia::Foundation
             return _Storage.Stack().Data();
         else 
             return _Storage.Heap().StoredValue();
+    }
+
+
+    inline
+    String& String::operator=(const char* value) {
+        _Assign(value);
+        return *this;
     }
 
 
@@ -337,18 +335,15 @@ namespace _Fantasia::Foundation
             if(!_Storage.IsOnStack()) {
                 _Storage.Heap().Deallocate();
             }
-
             _Storage.Stack().Assign(value, len);
         }
         else {
+
+            if(_Storage.IsOnStack()) {
+               _Storage.Heap().Initialize();
+            }
             _Storage.Heap().Assign(value, len);
         }
-    }
-
-
-    inline
-    void String::_Catenate(const char* value) {
-        _Catenate(value, CountStringLength(value));
     }
 
 
@@ -419,7 +414,7 @@ namespace _Fantasia::Foundation
     }
 
 
-    template<typename _LeftLenTy, typename _RightLenTy>
+    template<std::integral _LeftLenTy, std::integral _RightLenTy>
     inline constexpr
     void CatenateStringT(
             char*           left,

@@ -43,7 +43,7 @@ namespace _Fantasia::Foundation
     }
 
 
-    void StringHeapStorage::_Extend(std::uint64_t size) {
+    void StringHeapStorage::Extend(std::uint64_t size) {
 
         int64_t capacity    = _Capacity + size + 50;
         char*   memory      = new char[capacity];
@@ -81,7 +81,7 @@ namespace _Fantasia::Foundation
     void String::_CatenateOnHeap(const char* value, int64_t len) {
 
         if(_Storage.Heap().Capacity() <= _Storage.Heap().Length() + len) {
-            _Storage.Heap()._Extend(len);
+            _Storage.Heap().Extend(len);
         }
 
         _Storage.Heap().Catenate(value, len);

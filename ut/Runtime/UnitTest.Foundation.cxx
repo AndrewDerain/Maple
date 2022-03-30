@@ -51,6 +51,9 @@ namespace Exp {
         auto m = cast<char>(uintv);
         //intv = cast<double>(uintv);
         CHECK(intv == uintv);
+
+        std::cout << sizeof(std::string) << std::endl;
+        std::cout << sizeof(Fantasia::Foundation::String) << std::endl;
     }
 
 }
@@ -531,7 +534,6 @@ namespace UnitTest::Foundation::TestString
             constexpr String Val2 = "24689";
             constexpr String Val3 = "123456";
 
-
             CHECK(Val1.Length() == sizeof("123456") - 1);
             CHECK(Val2.Length() == sizeof("24689") - 1);
             CHECK(Val3.Length() == sizeof("123456") - 1);
@@ -587,5 +589,23 @@ namespace UnitTest::Foundation::TestString
             CHECK(Target2 > Target1);
             CHECK(CompareString(Target2, "123456789012x") == 0);
         }
+    }
+
+
+
+
+    TEST_CASE("String::operator=(const char* value)", Tag) {
+
+        String Target = "";
+
+        Target = "0123456789012";
+        CHECK(bool(Target._Storage.IsOnStack()) == true);
+        CHECK(Target.Length() == sizeof("0123456789012") - 1);
+        CHECK(CompareString(Target, "0123456789012") == 0);
+
+        Target = "01234567890123-More on the heap";
+        CHECK(bool(Target._Storage.IsOnStack()) == false);
+        CHECK(Target.Length() == sizeof("01234567890123-More on the heap") - 1);
+        CHECK(CompareString(Target, "01234567890123-More on the heap") == 0);
     }
 }
