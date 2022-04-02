@@ -7,6 +7,9 @@
 #include <Fantasia.Foundation>
 #include <typeinfo>
 
+
+
+
 namespace Exp {
     constexpr bool IsEqual(const char *lstr, const char *rstr) {
         for (int i = 0; lstr[i] != '\0' && rstr[i] != '\0'; i++)
@@ -52,18 +55,20 @@ namespace Exp {
         //intv = cast<double>(uintv);
         CHECK(intv == uintv);
 
-        std::cout << sizeof(std::string) << std::endl;
-        std::cout << sizeof(Fantasia::Foundation::String) << std::endl;
+        //std::cout << sizeof(std::string) << std::endl;
+        //std::cout << sizeof(Fantasia::Foundation::String) << std::endl;
     }
-
 }
+
+
+
 
 namespace UnitTest::Foundation::TestInt64
 {
 	using ::Fantasia::Foundation::Int64;
 
 
-	TEST_CASE("Int64 shoule be plain old data type", "[Foundation][Int64]")
+	TEST_CASE("Int64 should be plain old data type", "[Foundation][Int64]")
 	{
 		CHECK(std::is_trivial_v<Int64>);
 		CHECK(std::is_standard_layout_v<Int64>);
@@ -587,6 +592,7 @@ namespace UnitTest::Foundation::TestString
                     .Catenate("123233456");
 
             CHECK(Target2 > Target1);
+            // std::cout << Target2 << std::endl;
             CHECK(CompareString(Target2, "123456789012x") == 0);
         }
     }

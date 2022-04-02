@@ -1,5 +1,5 @@
 ﻿
-#include <Runtime/Foundation/Int64.hxx>
+#include <Runtime/Foundation/Int64.h>
 
 
 // __api

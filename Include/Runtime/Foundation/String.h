@@ -6,7 +6,7 @@
 /// @date 2022-02-03
 /// 
 #pragma once
-#include "../_Detail/Foundation/Predeclars.hxx"
+#include "../_Detail/Foundation/Predeclars.h"
 
 
 #pragma warning(push)
@@ -91,7 +91,7 @@ namespace _Fantasia::Foundation
 
 
         /// @brief Stack 上可存储的最大整数, 取决于 _StackMaxCapacity 的大小
-        /// @see _StackMaxCapacity
+        /// @see _StackMaxCapacity                                2021-09-11 13:00:11
         static constexpr const int64_t _MaxIntegerValueOnStack 	= 9999999999999;
 
 
@@ -173,11 +173,11 @@ namespace _Fantasia::Foundation
 
 
         /// #brief 增大堆空间
-        void _Extend(std::uint64_t size);
+        void Extend(std::int64_t size);
 
 
     protected:
-        /// @note 也用于进行内存对齐
+        /// @note 用于进行内存对齐
         bool        _IsOnStack;
 
 
@@ -297,15 +297,14 @@ namespace _Fantasia::Foundation
         const String Catenate(const char* value) const;
 
 
-        /// @brief 追加内容
-        template<Size _Size> inline
-        String& Catenate(const char (&value)[_Size]);
-
-
         /// @brief 隐式转换为原始的 c 样式字符串。
         /// @note 此对象可以隐式转换为原始的 c 样式字符串，但不允许在此情况下对内容进行修改。
         inline constexpr
         operator char const* const() const noexcept;
+
+
+        inline
+        String& operator=(const char* value);
 
 
     protected:
@@ -321,15 +320,10 @@ namespace _Fantasia::Foundation
 
         /// @brief 追加内容到字符串末尾
         inline
-        void _Catenate(const char* value);
-
-
-        /// @brief 追加内容到字符串末尾
-        inline
         void _Catenate(const char* value, int64_t len);
 
 
-        /// @brief 内部函数，将 Stack 上的内容转移到 Heap 上。
+        /// @brief 将 Stack 上的内容转移到 Heap 上。
         /// @param reserved_space 需要预分配的空间大小
         __decorate(Fantasia, api)
         void _MoveToHeap(int64_t reserved_space);
@@ -409,4 +403,4 @@ namespace _Fantasia::Foundation
 #pragma warning(pop)
 
 
-#include "../_Detail/Foundation/String.inli.hxx"
+#include "../_Detail/Foundation/String.inl.h"

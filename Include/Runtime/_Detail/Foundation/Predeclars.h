@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "../Basic/CodeLang.CXX.hxx"
-#include "../Basic/Macro.Preconfig.hxx"
-#include "../Basic/Macro.Decorate.hxx"
+#include "../Basic/CodeLang.CXX.h"
+#include "../Basic/Macro.Preconfig.h"
+#include "../Basic/Macro.Decorate.h"
 
 
 #pragma warning(push)
@@ -24,6 +24,9 @@ namespace _Fantasia::Foundation
 
     struct Float64;
 
+
+    template<typename _Ty, Size Count>
+    struct ArrayT;
 } // _Fantasia::Foundation
 #pragma pack(pop)
 #pragma warning(pop)

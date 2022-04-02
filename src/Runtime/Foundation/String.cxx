@@ -1,5 +1,5 @@
 ﻿
-#include <Runtime/Foundation/String.hxx>
+#include <Runtime/Foundation/String.h>
 
 
 #pragma warning(push)
@@ -43,7 +43,7 @@ namespace _Fantasia::Foundation
     }
 
 
-    void StringHeapStorage::Extend(std::uint64_t size) {
+    void StringHeapStorage::Extend(std::int64_t size) {
 
         int64_t capacity    = _Capacity + size + 50;
         char*   memory      = new char[capacity];

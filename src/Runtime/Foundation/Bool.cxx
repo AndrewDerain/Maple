@@ -1,5 +1,5 @@
 ﻿
-#include <Runtime/Foundation/Float64.hxx>
+#include <Runtime/Foundation/Bool.h>
 
 
 #pragma warning(push)

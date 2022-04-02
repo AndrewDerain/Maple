@@ -7,34 +7,6 @@ using System
 using Fantasia.Foundation
 
 
-:Window=
-    Height="87" Width="256" 
-    Margin="3,4,5,6" 
-    Margin={Left="3" Top="4" Right="5" Bottom="6"}
-    
-    Content=
-        Color="A,R,G,B"
-         
-        :Grid
-            Content:
-                :Button
-                    Style=BS1 Click=OnClick
-                    Content:
-
-                :Spliter
-                    :Grid
-
-                    :Grid
-
-                :TextBlock
-                    Text="eerrff"
-    
-
-//
-full MainWindow:Window 
-    Num:Int64=89 -> Num=89 -> Num:=89 ->
-
-
 [Window] Window
 {
     Url.Name {"ddfff"}

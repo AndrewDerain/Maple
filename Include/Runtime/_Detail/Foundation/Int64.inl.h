@@ -1,6 +1,7 @@
 ﻿#pragma once
-#include "../../Foundation/Float64.hxx"
-#include "../../Foundation/String.hxx"
+#include "../../Foundation/Bool.h"
+#include "../../Foundation/Float64.h"
+#include "../../Foundation/String.h"
 
 
 #pragma warning(push)

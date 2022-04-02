@@ -6,7 +6,7 @@
 /// @date 2022-02-03
 /// 
 #pragma once
-#include "../_Detail/Foundation/Predeclars.hxx"
+#include "../_Detail/Foundation/Predeclars.h"
 
 
 #pragma warning(push)
@@ -15,19 +15,25 @@
 namespace _Fantasia::Foundation
 {
 
+    struct SetMM
+    {
+    public:
+
+    };
+
     /// @brief 布尔类型
     struct Bool 
     {
     public:
-        /// @brief 构造函数。设为 default 以支持 standard_layout 和 trival。
+        /// @brief 构造函数。设为 default 以支持 standard_layout 和 trivial。
         Bool() = default;
 
 
-        /// @brief 析构函数。设为 default 以支持 standard_layout 和 trival。
+        /// @brief 析构函数。设为 default 以支持 standard_layout 和 trivial。
         ~Bool() = default;
 
 
-        /// @brief 拷贝构造函数。设为 default 以支持 standard_layout 和 trival。
+        /// @brief 拷贝构造函数。设为 default 以支持 standard_layout 和 trivial。
         inline constexpr
         Bool(const Bool&) = default;
 
@@ -51,7 +57,6 @@ namespace _Fantasia::Foundation
 
 
         /// @brief 赋值操作符。设为 default 以支持 standard_layout 和 trival。
-        inline constexpr
         Bool& operator=(const Bool&) = default;
 
 
@@ -73,4 +78,4 @@ namespace _Fantasia::Foundation
 #pragma warning(pop)
 
 
-#include "../_Detail/Foundation/Bool.inli.hxx"
+#include "../_Detail/Foundation/Bool.inl.h"

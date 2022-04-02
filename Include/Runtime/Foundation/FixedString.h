@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../_Detail/Foundation/Predeclars.hxx"
+#include "../_Detail/Foundation/Predeclars.h"
 
 
 #pragma warning(push)
