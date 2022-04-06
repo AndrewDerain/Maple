@@ -47,12 +47,12 @@ namespace _Fantasia::Foundation
 
 
     protected:
-        friend 
-        _Ty* begin(ArrayT<_Ty, _Count>&);
+        template<typename, Size> friend
+        _Ty* begin(ArrayT<_Ty, _Count>& arr);
 
 
-        friend 
-        _Ty* end(ArrayT<_Ty, _Count>&);
+        template<typename, Size> friend
+        _Ty* end(ArrayT<_Ty, _Count>& arr);
 
 
         _Ty _Elements[_Count];

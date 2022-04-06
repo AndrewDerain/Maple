@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../_Detail/Foundation/Predeclars.h"
+#include "Fantasia/Runtime/_Detail/Foundation/Predeclars.h"
 
 
 #define _FANTASIA_ENUM_CTOR(_WRAP)                                                \

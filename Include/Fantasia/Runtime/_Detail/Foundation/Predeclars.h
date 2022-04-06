@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "../Basic/CodeLang.CXX.h"
-#include "../Basic/Macro.Preconfig.h"
-#include "../Basic/Macro.Decorate.h"
+#include "Fantasia/Runtime/_Detail/Basic/CodeLang.CXX.h"
+#include "Fantasia/Runtime/_Detail/Basic/Macro.Preconfig.h"
+#include "Fantasia/Runtime/_Detail/Basic/Macro.Decorate.h"
 
 
 #pragma warning(push)

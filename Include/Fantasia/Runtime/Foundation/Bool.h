@@ -6,7 +6,7 @@
 /// @date 2022-02-03
 /// 
 #pragma once
-#include "../_Detail/Foundation/Predeclars.h"
+#include "Fantasia/Runtime/_Detail/Foundation/Predeclars.h"
 
 
 #pragma warning(push)
@@ -14,12 +14,6 @@
 #pragma pack(push, ___FANTASIA_PACKING)
 namespace _Fantasia::Foundation
 {
-
-    struct SetMM
-    {
-    public:
-
-    };
 
     /// @brief 布尔类型
     struct Bool 
@@ -78,4 +72,4 @@ namespace _Fantasia::Foundation
 #pragma warning(pop)
 
 
-#include "../_Detail/Foundation/Bool.inl.h"
+#include "Fantasia/Runtime/_Detail/Foundation/Bool.inl.h"

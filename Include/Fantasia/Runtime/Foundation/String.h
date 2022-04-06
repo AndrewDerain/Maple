@@ -6,7 +6,7 @@
 /// @date 2022-02-03
 /// 
 #pragma once
-#include "../_Detail/Foundation/Predeclars.h"
+#include "Fantasia/Runtime/_Detail/Foundation/Predeclars.h"
 
 
 #pragma warning(push)
@@ -200,11 +200,11 @@ namespace _Fantasia::Foundation
     struct StringStorage
     {
     public:
-        inline constexpr
+        inline
         StringHeapStorage& Heap();
 
 
-        inline constexpr
+        inline
         const StringHeapStorage& Heap() const;
 
 
@@ -403,4 +403,4 @@ namespace _Fantasia::Foundation
 #pragma warning(pop)
 
 
-#include "../_Detail/Foundation/String.inl.h"
+#include "Fantasia/Runtime/_Detail/Foundation/String.inl.h"

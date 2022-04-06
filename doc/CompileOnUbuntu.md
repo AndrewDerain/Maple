@@ -2,23 +2,24 @@
 # Ubuntu 20.04 LTS 环境配置和编译
 
 
-**1. 如果 GCC 和 G++ 版本低于 11 先升级 GCC G++ 版本到 11**
+**1. 如果 GCC 和 G++ 版本低于 10 先升级 GCC G++ 版本到 10**
 
-- 添加工具链仓库：
-```
-    $ sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-    $ sudo apt update
+- 安装 GCC11 和 G++11
+```bash
+    $ sudo apt install -y gcc-10 g++-10
 ```
 
-- 安装 GCC11 G++11
-```
-    $ sudo apt install -y gcc-11 g++-11
+- 修改 cmake 的环境变量
+```bash
+    $ export CC=/bin/gcc-10
+    $ export CXX=/bin/g++-10
 ```
 
 **2. 安装 cmake**
 ```
     $ sudo apt install cmake
 ```
+
 - 确认版本大于3.20
 ```
     $ cmake --version

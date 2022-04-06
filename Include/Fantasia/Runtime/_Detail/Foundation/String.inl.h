@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "../../Foundation/Bool.h"
-#include "../../Foundation/Int64.h"
-#include "../../Foundation/Float64.h"
+#include "Fantasia/Runtime/Foundation/Bool.h"
+#include "Fantasia/Runtime/Foundation/Int64.h"
+#include "Fantasia/Runtime/Foundation/Float64.h"
 
 
 #pragma warning(push)
@@ -178,13 +178,13 @@ namespace _Fantasia::Foundation
 
 #pragma region StringStorage
 
-    inline constexpr
+    inline
     StringHeapStorage& StringStorage::Heap() {
         return *(StringHeapStorage*)(&_MemorySpace);
     }
 
 
-    inline constexpr
+    inline
     const StringHeapStorage& StringStorage::Heap() const {
         return *(const StringHeapStorage*)(&_MemorySpace);
     }

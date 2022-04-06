@@ -4,13 +4,13 @@
 /// email: locomoco@yeah.net
 ///
 #pragma once
-#include <Runtime/Foundation/ArrayT.h>
-#include <Runtime/Foundation/Bool.h>
-#include <Runtime/Foundation/Enum.h>
-#include <Runtime/Foundation/FixedString.h>
-#include <Runtime/Foundation/Float64.h>
-#include <Runtime/Foundation/Int64.h>
-#include <Runtime/Foundation/String.h>
+#include "Fantasia/Runtime/Foundation/ArrayT.h"
+#include "Fantasia/Runtime/Foundation/Bool.h"
+#include "Fantasia/Runtime/Foundation/Enum.h"
+#include "Fantasia/Runtime/Foundation/FixedString.h"
+#include "Fantasia/Runtime/Foundation/Float64.h"
+#include "Fantasia/Runtime/Foundation/Int64.h"
+#include "Fantasia/Runtime/Foundation/String.h"
 
 
 namespace Fantasia::Foundation
