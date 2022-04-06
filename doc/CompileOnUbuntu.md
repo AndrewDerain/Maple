@@ -4,7 +4,7 @@
 
 **1. 如果 GCC 和 G++ 版本低于 10 先升级 GCC G++ 版本到 10**
 
-- 安装 GCC11 和 G++11
+- 安装 GCC10 和 G++10
 ```bash
     $ sudo apt install -y gcc-10 g++-10
 ```
@@ -51,7 +51,7 @@
     $ cmake --preset="Unix.Release" .
 ```
 
-**7. 编译项目，程序会在 Compiled 文件夹中生成**
+**7. 编译项目，程序会在 `bin` `lib` 文件夹中生成**
 ```
     $ cmake --build --preset="Unix.Release.All"
 ```
