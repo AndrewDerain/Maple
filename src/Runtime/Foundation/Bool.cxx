@@ -1,5 +1,5 @@
 ﻿
-#include "Fantasia/Runtime/Foundation/Bool.h"
+#include "Fantasia/Runtime/Foundation/Bool.hxx"
 
 
 #pragma warning(push)

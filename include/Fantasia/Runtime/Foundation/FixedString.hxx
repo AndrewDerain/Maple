@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "Fantasia/Runtime/_Detail/Foundation/Predeclars.h"
+#include "Fantasia/Runtime/_Detail/Foundation/Predeclars.hxx"
 
 
 #pragma warning(push)

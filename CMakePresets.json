@@ -11,8 +11,8 @@
             "name": "Base",
             "description": "全平台通用的配置",
             "hidden": true,
-            "binaryDir": "${sourceDir}/out/build/${presetName}",
-            "installDir": "${sourceDir}/out/install/${presetName}"
+            "binaryDir": "${sourceDir}/../Fantasia.Build/${presetName}",
+            "installDir": "${sourceDir}/../Fantasia.Install/${presetName}"
         },
 
         

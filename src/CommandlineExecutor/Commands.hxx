@@ -9,31 +9,44 @@ namespace CommandlineExecutor
     using namespace Fantasia::Foundation;
 
 
+    enum class CommandExecuteResult {
+        Success,
+        NoSuchOption,
+        NoSuchCommand
+    };
+
     class CommandApp
     {
     public:
-        static int Run(int argc, char* argv[]);
+        static CommandExecuteResult Run(int argc, char* argv[]);
     
 
     protected:
-        static std::map<String, std::function<int(int, char*[])>> CmdMap;
+        static std::map<String, std::function<CommandExecuteResult(int, char*[])>> RootOptions;
+        static std::map<String, std::function<CommandExecuteResult(int, char*[])>> RootCommands;
+
 
         /// @brief 判断命令行的参数是不是选项
         /// 以 “--” 或 “-” 开始的字符串被认为是选项
         static bool IsOption(char* arg);
 
 
-        /// @brief 判断命令行的参数是不是值
-        /// 不以 “--” 或 “-” 开始的字符串被认为是值；
-        /// 双引号“”包裹的字符串被认为是值，即便含有 “--”，或 “-”
-        static bool IsValue(char* arg);
-
-
         /// @brief 输出当前程序版本
         /// $ fantasia --version
-        static int Version(int argc, char* argv[]);
+        /// $ fantasia -v
+        static CommandExecuteResult Version(int argc, char* argv[]);
 
 
-        static int New(int argc, char* argv[]);
+        /// @brief 输出帮助文档
+        /// $ fantasia --help
+        /// $ fantasia -h
+        static CommandExecuteResult Help(int argc, char* argv[]);
+
+
+        /// @brief 新建项目
+        /// $ fantasia new -n my_project
+        /// $ fantasia new --template console --name my_project
+        /// $ fantasia new -t console -n my_project
+        static CommandExecuteResult New(int argc, char* argv[]);
     };
 };

@@ -7,8 +7,8 @@
 /// @date 2021-02-20
 /// 
 #pragma once
-#include "Macro.Preconfig.h"
-#include "Macro.Function.h"
+#include "Macro.Preconfig.hxx"
+#include "Macro.Function.hxx"
 
 
 /// @breif Decorate impl

@@ -1,5 +1,5 @@
 ﻿
-#include "Fantasia/Runtime/Foundation/Float64.h"
+#include "Fantasia/Runtime/Foundation/Float64.hxx"
 
 
 #pragma warning(push)

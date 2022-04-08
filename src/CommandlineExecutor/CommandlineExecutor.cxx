@@ -5,5 +5,5 @@
 
 int main(int argc, char* argv[]) {
 
-    return CommandlineExecutor::CommandApp::Run(argc, argv);
+    return (int)CommandlineExecutor::CommandApp::Run(argc, argv);
 }

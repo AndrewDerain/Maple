@@ -1,8 +1,7 @@
 {
-    "cmake.buildDirectory": "${workspaceFolder}/.buildcache",
-    "cmake.installPrefix": "${workspaceFolder}/Install",
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs":"active",
+    
     "files.autoGuessEncoding": true,
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 5000,

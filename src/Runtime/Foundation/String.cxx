@@ -1,5 +1,5 @@
 ﻿
-#include "Fantasia/Runtime/Foundation/String.h"
+#include "Fantasia/Runtime/Foundation/String.hxx"
 
 
 #pragma warning(push)
