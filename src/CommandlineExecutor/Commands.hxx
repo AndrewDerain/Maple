@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "Fantasia/Fantasia.Foundation"
+#include "Fantasia/Foundation"
 #include <map>
 #include <functional>
 

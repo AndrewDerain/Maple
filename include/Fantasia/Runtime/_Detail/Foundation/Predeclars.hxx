@@ -10,6 +10,7 @@
 namespace _Fantasia::Foundation
 {
 
+    /// @brief  表示数据的大小
     using Size = std::int64_t;
 
 

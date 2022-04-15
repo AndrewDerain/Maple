@@ -18,7 +18,8 @@ namespace _Fantasia::Foundation
     _Ty* end(ArrayT<_Ty, _Count>& arr);
 
 
-    /// @brief 数组
+    /// @brief  数组
+    /// @note   满足 standard layout 和 trivial
     template<typename _Ty, Size _Count>
     struct ArrayT
     {

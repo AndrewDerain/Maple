@@ -15,7 +15,8 @@
 namespace _Fantasia::Foundation
 {
 
-    /// @brief 64位整数类型
+    /// @brief  64位整数类型
+    /// @note   满足 standard layout 和 trivial
     struct Int64
     {
     public:

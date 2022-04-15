@@ -4,7 +4,7 @@
 
 //#include <Runtime/Basic.Tracer.hxx>
 #define protected public
-#include "Fantasia/Fantasia.Foundation"
+#include "Fantasia/Foundation"
 #include <typeinfo>
 
 

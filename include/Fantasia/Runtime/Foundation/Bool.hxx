@@ -15,7 +15,8 @@
 namespace _Fantasia::Foundation
 {
 
-    /// @brief 布尔类型
+    /// @brief  布尔类型
+    /// @note   满足 standard layout 和 trivial
     struct Bool 
     {
     public:
@@ -50,7 +51,7 @@ namespace _Fantasia::Foundation
         operator bool&() noexcept;
 
 
-        /// @brief 赋值操作符。设为 default 以支持 standard_layout 和 trival。
+        /// @brief 赋值操作符。设为 default 以支持 standard_layout 和 trivial。
         Bool& operator=(const Bool&) = default;
 
 
@@ -63,8 +64,8 @@ namespace _Fantasia::Foundation
     };
 
 
-    // POD 校验。standard layout and trival。
-    static_assert(std::is_trivial_v<Bool>, "Bool must be trival!");
+    // POD 校验。standard layout and trivial。
+    static_assert(std::is_trivial_v<Bool>, "Bool must be trivial!");
     static_assert(std::is_standard_layout_v<Bool>, "Bool must be standard layout!");
 
 } // namespace _Fantasia::Foundation

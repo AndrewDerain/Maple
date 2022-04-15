@@ -3,6 +3,6 @@
 
 #pragma once
 
-#include "Fantasia/Fantasia.Foundation"
+#include "Fantasia/Foundation"
 
 //using namespace Fantasia;

@@ -233,7 +233,8 @@ namespace _Fantasia::Foundation
 
 
 
-    /// @brief 以 '\0' 字符结尾的字符串, 深拷贝实现。
+    /// @brief  以 '\0' 字符结尾的字符串, 深拷贝实现。
+    /// @note   满足 standard layout
     class String
     {
     public:

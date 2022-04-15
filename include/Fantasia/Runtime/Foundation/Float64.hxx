@@ -15,8 +15,9 @@
 namespace _Fantasia::Foundation
 {
 
-    /// @brief 64位浮点数
-    /// @note 操作符已进行重载，可直接比较大小
+    /// @brief  64位浮点数
+    /// @note   操作符已进行重载，可直接比较大小
+    ///         满足 standard layout 和 trivial
     struct Float64
     {
     public:
