@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TemplateProperty>
+    <Inherite Base=""/>
+
+    <SupportPlatforms>
+        <Platform OperatingSystem="Windows" OperatingSystemVersion="" Architecture="x86"/>
+        <Platform OperatingSystem="Windows" Architecture="x64"/>
+        <Platform OperatingSystem="Windows" Architecture="ARM"/>
+        <Platform OperatingSystem="Windows" Architecture="ARM64"/>
+        <Platform OperatingSystem="macOS" Architecture="ARM64"/>
+        <Platform>
+            <OperatingSystem>
+                <SystemName Name=""/>
+
+                <IncludeVersionRanges>
+                    <VersionRange>
+                        <Min Major="" Minor="" Patch="" Build=""/>
+                        <Max Major="" Minor="" Patch="" Build=""/>
+                    </VersionRange>
+                </IncludeVersionRanges>
+                <ExcludeVersionRanges>
+                    <VersionRange>
+                        <Min Major="" Minor="" Patch="" Build=""/>
+                        <Max Major="" Minor="" Patch="" Build=""/>
+                    </VersionRange>
+                </ExcludeVersionRanges>
+            </OperatingSystem>
+            <Architectures>
+                <Architecture Name="x86"/>
+            </Architectures>
+        </Platform>
+    </SupportPlatforms>
+
+    <PackageContent>
+        <Folder Name="">
+            <File Name=""/>
+            <Folder Name="">
+
+            </Folder>
+        </Folder>
+    </PackageContent>
+</TemplateProperty>

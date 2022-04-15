@@ -6,10 +6,10 @@ namespace CommandlineExecutor
 
     std::map<String, std::function<CommandExecuteResult(int, char*[])>> CommandApp::RootOptions
     {
-        { "--version",  CommandApp::Version},
-        { "-v",         CommandApp::Version},
-        { "--help",     CommandApp::Help},
-        { "-h",         CommandApp::Help}
+        { "--version",  CommandApp::Version },
+        { "-v",         CommandApp::Version },
+        { "--help",     CommandApp::Help },
+        { "-h",         CommandApp::Help }
     };
 
 
@@ -101,12 +101,11 @@ namespace CommandlineExecutor
                 << "Commands                                                        " << std::endl;
 
         // command new
-        content << "    new                     = Create new project from template. " << std::endl
-                << "        --template, -t     -> Indicate project template name.   " << std::endl
-                << "        --name, -n         -> Set name of the new project.      " << std::endl;
+        content << "    new                     = Create new project from resource. " << std::endl
+                << "      --resource, -t <name> -> Indicate project resource name.  " << std::endl
+                << "      --name, -n <name>     -> Set name of the new project.     " << std::endl;
 
-        std::cout << content.str();
-
+        std::cout << content.str() << std::endl;
         return CommandExecuteResult::Success;
     }
 
