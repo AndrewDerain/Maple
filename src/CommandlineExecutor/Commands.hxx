@@ -55,7 +55,7 @@ namespace CommandlineExecutor
 
         /// @brief 新建项目
         /// $ fantasia new -n my_project
-        /// $ fantasia new --resource console --name my_project
+        /// $ fantasia new --template console --name my_project
         /// $ fantasia new -t console -n my_project
         static CommandExecuteResult New(int argc, char* argv[]);
     };

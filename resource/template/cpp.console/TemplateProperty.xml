@@ -12,18 +12,10 @@
             <OperatingSystem>
                 <SystemName Name=""/>
 
-                <IncludeVersionRanges>
-                    <VersionRange>
-                        <Min Major="" Minor="" Patch="" Build=""/>
-                        <Max Major="" Minor="" Patch="" Build=""/>
-                    </VersionRange>
-                </IncludeVersionRanges>
-                <ExcludeVersionRanges>
-                    <VersionRange>
-                        <Min Major="" Minor="" Patch="" Build=""/>
-                        <Max Major="" Minor="" Patch="" Build=""/>
-                    </VersionRange>
-                </ExcludeVersionRanges>
+                <VersionRange>
+                    <Version Major="" Minor="" Patch="" Build=""/>
+                    <Version Major="" Minor="" Patch="" Build=""/>
+                </VersionRange>
             </OperatingSystem>
             <Architectures>
                 <Architecture Name="x86"/>

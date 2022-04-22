@@ -36,15 +36,15 @@ namespace _Fantasia::Foundation
         static Float64 Epsilon() noexcept;
 
 
-        /// @brief 构造函数。设为 default 以支持 standard_layout 和 trival。
+        /// @brief 构造函数。设为 default 以支持 standard_layout 和 trivial。
         Float64() = default;
 
 
-        /// @brief 析构函数。设为 default 以支持 standard_layout 和 trival。
+        /// @brief 析构函数。设为 default 以支持 standard_layout 和 trivial。
         ~Float64() = default;
 
 
-        /// @brief 拷贝构造函数。设为 default 以支持 standard_layout 和 trival。
+        /// @brief 拷贝构造函数。设为 default 以支持 standard_layout 和 trivial。
         inline constexpr
         Float64(const Float64&) = default;
 
@@ -75,7 +75,7 @@ namespace _Fantasia::Foundation
     };
 
 
-    // POD 校验。standard layout and trival。
+    // POD 校验。standard layout and trivial。
     static_assert(std::is_trivial_v<Float64>, "Float64 must be trival!");
     static_assert(std::is_standard_layout_v<Float64>, "Float64 must be standard layout!");
 

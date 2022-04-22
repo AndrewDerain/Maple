@@ -101,9 +101,9 @@ namespace CommandlineExecutor
                 << "Commands                                                        " << std::endl;
 
         // command new
-        content << "    new                     = Create new project from resource. " << std::endl
-                << "      --resource, -t <name> -> Indicate project resource name.  " << std::endl
-                << "      --name, -n <name>     -> Set name of the new project.     " << std::endl;
+        content << "    new                     = Create new project from template. " << std::endl
+                << "      --template, -t <name> -> Indicate project template name.  " << std::endl
+                << "      --name, -n <name>     -> Set the name of your project.    " << std::endl;
 
         std::cout << content.str() << std::endl;
         return CommandExecuteResult::Success;

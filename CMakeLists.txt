@@ -56,7 +56,8 @@ set(fantasia_third_party_cmake_source_dir	"${CMAKE_SOURCE_DIR}/thirdparty/src")
 set(fantasia_third_party_cmake_binary_dir	"${CMAKE_BINARY_DIR}/thirdparty/src")
 
 if(CMAKE_BUILD_TYPE STREQUAL Debug)
-	set(fantasia_target_postfix "d")
+	set(fantasia_target_postfix "-d")
+	set(fantasia_library_postfix "-d")
 else()
 	set(fantasia_target_postfix "")
 endif()
@@ -70,7 +71,7 @@ include_directories(
 
 
 #-----------------------------------------------------------------------------+
-#    Config golbal rpath
+#    Config global rpath
 #------------------------------------------------------------------------------
 set(CMAKE_INSTALL_RPATH ".:../lib")
 set(CMAKE_BUILD_RPATH	".:../lib")
