@@ -366,7 +366,14 @@ FodyWeavers.xsd
 .DS_Store
 
 # Fantasia ignore folders
-.idea/
+
+.idea/shelf/
+.idea/httpRequests/
+.idea/dataSources/
+.idea/.gitignore
+.idea/workspace.xml
+.idea/dataSources.local.xml
+
 [Bb]uild/
 [Ii]nstall/
 [Cc]ompiled/

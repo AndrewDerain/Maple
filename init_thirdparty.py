@@ -1,6 +1,6 @@
 ﻿
 import os
-from src.scripts.utility import command
+from script.python.utility import command
 
 
 os.system("git submodule update --init")

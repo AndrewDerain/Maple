@@ -60,11 +60,3 @@ namespace CommandlineExecutor
         static CommandExecuteResult New(int argc, char* argv[]);
     };
 };
-
-/*
- * platform
- *
- * deps:
- *  name version
- *
- */
