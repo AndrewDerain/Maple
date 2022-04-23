@@ -24,11 +24,15 @@
     </SupportPlatforms>
 
     <PackageContent>
-        <Folder Name="">
-            <File Name=""/>
-            <Folder Name="">
-
-            </Folder>
+        <File Name="CMakeLists.txt.ptf"/>
+        <Folder Name="resource"/>
+        <Folder Name="script"/>
+        <Folder Name="src">
+            <File Name="main.cpp.ptf"/>
         </Folder>
+        <Folder Name="ut"/>
     </PackageContent>
 </TemplateProperty>
+
+
+

@@ -1,7 +1,8 @@
 {
+    "version": 4,
     "configurations": [
         {
-            "name": "Mac",
+            "name": "macOS",
             "includePath": [
                 "${default}",
                 "${workspaceFolder}/include"
@@ -11,8 +12,8 @@
             "compilerPath": "/opt/homebrew/bin/gcc-11",
             "cStandard": "gnu17",
             "cppStandard": "gnu++17",
-            "intelliSenseMode": "macos-gcc-arm64"
+            "intelliSenseMode": "macos-gcc-arm64",
+            "configurationProvider": "ms-vscode.cmake-tools"
         }
-    ],
-    "version": 4
+    ]
 }

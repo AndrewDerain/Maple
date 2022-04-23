@@ -13,9 +13,9 @@ cmake_minimum_required (VERSION 3.20)
 #    Config project name.
 #------------------------------------------------------------------------------
 project (
-	Fantasia
-	VERSION 0.0.0.0
-	DESCRIPTION "Morden C++ Framework")
+    Fantasia
+    VERSION 0.0.0.0
+    DESCRIPTION "Morden C++ Framework")
 
 
 #-----------------------------------------------------------------------------+
@@ -31,7 +31,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 #    Config compiler settings
 #------------------------------------------------------------------------------
 if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-	add_compile_options(/Zc:preprocessor /ZI /INCREMENTAL)
+    add_compile_options(/Zc:preprocessor /ZI /INCREMENTAL)
 endif()
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
@@ -47,19 +47,18 @@ endif()
 #-----------------------------------------------------------------------------+
 #    Config golbal config
 #------------------------------------------------------------------------------
-set(fantasia_runtime_out_dir 	"${CMAKE_SOURCE_DIR}/bin")
-set(fantasia_library_out_dir 	"${CMAKE_SOURCE_DIR}/lib")
-set(fantasia_archive_out_dir 	"${CMAKE_SOURCE_DIR}/lib")
+set(fantasia_runtime_out_dir     "${CMAKE_SOURCE_DIR}/bin")
+set(fantasia_library_out_dir     "${CMAKE_SOURCE_DIR}/lib")
+set(fantasia_archive_out_dir     "${CMAKE_SOURCE_DIR}/lib")
 
-set(fantasia_third_party_dir				"${CMAKE_SOURCE_DIR}/thirdparty")
-set(fantasia_third_party_cmake_source_dir	"${CMAKE_SOURCE_DIR}/thirdparty/src")
-set(fantasia_third_party_cmake_binary_dir	"${CMAKE_BINARY_DIR}/thirdparty/src")
+set(fantasia_third_party_dir                 "${CMAKE_SOURCE_DIR}/thirdparty")
+set(fantasia_third_party_cmake_source_dir    "${CMAKE_SOURCE_DIR}/thirdparty/src")
+set(fantasia_third_party_cmake_binary_dir    "${CMAKE_BINARY_DIR}/thirdparty/src")
 
 if(CMAKE_BUILD_TYPE STREQUAL Debug)
-	set(fantasia_target_postfix "-d")
-	set(fantasia_library_postfix "-d")
+    set(fantasia_target_postfix "-d")
 else()
-	set(fantasia_target_postfix "")
+    set(fantasia_target_postfix "")
 endif()
 
 
@@ -67,14 +66,14 @@ endif()
 #    Config global include folders
 #------------------------------------------------------------------------------
 include_directories(
-	"${CMAKE_SOURCE_DIR}/include")
+    "${CMAKE_SOURCE_DIR}/include")
 
 
 #-----------------------------------------------------------------------------+
 #    Config global rpath
 #------------------------------------------------------------------------------
 set(CMAKE_INSTALL_RPATH ".:../lib")
-set(CMAKE_BUILD_RPATH	".:../lib")
+set(CMAKE_BUILD_RPATH    ".:../lib")
 
 
 #-----------------------------------------------------------------------------+

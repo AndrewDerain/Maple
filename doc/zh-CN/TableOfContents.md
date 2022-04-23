@@ -2,6 +2,7 @@
 
 
 - [编码原则](KnowledgeBase/KB00001.md)
-- 项目构建
+- 构建 & 安装 Fantasia
   - Linux 环境
     - [Ubuntu 20.04 LTS](KnowledgeBase/KB00002.md)
+- 创建项目模板

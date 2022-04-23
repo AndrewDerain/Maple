@@ -1,0 +1,11 @@
+﻿//
+// Created by @(project.author) on @(date).
+//
+
+
+int main(int argc, int* argv[]) {
+    
+    std::cout << "Hello, world of FANTASIA!" << std::endl;
+
+    return 0;
+}
