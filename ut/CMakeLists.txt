@@ -45,11 +45,6 @@ set_target_properties(
 
     CXX_VISIBILITY_PRESET               hidden
     VISIBILITY_INLINES_HIDDEN           ON
-
-    RUNTIME_OUTPUT_DIRECTORY_DEBUG          "${fantasia_runtime_out_dir}"
-    RUNTIME_OUTPUT_DIRECTORY_RELEASE        "${fantasia_runtime_out_dir}"
-    RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL     "${fantasia_runtime_out_dir}"
-    RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO "${fantasia_runtime_out_dir}"
 )
 #add_executable(ExpAttr "Runtime/ExpAttr.cxx")
 

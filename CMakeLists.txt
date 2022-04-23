@@ -47,9 +47,20 @@ endif()
 #-----------------------------------------------------------------------------+
 #    Config golbal config
 #------------------------------------------------------------------------------
-set(fantasia_runtime_out_dir     "${CMAKE_SOURCE_DIR}/bin")
-set(fantasia_library_out_dir     "${CMAKE_SOURCE_DIR}/lib")
-set(fantasia_archive_out_dir     "${CMAKE_SOURCE_DIR}/lib")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG            "${CMAKE_SOURCE_DIR}/bin")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE          "${CMAKE_SOURCE_DIR}/bin")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL       "${CMAKE_SOURCE_DIR}/bin")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO   "${CMAKE_SOURCE_DIR}/bin")
+
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG            "${CMAKE_SOURCE_DIR}/lib")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE          "${CMAKE_SOURCE_DIR}/lib")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_MINSIZEREL       "${CMAKE_SOURCE_DIR}/lib")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELWITHDEBINFO   "${CMAKE_SOURCE_DIR}/lib")
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG            "${CMAKE_SOURCE_DIR}/lib")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE          "${CMAKE_SOURCE_DIR}/lib")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_MINSIZEREL       "${CMAKE_SOURCE_DIR}/lib")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO   "${CMAKE_SOURCE_DIR}/lib")
 
 set(fantasia_third_party_dir                 "${CMAKE_SOURCE_DIR}/thirdparty")
 set(fantasia_third_party_cmake_source_dir    "${CMAKE_SOURCE_DIR}/thirdparty/src")

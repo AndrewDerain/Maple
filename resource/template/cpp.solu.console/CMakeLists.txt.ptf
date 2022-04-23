@@ -15,7 +15,7 @@ cmake_minimum_required (VERSION 3.20)
 project (
     @(project.name)
     VERSION @(project.version)
-    DESCRIPTION "Morden C++ Framework")
+    DESCRIPTION "Modern C++ Framework")
 
 
 #-----------------------------------------------------------------------------+
@@ -45,7 +45,7 @@ endif()
 
 
 #-----------------------------------------------------------------------------+
-#    Config golbal config
+#    Config global config
 #------------------------------------------------------------------------------
 set(@(lower(project.name))_runtime_out_dir     "${CMAKE_SOURCE_DIR}/bin")
 set(@(lower(project.name))_library_out_dir     "${CMAKE_SOURCE_DIR}/lib")

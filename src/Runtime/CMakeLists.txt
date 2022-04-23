@@ -31,16 +31,13 @@ set_target_properties(
     ${target_name_runtime}
     PROPERTIES 
     
-    CXX_VISIBILITY_PRESET               hidden
-    VISIBILITY_INLINES_HIDDEN           ON
-    
-    LIBRARY_OUTPUT_DIRECTORY_DEBUG          "${fantasia_library_out_dir}"
-    LIBRARY_OUTPUT_DIRECTORY_RELEASE        "${fantasia_library_out_dir}"
-    LIBRARY_OUTPUT_DIRECTORY_MINSIZEREL     "${fantasia_library_out_dir}"
-    LIBRARY_OUTPUT_DIRECTORY_RELWITHDEBINFO "${fantasia_library_out_dir}"
+    CXX_VISIBILITY_PRESET		hidden
+    VISIBILITY_INLINES_HIDDEN 	ON
 )
 
 
 #-----------------------------------------------------------------------------+
 #    项目安装配置
 #------------------------------------------------------------------------------
+install(TARGETS ${target_name_runtime} CONFIGURATIONS Release)
+install(DIRECTORY "${CMAKE_SOURCE_DIR}/include/Fantasia" DESTINATION "include")
