@@ -12,13 +12,14 @@ Fantasia（幻曲）' . '， 这个名字意味着这个库可能永远也不会
 
 
 ## 使用之前
-- 此项目需要 C++ 20 及以上的版本
-- 此项目需要 CMake 3.20 及以上的版本
+- 此项目面向 C++ 20 及以上版本构建
+- 此项目使用 CMake 3.20 及以上的版本
 
 
 ## 项目文档
 - [中文文档](doc/zh-CN/TableOfContents.md)
-- [English Documents](doc/en-US/TableOfContents.md)
+- [English Documentsf](doc/en-US/TableOfContents.md)
+
 
 ## 目录结构
 

@@ -25,7 +25,7 @@ namespace CommandlineExecutor
     };
 
 
-    class CommandApp
+    class CommandApplication
     {
     public:
         static CommandExecuteResult Run(int argc, char* argv[]);

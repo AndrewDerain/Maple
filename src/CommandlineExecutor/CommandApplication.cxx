@@ -1,25 +1,25 @@
-﻿#include "Commands.hxx"
+﻿#include "CommandApplication.hxx"
 
 
 namespace CommandlineExecutor
 {
 
-    std::map<String, std::function<CommandExecuteResult(int, char*[])>> CommandApp::RootOptions
+    std::map<String, std::function<CommandExecuteResult(int, char*[])>> CommandApplication::RootOptions
     {
-        { "--version",  CommandApp::Version },
-        { "-v",         CommandApp::Version },
-        { "--help",     CommandApp::Help },
-        { "-h",         CommandApp::Help }
+        { "--version", CommandApplication::Version },
+        { "-v",        CommandApplication::Version },
+        { "--help",    CommandApplication::Help },
+        { "-h",        CommandApplication::Help }
     };
 
 
-    std::map<String, std::function<CommandExecuteResult(int, char*[])>> CommandApp::RootCommands
+    std::map<String, std::function<CommandExecuteResult(int, char*[])>> CommandApplication::RootCommands
     {
-        { "new",        CommandApp::New }
+        {"new", CommandApplication::New }
     };
 
 
-    bool CommandApp::IsOption(char* arg) {
+    bool CommandApplication::IsOption(char* arg) {
 
         if(strlen(arg) < 1) {
             return false;
@@ -33,7 +33,7 @@ namespace CommandlineExecutor
     }
 
 
-    CommandExecuteResult CommandApp::Run(int argc, char* argv[]) {
+    CommandExecuteResult CommandApplication::Run(int argc, char* argv[]) {
 
         if(argc == 1) {
             return Version(argc, argv);
@@ -62,7 +62,7 @@ namespace CommandlineExecutor
     }
 
 
-    CommandExecuteResult CommandApp::Version(int argc, char* argv[]) {
+    CommandExecuteResult CommandApplication::Version(int argc, char* argv[]) {
 
         std::cout << "fantasia version 0.0.0.0" << std::endl;
         std::cout << std::endl;
@@ -76,7 +76,7 @@ namespace CommandlineExecutor
     }
 
 
-    CommandExecuteResult CommandApp::Help(int argc, char* argv[]) {
+    CommandExecuteResult CommandApplication::Help(int argc, char* argv[]) {
 
         std::stringstream content;
 
@@ -110,7 +110,7 @@ namespace CommandlineExecutor
     }
 
 
-    CommandExecuteResult CommandApp::New(int argc, char* argv[]) {
+    CommandExecuteResult CommandApplication::New(int argc, char* argv[]) {
         std::cout << "new project" << std::endl;
 
         //if(argc < )

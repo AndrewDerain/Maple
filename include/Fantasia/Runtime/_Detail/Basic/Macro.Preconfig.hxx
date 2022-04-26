@@ -23,14 +23,14 @@
 /// @details 此宏指定某个函数在项目中是被导出的
 #if defined(_WIN32) || defined(__CYGWIN__)
 #   if defined(__GNUC__)
-#       if defined(___FNATASIA_EXPORTS)
+#       if defined(___FANTASIA_EXPORTS)
 #           define ___FANTASIA_API __attribute__ ((dllexport))
 #       else
 #           define ___FANTASIA_API __attribute__ ((dllimport))
 #       endif
 #   endif
 #   if defined(_MSC_VER)
-#       if defined(___FNATASIA_EXPORTS)
+#       if defined(___FANTASIA_EXPORTS)
 #           define ___FANTASIA_API __declspec (dllexport)
 #       else
 #           define ___FANTASIA_API __declspec (dllimport)
@@ -38,7 +38,7 @@
 #   endif
 #else
 #   if defined(__GNUC__)
-#       if defined(___FNATASIA_EXPORTS)
+#       if defined(___FANTASIA_EXPORTS)
 #           define ___FANTASIA_API __attribute__ ((visibility ("default")))
 #       else
 #           define ___FANTASIA_API __attribute__ ((visibility ("default")))

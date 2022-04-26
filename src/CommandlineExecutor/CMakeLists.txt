@@ -5,7 +5,7 @@
 project (
 	CommandlineExecutor
 	VERSION 1.0.0.0
-	DESCRIPTION "Morden C++ Framework Commandline executor")
+	DESCRIPTION "Modern C++ Framework Commandline executor")
 
 
 #-----------------------------------------------------------------------------+

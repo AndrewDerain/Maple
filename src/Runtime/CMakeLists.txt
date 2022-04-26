@@ -5,13 +5,13 @@
 project (
 	Runtime
 	VERSION 1.0.0.0
-	DESCRIPTION "Morden C++ Framework Runtime")
+	DESCRIPTION "Modern C++ Framework Runtime")
 
 
 #-----------------------------------------------------------------------------+
 #    配置预处理器
 #------------------------------------------------------------------------------
-add_compile_definitions(___FNATASIA_EXPORTS)
+add_compile_definitions(___FANTASIA_EXPORTS)
 
 
 #-----------------------------------------------------------------------------+
