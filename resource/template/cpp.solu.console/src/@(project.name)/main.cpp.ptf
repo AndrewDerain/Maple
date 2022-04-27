@@ -1,9 +1,9 @@
 ﻿//
 // Created by @(project.author) on @(date).
 //
+#include <iostream>
 
-
-int main(int argc, int* argv[]) {
+int main(int argc, char* argv[]) {
     
     std::cout << "Hello, world of FANTASIA!" << std::endl;
 

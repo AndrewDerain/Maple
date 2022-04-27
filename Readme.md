@@ -6,9 +6,8 @@
 
 ## 这是SHA？
 
-这个项目是我自己学习 C++ 的一个实践项目，以个人的喜好打造的，从基本的数据（包括 Int64，Float64，IPC 等等）开始构建的一个 C++ 开发框架。
+以个人的喜好打造的，从基本的数据结构（包括 Int64，Float64，IPC 等等）开始构建的一个 C++ 开发框架。
 
-Fantasia（幻曲）' . '， 这个名字意味着这个库可能永远也不会真正完成。这个库的第一个版本（1.0）也并没有计划的完成时间以及会包含多少东西 -_-
 
 
 ## 使用之前
@@ -18,7 +17,7 @@ Fantasia（幻曲）' . '， 这个名字意味着这个库可能永远也不会
 
 ## 项目文档
 - [中文文档](doc/zh-CN/TableOfContents.md)
-- [English Documentsf](doc/en-US/TableOfContents.md)
+- [English Documents](doc/en-US/TableOfContents.md)
 
 
 ## 目录结构
@@ -36,16 +35,35 @@ Fantasia（幻曲）' . '， 这个名字意味着这个库可能永远也不会
 | 文件夹 | ut         | 单元测试                    |      有      |
 | 文件夹 | thirdparty | 第三方库目录                  |      有      |
 
+----
+> Fantasia Framework For C++
 
-## 和几个文件
+## What's this?
 
-| 类型       | 文件                                       | 说明                         |
-|----------|------------------------------------------|----------------------------|
-| markdown | [Readme.md](Readme.md)                   | 项目概览说明文件                   |
-| CMake    | [CMakeLists.txt](CMakeLists.txt)         | 顶层 CMake 项目管理文件            |
-| CMake    | [CMakeSettings.json](CMakeSettings.json) | Visual Studio CMake 项目配置文件 |
+This is a C++ develop framework with personal preferences. It contains basic data structure (Int64, Float64, IPC, ...) and more.
 
+## Before using it.
+- You need C++ 20 or later.
+- You need CMake 3.20 or later.
 
+## Documents
+- [中文文档](doc/zh-CN/TableOfContents.md)
+- [English Documents](doc/en-US/TableOfContents.md)
+
+## Directories
+
+| Type   | Name       | Note                                        | Git Management |
+|--------|------------|---------------------------------------------|:--------------:|
+| Folder | .vscode    | Configuration files for Visual Studio Code. |       Y        |
+| Folder | bin        | Contains .exe or .dll file.                 |       N        |
+| Folder | lib        | Contains .lib or .so file.                  |       N        |
+| Folder | include    | Headers for the framework user.             |       Y        |
+| Folder | build      | Default cmake build directory.              |       N        |
+| Folder | install    | Default cmake install directory.            |       N        |
+| Folder | doc        | Documents.                                  |       N        |
+| Folder | src        | Source code.                                |       Y        |
+| Folder | ut         | Unit test programs.                         |       Y        |
+| Folder | thirdparty | The third party libraries.                  |       Y        |
 
 
 ---

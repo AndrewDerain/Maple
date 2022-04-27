@@ -15,7 +15,7 @@ cmake_minimum_required (VERSION 3.20)
 project (
     Fantasia
     VERSION 0.0.0.0
-    DESCRIPTION "Morden C++ Framework")
+    DESCRIPTION "Modern C++ Framework")
 
 
 #-----------------------------------------------------------------------------+
@@ -34,18 +34,9 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
     add_compile_options(/Zc:preprocessor /ZI /INCREMENTAL)
 endif()
 
-if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-endif()
-
-if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-endif()
-
-if(CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
-endif()
-
 
 #-----------------------------------------------------------------------------+
-#    Config golbal config
+#    Config global config
 #------------------------------------------------------------------------------
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG            "${CMAKE_SOURCE_DIR}/bin")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE          "${CMAKE_SOURCE_DIR}/bin")
@@ -57,10 +48,10 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE          "${CMAKE_SOURCE_DIR}/lib")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_MINSIZEREL       "${CMAKE_SOURCE_DIR}/lib")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELWITHDEBINFO   "${CMAKE_SOURCE_DIR}/lib")
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG            "${CMAKE_SOURCE_DIR}/lib")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE          "${CMAKE_SOURCE_DIR}/lib")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_MINSIZEREL       "${CMAKE_SOURCE_DIR}/lib")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO   "${CMAKE_SOURCE_DIR}/lib")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG            "${CMAKE_SOURCE_DIR}/archive")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE          "${CMAKE_SOURCE_DIR}/archive")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_MINSIZEREL       "${CMAKE_SOURCE_DIR}/archive")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO   "${CMAKE_SOURCE_DIR}/archive")
 
 set(fantasia_third_party_dir                 "${CMAKE_SOURCE_DIR}/thirdparty")
 set(fantasia_third_party_cmake_source_dir    "${CMAKE_SOURCE_DIR}/thirdparty/src")
@@ -76,15 +67,14 @@ endif()
 #-----------------------------------------------------------------------------+
 #    Config global include folders
 #------------------------------------------------------------------------------
-include_directories(
-    "${CMAKE_SOURCE_DIR}/include")
+include_directories("${CMAKE_SOURCE_DIR}/include")
 
 
 #-----------------------------------------------------------------------------+
 #    Config global rpath
 #------------------------------------------------------------------------------
 set(CMAKE_INSTALL_RPATH ".:../lib")
-set(CMAKE_BUILD_RPATH    ".:../lib")
+set(CMAKE_BUILD_RPATH   ".:../lib")
 
 
 #-----------------------------------------------------------------------------+

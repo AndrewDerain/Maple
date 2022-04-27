@@ -1,20 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TemplateProperty>
-    <Inherite Base=""/>
+    <Language Name="C++" Version="20"/>
 
     <SupportPlatforms>
-        <Platform OperatingSystem="Windows" OperatingSystemVersion="" Architecture="x86"/>
-        <Platform OperatingSystem="Windows" Architecture="x64"/>
-        <Platform OperatingSystem="Windows" Architecture="ARM"/>
-        <Platform OperatingSystem="Windows" Architecture="ARM64"/>
-        <Platform OperatingSystem="macOS" Architecture="ARM64"/>
+        <Platform OperatingSystem="macOS" Architecture="AppleSilicon"/>
+
         <Platform>
             <OperatingSystem>
-                <SystemName Name=""/>
-
+                <SystemName Name="Windows"/>
                 <VersionRange>
-                    <Version Major="" Minor="" Patch="" Build=""/>
-                    <Version Major="" Minor="" Patch="" Build=""/>
+                    <Version Major=""/>
+                    <Version Major=""/>
                 </VersionRange>
             </OperatingSystem>
             <Architectures>
@@ -23,15 +19,14 @@
         </Platform>
     </SupportPlatforms>
 
-    <PackageContent>
+    <PackageContents>
         <File Name="CMakeLists.txt.ptf"/>
-        <Folder Name="resource"/>
-        <Folder Name="script"/>
         <Folder Name="src">
-            <File Name="main.cpp.ptf"/>
+            <Folder Name="@(project.name)">
+                <File Name="main.cpp.ptf"/>
+            </Folder>
         </Folder>
-        <Folder Name="ut"/>
-    </PackageContent>
+    </PackageContents>
 </TemplateProperty>
 
 
