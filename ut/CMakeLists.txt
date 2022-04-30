@@ -46,12 +46,3 @@ set_target_properties(
     CXX_VISIBILITY_PRESET               hidden
     VISIBILITY_INLINES_HIDDEN           ON
 )
-#add_executable(ExpAttr "Runtime/ExpAttr.cxx")
-
-
-#-----------------------------------------------------------------------------+
-#    Catch2 测试
-#------------------------------------------------------------------------------
-#include(CTest)
-#include(Catch)
-#catch_discover_tests(FantasiaUnitTester)
