@@ -1,4 +1,5 @@
-﻿#include "CommandApplication.hxx"
+﻿
+#include "CommandApplication.hxx"
 
 
 namespace CommandlineExecutor
