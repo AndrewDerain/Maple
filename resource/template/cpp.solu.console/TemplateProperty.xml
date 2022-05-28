@@ -2,7 +2,7 @@
 <TemplateProperty>
     <Language Name="C++" Version="20"/>
 
-    <SupportPlatforms>
+    <SupportedPlatforms>
         <Platform OperatingSystem="macOS" Architecture="AppleSilicon"/>
 
         <Platform>
@@ -17,13 +17,13 @@
                 <Architecture Name="x86"/>
             </Architectures>
         </Platform>
-    </SupportPlatforms>
+    </SupportedPlatforms>
 
     <PackageContents>
         <File Name="CMakeLists.txt.ptf"/>
         <Folder Name="src">
             <Folder Name="@(project.name)">
-                <File Name="main.cpp.ptf"/>
+                <File Name="main.cpp.ptfa"/>
             </Folder>
         </Folder>
     </PackageContents>

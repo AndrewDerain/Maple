@@ -29,7 +29,7 @@ namespace _Fantasia::Foundation
 
 
     inline constexpr
-    Float64::Float64(double value) noexcept:
+    Float64::Float64(const double value) noexcept:
         _StoredValue(value) {
     }
 
@@ -47,7 +47,7 @@ namespace _Fantasia::Foundation
 
 
     inline constexpr
-    Float64& Float64::operator=(double value) {
+    Float64& Float64::operator=(const double value) {
         _StoredValue = value;
         return *this;
     }
@@ -55,53 +55,40 @@ namespace _Fantasia::Foundation
 
     inline constexpr
     Bool operator>(Float64& left, Float64& right) {
-        auto dif = (double)left - (double)right;
-        return fabs(dif) > std::numeric_limits<double>::epsilon() && dif > 0;
+        double dif = (double)left - (double)right;
+        return dif > Float64::Epsilon();
     }
 
 
     inline constexpr
     Bool operator<(Float64& left, Float64& right) {
-        auto dif = (double)left - (double)right;
-        return fabs(dif) > std::numeric_limits<double>::epsilon() && dif < 0;
+        double dif = (double)left - (double)right;
+        return dif > Float64::Epsilon();
     }
 
 
     inline constexpr
     Bool operator==(Float64& left, Float64& right) {
-        auto dif = (double)left - (double)right;
-        return fabs(dif) <= std::numeric_limits<double>::epsilon();
+        double dif = (double)left - (double)right;
+        return dif >= Float64::Epsilon() || dif <= Float64::Epsilon();
     }
 
 
     inline constexpr
     Bool operator!=(Float64& left, Float64& right) {
-        auto dif = (double)left - (double)right;
-        return fabs(dif) > std::numeric_limits<double>::epsilon();
+        return !(left == right);
     }
 
 
     inline constexpr
     Bool operator>=(Float64& left, Float64& right) {
-
-        auto dif = (double)left - (double)right;
-
-        if (fabs(dif) <= std::numeric_limits<double>::epsilon())
-            return true;
-        else 
-            return dif > 0;
+        return left > right || left == right;
     }
 
 
     inline constexpr
     Bool operator<=(Float64& left, Float64& right) {
-
-        auto dif = (double)left - (double)right;
-
-        if (fabs(dif) <= std::numeric_limits<double>::epsilon())
-            return true;
-        else 
-            return dif < 0;
+        return left < right || left == right;
     }
 
 } // namespace _Fantasia::Foundation

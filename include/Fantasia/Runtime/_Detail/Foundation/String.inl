@@ -108,8 +108,6 @@ namespace _Fantasia::Foundation
 #pragma endregion // StringStackStorage
 
 
-
-
 #pragma region StringHeapStorage
 
     inline
@@ -125,7 +123,7 @@ namespace _Fantasia::Foundation
 
 
     inline
-    const char* StringHeapStorage::StoredValue() const {
+    const char* StringHeapStorage::Data() const {
         return _StoredValue;
     }
 
@@ -174,8 +172,6 @@ namespace _Fantasia::Foundation
 #pragma endregion // StringHeapStorage
 
 
-
-
 #pragma region StringStorage
 
     inline
@@ -208,8 +204,6 @@ namespace _Fantasia::Foundation
     }
 
 #pragma endregion // StringStorage
-
-
 
 
 #pragma region String
@@ -299,13 +293,19 @@ namespace _Fantasia::Foundation
     }
 
 
+    inline
+    Bool String::IsOnStack() const {
+        return _Storage.IsOnStack();
+    }
+
+
     inline constexpr
     String::operator char const* const() const noexcept {
 
         if(_Storage.IsOnStack())
             return _Storage.Stack().Data();
         else 
-            return _Storage.Heap().StoredValue();
+            return _Storage.Heap().Data();
     }
 
 
@@ -369,8 +369,6 @@ namespace _Fantasia::Foundation
 #pragma endregion
 
 
-
-
 #pragma region
 
     inline constexpr
@@ -396,6 +394,12 @@ namespace _Fantasia::Foundation
 
         return 0;
     }
+
+
+    /*inline constexpr
+    Int64 CompareString(const char* left, const char* right) noexcept {
+
+    }*/
 
 
     inline constexpr
@@ -461,8 +465,6 @@ namespace _Fantasia::Foundation
 #pragma endregion
 
 
-
-
 #pragma region
 
     inline constexpr
@@ -498,6 +500,28 @@ namespace _Fantasia::Foundation
     inline constexpr
     Bool operator<=(const String& left, const String& right) noexcept {
         return CompareString(left, right) <= 0;
+    }
+
+
+    inline constexpr
+    const char* begin(const String& string) {
+        if(string._Storage.IsOnStack()) {
+            return string._Storage.Stack().Data();
+        }
+        else {
+            return string._Storage.Heap().Data();
+        }
+    }
+
+
+    inline constexpr
+    const char* end(const String& string) {
+        if(string._Storage.IsOnStack()) {
+            return string._Storage.Stack().Data() + string._Storage.Stack().Length();
+        }
+        else {
+            return string._Storage.Heap().Data() + string._Storage.Heap().Length();
+        }
     }
 
 #pragma endregion

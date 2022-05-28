@@ -34,7 +34,7 @@ namespace _Fantasia::Foundation
 
 
         inline constexpr
-        Bool(bool value) noexcept;
+        Bool(const bool value) noexcept;
 
         
         /// @brief 将布尔值转换为字符串
@@ -56,7 +56,7 @@ namespace _Fantasia::Foundation
 
 
         inline constexpr
-        Bool& operator=(bool value) noexcept;
+        Bool& operator=(const bool value) noexcept;
 
 
     protected:
@@ -73,4 +73,4 @@ namespace _Fantasia::Foundation
 #pragma warning(pop)
 
 
-#include "Fantasia/Runtime/_Detail/Foundation/Bool.inl.hxx"
+#include "Fantasia/Runtime/_Detail/Foundation/Bool.inl"

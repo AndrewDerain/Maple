@@ -34,7 +34,7 @@ namespace _Fantasia::Foundation
 
     template<typename _Ty, int64_t _Count>
     inline constexpr
-    _Ty& ArrayT<_Ty, _Count>::operator[](Int64 index) {
+    _Ty& ArrayT<_Ty, _Count>::operator[](const Int64 index) {
         return _Elements[index];
     }
 

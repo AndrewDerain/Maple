@@ -1,66 +1,8 @@
 ﻿
-#include <catch2/catch_test_macros.hpp>
-
-
-//#include <Runtime/Basic.Tracer.hxx>
-#define protected public
-#include "Fantasia/Foundation"
 #include <typeinfo>
-
-
-
-
-namespace Exp {
-    constexpr bool IsEqual(const char *lstr, const char *rstr) {
-        for (int i = 0; lstr[i] != '\0' && rstr[i] != '\0'; i++)
-            if (lstr[i] != rstr[i]) return false;
-        return true;
-    }
-
-
-    template<typename _T, bool _False>
-    struct no_partial_specialization {
-        no_partial_specialization() {
-            static_assert(_False, "no partial specialization for this type.");
-        }
-    };
-
-
-    template<typename _T, typename _F>
-    _T cast(_F &src) {
-        no_partial_specialization<_F, false>();
-        return _T();
-    }
-
-
-    template<>
-    int64_t cast<int64_t, uint64_t>(uint64_t &src) {
-        return src;
-    }
-
-
-    template<>
-    char cast<char, uint64_t>(uint64_t &src) {
-        //std::cout << __PRETTY_FUNCTION__ << std::endl;
-        return src;
-    }
-
-
-    TEST_CASE("Demo"){
-        uint64_t uintv = 23;
-        int64_t intv = 0;
-
-        intv = cast<int64_t>(uintv);
-        auto m = cast<char>(uintv);
-        //intv = cast<double>(uintv);
-        CHECK(intv == uintv);
-
-        //std::cout << sizeof(std::string) << std::endl;
-        //std::cout << sizeof(Fantasia::Foundation::String) << std::endl;
-    }
-}
-
-
+#include <catch2/catch_test_macros.hpp>
+#include "Fantasia/Foundation"
+#include "Fantasia/Runtime/_Detail/ConstantExpression/Math.hxx"
 
 
 namespace UnitTest::Foundation::TestInt64
@@ -366,36 +308,46 @@ namespace UnitTest::Foundation::TestInt64
 
 namespace UnitTest::Foundation::TestString
 {
+
     using namespace _Fantasia::Foundation;
 
 
     const char* Tag = "[Foundation][String]";
 
 
+    // A common random string for String test
     std::string random_string[10] = {
-        "This is a random number [" + std::to_string(random()) + "]",
-        "This is a random number [" + std::to_string(random()) + "]",
-        "This is a random number [" + std::to_string(random()) + "]",
-        "This is a random number [" + std::to_string(random()) + "]",
-        "This is a random number [" + std::to_string(random()) + "]",
-        "This is a random number [" + std::to_string(random()) + "]",
-        "This is a random number [" + std::to_string(random()) + "]",
-        "This is a random number [" + std::to_string(random()) + "]",
-        "This is a random number [" + std::to_string(random()) + "]",
-        "This is a random number [" + std::to_string(random()) + "]"
+        "This is a random number [" + std::to_string(rand()) + "]",
+        "This is a random number [" + std::to_string(rand()) + "]",
+        "This is a random number [" + std::to_string(rand()) + "]",
+        "This is a random number [" + std::to_string(rand()) + "]",
+        "This is a random number [" + std::to_string(rand()) + "]",
+        "This is a random number [" + std::to_string(rand()) + "]",
+        "This is a random number [" + std::to_string(rand()) + "]",
+        "This is a random number [" + std::to_string(rand()) + "]",
+        "This is a random number [" + std::to_string(rand()) + "]",
+        "This is a random number [" + std::to_string(rand()) + "]"
     };
-
-
 
 
     TEST_CASE("CountStringLength", Tag) {
 
-        CHECK(CountStringLength("")             == 0);
-        CHECK(CountStringLength("2")            == 1);
-        CHECK(CountStringLength("1234567890")   == 10);
+        SECTION("Normal") {
+            CHECK(CountStringLength("")             == 0);
+            CHECK(CountStringLength("2")            == 1);
+            CHECK(CountStringLength("1234567890")   == 10);
+        }
+
+        SECTION("Count with constant expression") {
+            constexpr auto Count0 = CountStringLength("");
+            constexpr auto Count1 = CountStringLength("2");
+            constexpr auto Count2 = CountStringLength("1234567890");
+
+            CHECK(Count0 == 0);
+            CHECK(Count1 == 1);
+            CHECK(Count2 == 10);
+        }
     }
-
-
 
 
     TEST_CASE("CompareString", Tag) {
@@ -411,7 +363,6 @@ namespace UnitTest::Foundation::TestString
             CHECK(CompareString(Val2, Val3) < 0);
             CHECK(CompareString(Val3, Val2) > 0);
         }
-
 
         SECTION("Compare with constant expression") {
 
@@ -434,14 +385,11 @@ namespace UnitTest::Foundation::TestString
     }
 
 
-
-
+    /// @note The size of Heap and Stack Storage must be the same
     TEST_CASE("StringStorage", Tag) {
         constexpr auto size = sizeof(String);
         CHECK(sizeof(StringHeapStorage) == sizeof(StringStackStorage));
     }
-
-
 
 
     TEST_CASE("String::MaxCapacity", Tag) {
@@ -453,29 +401,30 @@ namespace UnitTest::Foundation::TestString
     }
 
 
+    TEST_CASE("Range based for-loop for String") {
+        constexpr String Val1 = "12345";
+        int i = 0;
+
+        for(auto c : Val1) {
+            CHECK(c == Val1[i++]);
+        }
+    }
 
 
     TEST_CASE("String::Length", Tag) {
 
         SECTION("Normal") {
-            std::string val_str =
-                    "This is a random number ["
-                    + std::to_string(random()) + "]";
+            String Target = random_string[0].c_str();
 
-            String Target = val_str.c_str();
-
-            CHECK(bool(Target._Storage.IsOnStack()) == false);
-            CHECK(Target.Length() == val_str.length());
+            CHECK(bool(Target.IsOnStack()) == false);
+            CHECK(Target.Length() == random_string[0].length());
         }
-
 
         SECTION("Constexpr") {
             constexpr String string = "Hello, world!";
             CHECK(string.Length() == sizeof("Hello, world!") - 1);
         }
     }
-
-
 
 
     TEST_CASE("String::Capacity", Tag) {
@@ -485,26 +434,16 @@ namespace UnitTest::Foundation::TestString
             CHECK(Target.Capacity() == StringStackStorage::Capacity());
         }
 
-
         SECTION("On stack with constant expression ") {
             constexpr String Target = "Hello, world!";
             CHECK(Target.Capacity() == StringStackStorage::Capacity());
         }
 
-
         SECTION("On Heap") {
-            std::string val_str =
-                    "This is a random number ["
-                    + std::to_string(random()) + "]";
-
-            String Target = val_str.c_str();
-
-            CHECK(bool(Target._Storage.IsOnStack()) == false);
-            CHECK(Target.Capacity() == Target._Storage.Heap().Capacity());
+            String Target = random_string[0].c_str();
+            CHECK(bool(Target.IsOnStack()) == false);
         }
     }
-
-
 
 
     TEST_CASE("String constructor", "[Foundation][String]") {
@@ -522,16 +461,14 @@ namespace UnitTest::Foundation::TestString
             CHECK(CompareString(Val3, Val2) > 0);
         }
 
-
         SECTION("Initialize on heap") {
             for(auto& string: random_string) {
                 String Target = string.c_str();
 
-                CHECK(!Target._Storage.IsOnStack());
+                CHECK(!Target.IsOnStack());
                 CHECK(strcmp(Target, string.c_str()) == 0);
             }
         }
-
 
         SECTION("Initialize with constant expression") {
 
@@ -540,7 +477,7 @@ namespace UnitTest::Foundation::TestString
             constexpr String Val3 = "123456";
 
             CHECK(Val1.Length() == sizeof("123456") - 1);
-            CHECK(Val2.Length() == sizeof("24689") - 1);
+            CHECK(Val2.Length() == sizeof("24689")  - 1);
             CHECK(Val3.Length() == sizeof("123456") - 1);
 
             constexpr Bool cmp_r1 = Val1 == Val2;
@@ -552,35 +489,31 @@ namespace UnitTest::Foundation::TestString
     }
 
 
-
-
     TEST_CASE("String::Catenate(const char* value)", Tag) {
 
         SECTION("Normal on stack") {
             std::string_view val1 = "Constant ...";
             String Target = "Constant ...";
 
-            CHECK(bool(Target._Storage.IsOnStack()) == true);
+            CHECK(bool(Target.IsOnStack()) == true);
             CHECK(Target.Length() == sizeof("Constant ...") - 1);
             CHECK(CompareString(Target, "Constant ...") == 0);
 
             Target.Catenate("m");
-            CHECK(bool(Target._Storage.IsOnStack()) == true);
+            CHECK(bool(Target.IsOnStack()) == true);
             CHECK(Target.Length() == sizeof("Constant ...m") - 1);
             CHECK(CompareString(Target, "Constant ...") > 0);
         }
-
 
         SECTION("Normal on heap") {
             std::string val1 = "Normal behavior while value is on the heap.";
             String Target = "Normal behavior while value is on the ";
 
             Target.Catenate("heap.");
-            CHECK(!Target._Storage.IsOnStack());
+            CHECK(!Target.IsOnStack());
             CHECK(Target.Length() == val1.length());
             CHECK(strcmp(Target, val1.c_str()) == 0);
         }
-
 
         SECTION("Catenate with constant expression") {
 
@@ -598,20 +531,20 @@ namespace UnitTest::Foundation::TestString
     }
 
 
-
-
     TEST_CASE("String::operator=(const char* value)", Tag) {
 
         String Target = "";
 
         Target = "0123456789012";
-        CHECK(bool(Target._Storage.IsOnStack()) == true);
+        CHECK(bool(Target.IsOnStack()) == true);
         CHECK(Target.Length() == sizeof("0123456789012") - 1);
         CHECK(CompareString(Target, "0123456789012") == 0);
 
         Target = "01234567890123-More on the heap";
-        CHECK(bool(Target._Storage.IsOnStack()) == false);
+        CHECK(bool(Target.IsOnStack()) == false);
         CHECK(Target.Length() == sizeof("01234567890123-More on the heap") - 1);
         CHECK(CompareString(Target, "01234567890123-More on the heap") == 0);
     }
+
+
 }

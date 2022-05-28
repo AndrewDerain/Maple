@@ -11,7 +11,7 @@ namespace _Fantasia::Foundation
 {
 
     inline constexpr
-    Bool::Bool(bool value) noexcept:
+    Bool::Bool(const bool value) noexcept:
         _StoredValue(value) {
     };
 
@@ -38,7 +38,7 @@ namespace _Fantasia::Foundation
 
 
     inline constexpr
-    Bool& Bool::operator=(bool value) noexcept {
+    Bool& Bool::operator=(const bool value) noexcept {
         _StoredValue = value;
         return *this;
     }

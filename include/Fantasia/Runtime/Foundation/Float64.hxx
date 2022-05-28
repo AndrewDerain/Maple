@@ -21,36 +21,36 @@ namespace _Fantasia::Foundation
     struct Float64
     {
     public:
-        /// @brief Float64 可表示的最大值
+        /// @brief  Float64 可表示的最大值
         inline constexpr
         static Float64 Max() noexcept;
 
 
-        /// @brief Float64 可表示的最小值
+        /// @brief  Float64 可表示的最小值
         inline constexpr
         static Float64 Min() noexcept;
 
 
-        /// @brief 可区分两个 Float64 值的最小变化量
+        /// @brief  可区分两个 Float64 值的最小变化量
         inline constexpr
         static Float64 Epsilon() noexcept;
 
 
-        /// @brief 构造函数。设为 default 以支持 standard_layout 和 trivial。
+        /// @brief  构造函数。设为 default 以支持 standard_layout 和 trivial。
         Float64() = default;
 
 
-        /// @brief 析构函数。设为 default 以支持 standard_layout 和 trivial。
+        /// @brief  析构函数。设为 default 以支持 standard_layout 和 trivial。
         ~Float64() = default;
 
 
-        /// @brief 拷贝构造函数。设为 default 以支持 standard_layout 和 trivial。
+        /// @brief  拷贝构造函数。设为 default 以支持 standard_layout 和 trivial。
         inline constexpr
         Float64(const Float64&) = default;
 
 
         inline constexpr
-        Float64(double value) noexcept;
+        Float64(const double value) noexcept;
 
 
         inline constexpr
@@ -61,13 +61,13 @@ namespace _Fantasia::Foundation
         operator double&() noexcept;
 
 
-        /// @brief 赋值操作符。设为 default 以支持 standard_layout 和 trival。
+        /// @brief  赋值操作符。设为 default 以支持 standard_layout 和 trival。
         inline constexpr
         Float64& operator=(const Float64&) = default;
 
 
         inline constexpr
-        Float64& operator=(double value);
+        Float64& operator=(const double value);
 
 
     protected:
@@ -108,4 +108,4 @@ namespace _Fantasia::Foundation
 #pragma warning(pop)
 
 
-#include "Fantasia/Runtime/_Detail/Foundation/Float64.inl.hxx"
+#include "Fantasia/Runtime/_Detail/Foundation/Float64.inl"

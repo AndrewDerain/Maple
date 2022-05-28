@@ -118,7 +118,7 @@
         {
             "name": "All.Debug.Base",
             "hidden": true,
-            "targets":["Fantasia.Runtime-d", "fantasia-d", "u-d"]
+            "targets":["Fantasia.Runtime-d", "fantasia-d", "ut-d"]
         },
         {
             "name": "All.Base",

@@ -8,7 +8,15 @@ project(UnitTester)
 #-----------------------------------------------------------------------------+
 #    引用第三方库
 #------------------------------------------------------------------------------
-find_package(Catch2 3 REQUIRED)
+Include(FetchContent)
+
+FetchContent_Declare(
+    Catch2
+    GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+    GIT_TAG        v3.0.0-preview3
+)
+
+FetchContent_MakeAvailable(Catch2)
 
 
 #-----------------------------------------------------------------------------+
@@ -21,15 +29,6 @@ file(GLOB_RECURSE srcs "${CMAKE_CURRENT_SOURCE_DIR}/*")
 #    单元测试程序
 #------------------------------------------------------------------------------
 set(target_name_unit_test "ut${fantasia_target_postfix}")
-
-include_directories(
-    "${fantasia_third_party_dir}/include"
-)
-
-link_directories(
-    "${fantasia_library_out_dir}"
-    "${fantasia_third_party_dir}/lib"
-)
 
 link_libraries(
     "Fantasia.Runtime${fantasia_target_postfix}" "Catch2::Catch2WithMain"

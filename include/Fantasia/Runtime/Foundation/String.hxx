@@ -72,7 +72,7 @@ namespace _Fantasia::Foundation
         void Reset();
 
 
-        /// @note 此函数只会设置 Length 和 StoredValue 属性
+        /// @note 此函数只会设置 Length 和 Data 属性
         inline constexpr
         void Assign(const char* value, int8_t len);
 
@@ -124,7 +124,6 @@ namespace _Fantasia::Foundation
     };
 
 
-
     /// @brief 堆存储器，使用此对象在堆上保存数据
     struct StringHeapStorage
     {
@@ -141,19 +140,19 @@ namespace _Fantasia::Foundation
 
         /// @brief 值
         inline
-        const char* StoredValue() const;
+        const char* Data() const;
 
 
         inline
         void Initialize();
 
 
-        /// @note 此函数只会设置 Length 和 StoredValue 属性
+        /// @note 此函数只会设置 Length 和 Data 属性
         inline
         void Reset();
 
 
-        /// @note 此函数只会设置 Length 和 StoredValue 属性
+        /// @note 此函数只会设置 Length 和 Data 属性
         __decorate(Fantasia, api)
         void Assign(const char* value, uint16_t len);
 
@@ -172,7 +171,7 @@ namespace _Fantasia::Foundation
         void Catenate(const char* value, int64_t len);
 
 
-        /// #brief 增大堆空间
+        /// @brief 增大堆空间
         void Extend(std::int64_t size);
 
 
@@ -192,7 +191,6 @@ namespace _Fantasia::Foundation
         /// @brief 堆起始地址
         char*       _StoredValue;
     };
-
 
 
     /// @brief 存储结构，负责存储字符串的值以及长度和已申请的内存容量信息。
@@ -225,12 +223,12 @@ namespace _Fantasia::Foundation
     };
 
 
+    inline constexpr
+    const char* begin(const String& string);
 
 
-//    char* begin(String& string);
-//    char* end(String& string);
-
-
+    inline constexpr
+    const char* end(const String& string);
 
 
     /// @brief  以 '\0' 字符结尾的字符串, 深拷贝实现。
@@ -238,15 +236,14 @@ namespace _Fantasia::Foundation
     class String
     {
     public:
-        /// @brief 字符串所能存储的最大容量（以字节计算）。
-        [[maybe_unused]]
+        /// @brief 字符串所能存储的最大容量（以字节计算）
         inline constexpr
         static Int64 MaxCapacity();
 
 
         /// @brief 获取字符串的长度
-        /// @note 如果存储的是中文以及其他多字节字符，
-        /// 则返回的是占用内存的大小（不包含结尾的 '\0' 字符）。
+        /// @note 如果存储的是中文以及其他多字节字符
+        /// 则返回的是占用内存的大小（不包含结尾的 '\0' 字符）
         [[maybe_unused]]
         inline constexpr
         Int64 Length() const;
@@ -298,6 +295,10 @@ namespace _Fantasia::Foundation
         const String Catenate(const char* value) const;
 
 
+        inline
+        Bool IsOnStack() const;
+
+
         /// @brief 隐式转换为原始的 c 样式字符串。
         /// @note 此对象可以隐式转换为原始的 c 样式字符串，但不允许在此情况下对内容进行修改。
         inline constexpr
@@ -333,6 +334,15 @@ namespace _Fantasia::Foundation
         /// @brief 追加内容到堆上
         __decorate(Fantasia, api)
         void _CatenateOnHeap(const char* value, int64_t len);
+
+
+    private:
+        inline constexpr
+        friend const char* begin(const String&);
+
+
+        inline constexpr
+        friend const char* end(const String&);
     };
 
 
@@ -404,4 +414,4 @@ namespace _Fantasia::Foundation
 #pragma warning(pop)
 
 
-#include "Fantasia/Runtime/_Detail/Foundation/String.inl.hxx"
+#include "Fantasia/Runtime/_Detail/Foundation/String.inl"

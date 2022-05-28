@@ -40,7 +40,7 @@ namespace _Fantasia::Foundation
 
 
         inline constexpr
-        _Ty& operator[](Int64 index);
+        _Ty& operator[](const Int64 index);
 
 
         /// @brief 赋值操作符。设为 default 以支持 standard_layout 和 trivial。
@@ -48,15 +48,16 @@ namespace _Fantasia::Foundation
 
 
     protected:
-        template<typename, Size> friend
-        _Ty* begin(ArrayT<_Ty, _Count>& arr);
-
-
-        template<typename, Size> friend
-        _Ty* end(ArrayT<_Ty, _Count>& arr);
-
-
         _Ty _Elements[_Count];
+
+    
+    private:
+        template<typename, Size> 
+        friend _Ty* begin(ArrayT<_Ty, _Count>& arr);
+
+
+        template<typename, Size> 
+        friend _Ty* end(ArrayT<_Ty, _Count>& arr);
     };
 
 
@@ -68,4 +69,4 @@ namespace _Fantasia::Foundation
 #pragma pack(pop)
 #pragma warning(pop)
 
-#include "Fantasia/Runtime/_Detail/Foundation/ArrayT.inl.hxx"
+#include "Fantasia/Runtime/_Detail/Foundation/ArrayT.inl"

@@ -4,13 +4,14 @@
 /// email: locomoco@yeah.net
 ///
 #pragma once
+
 #include "Runtime/Foundation/ArrayT.hxx"
 #include "Runtime/Foundation/Bool.hxx"
 #include "Runtime/Foundation/Enum.hxx"
-#include "Runtime/Foundation/FixedString.hxx"
 #include "Runtime/Foundation/Float64.hxx"
 #include "Runtime/Foundation/Int64.hxx"
 #include "Runtime/Foundation/String.hxx"
+#include "Runtime/Foundation/StringT.hxx"
 
 
 namespace Fantasia::Foundation
@@ -18,18 +19,16 @@ namespace Fantasia::Foundation
 
     using _Fantasia::Foundation::Size;
 
-
     using _Fantasia::Foundation::ArrayT;
-
 
     using _Fantasia::Foundation::Bool;
 
-
     using _Fantasia::Foundation::Int64;
-
 
     using _Fantasia::Foundation::Float64;
 
-
     using _Fantasia::Foundation::String;
+
+    using _Fantasia::Foundation::StringT;
+
 }

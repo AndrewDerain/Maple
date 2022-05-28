@@ -28,55 +28,55 @@ namespace _Fantasia::Foundation
         static Int64 Min() noexcept;
 
 
-        /// @brief 构造函数。设为 default 以支持 standard_layout 和 trivial。
+        /// @brief  构造函数。设为 default 以支持 standard_layout 和 trivial。
         Int64() = default;
 
 
-        /// @brief 析构函数。设为 default 以支持 standard_layout 和 trivial。
+        /// @brief  析构函数。设为 default 以支持 standard_layout 和 trivial。
         ~Int64() = default;
 
 
-        /// @brief 拷贝构造函数。设为 default 以支持 standard_layout 和 trivial。
+        /// @brief  拷贝构造函数。设为 default 以支持 standard_layout 和 trivial。
         Int64(const Int64&) = default;
 
 
         inline constexpr
-        Int64(int64_t value) noexcept;
+        Int64(const int64_t value) noexcept;
 
 
         inline constexpr
-        Int64(uint64_t value);
+        Int64(const uint64_t value);
 
 
         inline constexpr
-        Int64(char value) noexcept;
+        Int64(const char value) noexcept;
 
 
         inline constexpr
-        Int64(signed char value) noexcept;
+        Int64(const signed char value) noexcept;
 
 
         inline constexpr
-        Int64(unsigned char value) noexcept;
+        Int64(const unsigned char value) noexcept;
 
 
         inline constexpr
-        Int64(short value) noexcept;
+        Int64(const short value) noexcept;
 
 
         inline constexpr
-        Int64(unsigned short value) noexcept;
+        Int64(const unsigned short value) noexcept;
 
 
         inline constexpr
-        Int64(int32_t value) noexcept;
+        Int64(const int32_t value) noexcept;
 
 
         inline constexpr
-        Int64(uint32_t value) noexcept;
+        Int64(const uint32_t value) noexcept;
 
 
-        /// @brief 转换为字符串
+        /// @brief  转换为字符串
         __decorate(Fantasia, api)
         String ToString() const;
 
@@ -89,40 +89,40 @@ namespace _Fantasia::Foundation
         operator int64_t&() noexcept;
 
 
-        /// @brief 赋值操作符。设为 default 以支持 standard_layout 和 trivial。
+        /// @brief  赋值操作符。设为 default 以支持 standard_layout 和 trivial。
         Int64& operator=(const Int64&) = default;
 
 
         inline constexpr
-        Int64& operator=(Float64 other) noexcept;
+        Int64& operator=(const Float64 other) noexcept;
 
 
         inline constexpr
-        Int64& operator=(short value) noexcept;
+        Int64& operator=(const short value) noexcept;
 
 
         inline constexpr
-        Int64& operator=(unsigned short value) noexcept;
+        Int64& operator=(const unsigned short value) noexcept;
 
 
         inline constexpr
-        Int64& operator=(int32_t value) noexcept;
+        Int64& operator=(const int32_t value) noexcept;
 
 
         inline constexpr
-        Int64& operator=(uint32_t value) noexcept;
+        Int64& operator=(const uint32_t value) noexcept;
 
 
         inline constexpr
-        Int64& operator=(int64_t value) noexcept;
+        Int64& operator=(const int64_t value) noexcept;
 
 
         inline constexpr
-        Int64& operator=(uint64_t value) noexcept;
+        Int64& operator=(const uint64_t value) noexcept;
 
 
         inline constexpr
-        Int64& operator=(double value) noexcept;
+        Int64& operator=(const double value) noexcept;
 
 
     protected:
@@ -139,4 +139,4 @@ namespace _Fantasia::Foundation
 #pragma warning(pop)
 
 
-#include "Fantasia/Runtime/_Detail/Foundation/Int64.inl.hxx"
+#include "Fantasia/Runtime/_Detail/Foundation/Int64.inl"
