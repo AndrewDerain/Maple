@@ -52,7 +52,7 @@ namespace _Fantasia::Foundation
     StringStackStorage::StringStackStorage():
         _IsOnStack{true},
         _Length{0},
-        _StoredValue{""} {
+        _StoredValue{'\0'} {
     }
 
 

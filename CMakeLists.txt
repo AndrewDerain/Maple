@@ -31,7 +31,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 #    Config compiler settings
 #------------------------------------------------------------------------------
 if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    add_compile_options(/Zc:preprocessor /ZI /INCREMENTAL)
+    add_compile_options(/Zc:preprocessor /Zi /INCREMENTAL)
 endif()
 
 
