@@ -4,3 +4,8 @@
 /// email: locomoco@yeah.net
 ///
 #pragma once
+
+namespace Fantasia::Platform
+{
+
+}
