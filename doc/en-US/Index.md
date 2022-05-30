@@ -1,4 +1,4 @@
 ﻿# Index
 
 - C
-    - [Code Concepts [KB00001]](KnowledgeBase/KB00001.md)
+    - [Code Concepts [KB00001]](Tutorial/T00001.md)
