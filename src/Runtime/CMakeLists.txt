@@ -13,6 +13,11 @@ project (
 #------------------------------------------------------------------------------
 add_compile_definitions(___FANTASIA_EXPORTS)
 
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage ")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --coverage ")
+endif()
+
 
 #-----------------------------------------------------------------------------+
 #    配置源代码文件

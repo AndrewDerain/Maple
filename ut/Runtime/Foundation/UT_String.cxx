@@ -165,6 +165,21 @@ namespace UnitTest::Foundation::TestString {
             }
         }
 
+        SECTION("Twice assign on heap") {
+            String Val1 = random_string[0].c_str();
+            Val1 = random_string[1].c_str();
+
+            CHECK(Val1 == String(random_string[1].c_str()));
+
+            std::string LongStr;
+
+            for(int i = 0; i <= 4; ++i)
+                LongStr += random_string[i];
+
+            Val1 = LongStr.c_str();
+            CHECK(Val1 == String(LongStr.c_str()));
+        }
+
         SECTION("Initialize with constant expression") {
 
             constexpr String Val1 = "123456";
@@ -181,6 +196,12 @@ namespace UnitTest::Foundation::TestString {
             constexpr Bool cmp_r2 = Val1 == Val3;
             CHECK(cmp_r2 == true);
         }
+    }
+
+
+    TEST_CASE("String destructor", "[Foundation][String]") {
+        constexpr String Val = "234352";
+        CHECK(Val == String("234352"));
     }
 
 
@@ -221,6 +242,19 @@ namespace UnitTest::Foundation::TestString {
 
             CHECK(Target2 > Target1);
             CHECK(CompareString(Target2, "123456789012x") == 0);
+        }
+
+        SECTION("Move to heap") {
+            String Val1 = "009";
+            Val1.Catenate(random_string[0].c_str());
+
+            std::string LongStr;
+
+            for(int i = 0; i <= 4; ++i)
+                LongStr += random_string[i];
+
+            Val1.Catenate(LongStr.c_str());
+            CHECK(Val1 != String(LongStr.c_str()));
         }
     }
 

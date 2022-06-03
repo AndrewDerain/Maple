@@ -57,8 +57,6 @@ namespace _Fantasia::Foundation
 #pragma endregion // StringHeapStorage
 
 
-
-
 #pragma region String
 
     __decorate(Fantasia, api) 

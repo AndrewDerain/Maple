@@ -31,7 +31,8 @@ file(GLOB_RECURSE srcs "${CMAKE_CURRENT_SOURCE_DIR}/**")
 set(target_name_unit_test "ut${fantasia_target_postfix}")
 
 link_libraries(
-    "Fantasia.Runtime${fantasia_target_postfix}" "Catch2::Catch2WithMain"
+    "Fantasia.Runtime${fantasia_target_postfix}"
+    "Catch2::Catch2WithMain"
 )
 
 add_executable(

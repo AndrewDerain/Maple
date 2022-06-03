@@ -204,4 +204,13 @@ namespace UnitTest::Foundation::TestInt64 {
         }
     } // end of TEST_CASE("Int64 assign" ...
 
+
+    TEST_CASE("Int64::ToString", "[Foundation][Int64]")
+    {
+        Int64 IntVal = 89;
+        String StrVal = IntVal.ToString();
+
+        CHECK(CompareString(StrVal, String("89")) == 0);
+    }
+
 }
