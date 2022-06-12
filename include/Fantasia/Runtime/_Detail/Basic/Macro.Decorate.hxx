@@ -37,18 +37,3 @@
 /// 可用的参数值
 /// TODO: 
 #define __decorate(...)     ___FANTASIA_DECORATE(__VA_ARGS__)
-    
-
-
-// //constexpr auto x = 
-// __Decorate(Fantasia, inline) auto x = 9;
-
-
-// __Decorate(Fantasia, inline)auto x3 = 0;
-// __Decorate(Fantasia, constexpr) auto x4 = ___FANTASIA_MF_ARG_COUNT();
-// __Decorate(Fantasia, inline, constexpr)auto x5 = 0;
-
-// __Decorate(Fantasia, api) auto x6 = 0;
-// __Decorate(Fantasia, api, inline) auto x7 = 0;
-// __Decorate(Fantasia, api, constexpr) auto x8 = 0;
-// __Decorate(Fantasia, api, inline, constexpr) auto x9 = 0;

@@ -244,13 +244,11 @@ namespace _Fantasia::Foundation
         /// @brief 获取字符串的长度
         /// @note 如果存储的是中文以及其他多字节字符
         /// 则返回的是占用内存的大小（不包含结尾的 '\0' 字符）
-        [[maybe_unused]]
         inline constexpr
         Int64 Length() const;
 
 
         /// @brief 字符串占用的内存空间
-        [[maybe_unused]]
         inline constexpr
         Int64 Capacity() const;
 

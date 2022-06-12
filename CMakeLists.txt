@@ -34,6 +34,10 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
     add_compile_options(/Zc:preprocessor /Zi /INCREMENTAL)
 endif()
 
+if (CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
+    add_compile_options("-fmodules")
+endif ()
+
 
 #-----------------------------------------------------------------------------+
 #    Config global config

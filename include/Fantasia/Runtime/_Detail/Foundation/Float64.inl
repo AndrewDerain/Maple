@@ -35,6 +35,30 @@ namespace _Fantasia::Foundation
 
 
     inline constexpr
+    Float64::Float64(const int32_t value) noexcept:
+        _StoredValue(value) {
+    }
+
+
+    inline constexpr
+    Float64::Float64(const uint32_t value) noexcept:
+        _StoredValue(value) {
+    }
+
+
+    inline constexpr
+    Float64::Float64(const int64_t value) noexcept:
+        _StoredValue(value) {
+    }
+
+
+    inline constexpr
+    Float64::Float64(const uint64_t value) noexcept:
+        _StoredValue(value) {
+    }
+
+
+    inline constexpr
     Float64::operator double const&() const noexcept {
         return _StoredValue;
     }

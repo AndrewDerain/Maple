@@ -47,21 +47,3 @@
 #endif
 
 #define ___FANTASIA_DECORATE_Fantasia_api               ___FANTASIA_API
-
-
-//
-///// @brief [___FANTASIA_INLINE]
-///// @details 此宏指定某个函数是内连的
-//#define ___FANTASIA_INLINE              inline
-//#define ___FANTASIA_DECORATE_Fantasia_inline            ___FANTASIA_INLINE
-//
-//
-///// @brief [___FANTASIA_CONSTEXPR]
-///// @details 此宏指定某个函数在项目中总是一个常量表达式，不导出
-//#define ___FANTASIA_CONSTEXPR           constexpr
-//#define ___FANTASIA_DECORATE_Fantasia_constexpr         ___FANTASIA_CONSTEXPR
-//
-//
-//#define ___FANTASIA_INLINE_CONSTEXPR    inline constexpr
-//#define ___FANTASIA_DECORATE_Fantasia_inline_constexpr  ___FANTASIA_INLINE_CONSTEXPR
-//

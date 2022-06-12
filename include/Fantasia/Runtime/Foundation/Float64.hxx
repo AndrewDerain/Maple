@@ -54,6 +54,22 @@ namespace _Fantasia::Foundation
 
 
         inline constexpr
+        Float64(const int32_t value) noexcept;
+
+
+        inline constexpr
+        Float64(const uint32_t value) noexcept;
+
+
+        inline constexpr
+        Float64(const int64_t value) noexcept;
+
+
+        inline constexpr
+        Float64(const uint64_t value) noexcept;
+
+
+        inline constexpr
         operator double const&() const noexcept;
 
 
@@ -76,7 +92,7 @@ namespace _Fantasia::Foundation
 
 
     // POD 校验。standard layout and trivial。
-    static_assert(std::is_trivial_v<Float64>, "Float64 must be trival!");
+    static_assert(std::is_trivial_v<Float64>, "Float64 must be trivial!");
     static_assert(std::is_standard_layout_v<Float64>, "Float64 must be standard layout!");
 
     
