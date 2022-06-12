@@ -20,6 +20,7 @@
 
 #include <concepts>
 
+
 namespace _Fantasia
 {
     using std::int8_t;

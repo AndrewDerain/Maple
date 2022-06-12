@@ -116,11 +116,6 @@
             "targets":["Fantasia.Runtime"]
         },
         {
-            "name": "All.Debug.Base",
-            "hidden": true,
-            "targets":["Fantasia.Runtime-d", "fantasia-d", "ut-d"]
-        },
-        {
             "name": "All.Base",
             "hidden": true,
             "targets":["Fantasia.Runtime", "fantasia", "ut"]
@@ -129,7 +124,7 @@
 
         {
             "name": "Unix.Debug.All",
-            "inherits":["All.Debug.Base"],
+            "inherits":["All.Base"],
             "configurePreset": "Unix.Debug"
         },
         {
@@ -146,7 +141,7 @@
 
         {
             "name": "Ninja.Debug.All",
-            "inherits":["All.Debug.Base"],
+            "inherits":["All.Base"],
             "configurePreset": "Ninja.Debug"
         },
         {

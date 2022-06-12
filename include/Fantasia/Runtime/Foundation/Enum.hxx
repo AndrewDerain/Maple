@@ -1,15 +1,19 @@
 ﻿#pragma once
-#include "Fantasia/Runtime/_Detail/Foundation/Predeclars.hxx"
+#include "Fantasia/Runtime/Internal/Foundation/Predeclars.hxx"
 
 
 #define _FANTASIA_ENUM_CTOR(_WRAP)                                                \
     private:                                                                      \
         _Type _Value;                                                             \
     public:                                                                       \
-        inline _WRAP() = default;                                                 \
-        inline _WRAP(const _WRAP& wrapper)  { _Value = wrapper._Value; }          \
+        inline _WRAP()              = default;                                    \
+        inline ~_WRAP()             = default;                                    \
+        inline _WRAP(_WRAP&&)       = default;                                    \
+        inline _WRAP(const _WRAP&)  = default;                                    \
         inline _WRAP(const _Type value)     { _Value = value; }                   \
-        inline operator _Type() const       { return _Value;}
+        inline operator _Type() const       { return _Value;}                     \
+        _WRAP& operator=(_WRAP&&)       = default;                                \
+        _WRAP& operator=(const _WRAP&)  = default;
 
 
 #define _FANTASIA_ENUM_TOSTR_BEG            switch(_Value) {

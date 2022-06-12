@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "Fantasia/Runtime/_Detail/Basic/CodeLang.CXX.hxx"
-#include "Fantasia/Runtime/_Detail/Basic/Macro.Preconfig.hxx"
-#include "Fantasia/Runtime/_Detail/Basic/Macro.Decorate.hxx"
+#include "Fantasia/Runtime/Internal/Basic/CodeLang.CXX.hxx"
+#include "Fantasia/Runtime/Internal/Basic/Macro.Preconfig.hxx"
+#include "Fantasia/Runtime/Internal/Basic/Macro.Decorate.hxx"
 
 
 #pragma warning(push)

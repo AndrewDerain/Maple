@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "Fantasia/Runtime/_Detail/Foundation/Predeclars.hxx"
+#include "Fantasia/Runtime/Internal/Foundation/Predeclars.hxx"
 
 
 #pragma warning(push)
@@ -32,6 +32,10 @@ namespace _Fantasia::Foundation
         ~ArrayT() = default;
 
 
+        /// @brief 移动构造函数。设为 default 以支持 standard_layout 和 trivial。
+        ArrayT(ArrayT&&) = default;
+
+
         /// @brief 拷贝构造函数。设为 default 以支持 standard_layout 和 trivial。
         ArrayT(const ArrayT&) = default;
 
@@ -41,6 +45,10 @@ namespace _Fantasia::Foundation
 
         inline constexpr
         _Ty& operator[](const Int64 index);
+
+
+        /// @brief 赋值操作符。设为 default 以支持 standard_layout 和 trivial。
+        ArrayT& operator=(ArrayT&&) = default;
 
 
         /// @brief 赋值操作符。设为 default 以支持 standard_layout 和 trivial。
@@ -69,4 +77,4 @@ namespace _Fantasia::Foundation
 #pragma pack(pop)
 #pragma warning(pop)
 
-#include "Fantasia/Runtime/_Detail/Foundation/ArrayT.inl"
+#include "Fantasia/Runtime/Internal/Foundation/ArrayT.inl"

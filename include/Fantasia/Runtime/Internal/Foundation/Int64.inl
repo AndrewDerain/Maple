@@ -34,7 +34,7 @@ namespace _Fantasia::Foundation
 			_StoredValue = value;
 		else
 			throw std::out_of_range(
-				"value whitch type is uint64_t is larger than max value of Int64");
+				"value which type is uint64_t is larger than max value of Int64");
 	}
 
 

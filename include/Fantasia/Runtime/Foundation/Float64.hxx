@@ -6,7 +6,7 @@
 /// @date 2022-01-22
 /// 
 #pragma once
-#include "Fantasia/Runtime/_Detail/Foundation/Predeclars.hxx"
+#include "Fantasia/Runtime/Internal/Foundation/Predeclars.hxx"
 
 
 #pragma warning(push)
@@ -42,6 +42,11 @@ namespace _Fantasia::Foundation
 
         /// @brief  析构函数。设为 default 以支持 standard_layout 和 trivial。
         ~Float64() = default;
+
+
+        /// @brief  移动构造函数。设为 default 以支持 standard_layout 和 trivial。
+        inline constexpr
+        Float64(Float64&&) = default;
 
 
         /// @brief  拷贝构造函数。设为 default 以支持 standard_layout 和 trivial。
@@ -124,4 +129,4 @@ namespace _Fantasia::Foundation
 #pragma warning(pop)
 
 
-#include "Fantasia/Runtime/_Detail/Foundation/Float64.inl"
+#include "Fantasia/Runtime/Internal/Foundation/Float64.inl"

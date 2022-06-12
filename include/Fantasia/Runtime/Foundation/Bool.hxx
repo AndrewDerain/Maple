@@ -6,7 +6,7 @@
 /// @date 2022-02-03
 /// 
 #pragma once
-#include "Fantasia/Runtime/_Detail/Foundation/Predeclars.hxx"
+#include "Fantasia/Runtime/Internal/Foundation/Predeclars.hxx"
 
 
 #pragma warning(push)
@@ -26,6 +26,11 @@ namespace _Fantasia::Foundation
 
         /// @brief 析构函数。设为 default 以支持 standard_layout 和 trivial。
         ~Bool() = default;
+
+
+        /// @brief 移动构造函数。设为 default 以支持 standard_layout 和 trivial。
+        inline constexpr
+        Bool(Bool&&) = default;
 
 
         /// @brief 拷贝构造函数。设为 default 以支持 standard_layout 和 trivial。
@@ -73,4 +78,4 @@ namespace _Fantasia::Foundation
 #pragma warning(pop)
 
 
-#include "Fantasia/Runtime/_Detail/Foundation/Bool.inl"
+#include "Fantasia/Runtime/Internal/Foundation/Bool.inl"

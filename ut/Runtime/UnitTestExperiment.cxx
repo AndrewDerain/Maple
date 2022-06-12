@@ -5,7 +5,7 @@
 #include <typeinfo>
 #include <catch2/catch_test_macros.hpp>
 #include "Fantasia/Foundation"
-#include "Fantasia/Runtime/_Detail/ConstantExpression/Math.hxx"
+#include "Fantasia/Runtime/Internal/ConstantExpression/Math.hxx"
 
 
 namespace Exp {
@@ -44,6 +44,15 @@ namespace Exp {
         return src;
     }
 
+    struct EnumTest
+    {
+        enum EnumUnifyTypeName {
+            One,
+            Two
+        };
+
+        EnumBasicActions(EnumTest, One, Two);
+    };
 
     TEST_CASE("Demo"){
 
