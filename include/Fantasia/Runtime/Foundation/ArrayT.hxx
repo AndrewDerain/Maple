@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "Fantasia/Runtime/Internal/Foundation/Predeclars.hxx"
+#include "../Internal/Foundation/Predeclars.hxx"
 
 
 #pragma warning(push)
@@ -77,4 +77,4 @@ namespace _Fantasia::Foundation
 #pragma pack(pop)
 #pragma warning(pop)
 
-#include "Fantasia/Runtime/Internal/Foundation/ArrayT.inl"
+#include "../Internal/Foundation/ArrayT.inl"

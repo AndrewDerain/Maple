@@ -3,7 +3,7 @@
 //
 
 #pragma once
-#include "Fantasia/Runtime/Foundation/Int64.hxx"
+#include "../../Foundation/Int64.hxx"
 
 
 #pragma warning(push)

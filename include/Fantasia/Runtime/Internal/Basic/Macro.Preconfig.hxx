@@ -46,4 +46,5 @@
 #   endif
 #endif
 
+
 #define ___FANTASIA_DECORATE_Fantasia_api               ___FANTASIA_API

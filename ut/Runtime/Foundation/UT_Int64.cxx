@@ -3,10 +3,12 @@
 #include "Fantasia/Foundation"
 
 
-namespace UnitTest::Foundation::TestInt64 {
+using namespace _Fantasia;
+using namespace _Fantasia::Foundation;
 
-    using namespace _Fantasia::Foundation;
 
+namespace UnitTest::Foundation::TestInt64
+{
 
     TEST_CASE("Int64 should be plain old data type", "[Foundation][Int64]")
     {
@@ -210,7 +212,7 @@ namespace UnitTest::Foundation::TestInt64 {
         Int64 IntVal = 89;
         String StrVal = IntVal.ToString();
 
-        CHECK(CompareString(StrVal, String("89")) == 0);
+        CHECK(Algorithm::CompareString(StrVal, String("89")) == 0);
     }
 
 }

@@ -6,7 +6,7 @@
 /// @date 2022-01-22
 /// 
 #pragma once
-#include "Fantasia/Runtime/Internal/Foundation/Predeclars.hxx"
+#include "../Internal/Foundation/Predeclars.hxx"
 
 
 #pragma warning(push)
@@ -147,4 +147,4 @@ namespace _Fantasia::Foundation
 #pragma warning(pop)
 
 
-#include "Fantasia/Runtime/Internal/Foundation/Int64.inl"
+#include "../Internal/Foundation/Int64.inl"

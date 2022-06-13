@@ -1,0 +1,21 @@
+﻿///
+/// Fantasia Framework
+/// copyright 2021-2022 by AndrewDerain.
+/// email: locomoco@yeah.net
+///
+#pragma once
+#include "Runtime/Algorithm/Number.hxx"
+//#include "Runtime/Algorithm/String.hxx"
+
+
+namespace Fantasia::Algorithm
+{
+
+    using _Fantasia::Algorithm::Swap;
+
+    using _Fantasia::Algorithm::IsNegative;
+
+    using _Fantasia::Algorithm::Abs;
+
+
+}

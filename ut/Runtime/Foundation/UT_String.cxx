@@ -3,9 +3,13 @@
 #include "Fantasia/Foundation"
 
 
-namespace UnitTest::Foundation::TestString {
+using namespace _Fantasia;
+using namespace _Fantasia::Algorithm;
+using namespace _Fantasia::Foundation;
 
-    using namespace _Fantasia::Foundation;
+
+namespace UnitTest::Foundation::TestString
+{
 
     const char *Tag = "[Foundation][String]";
 

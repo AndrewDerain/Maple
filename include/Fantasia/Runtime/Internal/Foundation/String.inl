@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "Fantasia/Runtime/Foundation/Bool.hxx"
-#include "Fantasia/Runtime/Foundation/Int64.hxx"
-#include "Fantasia/Runtime/Foundation/Float64.hxx"
+#include "../../Foundation/Bool.hxx"
+#include "../../Foundation/Int64.hxx"
+#include "../../Foundation/Float64.hxx"
 
 
 #pragma warning(push)
@@ -85,7 +85,7 @@ namespace _Fantasia::Foundation
     inline constexpr
     void StringStackStorage::Assign(const char* value, int8_t len) {
 
-        CopyString(
+        Algorithm::CopyString(
                 _StoredValue, _StackMaxCapacity,
                 value, len);
 
@@ -97,7 +97,7 @@ namespace _Fantasia::Foundation
     inline constexpr
     void StringStackStorage::Catenate(const char* value, int8_t len) {
 
-        CatenateString(
+        Algorithm::CatenateString(
                 _StoredValue,
                 _Length,
                 _StackMaxCapacity,
@@ -161,7 +161,7 @@ namespace _Fantasia::Foundation
     inline
     void StringHeapStorage::Catenate(const char* value, int64_t len) {
 
-        CatenateString(
+        Algorithm::CatenateString(
                 _StoredValue,
                 _Length,
                 _Capacity,
@@ -276,7 +276,7 @@ namespace _Fantasia::Foundation
     inline
     String& String::Catenate(const char* value) {
         if(value) {
-            _Catenate(value, CountStringLength(value));
+            _Catenate(value, Algorithm::CountStringLength(value));
         }
         return *this;
     }
@@ -286,8 +286,13 @@ namespace _Fantasia::Foundation
     const String String::Catenate(const char* value) const{
         String Target = {};
 
-        Target._Storage.Stack().Assign(_Storage.Stack().Data(), _Storage.Stack().Length());
-        Target._Storage.Stack().Catenate(value, CountStringLength(value));
+        Target._Storage.Stack().Assign(
+                _Storage.Stack().Data(),
+                _Storage.Stack().Length());
+
+        Target._Storage.Stack().Catenate(
+                value,
+                Algorithm::CountStringLength(value));
 
         return Target;
     }
@@ -329,7 +334,7 @@ namespace _Fantasia::Foundation
             return;
         }
 
-        std::uint16_t len = CountStringLength(value);
+        std::uint16_t len = Algorithm::CountStringLength(value);
 
         if(len < _Storage.Stack().Capacity()) {
 
@@ -372,134 +377,38 @@ namespace _Fantasia::Foundation
 #pragma region
 
     inline constexpr
-    Int64 CountStringLength(const char* string) noexcept {
-        Int64 len = 0;
-        while(string[len] != '\0') len++;
-        return len;
-    }
-
-
-    inline constexpr
-    Int64 CompareString(const String& left, const String& right) noexcept {
-
-        if(left.Length() != right.Length()) {
-            return left.Length() - right.Length();
-        }
-        else {
-            for(Int64 i = 0; i <= left.Length(); i++) {
-                if(left[i] != right[i])
-                    return left[i] - right[i];
-            }
-        }
-
-        return 0;
-    }
-
-
-    /*inline constexpr
-    Int64 CompareString(const char* left, const char* right) noexcept {
-
-    }*/
-
-
-    inline constexpr
-    void CopyString(
-            char*           left,
-            int64_t         left_capacity,
-            const char*     right,
-            int64_t         right_length) {
-
-        int i = 0; --left_capacity;
-
-        for(; i < left_capacity && i < right_length; ++i) {
-            left[i] = right[i];
-        }
-
-        left[i] = '\0';
-    }
-
-
-    template<std::integral _LeftLenTy, std::integral _RightLenTy>
-    inline constexpr
-    void CatenateStringT(
-            char*           left,
-            _LeftLenTy&     left_length,
-            _LeftLenTy      left_capacity,
-            const char*     right,
-            _RightLenTy     right_length) {
-
-        int li = left_length, ri = 0; --left_capacity;
-
-        for(; li < left_capacity && ri < right_length; ++li, ++ri) {
-            left[li] = right[ri];
-        }
-
-        left[li] = '\0';
-        left_length = li;
-    }
-
-
-    inline constexpr
-    void CatenateString(
-            char*           left,
-            int8_t&         left_length,
-            int8_t          left_capacity,
-            const char*     right,
-            int8_t          right_length) {
-
-        CatenateStringT(left, left_length, left_capacity, right, right_length);
-    }
-
-
-    inline constexpr
-    void CatenateString(
-            char*           left,
-            uint16_t&       left_length,
-            uint16_t        left_capacity,
-            const char*     right,
-            uint16_t        right_length) {
-
-        CatenateStringT(left, left_length, left_capacity, right, right_length);
-    }
-
-#pragma endregion
-
-
-#pragma region
-
-    inline constexpr
     Bool operator==(const String& left, const String& right) noexcept {
-        return CompareString(left, right) == 0;
+        return Algorithm::CompareString(left, right) == 0;
     }
 
 
     inline constexpr
     Bool operator!=(const String& left, const String& right) noexcept {
-        return CompareString(left, right) != 0;
+        return Algorithm::CompareString(left, right) != 0;
     }
 
 
     inline constexpr
     Bool operator>(const String& left, const String& right) noexcept {
-        return CompareString(left, right) > 0;
+        return Algorithm::CompareString(left, right) > 0;
     }
 
 
     inline constexpr
     Bool operator<(const String& left, const String& right) noexcept {
-        return CompareString(left, right) < 0;
+        return Algorithm::CompareString(left, right) < 0;
     }
 
 
     inline constexpr
     Bool operator>=(const String& left, const String& right) noexcept {
-        return CompareString(left, right) >= 0;
+        return Algorithm::CompareString(left, right) >= 0;
     }
 
 
     inline constexpr
     Bool operator<=(const String& left, const String& right) noexcept {
-        return CompareString(left, right) <= 0;
+        return Algorithm::CompareString(left, right) <= 0;
     }
 
 

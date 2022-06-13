@@ -3,8 +3,8 @@
 //
 
 #pragma once
-#include "Fantasia/Runtime/Foundation/String.hxx"
-#include "Fantasia/Runtime/Foundation/StringT.hxx"
+#include "../../Foundation/String.hxx"
+#include "../../Foundation/StringT.hxx"
 
 
 #pragma warning(push)
@@ -30,7 +30,7 @@ namespace _Fantasia::Foundation
                 this->data(),
                 _FixedSize,
                 str,
-                CountStringLength(str));
+                Algorithm::CountStringLength(str));
     }
 
 

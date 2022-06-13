@@ -5,10 +5,12 @@
 #include <typeinfo>
 #include <catch2/catch_test_macros.hpp>
 #include "Fantasia/Foundation"
-#include "Fantasia/Runtime/Internal/ConstantExpression/Math.hxx"
+#include "Fantasia/Runtime/Internal/Algorithm/String.inl"
 
 
 namespace Exp {
+
+    using namespace _Fantasia;
 
     constexpr bool IsEqual(const char *lstr, const char *rstr) {
         for (int i = 0; lstr[i] != '\0' && rstr[i] != '\0'; i++)
@@ -54,8 +56,16 @@ namespace Exp {
         EnumBasicActions(EnumTest, One, Two);
     };
 
-    TEST_CASE("Demo"){
 
+
+
+    TEST_CASE("Demo"){
+        //std::cout << _Fantasia::Foundation::StringStackStorage::MaxIntegerValueOnStack() << std::endl;
+        char str[56];
+        int64_t len = Algorithm::ConvertInt32ToString(-10, str);
+
+        //std::cout << len << std::endl;
+        //std::cout << str << std::endl;
     }
 
 }

@@ -6,7 +6,7 @@
 /// @date 2022-02-03
 /// 
 #pragma once
-#include "Fantasia/Runtime/Internal/Foundation/Predeclars.hxx"
+#include "../Internal/Foundation/Predeclars.hxx"
 
 
 #pragma warning(push)
@@ -348,43 +348,6 @@ namespace _Fantasia::Foundation
 
 
     inline constexpr
-    Int64 CountStringLength(const char* string) noexcept;
-
-
-    inline constexpr
-    Int64 CompareString(const String& left, const String& right) noexcept;
-
-
-    /// @param left_capacity 必须大于0
-    inline constexpr
-    void CopyString(
-            char*           left,
-            int64_t         left_capacity,
-            const char*     right,
-            int64_t         right_length);
-
-
-    /// @param left_capacity 必须大于0
-    inline constexpr
-    void CatenateString(
-            char*           left,
-            int8_t&         left_length,
-            int8_t          left_capacity,
-            const char*     right,
-            int8_t          right_length);
-
-
-    /// @param left_capacity 必须大于0
-    inline constexpr
-    void CatenateString(
-            char*           left,
-            uint16_t&       left_length,
-            uint16_t        left_capacity,
-            const char*     right,
-            uint16_t        right_length);
-
-
-    inline constexpr
     Bool operator==(const String& left, const String& right) noexcept;
 
 
@@ -412,4 +375,4 @@ namespace _Fantasia::Foundation
 #pragma warning(pop)
 
 
-#include "Fantasia/Runtime/Internal/Foundation/String.inl"
+#include "../Internal/Foundation/String.inl"

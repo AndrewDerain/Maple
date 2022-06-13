@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "Fantasia/Runtime/Foundation/Bool.hxx"
-#include "Fantasia/Runtime/Foundation/Int64.hxx"
-#include "Fantasia/Runtime/Foundation/String.hxx"
+#include "../../Foundation/Bool.hxx"
+#include "../../Foundation/Int64.hxx"
+#include "../../Foundation/String.hxx"
 
 
 #pragma warning(push)

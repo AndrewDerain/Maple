@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "Fantasia/Runtime/Internal/Foundation/Predeclars.hxx"
+#include "../Internal/Foundation/Predeclars.hxx"
 
 
 #pragma warning(push)
@@ -88,11 +88,12 @@ namespace _Fantasia::Foundation
         friend Bool operator==(const StringT<_Size>&, const char* const);
 
 
-        inline bool _Equal(const char* const right) const;
+        inline
+        bool _Equal(const char* const right) const;
     };
 
 } // namespace _Fantasia::Foundation
 #pragma pack(pop)
 #pragma warning(pop)
 
-#include "Fantasia/Runtime/Internal/Foundation/StringT.inl"
+#include "../Internal/Foundation/StringT.inl"

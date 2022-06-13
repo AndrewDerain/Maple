@@ -3,10 +3,11 @@
 #include "Fantasia/Foundation"
 
 
-namespace UnitTest::Foundation::TestFloat64 {
+using namespace _Fantasia::Foundation;
 
-    using namespace _Fantasia::Foundation;
 
+namespace UnitTest::Foundation::TestFloat64
+{
 
     TEST_CASE("Float64 should be plain old data type", "[Foundation][Float64]")
     {
