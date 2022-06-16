@@ -57,8 +57,6 @@ namespace Exp {
     };
 
 
-
-
     TEST_CASE("Demo"){
         //std::cout << _Fantasia::Foundation::StringStackStorage::MaxIntegerValueOnStack() << std::endl;
         char str[56];
@@ -66,6 +64,7 @@ namespace Exp {
 
         //std::cout << len << std::endl;
         //std::cout << str << std::endl;
+        //while(true){}
     }
 
 }

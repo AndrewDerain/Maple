@@ -8,146 +8,141 @@
 
     "configurePresets": [
         {
-            "name": "Base",
-            "description": "全平台通用的配置",
+            "name": "Behavior.OutputPath",
+            "description": "Define the project build cache files' path and default install path.",
             "hidden": true,
             "binaryDir": "${sourceDir}/build/${presetName}",
             "installDir": "${sourceDir}/install/${presetName}"
         },
-
-        
         {
-            "name": "Unix.Base",
+            "name": "Behavior.Debug",
+            "description": "Debug",
             "hidden": true,
-            "inherits":["Base"],
-            "generator": "Unix Makefiles"
-        },
-        {
-            "name": "Unix.Debug",
-            "description": "使用 Unix Makefiles 编译 Debug 版本的程序",
-            "inherits":["Unix.Base"],
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug"
             }
         },
         {
-            "name": "Unix.Release",
-            "description": "使用 Unix Makefiles 编译 Release 版本的程序",
-            "inherits":["Unix.Base"],
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
-            }
-        },
-        {
-            "name": "Unix.MinSizeRel",
-            "description": "使用 Unix Makefiles 编译 MinSizeRel 版本的程序",
-            "inherits":["Unix.Base"],
+            "name": "Behavior.Release",
+            "description": "Debug",
+            "hidden": true,
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "MinSizeRel"
             }
         },
         {
-            "name": "Unix.RelWithDebInfo",
-            "description": "使用 Unix Makefiles 编译 RelWithDebInfo 版本的程序",
-            "inherits":["Unix.Base"],
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            "name": "OS.Windows",
+            "description": "Only for windows os.",
+            "hidden": true,
+            "inherite": [ "Behavior.OutputPath" ],
+            "condition": {
+                "type": "inList",
+                "string": "${hostSystemName}",
+                "list": [ "Windows" ]
+            }
+        },
+        {
+            "name": "OS.Linux",
+            "description": "Only for linux os.",
+            "hidden": true,
+            "inherite": [ "Behavior.OutputPath" ],
+            "condition": {
+                "type": "inList",
+                "string": "${hostSystemName}",
+                "list": [ "Linux" ]
+            }
+        },
+        {
+            "name": "OS.macOS",
+            "description": "Only for linux os.",
+            "hidden": true,
+            "inherite": [ "Behavior.OutputPath" ],
+            "condition": {
+                "type": "inList",
+                "string": "${hostSystemName}",
+                "list": [ "Darwin" ]
             }
         },
 
 
+
         {
-            "name": "Ninja.Base",
-            "hidden": true,
-            "inherits": ["Base"],
+            "name": "UnixMakefiles.Debug",
+            "displayName": "Unix Makefiles Debug",
+            "description": "使用 Unix Makefiles 编译 Debug 版本的程序",
+            "inherits": [ "OS.Linux", "OS.macOS", "Behavior.Debug" ],
+            "generator": "Unix Makefiles"
+        },
+        {
+            "name": "UnixMakefiles.Release",
+            "displayName": "Unix Makefiles Release",
+            "description": "使用 Unix Makefiles 编译 Release 版本的程序",
+            "inherits": [ "OS.Linux", "OS.macOS", "Behavior.Release" ],
+            "generator": "Unix Makefiles"
+        },
+
+
+        {
+            "name": "Ninja.Debug",
+            "displayName": "Ninja Debug",
+            "description": "使用 Ninja 编译 Debug 版本的程序",
+            "inherits": [ "OS.Linux", "OS.macOS", "OS.Windows", "Behavior.Debug" ],
             "generator": "Ninja"
         },
         {
-            "name": "Ninja.Debug",
-            "displayName": "Ninja.Debug",
-            "description": "使用 Ninja 编译 Debug 版本的程序",
-            "inherits": ["Ninja.Base"],
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
-            }
-        },
-        {
             "name": "Ninja.Release",
-            "displayName": "Ninja.Release",
+            "displayName": "Ninja Release",
             "description": "使用 Ninja 编译 Release 版本的程序",
-            "inherits": ["Ninja.Base"],
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
-            }
+            "inherits": [ "OS.Linux", "OS.macOS", "OS.Windows", "Behavior.Release" ],
+            "generator": "Ninja"
         },
 
 
         {
-            "name": "Xcode.Base",
-            "hidden": true,
-            "inherits": ["Base"],
+            "name": "Xcode.Debug",
+            "displayName": "Xcode Debug",
+            "description": "使用 Xcode 工具链编译 Debug 版本的程序（Apple）",
+            "inherits": [ "OS.macOS", "Behavior.Debug" ],
             "generator": "Xcode"
         },
         {
-            "name": "Xcode.Debug",
-            "displayName": "Xcode.Debug",
-            "description": "使用 Xcode 工具链编译 Debug 版本的程序（Apple）",
-            "inherits": ["Xcode.Base"],
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
+            "name": "Xcode.Release",
+            "displayName": "Xcode Release",
+            "description": "使用 Xcode 工具链编译 Release 版本的程序（Apple）",
+            "inherits": [ "OS.macOS", "Behavior.Release" ],
+            "generator": "Xcode"
+        },
+
+
+        {
+            "name": "VisualStudio.ARM64",
+            "hidden": true,
+            "generator": "Visual Studio 17 2022",
+            "architecture": {
+                "value": "ARM64",
+                "strategy": "set"
             }
         },
         {
-            "name": "Xcode.Release",
-            "displayName": "Xcode.Release",
-            "description": "使用 Xcode 工具链编译 Release 版本的程序（Apple）",
-            "inherits": ["Xcode.Base"],
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
-            }
+            "name": "VisualStudio.ARM64.Debug",
+            "displayName": "Visual Studio 17 2022 ARM64 Debug",
+            "description": "",
+            "inherits": [ "OS.Windows", "Behavior.Debug", "VisualStudio.ARM64" ]
+        },
+        {
+            "name": "VisualStudio.ARM64.Release",
+            "displayName": "Visual Studio 17 2022 ARM64 Release",
+            "description": "",
+            "inherits": [ "OS.Windows", "Behavior.Release", "VisualStudio.ARM64" ]
         }
     ],
 
 
     "buildPresets": [
-        {
-            "name": "Runtime.Base",
-            "hidden": true,
-            "targets":["Fantasia.Runtime"]
-        },
-        {
-            "name": "All.Base",
-            "hidden": true,
-            "targets":["Fantasia.Runtime", "fantasia", "ut"]
-        },
+        
+    ],
 
-
-        {
-            "name": "Unix.Debug.All",
-            "inherits":["All.Base"],
-            "configurePreset": "Unix.Debug"
-        },
-        {
-            "name": "Unix.Release.All",
-            "inherits":["All.Base"],
-            "configurePreset": "Unix.Release"
-        },
-        {
-            "name": "Unix.MinSizeRel.All",
-            "inherits":["All.Base"],
-            "configurePreset": "Unix.MinSizeRel"
-        },
-
-
-        {
-            "name": "Ninja.Debug.All",
-            "inherits":["All.Base"],
-            "configurePreset": "Ninja.Debug"
-        },
-        {
-            "name": "Ninja.Release.All",
-            "inherits":["All.Base"],
-            "configurePreset": "Ninja.Release"
-        }
+    "testPresets": [
+    
     ]
 }
