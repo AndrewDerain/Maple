@@ -24,60 +24,31 @@
         },
         {
             "name": "Behavior.Release",
-            "description": "Debug",
+            "description": "Release",
             "hidden": true,
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "MinSizeRel"
             }
         },
-        {
-            "name": "OS.Windows",
-            "description": "Only for windows os.",
-            "hidden": true,
-            "inherite": [ "Behavior.OutputPath" ],
-            "condition": {
-                "type": "inList",
-                "string": "${hostSystemName}",
-                "list": [ "Windows" ]
-            }
-        },
-        {
-            "name": "OS.Linux",
-            "description": "Only for linux os.",
-            "hidden": true,
-            "inherite": [ "Behavior.OutputPath" ],
-            "condition": {
-                "type": "inList",
-                "string": "${hostSystemName}",
-                "list": [ "Linux" ]
-            }
-        },
-        {
-            "name": "OS.macOS",
-            "description": "Only for linux os.",
-            "hidden": true,
-            "inherite": [ "Behavior.OutputPath" ],
-            "condition": {
-                "type": "inList",
-                "string": "${hostSystemName}",
-                "list": [ "Darwin" ]
-            }
-        },
-
 
 
         {
             "name": "UnixMakefiles.Debug",
             "displayName": "Unix Makefiles Debug",
             "description": "使用 Unix Makefiles 编译 Debug 版本的程序",
-            "inherits": [ "OS.Linux", "OS.macOS", "Behavior.Debug" ],
-            "generator": "Unix Makefiles"
+            "inherits": [ "Behavior.OutputPath", "Behavior.Debug" ],
+            "generator": "Unix Makefiles",
+            "condition": {
+                "type": "inList",
+                "string": "${hostSystemName}",
+                "list": [ "Linux", "Darwin" ]
+            }
         },
         {
             "name": "UnixMakefiles.Release",
             "displayName": "Unix Makefiles Release",
             "description": "使用 Unix Makefiles 编译 Release 版本的程序",
-            "inherits": [ "OS.Linux", "OS.macOS", "Behavior.Release" ],
+            "inherits": [ "Behavior.OutputPath", "Behavior.Release" ],
             "generator": "Unix Makefiles"
         },
 
@@ -86,14 +57,14 @@
             "name": "Ninja.Debug",
             "displayName": "Ninja Debug",
             "description": "使用 Ninja 编译 Debug 版本的程序",
-            "inherits": [ "OS.Linux", "OS.macOS", "OS.Windows", "Behavior.Debug" ],
+            "inherits": [ "Behavior.OutputPath", "Behavior.Debug" ],
             "generator": "Ninja"
         },
         {
             "name": "Ninja.Release",
             "displayName": "Ninja Release",
             "description": "使用 Ninja 编译 Release 版本的程序",
-            "inherits": [ "OS.Linux", "OS.macOS", "OS.Windows", "Behavior.Release" ],
+            "inherits": [ "Behavior.OutputPath", "Behavior.Release" ],
             "generator": "Ninja"
         },
 
@@ -102,14 +73,14 @@
             "name": "Xcode.Debug",
             "displayName": "Xcode Debug",
             "description": "使用 Xcode 工具链编译 Debug 版本的程序（Apple）",
-            "inherits": [ "OS.macOS", "Behavior.Debug" ],
+            "inherits": [ "Behavior.OutputPath", "Behavior.Debug" ],
             "generator": "Xcode"
         },
         {
             "name": "Xcode.Release",
             "displayName": "Xcode Release",
             "description": "使用 Xcode 工具链编译 Release 版本的程序（Apple）",
-            "inherits": [ "OS.macOS", "Behavior.Release" ],
+            "inherits": [ "Behavior.OutputPath", "Behavior.Release" ],
             "generator": "Xcode"
         },
 
@@ -127,22 +98,43 @@
             "name": "VisualStudio.ARM64.Debug",
             "displayName": "Visual Studio 17 2022 ARM64 Debug",
             "description": "",
-            "inherits": [ "OS.Windows", "Behavior.Debug", "VisualStudio.ARM64" ]
+            "inherits": [ "Behavior.OutputPath", "Behavior.Debug", "VisualStudio.ARM64" ]
         },
         {
             "name": "VisualStudio.ARM64.Release",
             "displayName": "Visual Studio 17 2022 ARM64 Release",
             "description": "",
-            "inherits": [ "OS.Windows", "Behavior.Release", "VisualStudio.ARM64" ]
+            "inherits": [ "Behavior.OutputPath", "Behavior.Release", "VisualStudio.ARM64" ]
         }
     ],
 
 
     "buildPresets": [
-        
-    ],
+        {
+            "name": "Targets.Framework",
+            "hidden": true,
+            "targets":["Fantasia.Runtime", "fantasia"]
+        },
+        {
+            "name": "Targets.ALL",
+            "hidden": true,
+            "inherits": ["Targets.Framework"],
+            "targets":["ut"]
+        },
 
-    "testPresets": [
-    
+
+        {
+            "name": "Framework.Debug",
+            "displayName": "Framework Debug",
+            "inherits":["Targets.Framework"],
+            "configurePreset": "UnixMakefiles.Debug"
+        },
+
+
+        {
+            "name": "Ninja.Debug",
+            "inherits":["Targets.Framework"],
+            "configurePreset": "Ninja.Debug"
+        }
     ]
 }
