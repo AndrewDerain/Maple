@@ -87,11 +87,10 @@ add_subdirectory("ut")
 #    Configured variables
 #------------------------------------------------------------------------------
 message(${RCLH} CMAKE_ROOT = ${CMAKE_ROOT})
-message(${RCLH} CMAKE_BUILD_TYPE = ${CMAKE_BUILD_TYPE})
-
-message(${RCLH} CMAKE_CXX_COMPILER_ID = ${CMAKE_CXX_COMPILER_ID})
+message(${RCLH} CMAKE_BUILD_TYPE         = ${CMAKE_BUILD_TYPE})
+message(${RCLH} CMAKE_CXX_COMPILER_ID    = ${CMAKE_CXX_COMPILER_ID})
 message(${RCLH} CMAKE_GENERATOR_PLATFORM = ${CMAKE_GENERATOR_PLATFORM})
-message(${RCLH} CMAKE_BUILD_TYPE = ${CMAKE_BUILD_TYPE})
+
 
 message(${RCLH})
 message(${RCLH} "----------------------------------")
@@ -256,4 +255,4 @@ message(${RCLH} "CMAKE_EXE_LINKER_FLAGS             = ${CMAKE_EXE_LINKER_FLAGS}"
 message(${RCLH} "CMAKE_EXE_LINKER_FLAGS_INIT        = ${CMAKE_EXE_LINKER_FLAGS_INIT}")
 message(${RCLH} "CMAKE_FOLDER                       = ${CMAKE_FOLDER}")
 message(${RCLH} "CMAKE_FRAMEWORK                    = ${CMAKE_FRAMEWORK}")
-message(${RCLH} "BUILD_SHARED_LIBS = ${BUILD_SHARED_LIBS}")
+message(${RCLH} "CMAKE_GENERATOR = ${CMAKE_GENERATOR}")

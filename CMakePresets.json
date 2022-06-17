@@ -49,7 +49,12 @@
             "displayName": "Unix Makefiles Release",
             "description": "使用 Unix Makefiles 编译 Release 版本的程序",
             "inherits": [ "Behavior.OutputPath", "Behavior.Release" ],
-            "generator": "Unix Makefiles"
+            "generator": "Unix Makefiles",
+            "condition": {
+                "type": "inList",
+                "string": "${hostSystemName}",
+                "list": [ "Linux", "Darwin" ]
+            }
         },
 
 
@@ -58,14 +63,24 @@
             "displayName": "Ninja Debug",
             "description": "使用 Ninja 编译 Debug 版本的程序",
             "inherits": [ "Behavior.OutputPath", "Behavior.Debug" ],
-            "generator": "Ninja"
+            "generator": "Ninja",
+            "condition": {
+                "type": "inList",
+                "string": "${hostSystemName}",
+                "list": [ "Linux", "Darwin", "Windows" ]
+            }
         },
         {
             "name": "Ninja.Release",
             "displayName": "Ninja Release",
             "description": "使用 Ninja 编译 Release 版本的程序",
             "inherits": [ "Behavior.OutputPath", "Behavior.Release" ],
-            "generator": "Ninja"
+            "generator": "Ninja",
+            "condition": {
+                "type": "inList",
+                "string": "${hostSystemName}",
+                "list": [ "Linux", "Darwin", "Windows" ]
+            }
         },
 
 
@@ -74,14 +89,24 @@
             "displayName": "Xcode Debug",
             "description": "使用 Xcode 工具链编译 Debug 版本的程序（Apple）",
             "inherits": [ "Behavior.OutputPath", "Behavior.Debug" ],
-            "generator": "Xcode"
+            "generator": "Xcode",
+            "condition": {
+                "type": "inList",
+                "string": "${hostSystemName}",
+                "list": [ "Darwin" ]
+            }
         },
         {
             "name": "Xcode.Release",
             "displayName": "Xcode Release",
             "description": "使用 Xcode 工具链编译 Release 版本的程序（Apple）",
             "inherits": [ "Behavior.OutputPath", "Behavior.Release" ],
-            "generator": "Xcode"
+            "generator": "Xcode",
+            "condition": {
+                "type": "inList",
+                "string": "${hostSystemName}",
+                "list": [ "Darwin" ]
+            }
         },
 
 
@@ -92,6 +117,11 @@
             "architecture": {
                 "value": "ARM64",
                 "strategy": "set"
+            },
+            "condition": {
+                "type": "inList",
+                "string": "${hostSystemName}",
+                "list": [ "Windows" ]
             }
         },
         {
@@ -106,35 +136,7 @@
             "description": "",
             "inherits": [ "Behavior.OutputPath", "Behavior.Release", "VisualStudio.ARM64" ]
         }
-    ],
-
-
-    "buildPresets": [
-        {
-            "name": "Targets.Framework",
-            "hidden": true,
-            "targets":["Fantasia.Runtime", "fantasia"]
-        },
-        {
-            "name": "Targets.ALL",
-            "hidden": true,
-            "inherits": ["Targets.Framework"],
-            "targets":["ut"]
-        },
-
-
-        {
-            "name": "Framework.Debug",
-            "displayName": "Framework Debug",
-            "inherits":["Targets.Framework"],
-            "configurePreset": "UnixMakefiles.Debug"
-        },
-
-
-        {
-            "name": "Ninja.Debug",
-            "inherits":["Targets.Framework"],
-            "configurePreset": "Ninja.Debug"
-        }
     ]
+
+
 }

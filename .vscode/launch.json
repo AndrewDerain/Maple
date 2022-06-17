@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "[macOS][lldb] fantasiad",
+            "name": "[macOS][lldb] fantasia",
             "type": "lldb",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/fantasiad",
+            "program": "${workspaceFolder}/bin/fantasia",
             "args": ["-v"],
             "stopAtEntry": true,
             "cwd": "${workspaceFolder}/bin",
