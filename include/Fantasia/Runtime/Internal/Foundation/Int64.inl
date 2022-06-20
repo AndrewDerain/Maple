@@ -9,6 +9,7 @@
 #pragma pack(push, ___FANTASIA_PACKING)
 namespace _Fantasia::Foundation
 {
+
     inline constexpr
 	Int64 Int64::Max() noexcept {
 		return std::numeric_limits<int64_t>::max();
@@ -147,6 +148,22 @@ namespace _Fantasia::Foundation
 		return *this;
 	}
 
+
+    inline constexpr
+    String Int64::ToString() const {
+        String result;
+
+        if(_StoredValue <= StringStackStorage::MaxIntegerValueOnStack() &&
+            _StoredValue >= StringStackStorage::MinIntegerValueOnStack()){
+
+            result._Storage.Stack().Assign(_StoredValue);
+        }
+        else {
+            result._Storage.Heap().Assign(_StoredValue);
+        }
+
+        return result;
+    }
 } // namespace _Fantasia::Foundation
 #pragma pack(pop)
 #pragma warning(pop)

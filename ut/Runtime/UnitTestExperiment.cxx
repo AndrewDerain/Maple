@@ -60,8 +60,10 @@ namespace Exp {
     TEST_CASE("Demo"){
         //std::cout << _Fantasia::Foundation::StringStackStorage::MaxIntegerValueOnStack() << std::endl;
         char str[56];
-        int64_t len = Algorithm::ConvertInt32ToString(-10, str);
+        //int64_t len = Algorithm::ConvertInt32ToString(-10, str);
 
+        constexpr auto val = Foundation::Int64((long long)45).ToString();
+        std::cout << val << std::endl;
         //std::cout << len << std::endl;
         //std::cout << str << std::endl;
         //while(true){}

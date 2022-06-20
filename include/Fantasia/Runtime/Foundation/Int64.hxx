@@ -81,7 +81,7 @@ namespace _Fantasia::Foundation
 
 
         /// @brief  转换为字符串
-        __decorate(Fantasia, api)
+        inline constexpr
         String ToString() const;
 
 

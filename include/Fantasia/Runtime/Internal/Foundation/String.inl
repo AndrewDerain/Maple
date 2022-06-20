@@ -94,6 +94,24 @@ namespace _Fantasia::Foundation
     }
 
 
+    template<std::signed_integral _T>
+    inline constexpr
+    void StringStackStorage::Assign(_T value) {
+
+        _Length = Algorithm::ConvertSignedIntegerToStringT(value, _StoredValue);
+        _IsOnStack = true;
+    }
+
+
+    template<std::unsigned_integral _T>
+    inline constexpr
+    void StringStackStorage::Assign(_T value) {
+
+        _Length = Algorithm::ConvertUnsignedIntegerToStringT(value, _StoredValue);
+        _IsOnStack = true;
+    }
+
+
     inline constexpr
     void StringStackStorage::Catenate(const char* value, int8_t len) {
 
@@ -138,15 +156,21 @@ namespace _Fantasia::Foundation
     }
 
 
+    template<std::signed_integral _T>
     inline
-    void StringHeapStorage::Reset() {
+    void StringHeapStorage::Assign(_T value) {
 
-        Deallocate();
+        _Length = Algorithm::ConvertSignedIntegerToStringT(value, _StoredValue);
+        _IsOnStack = true;
+    }
 
-        _Length     = 0;
-        _Capacity   = 0;
 
-        _IsOnStack  = false;
+    template<std::unsigned_integral _T>
+    inline
+    void StringHeapStorage::Assign(_T value) {
+
+        _Length = Algorithm::ConvertUnsignedIntegerToStringT(value, _StoredValue);
+        _IsOnStack = true;
     }
 
 
@@ -155,18 +179,6 @@ namespace _Fantasia::Foundation
         _StoredValue    = memory;
         _Length         = length;
         _Capacity       = capacity;
-    }
-
-
-    inline
-    void StringHeapStorage::Catenate(const char* value, int64_t len) {
-
-        Algorithm::CatenateString(
-                _StoredValue,
-                _Length,
-                _Capacity,
-                value,
-                len);
     }
 
 #pragma endregion // StringHeapStorage
@@ -298,7 +310,7 @@ namespace _Fantasia::Foundation
     }
 
 
-    inline
+    inline constexpr
     Bool String::IsOnStack() const {
         return _Storage.IsOnStack();
     }
@@ -314,7 +326,7 @@ namespace _Fantasia::Foundation
     }
 
 
-    inline
+    inline constexpr
     String& String::operator=(const char* value) {
         _Assign(value);
         return *this;
@@ -425,11 +437,14 @@ namespace _Fantasia::Foundation
 
     inline constexpr
     const char* end(const String& string) {
+
         if(string._Storage.IsOnStack()) {
-            return string._Storage.Stack().Data() + string._Storage.Stack().Length();
+            return string._Storage.Stack().Data()
+                + string._Storage.Stack().Length();
         }
         else {
-            return string._Storage.Heap().Data() + string._Storage.Heap().Length();
+            return string._Storage.Heap().Data()
+                + string._Storage.Heap().Length();
         }
     }
 

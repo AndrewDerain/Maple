@@ -105,7 +105,7 @@ namespace _Fantasia::Algorithm
     }
 
 
-    template<std::integral _T>
+    template<std::signed_integral _T>
     inline constexpr
     int8_t ConvertSignedIntegerToStringT(
             _T              ival,
@@ -130,7 +130,7 @@ namespace _Fantasia::Algorithm
     }
 
 
-    template<std::integral _T>
+    template<std::unsigned_integral _T>
     inline constexpr
     int8_t ConvertUnsignedIntegerToStringT(
             _T              ival,
@@ -148,42 +148,6 @@ namespace _Fantasia::Algorithm
         }
 
         return slen;
-    }
-
-
-    inline constexpr
-    int8_t ConvertInt16ToString(
-            int16_t         ival,
-            char           *sval) {
-
-        return ConvertSignedIntegerToStringT(ival, sval);
-    }
-
-
-    inline constexpr
-    int8_t ConvertUInt16ToString(
-            uint16_t        ival,
-            char           *sval) {
-
-        return ConvertUnsignedIntegerToStringT(ival, sval);
-    }
-
-
-    inline constexpr
-    int8_t ConvertInt32ToString(
-            int32_t         ival,
-            char           *sval) {
-
-        return ConvertSignedIntegerToStringT(ival, sval);
-    }
-
-
-    inline constexpr
-    int8_t ConvertUInt32ToString(
-            uint32_t        ival,
-            char           *sval) {
-
-        return ConvertUnsignedIntegerToStringT(ival, sval);
     }
 
 }

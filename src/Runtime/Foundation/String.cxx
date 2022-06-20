@@ -43,6 +43,31 @@ namespace _Fantasia::Foundation
     }
 
 
+    __decorate(Fantasia, api)
+    void StringHeapStorage::Catenate(const char* value, int64_t len) {
+
+        Algorithm::CatenateString(
+                _StoredValue,
+                _Length,
+                _Capacity,
+                value,
+                len);
+    }
+
+
+    __decorate(Fantasia, api)
+    void StringHeapStorage::Reset() {
+
+        Deallocate();
+
+        _Length     = 0;
+        _Capacity   = 0;
+
+        _IsOnStack  = false;
+    }
+
+
+    __decorate(Fantasia, api)
     void StringHeapStorage::Extend(std::int64_t size) {
 
         int64_t capacity    = _Capacity + size + 50;

@@ -3,7 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/build/Ninja.Debug/_deps/catch2-src" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/build/Ninja.Release/_deps/catch2-src" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/build/Unix.Debug/_deps/catch2-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/build/Xcode.Debug/_deps/catch2-src" vcs="Git" />
   </component>
 </project>

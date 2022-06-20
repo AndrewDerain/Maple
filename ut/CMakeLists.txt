@@ -38,11 +38,3 @@ link_libraries(
 add_executable(
     ${target_name_unit_test} ${srcs}
 )
-
-set_target_properties(
-    ${target_name_unit_test}
-    PROPERTIES
-
-    CXX_VISIBILITY_PRESET               hidden
-    VISIBILITY_INLINES_HIDDEN           ON
-)

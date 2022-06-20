@@ -77,9 +77,18 @@ namespace _Fantasia::Foundation
         void Assign(const char* value, int8_t len);
 
 
+        template<std::signed_integral _T>
+        inline constexpr
+        void Assign(_T value);
+
+
+        template<std::unsigned_integral _T>
+        inline constexpr
+        void Assign(_T value);
+
+
         inline constexpr
         void Catenate(const char* value, int8_t len);
-
 
     protected:
         /// @brief Stack 上可以存储值的最大空间（包含'\0'）。
@@ -148,13 +157,23 @@ namespace _Fantasia::Foundation
 
 
         /// @note 此函数只会设置 Length 和 Data 属性
-        inline
+        __decorate(Fantasia, api)
         void Reset();
 
 
         /// @note 此函数只会设置 Length 和 Data 属性
         __decorate(Fantasia, api)
         void Assign(const char* value, uint16_t len);
+
+
+        template<std::signed_integral _T>
+        inline
+        void Assign(_T value);
+
+
+        template<std::unsigned_integral _T>
+        inline
+        void Assign(_T value);
 
 
         /// @brief 直接使用外部申请的内存空间进行替换
@@ -167,11 +186,12 @@ namespace _Fantasia::Foundation
         void Deallocate();
 
 
-        inline
+        __decorate(Fantasia, api)
         void Catenate(const char* value, int64_t len);
 
 
         /// @brief 增大堆空间
+        __decorate(Fantasia, api)
         void Extend(std::int64_t size);
 
 
@@ -288,12 +308,11 @@ namespace _Fantasia::Foundation
         String& Catenate(const char* value);
 
 
-        [[nodiscard]]
         inline constexpr
         const String Catenate(const char* value) const;
 
 
-        inline
+        inline constexpr
         Bool IsOnStack() const;
 
 
@@ -303,7 +322,7 @@ namespace _Fantasia::Foundation
         operator char const* const() const noexcept;
 
 
-        inline
+        inline constexpr
         String& operator=(const char* value);
 
 
@@ -341,6 +360,10 @@ namespace _Fantasia::Foundation
 
         inline constexpr
         friend const char* end(const String&);
+
+
+        friend class Int64;
+        friend class Float64;
     };
 
 
