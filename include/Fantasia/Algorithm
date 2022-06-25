@@ -5,7 +5,7 @@
 ///
 #pragma once
 #include "Runtime/Algorithm/Number.hxx"
-//#include "Runtime/Algorithm/String.hxx"
+#include "Runtime/Algorithm/String.hxx"
 
 
 namespace Fantasia::Algorithm

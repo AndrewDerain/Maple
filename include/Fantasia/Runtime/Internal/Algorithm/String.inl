@@ -18,6 +18,14 @@ namespace _Fantasia::Algorithm
 
 
     inline constexpr
+    int64_t CountStringLength(const char *string, int64_t upperlimit) noexcept {
+        int64_t len = 0;
+        while (string[len] != '\0') len++;
+        return len < upperlimit ? len : upperlimit;
+    }
+    
+
+    inline constexpr
     int64_t CompareString(
             const char         *left,
             const int64_t       left_length,
@@ -49,7 +57,7 @@ namespace _Fantasia::Algorithm
             char*           left,
             int64_t         left_capacity,
             const char*     right,
-            int64_t         right_length) {
+            int64_t         right_length) noexcept {
 
         int i = 0; --left_capacity;
 
@@ -63,12 +71,12 @@ namespace _Fantasia::Algorithm
 
     template<std::integral _LenTy>
     inline constexpr
-    void CatenateStringT(
+    void CatenateString(
             char           *left,
             _LenTy         &left_length,
             _LenTy          left_capacity,
             const char     *right,
-            _LenTy          right_length) {
+            _LenTy          right_length) noexcept {
 
         int li = left_length, ri = 0; --left_capacity;
 
@@ -81,35 +89,11 @@ namespace _Fantasia::Algorithm
     }
 
 
-    inline constexpr
-    void CatenateString(
-            char           *left,
-            int8_t         &left_length,
-            int8_t          left_capacity,
-            const char     *right,
-            int8_t          right_length) {
-
-        CatenateStringT(left, left_length, left_capacity, right, right_length);
-    }
-
-
-    inline constexpr
-    void CatenateString(
-            char           *left,
-            uint16_t       &left_length,
-            uint16_t        left_capacity,
-            const char     *right,
-            uint16_t        right_length) {
-
-        CatenateStringT(left, left_length, left_capacity, right, right_length);
-    }
-
-
     template<std::signed_integral _T>
     inline constexpr
-    int8_t ConvertSignedIntegerToStringT(
+    int8_t ConvertSignedIntegerToString(
             _T              ival,
-            char           *sval) {
+            char           *sval) noexcept {
 
         bool is_negative = IsNegative(ival);
         ival = Abs(ival);
@@ -132,9 +116,9 @@ namespace _Fantasia::Algorithm
 
     template<std::unsigned_integral _T>
     inline constexpr
-    int8_t ConvertUnsignedIntegerToStringT(
+    int8_t ConvertUnsignedIntegerToString(
             _T              ival,
-            char           *sval) {
+            char           *sval) noexcept {
 
         int8_t slen = 0;
         do{

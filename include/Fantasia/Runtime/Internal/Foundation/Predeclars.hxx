@@ -21,6 +21,7 @@ namespace _Fantasia::Foundation
 
     struct Float64;
 
+    struct Int32;
     struct Int64;
 
     struct String;

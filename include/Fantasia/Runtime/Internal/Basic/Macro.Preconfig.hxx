@@ -19,6 +19,12 @@
             26812
 
 
+/// @brief 调试
+#ifdef ___FANTASIA_DEBUG
+#   define __FANTASIA_DEBUG
+#endif
+
+
 /// @brief [___FANTASIA_API]
 /// @details 此宏指定某个函数在项目中是被导出的
 #if defined(_WIN32) || defined(__CYGWIN__)

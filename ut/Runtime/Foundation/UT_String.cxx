@@ -191,7 +191,7 @@ namespace UnitTest::Foundation::TestString
             constexpr String Val3 = "123456";
 
             CHECK(Val1.Length() == sizeof("123456") - 1);
-            CHECK(Val2.Length() == sizeof("24689") - 1);
+            CHECK(Val2.Length() == sizeof("24689")  - 1);
             CHECK(Val3.Length() == sizeof("123456") - 1);
 
             constexpr Bool cmp_r1 = Val1 == Val2;
@@ -245,7 +245,7 @@ namespace UnitTest::Foundation::TestString
                     .Catenate("123233456");
 
             CHECK(Target2 > Target1);
-            CHECK(CompareString(Target2, "123456789012x") == 0);
+            CHECK(CompareString(Target2, "123456789012x2|233123") == 0);
         }
 
         SECTION("Move to heap") {

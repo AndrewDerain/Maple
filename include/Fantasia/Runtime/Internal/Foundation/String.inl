@@ -25,7 +25,7 @@ namespace _Fantasia::Foundation
 
 
     inline constexpr
-    Int64 StringStackStorage::MaxIntegerValueOnStack() noexcept {
+    uint64_t StringStackStorage::MaxIntegerValueOnStack() noexcept {
         return _MaxIntegerValueOnStack;
     }
 
@@ -98,7 +98,7 @@ namespace _Fantasia::Foundation
     inline constexpr
     void StringStackStorage::Assign(_T value) {
 
-        _Length = Algorithm::ConvertSignedIntegerToStringT(value, _StoredValue);
+        _Length = Algorithm::ConvertSignedIntegerToString(value, _StoredValue);
         _IsOnStack = true;
     }
 
@@ -107,7 +107,7 @@ namespace _Fantasia::Foundation
     inline constexpr
     void StringStackStorage::Assign(_T value) {
 
-        _Length = Algorithm::ConvertUnsignedIntegerToStringT(value, _StoredValue);
+        _Length = Algorithm::ConvertUnsignedIntegerToString(value, _StoredValue);
         _IsOnStack = true;
     }
 
@@ -131,7 +131,7 @@ namespace _Fantasia::Foundation
     inline
     Int64 StringHeapStorage::Capacity() const {
         return _Capacity;
-    };
+    }
 
 
     inline
@@ -160,7 +160,7 @@ namespace _Fantasia::Foundation
     inline
     void StringHeapStorage::Assign(_T value) {
 
-        _Length = Algorithm::ConvertSignedIntegerToStringT(value, _StoredValue);
+        _Length = Algorithm::ConvertSignedIntegerToString(value, _StoredValue);
         _IsOnStack = true;
     }
 
@@ -169,13 +169,13 @@ namespace _Fantasia::Foundation
     inline
     void StringHeapStorage::Assign(_T value) {
 
-        _Length = Algorithm::ConvertUnsignedIntegerToStringT(value, _StoredValue);
+        _Length = Algorithm::ConvertUnsignedIntegerToString(value, _StoredValue);
         _IsOnStack = true;
     }
 
 
     inline
-    void StringHeapStorage::Replace(char* memory, uint16_t length, uint16_t capacity) {
+    void StringHeapStorage::Replace(char* memory, uint32_t length, uint32_t capacity) {
         _StoredValue    = memory;
         _Length         = length;
         _Capacity       = capacity;
@@ -271,6 +271,54 @@ namespace _Fantasia::Foundation
     }
 
 
+    inline constexpr 
+    String::String(int8_t value) {
+        _Storage.Stack().Assign(value);
+    }
+
+
+    inline constexpr 
+    String::String(int16_t value) {
+        _Storage.Stack().Assign(value);
+    }
+
+
+    inline constexpr 
+    String::String(int32_t value) {
+        _Storage.Stack().Assign(value);
+    }
+
+
+    inline constexpr 
+    String::String(int64_t value) {
+        _Storage.Stack().Assign(value);
+    }
+
+
+    inline constexpr
+    String::String(uint8_t value) {
+        _Storage.Stack().Assign(value);
+    }
+
+
+    inline constexpr
+    String::String(uint16_t value) {
+        _Storage.Stack().Assign(value);
+    }
+
+
+    inline constexpr
+    String::String(uint32_t value) {
+        _Storage.Stack().Assign(value);
+    }
+
+
+    inline constexpr
+    String::String(uint64_t value) {
+        _Storage.Stack().Assign(value);
+    }
+
+
     inline
     String& String::Catenate(const String& value) {
         _Catenate(value, value.Length());
@@ -296,6 +344,7 @@ namespace _Fantasia::Foundation
 
     inline constexpr
     const String String::Catenate(const char* value) const{
+
         String Target = {};
 
         Target._Storage.Stack().Assign(
@@ -346,7 +395,40 @@ namespace _Fantasia::Foundation
             return;
         }
 
-        std::uint16_t len = Algorithm::CountStringLength(value);
+        uint16_t len = Algorithm::CountStringLength(
+            value, NumericLimits<uint16_t>::Max());
+            
+        if(len < _Storage.Stack().Capacity()) {
+
+            if(!_Storage.IsOnStack()) {
+                _Storage.Heap().Deallocate();
+            }
+            _Storage.Stack().Assign(value, len);
+        }
+        else {
+
+            if(_Storage.IsOnStack()) {
+               _Storage.Heap().Initialize();
+            }
+            _Storage.Heap().Assign(value, len);
+        }
+    }
+
+
+    inline constexpr
+    void String::_Assign(const char* value, uint32_t length) {
+        
+        if(nullptr == value) {
+
+            if(!_Storage.IsOnStack()) {
+                _Storage.Heap().Deallocate();
+            }
+
+            _Storage.Stack().Reset();
+            return;
+        }
+
+        uint32_t len = length;
 
         if(len < _Storage.Stack().Capacity()) {
 
@@ -363,6 +445,24 @@ namespace _Fantasia::Foundation
             _Storage.Heap().Assign(value, len);
         }
     }
+
+//
+//    inline constexpr
+//    void String::_Assign(int64_t value) {
+//
+//        char sbuf[NumericLimits<int64_t>::MaxLength() + 1];
+//        auto slen = Algorithm::ConvertSignedIntegerToString(value, sbuf);
+//        _Assign(sbuf, slen);
+//    }
+//
+//
+//    inline constexpr
+//    void String::_Assign(uint64_t value) {
+//
+//        char sbuf[NumericLimits<uint64_t>::MaxLength() + 1];
+//        auto slen = Algorithm::ConvertUnsignedIntegerToString(value, sbuf);
+//        _Assign(sbuf, slen);
+//    }
 
 
     inline
@@ -426,6 +526,7 @@ namespace _Fantasia::Foundation
 
     inline constexpr
     const char* begin(const String& string) {
+
         if(string._Storage.IsOnStack()) {
             return string._Storage.Stack().Data();
         }

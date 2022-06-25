@@ -31,7 +31,7 @@ namespace _Fantasia::Foundation
 
         /// @brief Stack 上可存储的最大整数
         static inline constexpr
-        Int64 MaxIntegerValueOnStack() noexcept;
+        uint64_t MaxIntegerValueOnStack() noexcept;
 
 
         /// @brief Stack 上可存储的最小整数
@@ -90,9 +90,10 @@ namespace _Fantasia::Foundation
         inline constexpr
         void Catenate(const char* value, int8_t len);
 
+
     protected:
         /// @brief Stack 上可以存储值的最大空间（包含'\0'）。
-        static constexpr const int64_t _StackMaxCapacity 		= 14;
+        static constexpr const int8_t _StackMaxCapacity 		= 22;
 
 
         /// @brief 额外预分配空间
@@ -101,12 +102,15 @@ namespace _Fantasia::Foundation
 
         /// @brief Stack 上可存储的最大整数, 取决于 _StackMaxCapacity 的大小
         /// @see _StackMaxCapacity                                2021-09-11 13:00:11
-        static constexpr const int64_t _MaxIntegerValueOnStack 	= 9999999999999;
+        ///                                                       9223372036854775807
+        ///                                                       18446744073709551615|
+        ///                                                       123456789012345678901  21 // 24
+        static constexpr const uint64_t _MaxIntegerValueOnStack = NumericLimits<uint64_t>::Max();
 
 
         /// @brief Stack 上可存储的最小整数
         /// @see _StackMaxCapacity
-        static constexpr const int64_t _MinIntegerValueOnStack 	= -999999999999;
+        static constexpr const int64_t _MinIntegerValueOnStack 	= NumericLimits<int64_t>::Min();
 
 
         /// @brief Stack 上可存储的最大浮点数（非科学计数法）
@@ -119,7 +123,7 @@ namespace _Fantasia::Foundation
         static constexpr const double _MinFloatValueOnStack    	= -0.0000000001;
 
 
-        /// @note 也用于进行内存对齐
+        /// @note 仅用于进行内存对齐
         bool    _IsOnStack;
 
 
@@ -158,12 +162,7 @@ namespace _Fantasia::Foundation
 
         /// @note 此函数只会设置 Length 和 Data 属性
         __decorate(Fantasia, api)
-        void Reset();
-
-
-        /// @note 此函数只会设置 Length 和 Data 属性
-        __decorate(Fantasia, api)
-        void Assign(const char* value, uint16_t len);
+        void Assign(const char* value, uint32_t len);
 
 
         template<std::signed_integral _T>
@@ -178,7 +177,7 @@ namespace _Fantasia::Foundation
 
         /// @brief 直接使用外部申请的内存空间进行替换
         inline
-        void Replace(char* memory, uint16_t length, uint16_t capacity);
+        void Replace(char* memory, uint32_t length, uint32_t capacity);
 
 
         /// @brief 释放堆上申请的内存
@@ -187,25 +186,26 @@ namespace _Fantasia::Foundation
 
 
         __decorate(Fantasia, api)
-        void Catenate(const char* value, int64_t len);
+        void Catenate(const char* value, uint32_t len);
 
 
         /// @brief 增大堆空间
         __decorate(Fantasia, api)
-        void Extend(std::int64_t size);
+        void Extend(uint32_t size);
 
 
     protected:
         /// @note 用于进行内存对齐
+        [[maybe_unused]]
         bool        _IsOnStack;
 
 
         /// @brief 字符串中的字符数量
-        uint16_t    _Length;
+        uint32_t    _Length;
 
 
         /// @brief 在堆上已申请的内存空间大小
-        uint16_t    _Capacity;
+        uint32_t    _Capacity;
 
 
         /// @brief 堆起始地址
@@ -284,13 +284,45 @@ namespace _Fantasia::Foundation
 
 
         inline constexpr
-        String(const String& other) ;
+        String(const String& other);
 
 
         /// @brief 使用 c 样式字符串进行初始化。
         /// @note 如果 value 是空指针，此对象会被初始化为空字符串（""）。
         inline constexpr
         String(const char* value);
+
+
+        inline constexpr explicit
+        String(int8_t value);
+
+
+        inline constexpr explicit
+        String(int16_t value);
+
+        
+        inline constexpr explicit
+        String(int32_t value);
+
+
+        inline constexpr explicit
+        String(int64_t value);
+
+
+        inline constexpr explicit
+        String(uint8_t value);
+
+
+        inline constexpr explicit
+        String(uint16_t value);
+
+
+        inline constexpr explicit
+        String(uint32_t value);
+
+
+        inline constexpr explicit
+        String(uint64_t value);
 
 
         /// @brief 追加内容
@@ -337,6 +369,18 @@ namespace _Fantasia::Foundation
         void _Assign(const char* value);
 
 
+        inline constexpr
+        void _Assign(const char* value, uint32_t length);
+        
+
+//        inline constexpr
+//        void _Assign(int64_t value);
+//
+//
+//        inline constexpr
+//        void _Assign(uint64_t value);
+
+
         /// @brief 追加内容到字符串末尾
         inline
         void _Catenate(const char* value, int64_t len);
@@ -362,6 +406,7 @@ namespace _Fantasia::Foundation
         friend const char* end(const String&);
 
 
+        friend class Int32;
         friend class Int64;
         friend class Float64;
     };

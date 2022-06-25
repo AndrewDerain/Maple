@@ -1,9 +1,9 @@
 ﻿///
-/// @file Foundation.Int64.hxx
+/// @file Foundation.Int32.hxx
 /// 
 /// @brief 本文件定义了64位整数类型
 /// 
-/// @date 2022-01-22
+/// @date 2022-06-20
 /// 
 #pragma once
 #include "../Internal/Foundation/Predeclars.hxx"
@@ -17,67 +17,67 @@ namespace _Fantasia::Foundation
 
     /// @brief  64位整数类型
     /// @note   满足 standard layout 和 trivial
-    struct Int64
+    struct Int32
     {
     public:
         inline constexpr
-        static Int64 Max() noexcept;
+        static Int32 Max() noexcept;
 
 
         inline constexpr
-        static Int64 Min() noexcept;
+        static Int32 Min() noexcept;
 
 
         /// @brief  构造函数。设为 default 以支持 standard_layout 和 trivial。
-        Int64() = default;
+        Int32() = default;
 
 
         /// @brief  析构函数。设为 default 以支持 standard_layout 和 trivial。
-        ~Int64() = default;
+        ~Int32() = default;
 
 
         /// @brief  移动构造函数。设为 default 以支持 standard_layout 和 trivial。
-        Int64(Int64&&) = default;
+        Int32(Int32&&) = default;
 
 
         /// @brief  拷贝构造函数。设为 default 以支持 standard_layout 和 trivial。
-        Int64(const Int64&) = default;
+        Int32(const Int32&) = default;
 
 
         inline constexpr
-        Int64(const int64_t value) noexcept;
+        Int32(const int32_t value) noexcept;
 
 
         inline constexpr
-        Int64(const uint64_t value) noexcept;
+        Int32(const uint32_t value);
 
 
         inline constexpr
-        Int64(const char value) noexcept;
+        Int32(const char value) noexcept;
 
 
         inline constexpr
-        Int64(const signed char value) noexcept;
+        Int32(const signed char value) noexcept;
 
 
         inline constexpr
-        Int64(const unsigned char value) noexcept;
+        Int32(const unsigned char value) noexcept;
 
 
         inline constexpr
-        Int64(const short value) noexcept;
+        Int32(const short value) noexcept;
 
 
         inline constexpr
-        Int64(const unsigned short value) noexcept;
+        Int32(const unsigned short value) noexcept;
 
 
         inline constexpr
-        Int64(const int32_t value) noexcept;
+        Int32(const int64_t value) noexcept;
 
 
         inline constexpr
-        Int64(const uint32_t value) noexcept;
+        Int32(const uint64_t value) noexcept;
 
 
         /// @brief  转换为字符串
@@ -86,65 +86,65 @@ namespace _Fantasia::Foundation
 
 
         inline constexpr
-        operator int64_t const&() const noexcept;
+        operator int32_t const&() const noexcept;
 
 
         inline constexpr
-        operator int64_t&() noexcept;
+        operator int32_t&() noexcept;
 
 
         /// @brief  赋值操作符。设为 default 以支持 standard_layout 和 trivial。
-        Int64& operator=(Int64&&) = default;
+        Int32& operator=(Int32&&) = default;
 
 
         /// @brief  赋值操作符。设为 default 以支持 standard_layout 和 trivial。
-        Int64& operator=(const Int64&) = default;
+        Int32& operator=(const Int32&) = default;
 
 
         inline constexpr
-        Int64& operator=(const Float64 other) noexcept;
+        Int32& operator=(const Float64 other) noexcept;
 
 
         inline constexpr
-        Int64& operator=(const short value) noexcept;
+        Int32& operator=(const short value) noexcept;
 
 
         inline constexpr
-        Int64& operator=(const unsigned short value) noexcept;
+        Int32& operator=(const unsigned short value) noexcept;
 
 
         inline constexpr
-        Int64& operator=(const int32_t value) noexcept;
+        Int32& operator=(const int32_t value) noexcept;
 
 
         inline constexpr
-        Int64& operator=(const uint32_t value) noexcept;
+        Int32& operator=(const uint32_t value) noexcept;
 
 
         inline constexpr
-        Int64& operator=(const int64_t value) noexcept;
+        Int32& operator=(const int64_t value) noexcept;
 
 
         inline constexpr
-        Int64& operator=(const uint64_t value) noexcept;
+        Int32& operator=(const uint64_t value) noexcept;
 
 
         inline constexpr
-        Int64& operator=(const double value) noexcept;
+        Int32& operator=(const double value) noexcept;
 
 
     protected:
-        int64_t _StoredValue;
+        int32_t _StoredValue;
     };
 
 
     // POD 校验。standard layout and trivial。
-    static_assert(std::is_trivial_v<Int64>, "Int64 must be trivial!");
-    static_assert(std::is_standard_layout_v<Int64>, "Int64 must be standard layout!");
+    static_assert(std::is_trivial_v<Int32>, "Int32 must be trivial!");
+    static_assert(std::is_standard_layout_v<Int32>, "Int32 must be standard layout!");
 
 } // namespace _Fantasia::Foundation
 #pragma pack(pop)
 #pragma warning(pop)
 
 
-#include "../Internal/Foundation/Int64.inl"
+#include "../Internal/Foundation/Int32.inl"

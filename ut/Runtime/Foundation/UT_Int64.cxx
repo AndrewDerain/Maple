@@ -62,14 +62,14 @@ namespace UnitTest::Foundation::TestInt64
 
             Int64 IntVal1(Val0);
             CHECK(IntVal1 == Val0);
-
+            
             Int64 IntVal2{Val0};
             CHECK(IntVal2 == Val0);
 
             Int64 IntVal3 = Val0;
             CHECK(IntVal3 == Val0);
 
-            CHECK_THROWS_AS([] {
+            /*CHECK_THROWS_AS([] {
                 uint64_t Val1 = std::numeric_limits<uint64_t>::max();
                 Int64 IntVal0(Val1);
             }(), std::out_of_range);
@@ -78,7 +78,7 @@ namespace UnitTest::Foundation::TestInt64
                 uint64_t Val1 = std::numeric_limits<int64_t>::max();
                 Val1 += 1;
                 Int64 IntVal0(Val1);
-            }(), std::out_of_range);
+            }(), std::out_of_range);*/
         }
 
         SECTION("init from char type value")

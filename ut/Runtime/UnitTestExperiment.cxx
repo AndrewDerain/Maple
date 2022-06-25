@@ -62,13 +62,13 @@ namespace Exp {
         char str[56];
         //int64_t len = Algorithm::ConvertInt32ToString(-10, str);
 
-        constexpr auto val = Foundation::Int64((long long)45).ToString();
+        constexpr
+        auto val = Foundation::Int64::Max().ToString();
         std::cout << val << std::endl;
-        //std::cout << len << std::endl;
-        //std::cout << str << std::endl;
+        std::cout <<  Foundation::Int64::Min() << std::endl;
+        std::cout <<  NumericLimits<double>::Max() << std::endl;
+        std::cout << sizeof(Foundation::StringStackStorage) << "  |  " << sizeof(Foundation::StringHeapStorage) << std::endl;
         //while(true){}
     }
 
 }
-
-

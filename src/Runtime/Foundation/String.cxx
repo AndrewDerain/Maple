@@ -11,7 +11,7 @@ namespace _Fantasia::Foundation
 #pragma region StringHeapStorage
 
     __decorate(Fantasia, api)
-    void StringHeapStorage::Assign(const char* value, std::uint16_t len) {
+    void StringHeapStorage::Assign(const char* value, uint32_t len) {
 
         if(_Capacity > len) {
             strcpy(_StoredValue, value);
@@ -44,7 +44,7 @@ namespace _Fantasia::Foundation
 
 
     __decorate(Fantasia, api)
-    void StringHeapStorage::Catenate(const char* value, int64_t len) {
+    void StringHeapStorage::Catenate(const char* value, uint32_t len) {
 
         Algorithm::CatenateString(
                 _StoredValue,
@@ -56,21 +56,14 @@ namespace _Fantasia::Foundation
 
 
     __decorate(Fantasia, api)
-    void StringHeapStorage::Reset() {
-
-        Deallocate();
-
-        _Length     = 0;
-        _Capacity   = 0;
-
-        _IsOnStack  = false;
-    }
-
-
-    __decorate(Fantasia, api)
-    void StringHeapStorage::Extend(std::int64_t size) {
+    void StringHeapStorage::Extend(uint32_t size) {
 
         int64_t capacity    = _Capacity + size + 50;
+
+        if(capacity > NumericLimits<uint32_t>::Max()) {
+            capacity = NumericLimits<uint32_t>::Max();
+        }
+
         char*   memory      = new char[capacity];
 
         memcpy(memory, _StoredValue, _Length + 1);

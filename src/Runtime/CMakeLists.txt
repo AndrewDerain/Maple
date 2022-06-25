@@ -13,14 +13,18 @@ project (
 #------------------------------------------------------------------------------
 add_compile_definitions(___FANTASIA_EXPORTS)
 
+if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+	add_compile_definitions(___FANTASIA_DEBUG)
+endif()
+
 
 #-----------------------------------------------------------------------------+
 #    代码覆盖率
 #------------------------------------------------------------------------------
-#[[if((CMAKE_BUILD_TYPE STREQUAL "Debug") AND (CMAKE_GENERATOR STREQUAL Ninja))
+if((CMAKE_BUILD_TYPE STREQUAL "Debug") AND (CMAKE_GENERATOR STREQUAL Ninja))
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage ")
 	set(CMAKE_C_FLAGS "{CMAKE_C_FLAGS} --coverage ")
-endif()]]
+endif()
 
 
 #-----------------------------------------------------------------------------+
