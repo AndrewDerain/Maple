@@ -18,10 +18,10 @@ namespace _Fantasia::Algorithm
 
 
     inline constexpr
-    int64_t CountStringLength(const char *string, int64_t upperlimit) noexcept {
+    int64_t CountStringLength(const char *string, int64_t limit) noexcept {
         int64_t len = 0;
         while (string[len] != '\0') len++;
-        return len < upperlimit ? len : upperlimit;
+        return len < limit ? len : limit;
     }
     
 
@@ -96,12 +96,12 @@ namespace _Fantasia::Algorithm
             char           *sval) noexcept {
 
         bool is_negative = IsNegative(ival);
-        ival = Abs(ival);
+        auto abs_val = Abs<uint64_t>(ival);
 
         int8_t slen = 0;
         do{
-            sval[slen++] = ival % 10 + '0';
-        } while (ival /= 10);
+            sval[slen++] = abs_val % 10 + '0';
+        } while (abs_val /= 10);
 
         if(is_negative) sval[slen++] = '-';
         sval[slen] = '\0';

@@ -165,16 +165,6 @@ namespace _Fantasia::Foundation
         void Assign(const char* value, uint32_t len);
 
 
-        template<std::signed_integral _T>
-        inline
-        void Assign(_T value);
-
-
-        template<std::unsigned_integral _T>
-        inline
-        void Assign(_T value);
-
-
         /// @brief 直接使用外部申请的内存空间进行替换
         inline
         void Replace(char* memory, uint32_t length, uint32_t capacity);
@@ -371,14 +361,6 @@ namespace _Fantasia::Foundation
 
         inline constexpr
         void _Assign(const char* value, uint32_t length);
-        
-
-//        inline constexpr
-//        void _Assign(int64_t value);
-//
-//
-//        inline constexpr
-//        void _Assign(uint64_t value);
 
 
         /// @brief 追加内容到字符串末尾
@@ -404,11 +386,6 @@ namespace _Fantasia::Foundation
 
         inline constexpr
         friend const char* end(const String&);
-
-
-        friend class Int32;
-        friend class Int64;
-        friend class Float64;
     };
 
 

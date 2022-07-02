@@ -18,7 +18,8 @@ namespace _Fantasia::Foundation
 
     inline constexpr
     String Bool::ToString() const {
-        if(_StoredValue) 
+
+        if(_StoredValue)
             return "true";
         else
             return "false";

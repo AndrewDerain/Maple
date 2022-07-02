@@ -7,38 +7,38 @@ using namespace _Fantasia;
 using namespace _Fantasia::Foundation;
 
 
-namespace UnitTest::Foundation::TestInt64
+namespace UnitTest::Foundation::TestInt32
 {
 
-    TEST_CASE("Int64 should be plain old data type", "[Foundation][Int64]")
+    TEST_CASE("Int32 should be plain old data type", "[Foundation][Int32]")
     {
-        CHECK(std::is_trivial_v<Int64>);
-        CHECK(std::is_standard_layout_v<Int64>);
+        CHECK(std::is_trivial_v<Int32>);
+        CHECK(std::is_standard_layout_v<Int32>);
     }
 
 
-    TEST_CASE("Int64 value range", "[Foundation][Int64]")
+    TEST_CASE("Int32 value range", "[Foundation][Int32]")
     {
-        CHECK(Int64::Max() == std::numeric_limits<int64_t>::max());
-        CHECK(Int64::Min() == std::numeric_limits<int64_t>::min());
+        CHECK(Int32::Max() == std::numeric_limits<int32_t>::max());
+        CHECK(Int32::Min() == std::numeric_limits<int32_t>::min());
     }
 
 
-    TEST_CASE("Int64 init", "[Foundation][Int64]")
+    TEST_CASE("Int32 init", "[Foundation][Int32]")
     {
         SECTION("empty") {
-            Int64 IntVal1;
+            Int32 IntVal1;
         }
 
         SECTION("init from literal integer value")
         {
-            Int64 IntVal1(3);
+            Int32 IntVal1(3);
             CHECK(IntVal1 == 3);
 
-            Int64 IntVal2{78};
+            Int32 IntVal2{78};
             CHECK(IntVal2 == 78);
 
-            Int64 IntVal3 = 889;
+            Int32 IntVal3 = 889;
             CHECK(IntVal3 == 889);
         }
 
@@ -46,13 +46,13 @@ namespace UnitTest::Foundation::TestInt64
         {
             int64_t Val = 65;
 
-            Int64 IntVal1(Val);
+            Int32 IntVal1(Val);
             CHECK(IntVal1 == Val);
 
-            Int64 IntVal2{Val};
+            Int32 IntVal2{Val};
             CHECK(IntVal2 == Val);
 
-            Int64 IntVal3 = Val;
+            Int32 IntVal3 = Val;
             CHECK(IntVal3 == Val);
         }
 
@@ -60,13 +60,13 @@ namespace UnitTest::Foundation::TestInt64
         {
             uint64_t Val0 = Int64::Max();
 
-            Int64 IntVal1(Val0);
+            Int32 IntVal1(Val0);
             CHECK(IntVal1 == Val0);
-            
-            Int64 IntVal2{Val0};
+
+            Int32 IntVal2{Val0};
             CHECK(IntVal2 == Val0);
 
-            Int64 IntVal3 = Val0;
+            Int32 IntVal3 = Val0;
             CHECK(IntVal3 == Val0);
         }
 
@@ -74,13 +74,13 @@ namespace UnitTest::Foundation::TestInt64
         {
             char CharVal = '9';
 
-            Int64 IntVal1(CharVal);
+            Int32 IntVal1(CharVal);
             CHECK(IntVal1 == CharVal);
 
-            Int64 IntVal2{CharVal};
+            Int32 IntVal2{CharVal};
             CHECK(IntVal2 == CharVal);
 
-            Int64 IntVal3 = CharVal;
+            Int32 IntVal3 = CharVal;
             CHECK(IntVal3 == CharVal);
         }
 
@@ -88,13 +88,13 @@ namespace UnitTest::Foundation::TestInt64
         {
             signed char CharVal = ',';
 
-            Int64 IntVal1(CharVal);
+            Int32 IntVal1(CharVal);
             CHECK(IntVal1 == CharVal);
 
-            Int64 IntVal2{CharVal};
+            Int32 IntVal2{CharVal};
             CHECK(IntVal2 == CharVal);
 
-            Int64 IntVal3 = CharVal;
+            Int32 IntVal3 = CharVal;
             CHECK(IntVal3 == CharVal);
         }
 
@@ -102,13 +102,13 @@ namespace UnitTest::Foundation::TestInt64
         {
             unsigned char CharVal = 'p';
 
-            Int64 IntVal1(CharVal);
+            Int32 IntVal1(CharVal);
             CHECK(IntVal1 == CharVal);
 
-            Int64 IntVal2{CharVal};
+            Int32 IntVal2{CharVal};
             CHECK(IntVal2 == CharVal);
 
-            Int64 IntVal3 = CharVal;
+            Int32 IntVal3 = CharVal;
             CHECK(IntVal3 == CharVal);
         }
 
@@ -116,13 +116,13 @@ namespace UnitTest::Foundation::TestInt64
         {
             short ShortVal = 12000;
 
-            Int64 IntVal1(ShortVal);
+            Int32 IntVal1(ShortVal);
             CHECK(IntVal1 == ShortVal);
 
-            Int64 IntVal2{ShortVal};
+            Int32 IntVal2{ShortVal};
             CHECK(IntVal2 == ShortVal);
 
-            Int64 IntVal3 = ShortVal;
+            Int32 IntVal3 = ShortVal;
             CHECK(IntVal3 == ShortVal);
         }
 
@@ -130,13 +130,13 @@ namespace UnitTest::Foundation::TestInt64
         {
             unsigned short ShortVal = 12000;
 
-            Int64 IntVal1(ShortVal);
+            Int32 IntVal1(ShortVal);
             CHECK(IntVal1 == ShortVal);
 
-            Int64 IntVal2{ShortVal};
+            Int32 IntVal2{ShortVal};
             CHECK(IntVal2 == ShortVal);
 
-            Int64 IntVal3 = ShortVal;
+            Int32 IntVal3 = ShortVal;
             CHECK(IntVal3 == ShortVal);
         }
 
@@ -144,13 +144,13 @@ namespace UnitTest::Foundation::TestInt64
         {
             int32_t Val = 65;
 
-            Int64 IntVal1(Val);
+            Int32 IntVal1(Val);
             CHECK(IntVal1 == Val);
 
-            Int64 IntVal2{Val};
+            Int32 IntVal2{Val};
             CHECK(IntVal2 == Val);
 
-            Int64 IntVal3 = Val;
+            Int32 IntVal3 = Val;
             CHECK(IntVal3 == Val);
         }
 
@@ -158,25 +158,25 @@ namespace UnitTest::Foundation::TestInt64
         {
             uint32_t Val = 65;
 
-            Int64 IntVal1(Val);
+            Int32 IntVal1(Val);
             CHECK(IntVal1 == Val);
 
-            Int64 IntVal2{Val};
+            Int32 IntVal2{Val};
             CHECK(IntVal2 == Val);
 
-            Int64 IntVal3 = Val;
+            Int32 IntVal3 = Val;
             CHECK(IntVal3 == Val);
         }
-    } // end of TEST_CASE("Int64 init" ...
+    } // end of TEST_CASE("Int32 init" ...
 
 
-    TEST_CASE("Int64 assign", "[Foundation][Int64]")
+    TEST_CASE("Int32 assign", "[Foundation][Int32]")
     {
         SECTION("assign from short")
         {
             short Val = 324;
 
-            Int64 IntVal1(5);
+            Int32 IntVal1(5);
             CHECK(IntVal1 == 5);
 
             IntVal1 = Val;
@@ -187,21 +187,20 @@ namespace UnitTest::Foundation::TestInt64
         {
             unsigned short Val = 334;
 
-            Int64 IntVal1(5);
+            Int32 IntVal1(5);
             CHECK(IntVal1 == 5);
 
             IntVal1 = Val;
             CHECK(IntVal1 == Val);
         }
-    } // end of TEST_CASE("Int64 assign" ...
+    } // end of TEST_CASE("Int32 assign" ...
 
 
-    TEST_CASE("Int64::ToString", "[Foundation][Int64]")
+    TEST_CASE("Int32::ToString", "[Foundation][Int32]")
     {
-        Int64 IntVal = 89;
+        Int32 IntVal = 89;
         String StrVal = IntVal.ToString();
 
         CHECK(Algorithm::CompareString(StrVal, String("89")) == 0);
     }
-
 }

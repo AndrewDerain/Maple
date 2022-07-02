@@ -29,11 +29,18 @@ namespace _Fantasia::Algorithm
     }
 
 
+    template<std::integral _F, std::signed_integral _T>
+    inline constexpr
+    _F Abs(_T value) noexcept {
+        _T sign = value >> (bitsof(_T) - 1);
+        return _F(value ^ sign) - sign;
+    }
+
+
     template<std::signed_integral _T>
     inline constexpr
     _T Abs(_T value) noexcept {
-        _T sign = value >> (bitsof(_T) - 1);
-        return (value ^ sign) - sign;
+        return Abs<_T, _T>(value);
     }
 
 
@@ -42,11 +49,11 @@ namespace _Fantasia::Algorithm
     void AssignWithOverflowCheck(_Dst& dst, const _Src src) noexcept {
 
         [[likely]]
-        if(src <= NumericLimits<_Dst>::Max())
+        if(src <= NumericLimits<_Dst>::Max()) {
             dst = src;
+        }
         else {
-            //assert(src <= NumericLimits<_Dst>::Max());
-            std::cout << __FUNCTION__  <<std::endl;
+            assert(src <= NumericLimits<_Dst>::Max());
             dst = NumericLimits<_Dst>::Max();
         }
     }
@@ -58,14 +65,14 @@ namespace _Fantasia::Algorithm
 
         struct _DstSizeIsLarger {
 
-            static void Invoke(_Dst& dst, const _Src src){
+            static void Invoke(_Dst& dst, const _Src src) {
                 dst = src;
             }
         };
 
         struct _DstSizeIsEqualOrSmaller {
 
-            static void Invoke(_Dst& dst, const _Src src){
+            static void Invoke(_Dst& dst, const _Src src) {
 
                 [[likely]]
                 if(src <= NumericLimits<_Dst>::Max())
@@ -93,11 +100,12 @@ namespace _Fantasia::Algorithm
     void AssignWithOverflowCheck<int64_t, double>(int64_t& dst, const double src) noexcept {
 
         [[likely]]
-        if(src < NumericLimits<int64_t, double>::Max())
+        if(src < NumericLimits<int64_t, double>::Max()) {
             dst = src;
+        }
         else {
             assert((src < NumericLimits<int64_t, double>::Max()));
-            dst = std::numeric_limits<int64_t>::max();
+            dst = NumericLimits<int64_t, double>::Max();
         }
     }
 

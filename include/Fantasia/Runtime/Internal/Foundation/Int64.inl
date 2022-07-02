@@ -78,6 +78,12 @@ namespace _Fantasia::Foundation
 
 
     inline constexpr
+    String Int64::ToString() const {
+        return String(_StoredValue);
+    }
+
+
+    inline constexpr
     Int64::operator int64_t const&() const noexcept {
 		return _StoredValue;
 	}
@@ -143,12 +149,6 @@ namespace _Fantasia::Foundation
         Algorithm::AssignWithOverflowCheck(_StoredValue, value);
 		return *this;
 	}
-
-
-    inline constexpr
-    String Int64::ToString() const {
-        return String(_StoredValue);
-    }
 
 } // namespace _Fantasia::Foundation
 #pragma pack(pop)

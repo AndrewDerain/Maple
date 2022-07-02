@@ -46,6 +46,7 @@ namespace Exp {
         return src;
     }
 
+
     struct EnumTest
     {
         enum EnumUnifyTypeName {
@@ -58,16 +59,18 @@ namespace Exp {
 
 
     TEST_CASE("Demo"){
+
         //std::cout << _Fantasia::Foundation::StringStackStorage::MaxIntegerValueOnStack() << std::endl;
         char str[56];
         //int64_t len = Algorithm::ConvertInt32ToString(-10, str);
 
         constexpr
         auto val = Foundation::Int64::Max().ToString();
-        std::cout << val << std::endl;
+        /*std::cout << val << std::endl;
         std::cout <<  Foundation::Int64::Min() << std::endl;
         std::cout <<  NumericLimits<double>::Max() << std::endl;
         std::cout << sizeof(Foundation::StringStackStorage) << "  |  " << sizeof(Foundation::StringHeapStorage) << std::endl;
+        */
         //while(true){}
     }
 

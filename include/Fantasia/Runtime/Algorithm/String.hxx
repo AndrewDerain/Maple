@@ -16,9 +16,9 @@ namespace _Fantasia::Algorithm
     int64_t CountStringLength(const char *string) noexcept;
 
 
-    /// @brief 计算字符串的长度，不包含字符 '\0'，返回的长度不会超过 upperlimit
+    /// @brief 计算字符串的长度，不包含字符 '\0'，返回的长度不会超过 limit
     inline constexpr
-    int64_t CountStringLength(const char *string, int64_t upperlimit) noexcept;
+    int64_t CountStringLength(const char *string, int64_t limit) noexcept;
 
     
     /// @brief 比较字符串

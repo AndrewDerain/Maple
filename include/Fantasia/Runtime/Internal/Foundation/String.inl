@@ -156,24 +156,6 @@ namespace _Fantasia::Foundation
     }
 
 
-    template<std::signed_integral _T>
-    inline
-    void StringHeapStorage::Assign(_T value) {
-
-        _Length = Algorithm::ConvertSignedIntegerToString(value, _StoredValue);
-        _IsOnStack = true;
-    }
-
-
-    template<std::unsigned_integral _T>
-    inline
-    void StringHeapStorage::Assign(_T value) {
-
-        _Length = Algorithm::ConvertUnsignedIntegerToString(value, _StoredValue);
-        _IsOnStack = true;
-    }
-
-
     inline
     void StringHeapStorage::Replace(char* memory, uint32_t length, uint32_t capacity) {
         _StoredValue    = memory;

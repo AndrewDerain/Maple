@@ -91,15 +91,6 @@ namespace UnitTest::Foundation::TestString
     }
 
 
-    TEST_CASE("String::MaxCapacity", Tag) {
-
-        CHECK(String::MaxCapacity() == std::numeric_limits<std::uint16_t>::max());
-
-        constexpr Int64 capacity = String::MaxCapacity();
-        CHECK(String::MaxCapacity() == capacity);
-    }
-
-
     TEST_CASE("Range based for-loop for String") {
         constexpr String Val1 = "12345";
         int i = 0;
@@ -107,6 +98,15 @@ namespace UnitTest::Foundation::TestString
         for (auto c: Val1) {
             CHECK(c == Val1[i++]);
         }
+    }
+
+
+    TEST_CASE("String::MaxCapacity", Tag) {
+
+        CHECK(String::MaxCapacity() == std::numeric_limits<std::uint16_t>::max());
+
+        constexpr Int64 capacity = String::MaxCapacity();
+        CHECK(String::MaxCapacity() == capacity);
     }
 
 
@@ -145,7 +145,7 @@ namespace UnitTest::Foundation::TestString
     }
 
 
-    TEST_CASE("String constructor", "[Foundation][String]") {
+    TEST_CASE("String construct from null-terminated c string", "[Foundation][String]") {
 
         SECTION("Initialize on stack") {
 
@@ -161,6 +161,7 @@ namespace UnitTest::Foundation::TestString
         }
 
         SECTION("Initialize on heap") {
+
             for (auto &string: random_string) {
                 String Target = string.c_str();
 
@@ -170,6 +171,7 @@ namespace UnitTest::Foundation::TestString
         }
 
         SECTION("Twice assign on heap") {
+
             String Val1 = random_string[0].c_str();
             Val1 = random_string[1].c_str();
 
@@ -203,6 +205,154 @@ namespace UnitTest::Foundation::TestString
     }
 
 
+    TEST_CASE("String construct from number", "[Foundation][String]") {
+
+        SECTION("from int8_t") {
+
+            constexpr int8_t IntMax = NumericLimits<int8_t>::Max();
+            constexpr int8_t IntMin = NumericLimits<int8_t>::Min();
+
+            String Val1(IntMax);
+            CHECK(CompareString(Val1, std::to_string(IntMax).c_str()) == 0);
+
+            constexpr String Val2(IntMax);
+            CHECK(CompareString(Val2, std::to_string(IntMax).c_str()) == 0);
+
+            String Val3(IntMin);
+            CHECK(CompareString(Val3, std::to_string(IntMin).c_str()) == 0);
+
+            constexpr String Val4(IntMin);
+            CHECK(CompareString(Val4, std::to_string(IntMin).c_str()) == 0);
+        }
+
+        SECTION("from int16_t") {
+
+            constexpr int16_t IntMax = NumericLimits<int16_t>::Max();
+            constexpr int16_t IntMin = NumericLimits<int16_t>::Min();
+
+            String Val1(IntMax);
+            CHECK(CompareString(Val1, std::to_string(IntMax).c_str()) == 0);
+
+            constexpr String Val2(IntMax);
+            CHECK(CompareString(Val2, std::to_string(IntMax).c_str()) == 0);
+
+            String Val3(IntMin);
+            CHECK(CompareString(Val3, std::to_string(IntMin).c_str()) == 0);
+
+            constexpr String Val4(IntMin);
+            CHECK(CompareString(Val4, std::to_string(IntMin).c_str()) == 0);
+        }
+
+        SECTION("from int32_t") {
+
+            constexpr int32_t IntMax = NumericLimits<int32_t>::Max();
+            constexpr int32_t IntMin = NumericLimits<int32_t>::Min();
+
+            String Val1(IntMax);
+            CHECK(CompareString(Val1, std::to_string(IntMax).c_str()) == 0);
+
+            constexpr String Val2(IntMax);
+            CHECK(CompareString(Val2, std::to_string(IntMax).c_str()) == 0);
+
+            String Val3(IntMin);
+            CHECK(CompareString(Val3, std::to_string(IntMin).c_str()) == 0);
+
+            constexpr String Val4(IntMin);
+            CHECK(CompareString(Val4, std::to_string(IntMin).c_str()) == 0);
+        }
+
+        SECTION("from int64_t") {
+
+            constexpr int64_t IntMax = NumericLimits<int64_t>::Max();
+            constexpr int64_t IntMin = NumericLimits<int64_t>::Min();
+
+            String Val1(IntMax);
+            CHECK(CompareString(Val1, std::to_string(IntMax).c_str()) == 0);
+
+            constexpr String Val2(IntMax);
+            CHECK(CompareString(Val2, std::to_string(IntMax).c_str()) == 0);
+
+            String Val3(IntMin);
+            CHECK(CompareString(Val3, std::to_string(IntMin).c_str()) == 0);
+
+            constexpr String Val4(IntMin);
+            CHECK(CompareString(Val4, std::to_string(IntMin).c_str()) == 0);
+        }
+
+        SECTION("from uint8_t") {
+
+            constexpr uint8_t IntMax = NumericLimits<uint8_t>::Max();
+            constexpr uint8_t IntMin = NumericLimits<uint8_t>::Min();
+
+            String Val1(IntMax);
+            CHECK(CompareString(Val1, std::to_string(IntMax).c_str()) == 0);
+
+            constexpr String Val2(IntMax);
+            CHECK(CompareString(Val2, std::to_string(IntMax).c_str()) == 0);
+
+            String Val3(IntMin);
+            CHECK(CompareString(Val3, std::to_string(IntMin).c_str()) == 0);
+
+            constexpr String Val4(IntMin);
+            CHECK(CompareString(Val4, std::to_string(IntMin).c_str()) == 0);
+        }
+
+        SECTION("from uint16_t") {
+
+            constexpr uint16_t IntMax = NumericLimits<uint16_t>::Max();
+            constexpr uint16_t IntMin = NumericLimits<uint16_t>::Min();
+
+            String Val1(IntMax);
+            CHECK(CompareString(Val1, std::to_string(IntMax).c_str()) == 0);
+
+            constexpr String Val2(IntMax);
+            CHECK(CompareString(Val2, std::to_string(IntMax).c_str()) == 0);
+
+            String Val3(IntMin);
+            CHECK(CompareString(Val3, std::to_string(IntMin).c_str()) == 0);
+
+            constexpr String Val4(IntMin);
+            CHECK(CompareString(Val4, std::to_string(IntMin).c_str()) == 0);
+        }
+
+        SECTION("from uint32_t") {
+
+            constexpr uint32_t IntMax = NumericLimits<uint32_t>::Max();
+            constexpr uint32_t IntMin = NumericLimits<uint32_t>::Min();
+
+            String Val1(IntMax);
+            CHECK(CompareString(Val1, std::to_string(IntMax).c_str()) == 0);
+
+            constexpr String Val2(IntMax);
+            CHECK(CompareString(Val2, std::to_string(IntMax).c_str()) == 0);
+
+            String Val3(IntMin);
+            CHECK(CompareString(Val3, std::to_string(IntMin).c_str()) == 0);
+
+            constexpr String Val4(IntMin);
+            CHECK(CompareString(Val4, std::to_string(IntMin).c_str()) == 0);
+        }
+
+        SECTION("from uint64_t") {
+
+            constexpr uint64_t IntMax = NumericLimits<uint64_t>::Max();
+            constexpr uint64_t IntMin = NumericLimits<uint64_t>::Min();
+
+            String Val1(IntMax);
+            CHECK(CompareString(Val1, std::to_string(IntMax).c_str()) == 0);
+
+            constexpr String Val2(IntMax);
+            CHECK(CompareString(Val2, std::to_string(IntMax).c_str()) == 0);
+
+            String Val3(IntMin);
+            CHECK(CompareString(Val3, std::to_string(IntMin).c_str()) == 0);
+
+            constexpr String Val4(IntMin);
+            CHECK(CompareString(Val4, std::to_string(IntMin).c_str()) == 0);
+        }
+    }
+
+
     TEST_CASE("String destructor", "[Foundation][String]") {
         constexpr String Val = "234352";
         CHECK(Val == String("234352"));
@@ -212,7 +362,6 @@ namespace UnitTest::Foundation::TestString
     TEST_CASE("String::Catenate(const char* value)", Tag) {
 
         SECTION("Normal on stack") {
-            std::string_view val1 = "Constant ...";
             String Target = "Constant ...";
 
             CHECK(bool(Target.IsOnStack()) == true);
@@ -249,6 +398,7 @@ namespace UnitTest::Foundation::TestString
         }
 
         SECTION("Move to heap") {
+
             String Val1 = "009";
             Val1.Catenate(random_string[0].c_str());
 
