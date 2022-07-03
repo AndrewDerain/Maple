@@ -6,18 +6,12 @@
 
 namespace CommandlineExecutor
 {
-    using namespace Maple::Foundation;
+    using namespace Maple;
 
 
     struct CommandExecuteResult
     {
-        enum EnumUnifyTypeName {
-            Success,
-            NoSuchOption,
-            NoSuchCommand
-        };
-
-        EnumBasicActions(CommandExecuteResult,
+        EnumerationImplementation(CommandExecuteResult,
             Success,
             NoSuchOption,
             NoSuchCommand
