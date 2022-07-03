@@ -47,22 +47,25 @@ namespace Exp {
     }
 
 
-    struct EnumTest
-    {
-        enum EnumUnifyTypeName {
-            One,
-            Two
-        };
-
-        EnumBasicActions(EnumTest, One, Two);
+    struct kk{
+        EnumerationImplementation(kk,
+                                  o,
+                                  u,
+                                  p);
     };
 
 
     TEST_CASE("Demo"){
 
+        enum {___FANTASIA_MF_ARGS_EXPANDER(A,B)};
+
+
         //std::cout << _Fantasia::Foundation::StringStackStorage::MaxIntegerValueOnStack() << std::endl;
         char str[56];
         //int64_t len = Algorithm::ConvertInt32ToString(-10, str);
+        kk k1;
+        k1 = k1.p;
+        std::cout << k1.ToString() << std::endl;
 
         constexpr
         auto val = Foundation::Int64::Max().ToString();

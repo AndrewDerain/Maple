@@ -7,7 +7,7 @@
 /// @date 2021-02-20
 /// 
 #pragma once
-#include "Macro.Preconfig.hxx"
+#include "Preconfig.hxx"
 #include "Macro.Function.hxx"
 
 

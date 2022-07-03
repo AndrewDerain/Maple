@@ -1,7 +1,8 @@
 ﻿#pragma once
 #include "../../Internal/Basic/CodeLang.CXX.hxx"
-#include "../../Internal/Basic/Macro.Preconfig.hxx"
-#include "../../Internal/Basic/Macro.Decorate.hxx"
+#include "../../Internal/Basic/Preconfig.hxx"
+#include "../../Internal/Basic/Macro.ArgsExpander.hxx"
+#include "../../Internal/Basic/Decorate.hxx"
 #include "Fantasia/Runtime/Internal/Algorithm/String.inl"
 
 

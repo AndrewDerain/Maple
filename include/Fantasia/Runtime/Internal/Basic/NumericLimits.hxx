@@ -4,7 +4,7 @@
 
 #pragma once
 #include "CodeLang.CXX.hxx"
-#include "Macro.Preconfig.hxx"
+#include "Preconfig.hxx"
 
 #pragma warning(push)
 #pragma warning(disable: ___FANTASIA_WARNING_DISABLE_IDS)

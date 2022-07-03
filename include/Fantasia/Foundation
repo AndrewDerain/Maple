@@ -14,7 +14,7 @@
 #include "Runtime/Foundation/StringT.hxx"
 
 
-namespace Fantasia::Foundation
+namespace Fantasia
 {
 
     using _Fantasia::Foundation::Size;

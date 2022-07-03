@@ -28,12 +28,12 @@
 
 #define ___FANTASIA_MF_ARG_COUNT_TRANS(...)                              \
             ___FANTASIA_MF_ARG(                                          \
-            ___FANTASIA_MF_ARG_COUNT_N(__VA_ARGS__))                     \
+                ___FANTASIA_MF_ARG_COUNT_N(__VA_ARGS__))                 \
 
 
 /// @brief 计算宏参数的个数
 #define ___FANTASIA_MF_ARG_COUNT(...)                                    \
             ___FANTASIA_MF_ARG_COUNT_TRANS(__VA_ARGS__,                  \
-             20,  19,  18,  17,  16,  15,  14,  13,  12,  11,            \
-             10,   9,   8,   7,   6,   5,   4,   3,   2,   1,            \
-              0)
+                 20,  19,  18,  17,  16,  15,  14,  13,  12,  11,        \
+                 10,   9,   8,   7,   6,   5,   4,   3,   2,   1,        \
+                  0)
