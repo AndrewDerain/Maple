@@ -1,8 +1,8 @@
-﻿# Fantasia 文档
+﻿# Maple 文档
 
 - [开发路线图](Roadmap.md)
 - [编码原则](Tutorial/T00001.md)
-- 构建 & 安装 Fantasia
+- 构建 & 安装 Maple
   - Linux 环境
     - [Ubuntu 20.04 LTS](Tutorial/T00002.md)
   - Windows 环境
@@ -10,7 +10,7 @@
   - macOS 环境
     - macOS 
 - 命令行工具 
-  - [fantasia](Tutorial/T00005.md)
+  - [maple](Tutorial/T00005.md)
     - [查看版本信息](Tutorial/T00003.md)
     - [查看帮助信息](Tutorial/T00004.md)
     - [基于解决方案模板创建新的解决方案](Tutorial/T00006.md)

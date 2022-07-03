@@ -17,14 +17,14 @@ file(GLOB_RECURSE srcs "${CMAKE_CURRENT_SOURCE_DIR}/*")
 #-----------------------------------------------------------------------------+
 #    配置项目输出库文件
 #------------------------------------------------------------------------------
-set(target_name_command_executor "fantasia${fantasia_target_postfix}")
+set(target_name_command_executor "maple${fantasia_target_postfix}")
 
 link_directories(
     "${fantasia_library_out_dir}"
 )
 
 link_libraries(
-    "Fantasia.Runtime${fantasia_target_postfix}"
+    "Maple.Runtime${fantasia_target_postfix}"
 )
 
 add_executable(

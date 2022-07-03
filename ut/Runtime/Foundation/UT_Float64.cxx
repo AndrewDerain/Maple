@@ -1,9 +1,9 @@
 ﻿
 #include <catch2/catch_test_macros.hpp>
-#include "Fantasia/Foundation"
+#include "Maple/Foundation"
 
 
-using namespace _Fantasia::Foundation;
+using namespace _Maple::Foundation;
 
 
 namespace UnitTest::Foundation::TestFloat64

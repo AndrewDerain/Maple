@@ -1,16 +1,16 @@
 ﻿
-#include "Fantasia/Runtime/Foundation/String.hxx"
+#include "Maple/Runtime/Foundation/String.hxx"
 
 
 #pragma warning(push)
-#pragma warning(disable: ___FANTASIA_WARNING_DISABLE_IDS)
-#pragma pack(push, ___FANTASIA_PACKING)
-namespace _Fantasia::Foundation
+#pragma warning(disable: ___MAPLE_WARNING_DISABLE_IDS)
+#pragma pack(push, ___MAPLE_PACKING)
+namespace _Maple::Foundation
 {
 
 #pragma region StringHeapStorage
 
-    __decorate(Fantasia, api)
+    __decorate(Maple, api)
     void StringHeapStorage::Assign(const char* value, uint32_t len) {
 
         if(_Capacity > len) {
@@ -33,7 +33,7 @@ namespace _Fantasia::Foundation
     }
 
 
-    __decorate(Fantasia, api)
+    __decorate(Maple, api)
     void StringHeapStorage::Deallocate() {
 
         if(_StoredValue) {
@@ -43,7 +43,7 @@ namespace _Fantasia::Foundation
     }
 
 
-    __decorate(Fantasia, api)
+    __decorate(Maple, api)
     void StringHeapStorage::Catenate(const char* value, uint32_t len) {
 
         Algorithm::CatenateString(
@@ -55,7 +55,7 @@ namespace _Fantasia::Foundation
     }
 
 
-    __decorate(Fantasia, api)
+    __decorate(Maple, api)
     void StringHeapStorage::Extend(uint32_t size) {
 
         int64_t capacity    = _Capacity + size + 50;
@@ -77,7 +77,7 @@ namespace _Fantasia::Foundation
 
 #pragma region String
 
-    __decorate(Fantasia, api) 
+    __decorate(Maple, api) 
     void String::_MoveToHeap(int64_t reserved_space) {
         
         int64_t capacity    = reserved_space + 14 * 5;
@@ -93,7 +93,7 @@ namespace _Fantasia::Foundation
     }
 
 
-    __decorate(Fantasia, api)
+    __decorate(Maple, api)
     void String::_CatenateOnHeap(const char* value, int64_t len) {
 
         if(_Storage.Heap().Capacity() <= _Storage.Heap().Length() + len) {
@@ -105,6 +105,6 @@ namespace _Fantasia::Foundation
 
 #pragma endregion // String
 
-} // namespace _Fantasia::Foundation
+} // namespace _Maple::Foundation
 #pragma pack(pop)
 #pragma warning(pop)

@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "[macOS][lldb] fantasia",
+            "name": "[macOS][lldb] maple",
             "type": "lldb",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/fantasia",
+            "program": "${workspaceFolder}/bin/maple",
             "args": ["-v"],
             "stopAtEntry": true,
             "cwd": "${workspaceFolder}/bin",

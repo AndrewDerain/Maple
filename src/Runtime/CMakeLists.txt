@@ -11,10 +11,10 @@ project (
 #-----------------------------------------------------------------------------+
 #    配置预处理器
 #------------------------------------------------------------------------------
-add_compile_definitions(___FANTASIA_EXPORTS)
+add_compile_definitions(___MAPLE_EXPORTS)
 
 if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-	add_compile_definitions(___FANTASIA_DEBUG)
+	add_compile_definitions(___MAPLE_DEBUG)
 endif()
 
 
@@ -36,7 +36,7 @@ file(GLOB_RECURSE srcs "${CMAKE_CURRENT_SOURCE_DIR}/*")
 #-----------------------------------------------------------------------------+
 #    配置项目输出库文件
 #------------------------------------------------------------------------------
-set(target_name_runtime "Fantasia.Runtime${fantasia_target_postfix}")
+set(target_name_runtime "Maple.Runtime${fantasia_target_postfix}")
 
 add_library(${target_name_runtime} SHARED ${srcs})
 
@@ -53,4 +53,4 @@ set_target_properties(
 #    项目安装配置
 #------------------------------------------------------------------------------
 install(TARGETS ${target_name_runtime} CONFIGURATIONS Release)
-install(DIRECTORY "${CMAKE_SOURCE_DIR}/include/Fantasia" DESTINATION "include")
+install(DIRECTORY "${CMAKE_SOURCE_DIR}/include/Maple" DESTINATION "include")

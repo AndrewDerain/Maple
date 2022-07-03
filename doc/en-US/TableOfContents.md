@@ -1,8 +1,8 @@
-﻿# Documents For Fantasia 
+﻿# Documents For Maple 
 
 - Roadmap
 - [Code Concept](Tutorial/T00001.md)
-- Build & Install Fantasia
+- Build & Install Maple
   - Linux Environment
     - [Ubuntu 20.04 LTS](Tutorial/T00002.md)
   - Windows Environment
@@ -10,7 +10,7 @@
   - macOS Environment
     - macOS
 - Command Line Tools
-  - [fantasia](Tutorial/T00005.md)
+  - [maple](Tutorial/T00005.md)
     - [Show version information](Tutorial/T00003.md)
     - [Show help information](Tutorial/T00004.md)
     - [Create new solution base on the solution template](Tutorial/T00006.md)

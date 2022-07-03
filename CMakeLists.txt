@@ -13,7 +13,7 @@ cmake_minimum_required (VERSION 3.20)
 #    Config project name.
 #------------------------------------------------------------------------------
 project (
-    Fantasia
+    Maple
     VERSION 0.0.0.0
     DESCRIPTION "Modern C++ Framework")
 

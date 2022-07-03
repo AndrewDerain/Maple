@@ -362,10 +362,10 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-# Fantasia ignore files
+# Maple ignore files
 .DS_Store
 
-# Fantasia ignore folders
+# Maple ignore folders
 
 .idea/shelf/
 .idea/httpRequests/
