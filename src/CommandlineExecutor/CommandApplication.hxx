@@ -1,12 +1,12 @@
 ﻿#pragma once
-#include "Fantasia/Foundation"
+#include "Maple/Foundation"
 #include <map>
 #include <functional>
 
 
 namespace CommandlineExecutor
 {
-    using namespace Fantasia::Foundation;
+    using namespace Maple::Foundation;
 
 
     struct CommandExecuteResult
@@ -42,21 +42,21 @@ namespace CommandlineExecutor
 
 
         /// @brief 输出当前程序版本
-        /// $ fantasia --version
-        /// $ fantasia -v
+        /// $ maple --version
+        /// $ maple -v
         static CommandExecuteResult Version(int argc, char* argv[]);
 
 
         /// @brief 输出帮助文档
-        /// $ fantasia --help
-        /// $ fantasia -h
+        /// $ maple --help
+        /// $ maple -h
         static CommandExecuteResult Help(int argc, char* argv[]);
 
 
         /// @brief 新建项目
-        /// $ fantasia new -n my_project
-        /// $ fantasia new --template console --name my_project
-        /// $ fantasia new -t console -n my_project
+        /// $ maple new -n my_project
+        /// $ maple new --template console --name my_project
+        /// $ maple new -t console -n my_project
         static CommandExecuteResult New(int argc, char* argv[]);
     };
 };

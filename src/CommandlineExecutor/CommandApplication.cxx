@@ -65,11 +65,11 @@ namespace CommandlineExecutor
 
     CommandExecuteResult CommandApplication::Version(int argc, char* argv[]) {
 
-        std::cout << "fantasia version 0.0.0.0" << std::endl;
+        std::cout << "maple version 0.0.0.0" << std::endl;
         std::cout << std::endl;
-        std::cout << "Fantasia Framework maintained and supported by: "     << std::endl
+        std::cout << "Maple Framework maintained and supported by: "     << std::endl
                   << "AndrewDerain (https://github.com/AndrewDerain). "     << std::endl
-                  << "GitHub: https://github.com/AndrewDerain/Fantasia "    << std::endl
+                  << "GitHub: https://github.com/AndrewDerain/Maple "    << std::endl
                   << "E-mail: locomoco@yeah.net "                           << std::endl
                   << std::endl;
 
@@ -83,13 +83,13 @@ namespace CommandlineExecutor
 
         // title
         content << "                                            " << std::endl
-                << "  ------- fantasia usage manual ---------   " << std::endl;
+                << "  ------- maple usage manual ---------   " << std::endl;
 
         // usage brief
         content << "                                            " << std::endl
                 << "Usage                                       " << std::endl
-                << "    fantasia [Options]                      " << std::endl
-                << "    fantasia [Command] [Command Options]    " << std::endl;
+                << "    maple [Options]                      " << std::endl
+                << "    maple [Command] [Command Options]    " << std::endl;
 
         // root options
         content << "                                                                " << std::endl

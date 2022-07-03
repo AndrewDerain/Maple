@@ -1,11 +1,11 @@
 ﻿
 #include <catch2/catch_test_macros.hpp>
-#include "Fantasia/Foundation"
+#include "Maple/Foundation"
 
 
-using namespace _Fantasia;
-using namespace _Fantasia::Algorithm;
-using namespace _Fantasia::Foundation;
+using namespace _Maple;
+using namespace _Maple::Algorithm;
+using namespace _Maple::Foundation;
 
 
 namespace UnitTest::Foundation::TestString

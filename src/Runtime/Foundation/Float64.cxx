@@ -1,13 +1,13 @@
 ﻿
-#include "Fantasia/Runtime/Foundation/Float64.hxx"
+#include "Maple/Runtime/Foundation/Float64.hxx"
 
 
 #pragma warning(push)
 #pragma warning(disable: ___FANTASIA_WARNING_DISABLE_IDS)
 #pragma pack(push, ___FANTASIA_PACKING)
-namespace _Fantasia::Foundation
+namespace _Maple::Foundation
 {
 
-} // namespace _Fantasia::Foundation
+} // namespace _Maple::Foundation
 #pragma pack(pop)
 #pragma warning(pop)

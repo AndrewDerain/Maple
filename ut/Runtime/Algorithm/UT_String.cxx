@@ -2,12 +2,12 @@
 // Created by 宋豪杰 on 2022/6/13.
 //
 #include <catch2/catch_test_macros.hpp>
-#include "Fantasia/Runtime/Internal/Algorithm/String.inl"
+#include "Maple/Runtime/Internal/Algorithm/String.inl"
 #include <string>
 
 
-using namespace _Fantasia;
-using namespace _Fantasia::Algorithm;
+using namespace _Maple;
+using namespace _Maple::Algorithm;
 
 
 namespace UnitTest::Basic

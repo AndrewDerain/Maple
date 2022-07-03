@@ -1,5 +1,5 @@
 ﻿
-# Fantasia Framework 
+# Maple Framework 
 
 > 幻曲 C++ 开发框架
 
@@ -36,7 +36,7 @@
 | 文件夹 | thirdparty | 第三方库目录                  |      有      |
 
 ----
-> Fantasia Framework For C++
+> Maple Framework For C++
 
 ## What's this?
 
