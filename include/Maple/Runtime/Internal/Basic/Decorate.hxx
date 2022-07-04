@@ -34,15 +34,15 @@
 
 
 #define ___MAPLE_DECORATE(...)                                          \
-    ___MAPLE_MF_CAT(                                                    \
-        ___MAPLE_DECORATE_,                                             \
-        ___MAPLE_MF_ARG (                                               \
             ___MAPLE_MF_CAT(                                            \
-                ___MAPLE_DECORATE_, ___MAPLE_MF_ARG_COUNT(__VA_ARGS__)  \
+                ___MAPLE_DECORATE_,                                     \
+                ___MAPLE_MF_ARG (                                       \
+                    ___MAPLE_MF_CAT(                                    \
+                        ___MAPLE_DECORATE_,                             \
+                        ___MAPLE_MF_ARG_COUNT(__VA_ARGS__)              \
+                    )___MAPLE_MF_VAARGS_TRANS(__VA_ARGS__)              \
                 )                                                       \
-                ___MAPLE_MF_VAARGS_TRANS(__VA_ARGS__)                   \
-        )                                                               \
-    )
+            )
 
 
 #define __decorate(...)     ___MAPLE_DECORATE(__VA_ARGS__)

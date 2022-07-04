@@ -43,4 +43,4 @@ set_target_properties(
 #-----------------------------------------------------------------------------+
 #    项目安装配置
 #------------------------------------------------------------------------------
-install(TARGETS ${target_name_command_executor} CONFIGURATIONS Release)
+install(TARGETS ${target_name_command_executor})

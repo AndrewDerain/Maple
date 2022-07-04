@@ -8,16 +8,16 @@
 #pragma once
 
 
-#define ___MAPLE_MF_ARG(_ARG) _ARG
-#define ___MAPLE_MF_ARG_TRANS(_ARG) (_ARG)
+#define ___MAPLE_MF_ARG(_ARG)           _ARG
+#define ___MAPLE_MF_ARG_TRANS(_ARG)     (_ARG)
 
 
-#define ___MAPLE_MF_VAARGS(...) __VA_ARGS__
-#define ___MAPLE_MF_VAARGS_TRANS(...) (__VA_ARGS__)
+#define ___MAPLE_MF_VAARGS(...)         __VA_ARGS__
+#define ___MAPLE_MF_VAARGS_TRANS(...)   (__VA_ARGS__)
 
 
 #define ___MAPLE_MF_CAT_I(_ARG1, _ARG2) _ARG1 ## _ARG2
-#define ___MAPLE_MF_CAT(_ARG1, _ARG2) ___MAPLE_MF_CAT_I(_ARG1, _ARG2)
+#define ___MAPLE_MF_CAT(_ARG1, _ARG2)   ___MAPLE_MF_CAT_I(_ARG1, _ARG2)
 
 
 #define ___MAPLE_MF_ARG_COUNT_N(                                        \

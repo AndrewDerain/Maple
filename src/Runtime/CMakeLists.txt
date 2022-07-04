@@ -54,3 +54,4 @@ set_target_properties(
 #------------------------------------------------------------------------------
 install(TARGETS ${target_name_runtime} CONFIGURATIONS Release)
 install(DIRECTORY "${CMAKE_SOURCE_DIR}/include/Maple" DESTINATION "include")
+
