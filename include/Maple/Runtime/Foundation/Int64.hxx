@@ -1,10 +1,5 @@
-﻿///
-/// @file Foundation.Int64.hxx
-/// 
+﻿/// @file Int64.hxx
 /// @brief 本文件定义了64位整数类型
-/// 
-/// @date 2022-01-22
-/// 
 #pragma once
 #include "../Internal/Foundation/Predeclars.hxx"
 
@@ -102,7 +97,7 @@ namespace _Maple::Foundation
 
 
         inline constexpr
-        Int64& operator=(const Float64 other) noexcept;
+        Int64& operator=(const Double other) noexcept;
 
 
         inline constexpr

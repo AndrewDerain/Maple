@@ -7,14 +7,22 @@
     private:                                                                    \
         _Type _Value;                                                           \
     public:                                                                     \
-        inline _WRAP()              = default;                                  \
-        inline ~_WRAP()             = default;                                  \
-        inline _WRAP(_WRAP&&)       = default;                                  \
-        inline _WRAP(const _WRAP&)  = default;                                  \
-        inline _WRAP(const _Type value)     { _Value = value; }                 \
-        inline operator _Type() const       { return _Value;}                   \
+        inline constexpr _WRAP()              = default;                        \
+        inline constexpr ~_WRAP()             = default;                        \
+        inline constexpr _WRAP(_WRAP&&)       = default;                        \
+        inline constexpr _WRAP(const _WRAP&)  = default;                        \
+        inline constexpr _WRAP(const _Type value)     { _Value = value; }       \
+                                                                                \
+        inline constexpr                                                        \
+        operator _Type() const              { return _Value;}                   \
+                                                                                \
+        inline constexpr                                                        \
         _WRAP& operator=(_WRAP&&)       = default;                              \
+                                                                                \
+        inline constexpr                                                        \
         _WRAP& operator=(const _WRAP&)  = default;                              \
+                                                                                \
+        inline constexpr                                                        \
         _WRAP& operator=(const _Type value) { _Value = value; return *this; }   \
 
 #define __MAPLE_ENUM_STRING_TYPE char*

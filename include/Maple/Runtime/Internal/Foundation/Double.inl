@@ -11,107 +11,107 @@ namespace _Maple::Foundation
 {
 
     inline constexpr
-    Float64 Float64::Max() noexcept {
+    Double Double::Max() noexcept {
         return std::numeric_limits<double>::max();
     }
 
 
     inline constexpr
-    Float64 Float64::Min() noexcept {
+    Double Double::Min() noexcept {
         return std::numeric_limits<double>::min();
     }
 
 
     inline constexpr
-    Float64 Float64::Epsilon() noexcept {
+    Double Double::Epsilon() noexcept {
         return std::numeric_limits<double>::epsilon();
     }
 
 
     inline constexpr
-    Float64::Float64(const double value) noexcept:
+    Double::Double(const double value) noexcept:
         _StoredValue(value) {
     }
 
 
     inline constexpr
-    Float64::Float64(const int32_t value) noexcept:
+    Double::Double(const int32_t value) noexcept:
         _StoredValue(value) {
     }
 
 
     inline constexpr
-    Float64::Float64(const uint32_t value) noexcept:
+    Double::Double(const uint32_t value) noexcept:
         _StoredValue(value) {
     }
 
 
     inline constexpr
-    Float64::Float64(const int64_t value) noexcept:
+    Double::Double(const int64_t value) noexcept:
         _StoredValue(value) {
     }
 
 
     inline constexpr
-    Float64::Float64(const uint64_t value) noexcept:
+    Double::Double(const uint64_t value) noexcept:
         _StoredValue(value) {
     }
 
 
     inline constexpr
-    Float64::operator double const&() const noexcept {
+    Double::operator double const&() const noexcept {
         return _StoredValue;
     }
 
 
     inline constexpr
-    Float64::operator double&() noexcept {
+    Double::operator double&() noexcept {
         return _StoredValue;
     }
 
 
     inline constexpr
-    Float64& Float64::operator=(const double value) {
+    Double& Double::operator=(const double value) {
         _StoredValue = value;
         return *this;
     }
 
 
     inline constexpr
-    Bool operator>(Float64& left, Float64& right) {
+    Bool operator>(Double& left, Double& right) {
         double dif = (double)left - (double)right;
-        return dif > Float64::Epsilon();
+        return dif > Double::Epsilon();
     }
 
 
     inline constexpr
-    Bool operator<(Float64& left, Float64& right) {
+    Bool operator<(Double& left, Double& right) {
         double dif = (double)left - (double)right;
-        return dif > Float64::Epsilon();
+        return dif > Double::Epsilon();
     }
 
 
     inline constexpr
-    Bool operator==(Float64& left, Float64& right) {
+    Bool operator==(Double& left, Double& right) {
         double dif = (double)left - (double)right;
-        return dif >= Float64::Epsilon() || dif <= Float64::Epsilon();
+        return dif >= Double::Epsilon() || dif <= Double::Epsilon();
     }
 
 
     inline constexpr
-    Bool operator!=(Float64& left, Float64& right) {
+    Bool operator!=(Double& left, Double& right) {
         return !(left == right);
     }
 
 
     inline constexpr
-    Bool operator>=(Float64& left, Float64& right) {
+    Bool operator>=(Double& left, Double& right) {
         return left > right || left == right;
     }
 
 
     inline constexpr
-    Bool operator<=(Float64& left, Float64& right) {
+    Bool operator<=(Double& left, Double& right) {
         return left < right || left == right;
     }
 

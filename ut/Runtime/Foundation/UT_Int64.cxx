@@ -1,6 +1,6 @@
 ﻿
 #include <catch2/catch_test_macros.hpp>
-#include "Maple/Foundation"
+#include "Maple/Runtime.hxx"
 
 
 using namespace _Maple;

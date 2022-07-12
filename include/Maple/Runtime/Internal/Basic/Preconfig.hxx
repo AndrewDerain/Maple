@@ -21,7 +21,7 @@
 
 /// @brief 调试
 #ifdef ___MAPLE_DEBUG
-#   define __FANTASIA_DEBUG
+#   define __MAPLE_DEBUG
 #endif
 
 
@@ -53,4 +53,5 @@
 #endif
 
 
-#define ___MAPLE_DECORATE_Maple_api               ___MAPLE_API
+#define ___MAPLE_DECORATE_Maple_Api             ___MAPLE_API
+#define ___MAPLE_DECORATE_Maple_ApiClass        class ___MAPLE_API

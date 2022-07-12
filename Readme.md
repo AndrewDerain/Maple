@@ -6,7 +6,7 @@
 
 ## 这是SHA？
 
-以个人的喜好打造的，从基本的数据结构（包括 Int64，Float64，IPC 等等）开始构建的一个 C++ 开发框架。
+以个人的喜好打造的，从基本的数据结构（包括 Int64，Double，IPC 等等）开始构建的一个 C++ 开发框架。
 
 
 
@@ -40,7 +40,7 @@
 
 ## What's this?
 
-This is a C++ develop framework with personal preferences. It contains basic data structure (Int64, Float64, IPC, ...) and more.
+This is a C++ develop framework with personal preferences. It contains basic data structure (Int64, Double, IPC, ...) and more.
 
 ## Before using it.
 - You need C++ 20 or later.
@@ -52,7 +52,7 @@ This is a C++ develop framework with personal preferences. It contains basic dat
 
 ## Directories
 
-| Type   | Name       | Note                                        | Git Management |
+| SymbolType   | Name       | Note                                        | Git Management |
 |--------|------------|---------------------------------------------|:--------------:|
 | Folder | .vscode    | Configuration files for Visual Studio Code. |       Y        |
 | Folder | bin        | Contains .exe or .dll file.                 |       N        |

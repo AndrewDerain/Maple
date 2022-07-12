@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "../../Foundation/Bool.hxx"
 #include "../../Foundation/Int64.hxx"
-#include "../../Foundation/Float64.hxx"
+#include "../../Foundation/Double.hxx"
 
 
 #pragma warning(push)
@@ -37,13 +37,13 @@ namespace _Maple::Foundation
 
 
     inline constexpr
-    Float64 StringStackStorage::MaxFloatValueOnStack() noexcept {
+    Double StringStackStorage::MaxFloatValueOnStack() noexcept {
         return _MaxFloatValueOnStack;
     }
 
 
     inline constexpr
-    Float64 StringStackStorage::MinFloatValueOnStack() noexcept {
+    Double StringStackStorage::MinFloatValueOnStack() noexcept {
         return _MinFloatValueOnStack;
     }
 

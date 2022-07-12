@@ -3,7 +3,7 @@
 #    Config project name.
 #------------------------------------------------------------------------------
 project (
-	Runtime
+	Visual
 	VERSION 1.0.0.0
 	DESCRIPTION "Modern C++ Framework Runtime")
 
@@ -36,12 +36,12 @@ file(GLOB_RECURSE srcs "${CMAKE_CURRENT_SOURCE_DIR}/*")
 #-----------------------------------------------------------------------------+
 #    配置项目输出库文件
 #------------------------------------------------------------------------------
-set(target_name_runtime "Maple.Runtime${fantasia_target_postfix}")
+set(target_name_visual "Maple.Visual${fantasia_target_postfix}")
 
-add_library(${target_name_runtime} SHARED ${srcs})
+add_library(${target_name_visual} SHARED ${srcs})
 
 set_target_properties(
-    ${target_name_runtime}
+    ${target_name_visual}
     PROPERTIES 
     
     CXX_VISIBILITY_PRESET		hidden

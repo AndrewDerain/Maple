@@ -10,7 +10,7 @@ namespace _Maple::Foundation
 
 #pragma region StringHeapStorage
 
-    __decorate(Maple, api)
+    MapleDeco(Maple, Api)
     void StringHeapStorage::Assign(const char* value, uint32_t len) {
 
         if(_Capacity > len) {
@@ -33,7 +33,7 @@ namespace _Maple::Foundation
     }
 
 
-    __decorate(Maple, api)
+    MapleDeco(Maple, Api)
     void StringHeapStorage::Deallocate() {
 
         if(_StoredValue) {
@@ -43,7 +43,7 @@ namespace _Maple::Foundation
     }
 
 
-    __decorate(Maple, api)
+    MapleDeco(Maple, Api)
     void StringHeapStorage::Catenate(const char* value, uint32_t len) {
 
         Algorithm::CatenateString(
@@ -55,7 +55,7 @@ namespace _Maple::Foundation
     }
 
 
-    __decorate(Maple, api)
+    MapleDeco(Maple, Api)
     void StringHeapStorage::Extend(uint32_t size) {
 
         int64_t capacity    = _Capacity + size + 50;
@@ -77,7 +77,7 @@ namespace _Maple::Foundation
 
 #pragma region String
 
-    __decorate(Maple, api) 
+    MapleDeco(Maple, Api)
     void String::_MoveToHeap(int64_t reserved_space) {
         
         int64_t capacity    = reserved_space + 14 * 5;
@@ -93,7 +93,7 @@ namespace _Maple::Foundation
     }
 
 
-    __decorate(Maple, api)
+    MapleDeco(Maple, Api)
     void String::_CatenateOnHeap(const char* value, int64_t len) {
 
         if(_Storage.Heap().Capacity() <= _Storage.Heap().Length() + len) {

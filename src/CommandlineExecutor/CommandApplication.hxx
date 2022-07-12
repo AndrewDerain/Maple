@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "Maple/Foundation"
+#include "Maple/Runtime.hxx"
 #include <map>
 #include <functional>
 

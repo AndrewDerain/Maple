@@ -45,4 +45,11 @@
             )
 
 
-#define __decorate(...)     ___MAPLE_DECORATE(__VA_ARGS__)
+#define Class
+
+
+/// Project Name - Maple
+/// ApiClass
+/// Register, Type = IObject
+/// Register, Type = IObject, Inherited {}
+#define MapleDeco(...)     ___MAPLE_DECORATE(__VA_ARGS__)

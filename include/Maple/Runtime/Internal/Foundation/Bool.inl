@@ -1,6 +1,4 @@
 ﻿#pragma once
-#include "../../Foundation/Int64.hxx"
-#include "../../Foundation/Float64.hxx"
 #include "../../Foundation/String.hxx"
 
 

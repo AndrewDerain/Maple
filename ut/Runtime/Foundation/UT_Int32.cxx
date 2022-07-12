@@ -1,6 +1,6 @@
 ﻿
 #include <catch2/catch_test_macros.hpp>
-#include "Maple/Foundation"
+#include "Maple/Runtime.hxx"
 
 
 using namespace _Maple;
@@ -58,7 +58,7 @@ namespace UnitTest::Foundation::TestInt32
 
         SECTION("init from uint64_t type value")
         {
-            uint64_t Val0 = Int64::Max();
+            uint64_t Val0 = Int32::Max();
 
             Int32 IntVal1(Val0);
             CHECK(IntVal1 == Val0);

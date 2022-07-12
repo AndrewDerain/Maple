@@ -41,12 +41,12 @@ namespace _Maple::Foundation
 
         /// @brief Stack 上可存储的最大浮点数（非科学计数法）
         static inline constexpr
-        Float64 MaxFloatValueOnStack() noexcept;
+        Double MaxFloatValueOnStack() noexcept;
 
 
         /// @brief Stack 上可存储的最小浮点数（非科学计数法）
         static inline constexpr
-        Float64 MinFloatValueOnStack() noexcept;
+        Double MinFloatValueOnStack() noexcept;
 
 
         inline constexpr
@@ -161,7 +161,7 @@ namespace _Maple::Foundation
 
 
         /// @note 此函数只会设置 Length 和 Data 属性
-        __decorate(Maple, api)
+        MapleDeco(Maple, Api)
         void Assign(const char* value, uint32_t len);
 
 
@@ -171,16 +171,16 @@ namespace _Maple::Foundation
 
 
         /// @brief 释放堆上申请的内存
-        __decorate(Maple, api)
+        MapleDeco(Maple, Api)
         void Deallocate();
 
 
-        __decorate(Maple, api)
+        MapleDeco(Maple, Api)
         void Catenate(const char* value, uint32_t len);
 
 
         /// @brief 增大堆空间
-        __decorate(Maple, api)
+        MapleDeco(Maple, Api)
         void Extend(uint32_t size);
 
 
@@ -243,7 +243,7 @@ namespace _Maple::Foundation
 
     /// @brief  以 '\0' 字符结尾的字符串, 深拷贝实现。
     /// @note   满足 standard layout
-    class String
+    struct String
     {
     public:
         /// @brief 字符串所能存储的最大容量（以字节计算）
@@ -370,12 +370,12 @@ namespace _Maple::Foundation
 
         /// @brief 将 Stack 上的内容转移到 Heap 上。
         /// @param reserved_space 需要预分配的空间大小
-        __decorate(Maple, api)
+        MapleDeco(Maple, Api)
         void _MoveToHeap(int64_t reserved_space);
 
 
         /// @brief 追加内容到堆上
-        __decorate(Maple, api)
+        MapleDeco(Maple, Api)
         void _CatenateOnHeap(const char* value, int64_t len);
 
 

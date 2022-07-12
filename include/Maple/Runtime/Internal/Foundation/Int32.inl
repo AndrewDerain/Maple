@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../../Foundation/Bool.hxx"
-#include "../../Foundation/Float64.hxx"
+#include "../../Foundation/Double.hxx"
 #include "../../Foundation/String.hxx"
 
 
@@ -95,7 +95,7 @@ namespace _Maple::Foundation
 
 
     inline constexpr
-    Int32& Int32::operator=(const Float64 other) noexcept {
+    Int32& Int32::operator=(const Double other) noexcept {
         Algorithm::AssignWithOverflowCheck(_StoredValue, (double)other);
 		return *this;
 	}

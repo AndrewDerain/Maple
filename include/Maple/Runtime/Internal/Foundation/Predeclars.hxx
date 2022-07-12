@@ -20,16 +20,26 @@ namespace _Maple::Foundation
 
     struct Bool;
 
-    struct Float64;
+    struct Byte;
 
     struct Int32;
+
     struct Int64;
 
     struct String;
 
+    struct Double;
+
     template<size_t _FixedSize>
     class StringT;
 
+    struct SymbolType;
+
+
+    class Type;
+
 } // _Maple::Foundation
+
+namespace _Maple { using namespace _Maple::Foundation; }
 #pragma pack(pop)
 #pragma warning(pop)
