@@ -4,8 +4,9 @@
 
 #pragma once
 #include "../../../Runtime/Foundation/Bool.hxx"
-#include "../../../Runtime/Foundation/Bool.hxx"
+#include "../../../Runtime/Foundation/Enum.hxx"
 #include "../../../Runtime/Foundation/String.hxx"
+#include "../Algorithm/Sort.inl"
 
 
 #pragma warning(push)
@@ -13,11 +14,14 @@
 #pragma pack(push, ___MAPLE_PACKING)
 namespace _Maple::Frame
 {
-    class IObject;
 
     class Object;
 
     class Type;
+
+    class ITypeCollection;
+
+    class TypeCollectionTransfer;
 
 } // _Maple::Foundation
 

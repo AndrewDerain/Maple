@@ -10,10 +10,10 @@ using namespace _Maple;
 using namespace _Maple::Algorithm;
 
 
-namespace UnitTest::Basic
+namespace UnitTest::Algorithm
 {
 
-    TEST_CASE("ConvertInt32ToString", "[Basic][Algorithm.String]")
+    TEST_CASE("ConvertInt32ToString", "[Algorithm][String]")
     {
         char sval[20];
         int64_t len;

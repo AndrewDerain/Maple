@@ -84,6 +84,11 @@ namespace _Maple::Foundation
 
         /// @brief  赋值操作符。设为 default 以支持 standard_layout 和 trivial。
         inline constexpr
+        Double& operator=(Double&&) = default;
+
+
+        /// @brief  赋值操作符。设为 default 以支持 standard_layout 和 trivial。
+        inline constexpr
         Double& operator=(const Double&) = default;
 
 
@@ -91,7 +96,7 @@ namespace _Maple::Foundation
         Double& operator=(const double value);
 
 
-    protected:
+    public:
         double _StoredValue;
     };
 

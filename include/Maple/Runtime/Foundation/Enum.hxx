@@ -6,32 +6,38 @@
 #define __MAPLE_ENUM_CTOR(_WRAP)                                                \
     private:                                                                    \
         _Type _Value;                                                           \
+                                                                                \
     public:                                                                     \
-        inline constexpr _WRAP()              = default;                        \
-        inline constexpr ~_WRAP()             = default;                        \
-        inline constexpr _WRAP(_WRAP&&)       = default;                        \
-        inline constexpr _WRAP(const _WRAP&)  = default;                        \
-        inline constexpr _WRAP(const _Type value)     { _Value = value; }       \
+        inline constexpr _WRAP()                    = default;                  \
+                                                                                \
+        inline constexpr ~_WRAP()                   = default;                  \
+                                                                                \
+        inline constexpr _WRAP(_WRAP&&)             = default;                  \
+                                                                                \
+        inline constexpr _WRAP(const _WRAP&)        = default;                  \
+                                                                                \
+        inline constexpr _WRAP(const _Type value)   { _Value = value; }         \
                                                                                 \
         inline constexpr                                                        \
         operator _Type() const              { return _Value;}                   \
                                                                                 \
         inline constexpr                                                        \
-        _WRAP& operator=(_WRAP&&)       = default;                              \
+        _WRAP& operator=(_WRAP&&)           = default;                          \
                                                                                 \
         inline constexpr                                                        \
-        _WRAP& operator=(const _WRAP&)  = default;                              \
+        _WRAP& operator=(const _WRAP&)      = default;                          \
                                                                                 \
         inline constexpr                                                        \
         _WRAP& operator=(const _Type value) { _Value = value; return *this; }   \
 
+
 #define __MAPLE_ENUM_STRING_TYPE char*
+
 
 #define __MAPLE_ENUM_TOSTR_BEG            switch(_Value) {
 #define __MAPLE_ENUM_TOSTR_CASE(_ELE)         case _ELE: return #_ELE;
-#define __MAPLE_ENUM_TOSTR_DEFA(_ELE)         default: return #_ELE;
-#define __MAPLE_ENUM_TOSTR_END            }                                     \
-                                            return "";
+#define __MAPLE_ENUM_TOSTR_DEFA(_ELE)         default:   return #_ELE;
+#define __MAPLE_ENUM_TOSTR_END            } return "";
 
 
 #define __MAPLE_ENUM_FROMSTR_BEG

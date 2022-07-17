@@ -42,5 +42,7 @@ namespace _Maple
     using std::deque;
     using std::vector;
 
+    using std::less;
+    using std::swap;
     using std::initializer_list;
 }

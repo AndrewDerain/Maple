@@ -12,29 +12,29 @@
 namespace _Maple::Foundation
 {
 
-    template<typename _Ty, Size _Count>
+    template<typename _Ty, Size _Capacity>
     inline constexpr
-    _Ty* begin(ArrayT<_Ty, _Count>& arr) {
+    _Ty* begin(Array<_Ty, _Capacity>& arr) {
         return arr._Eles;
     }
 
 
-    template<typename _Ty, Size _Count>
+    template<typename _Ty, Size _Capicity>
     inline constexpr
-    _Ty* end(ArrayT<_Ty, _Count>& arr) {
-        return arr._Elements + _Count;
+    _Ty* end(Array<_Ty, _Capicity>& arr) {
+        return arr._Elements + _Capicity;
     }
 
 
-    template<typename _Ty, int64_t _Count>
-    Int64 ArrayT<_Ty, _Count>::Count() const {
-        return _Count;
+    template<typename _Ty, int64_t _Capacity>
+    Int64 Array<_Ty, _Capacity>::Capicity() const {
+        return _Capacity;
     }
 
 
-    template<typename _Ty, int64_t _Count>
+    template<typename _Ty, int64_t _Capacity>
     inline constexpr
-    _Ty& ArrayT<_Ty, _Count>::operator[](const Int64 index) {
+    const _Ty & Array<_Ty, _Capacity>::operator[](const Int64 index) const {
         return _Elements[index];
     }
 

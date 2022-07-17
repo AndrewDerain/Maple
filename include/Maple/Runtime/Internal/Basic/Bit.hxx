@@ -16,12 +16,14 @@ namespace _Maple
     /// @brief 计算类型 _T 的 bit 数。
     template<typename _T>
     inline constexpr
-    auto bitsof() {
+    auto ___maple_bitsof() {
         return sizeof(_T) * 8;
     }
 
-    /// @brief 此宏使得 bitsof 的用法与 sizeof 相同。
-    #define bitsof(ARG) bitsof<ARG>()
+
+    /// @brief  计算类型 _T 的 bit 数。
+    ///         此宏使得 bitsof 的用法与 sizeof 相同。
+    #define bitsof(ARG) ___maple_bitsof<ARG>()
 
 } // namespace _Maple
 #pragma pack(pop)

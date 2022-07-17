@@ -8,70 +8,70 @@
 namespace _Maple::Foundation
 {
 
-    template<typename _Ty, Size _Count>
+    template<typename _Ty, Size _Capacity>
     inline constexpr
-    _Ty* begin(ArrayT<_Ty, _Count>& arr);
+    _Ty* begin(Array<_Ty, _Capacity>& arr);
 
 
-    template<typename _Ty, Size _Count>
+    template<typename _Ty, Size _Capacity>
     inline constexpr
-    _Ty* end(ArrayT<_Ty, _Count>& arr);
+    _Ty* end(Array<_Ty, _Capacity>& arr);
 
 
     /// @brief  数组
     /// @note   满足 standard layout 和 trivial
-    template<typename _Ty, Size _Count>
-    struct ArrayT
+    template<typename _Ty, Size _Capacity>
+    struct Array
     {
     public:
         /// @brief 构造函数。设为 default 以支持 standard_layout 和 trivial。
-        ArrayT() = default;
+        Array() = default;
 
 
         /// @brief 析构函数。设为 default 以支持 standard_layout 和 trivial。
-        ~ArrayT() = default;
+        ~Array() = default;
 
 
         /// @brief 移动构造函数。设为 default 以支持 standard_layout 和 trivial。
-        ArrayT(ArrayT&&) = default;
+        Array(Array&&) = default;
 
 
         /// @brief 拷贝构造函数。设为 default 以支持 standard_layout 和 trivial。
-        ArrayT(const ArrayT&) = default;
+        Array(const Array&) = default;
 
 
-        Int64 Count() const;
+        Int64 Capicity() const;
 
 
         inline constexpr
-        _Ty& operator[](const Int64 index);
+        const _Ty& operator[](const Int64 index) const;
 
 
         /// @brief 赋值操作符。设为 default 以支持 standard_layout 和 trivial。
-        ArrayT& operator=(ArrayT&&) = default;
+        Array& operator=(Array&&) = default;
 
 
         /// @brief 赋值操作符。设为 default 以支持 standard_layout 和 trivial。
-        ArrayT& operator=(const ArrayT&) = default;
+        Array& operator=(const Array&) = default;
 
 
     protected:
-        _Ty _Elements[_Count];
+        _Ty _Elements[_Capacity];
 
     
     private:
         template<typename, Size> 
-        friend _Ty* begin(ArrayT<_Ty, _Count>& arr);
+        friend _Ty* begin(Array<_Ty, _Capacity>& arr);
 
 
         template<typename, Size> 
-        friend _Ty* end(ArrayT<_Ty, _Count>& arr);
+        friend _Ty* end(Array<_Ty, _Capacity>& arr);
     };
 
 
     // POD 校验。standard layout and trivial。
-    static_assert(std::is_trivial_v<ArrayT<int, 5>>, "ArrayT must be trivial!");
-    static_assert(std::is_standard_layout_v<ArrayT<int, 5>>, "ArrayT must be standard layout!");
+    static_assert(std::is_trivial_v<Array<int, 5>>, "ArrayT must be trivial!");
+    static_assert(std::is_standard_layout_v<Array<int, 5>>, "ArrayT must be standard layout!");
 
 } // namespace _Maple::Foundation
 #pragma pack(pop)

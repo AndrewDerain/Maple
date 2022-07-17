@@ -20,38 +20,45 @@
 
 
 /// @brief 调试
-#ifdef ___MAPLE_DEBUG
-#   define __MAPLE_DEBUG
+#ifdef ___MAPLE_RUNTIME_DEBUG
+#   define __MAPLE_RUNTIME_DEBUG
 #endif
 
 
-/// @brief [___MAPLE_API]
+/// @brief [___MAPLE_RUNTIME_API]
 /// @details 此宏指定某个函数在项目中是被导出的
 #if defined(_WIN32) || defined(__CYGWIN__)
 #   if defined(__GNUC__)
-#       if defined(___MAPLE_EXPORTS)
-#           define ___MAPLE_API __attribute__ ((dllexport))
+#       if defined(___MAPLE_RUNTIME_EXPORTS)
+#           define ___MAPLE_RUNTIME_API __attribute__ ((dllexport))
 #       else
-#           define ___MAPLE_API __attribute__ ((dllimport))
+#           define ___MAPLE_RUNTIME_API __attribute__ ((dllimport))
 #       endif
 #   endif
 #   if defined(_MSC_VER)
-#       if defined(___MAPLE_EXPORTS)
-#           define ___MAPLE_API __declspec (dllexport)
+#       if defined(___MAPLE_RUNTIME_EXPORTS)
+#           define ___MAPLE_RUNTIME_API __declspec (dllexport)
 #       else
-#           define ___MAPLE_API __declspec (dllimport)
+#           define ___MAPLE_RUNTIME_API __declspec (dllimport)
 #       endif
 #   endif
 #else
 #   if defined(__GNUC__)
-#       if defined(___MAPLE_EXPORTS)
-#           define ___MAPLE_API __attribute__ ((visibility ("default")))
+#       if defined(___MAPLE_RUNTIME_EXPORTS)
+#           define ___MAPLE_RUNTIME_API __attribute__ ((visibility ("default")))
 #       else
-#           define ___MAPLE_API __attribute__ ((visibility ("default")))
+#           define ___MAPLE_RUNTIME_API __attribute__ ((visibility ("default")))
 #       endif
 #   endif
 #endif
 
 
-#define ___MAPLE_DECORATE_Maple_Api             ___MAPLE_API
-#define ___MAPLE_DECORATE_Maple_ApiClass        class ___MAPLE_API
+/// @brief [___MAPLE_FUNCTION_SIGNATURE]
+#if _MSC_VER >= 1925
+#   define ___MAPLE_FUNCTION_SIGNATURE___       __FUNCSIG__
+#else
+#   define ___MAPLE_FUNCTION_SIGNATURE___       __PRETTY_FUNCTION__
+#endif
+
+#define ___MAPLE_DECORATE_Maple_Runtime_Api             ___MAPLE_RUNTIME_API
+#define ___MAPLE_DECORATE_Maple_Runtime_ApiClass        class ___MAPLE_RUNTIME_API

@@ -9,84 +9,29 @@
 namespace _Maple::Frame
 {
 
-    MapleDeco(Maple, ApiClass)
-    Class IObject
+    /// @brief 使用此宏来定义 Object 类型的相关函数和类型定义
+#define MapleObject(_TYPE)                                              \
+            public:                                                    \
+                ___MAPLE_TYPE_SYSTEM_USING_TYPEINFO(_TYPE)             \
+            public:                                                     \
+                ___MAPLE_TYPE_SYSTEM_QUERY_INTERFACE                    \
+                                                                        \
+
+
+    /// @brief 使用此宏来定义 接口 类型的相关函数和类型定义
+#define MapleInterface(_TYPE)                                           \
+            private:                                                    \
+                ___MAPLE_TYPE_SYSTEM_USING_TYPEINFO(Object)             \
+
+
+    MapleDeco(TypeRegister)(Object)
+    MapleDeco(Maple, Runtime, ApiClass)
+    Class Object
     {
-    public:
-        virtual ~IObject() noexcept = 0;
+
+        MapleObject(Object);
 
 
-        virtual String ToString() const = 0;
-
-
-        virtual Bool Equals(const IObject *o) const = 0;
-
-
-    //  Maple Type System Interfaces
-    private:
-        class ___MapleType: public Type
-        {
-        public:
-            static const ___MapleType TypeInfo;
-
-
-            virtual Bool IsInheritedFrom(const Type& type) const {
-                return false;
-            };
-
-
-            virtual Bool Equals(const Type& type) const {
-                return true;
-            };
-
-
-            virtual const char* RawName() const {
-                return _RawName();
-            }
-
-
-            virtual const set<const char*>& ParentRawNames() const {
-                return _Parents;
-            }
-
-
-        private:
-            static constexpr const char* _RawName() {
-                return __PRETTY_FUNCTION__;
-            }
-
-
-            static const set<const char*>&& Register(set<const char*>&& types, initializer_list<set<const char*>>&& lists) {
-                for(auto& list: lists)
-                    types.insert(list.begin(), list.end());
-                return std::forward<set<const char*>&&>(types);
-            }
-
-
-            inline static
-            const set<const char*> _Parents {
-                    Register({},{})
-            };
-        };
-
-
-        template<class _T>
-        friend constexpr const auto& ___typeof();
-
-    public:
-        /// @brief 获取类的类型信息
-        static const Type& ClassType() noexcept;
-
-
-        /// @brief 获取实际对象的类型信息
-        virtual const Type& ObjectType() const noexcept = 0;
-    };
-
-
-
-    MapleDeco(Maple, ApiClass)
-    Class Object: public IObject
-    {
     public:
         Object() = default;
 
@@ -94,22 +39,17 @@ namespace _Maple::Frame
         virtual ~Object() noexcept;
 
 
-        virtual String ToString() const noexcept override;
+        /// @brief 将对象转换为字符串，格式由实现决定
+        virtual String ToString() const noexcept;
 
 
-        virtual Bool Equals(const IObject *o) const noexcept override;
-
-
-    //  Maple Type System Interfaces
-    public:
-        static const Type& ClassType() noexcept;
-
-
-        virtual const Type& ObjectType() const noexcept override;
+        /// @brief  判断指定的对象是否与当前对象相等
+        ///         默认情况下，仅当地址相同时返回 true
+        ///         子类可以重载此函数
+        virtual Bool Equals(const Object *o) const noexcept;
     };
 
-
-
+    //constexpr ___Maple_TypeInfo_Object ___Maple_TypeInfo_Object::instance {};
 } // namespace _Maple::Frame
 #pragma pack(pop)
 #pragma warning(pop)

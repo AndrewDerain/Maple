@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../Runtime/Internal/Foundation/Predeclars.hxx"
-#include "Maple/Runtime/TypeFrame/Object.hxx"
+#include "../Runtime/Frame/Object.hxx"
 
 
 #pragma warning(push)

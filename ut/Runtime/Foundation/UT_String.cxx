@@ -394,7 +394,7 @@ namespace UnitTest::Foundation::TestString
                     .Catenate("123233456");
 
             CHECK(Target2 > Target1);
-            CHECK(CompareString(Target2, "123456789012x2|233123") == 0);
+            CHECK(CompareString(Target2, "123456789012x2|2331232") == 0);
         }
 
         SECTION("Move to heap") {

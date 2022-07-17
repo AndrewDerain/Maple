@@ -1,9 +1,9 @@
 ﻿#pragma once
 #include "../../Internal/Basic/CodeLang.CXX.hxx"
-#include "../../Internal/Basic/Preconfig.hxx"
 #include "../../Internal/Basic/Macro.ArgsExpander.hxx"
+#include "../../Internal/Basic/Preconfig.hxx"
 #include "../../Internal/Basic/Decorate.hxx"
-#include "Maple/Runtime/Internal/Algorithm/String.inl"
+#include "../../Internal/Algorithm/String.inl"
 
 
 #pragma warning(push)
@@ -16,7 +16,7 @@ namespace _Maple::Foundation
     using Size = std::int64_t;
 
     template<typename _Ty, Size _Count>
-    struct ArrayT;
+    struct Array;
 
     struct Bool;
 
@@ -32,11 +32,6 @@ namespace _Maple::Foundation
 
     template<size_t _FixedSize>
     class StringT;
-
-    struct SymbolType;
-
-
-    class Type;
 
 } // _Maple::Foundation
 

@@ -11,10 +11,10 @@ project (
 #-----------------------------------------------------------------------------+
 #    配置预处理器
 #------------------------------------------------------------------------------
-add_compile_definitions(___MAPLE_EXPORTS)
+add_compile_definitions(___MAPLE_VISUAL_EXPORTS)
 
 if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-	add_compile_definitions(___MAPLE_DEBUG)
+	add_compile_definitions(___MAPLE_VISUAL_DEBUG)
 endif()
 
 

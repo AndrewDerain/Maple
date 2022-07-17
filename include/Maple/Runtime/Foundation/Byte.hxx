@@ -48,7 +48,7 @@ namespace _Maple::Foundation
         Byte& operator=(const Byte&) = default;
 
 
-    protected:
+    public:
         int8_t _StoredValue;
     };
 

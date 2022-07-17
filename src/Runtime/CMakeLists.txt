@@ -11,10 +11,10 @@ project (
 #-----------------------------------------------------------------------------+
 #    配置预处理器
 #------------------------------------------------------------------------------
-add_compile_definitions(___MAPLE_EXPORTS)
+add_compile_definitions(___MAPLE_RUNTIME_EXPORTS)
 
 if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-	add_compile_definitions(___MAPLE_DEBUG)
+	add_compile_definitions(___MAPLE_RUNTIME_DEBUG)
 endif()
 
 
@@ -22,8 +22,8 @@ endif()
 #    代码覆盖率
 #------------------------------------------------------------------------------
 if((CMAKE_BUILD_TYPE STREQUAL "Debug") AND (CMAKE_GENERATOR STREQUAL Ninja))
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage ")
-	set(CMAKE_C_FLAGS "{CMAKE_C_FLAGS} --coverage ")
+	#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage ")
+	#set(CMAKE_C_FLAGS "{CMAKE_C_FLAGS} --coverage ")
 endif()
 
 

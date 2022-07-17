@@ -126,7 +126,7 @@ namespace _Maple::Foundation
         Int32& operator=(const double value) noexcept;
 
 
-    protected:
+    public:
         int32_t _StoredValue;
     };
 

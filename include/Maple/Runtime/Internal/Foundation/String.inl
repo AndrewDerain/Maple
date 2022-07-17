@@ -157,7 +157,7 @@ namespace _Maple::Foundation
 
 
     inline
-    void StringHeapStorage::Replace(char* memory, uint32_t length, uint32_t capacity) {
+    void StringHeapStorage::Replace(char* memory, uint64_t length, uint64_t capacity) {
         _StoredValue    = memory;
         _Length         = length;
         _Capacity       = capacity;

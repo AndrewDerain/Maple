@@ -11,6 +11,82 @@
 
 #pragma warning(push)
 #pragma warning(disable: ___MAPLE_WARNING_DISABLE_IDS)
+#pragma pack(push, 1)
+namespace _Maple::Foundation
+{
+
+    /// @brief 堆存储器，使用此对象在堆上保存数据
+    struct StringHeapStorage
+    {
+    public:
+        /// @brief 在堆上已申请的内存空间大小
+        inline
+        Int64 Capacity() const;
+
+
+        /// @brief 字符串中的字符数量
+        inline
+        Int64 Length() const;
+
+
+        /// @brief 值
+        inline
+        const char* Data() const;
+
+
+        inline
+        void Initialize();
+
+
+        /// @note 此函数只会设置 Length 和 Data 属性
+        MapleDeco(Maple, Runtime, Api)
+        void Assign(const char* value, uint64_t len);
+
+
+        /// @brief 直接使用外部申请的内存空间进行替换
+        inline
+        void Replace(char* memory, uint64_t length, uint64_t capacity);
+
+
+        /// @brief 释放堆上申请的内存
+        MapleDeco(Maple, Runtime, Api)
+        void Deallocate();
+
+
+        MapleDeco(Maple, Runtime, Api)
+        void Catenate(const char* value, uint64_t len);
+
+
+        /// @brief 增大堆空间
+        MapleDeco(Maple, Runtime, Api)
+        void Extend(uint64_t size);
+
+
+    protected:
+        /// @note 用于进行内存对齐
+        [[maybe_unused]]
+        bool        _IsOnStack;
+
+
+        /// @brief 字符串中的字符数量
+        uint64_t    _Length;
+
+
+        /// @brief 在堆上已申请的内存空间大小
+        uint64_t    _Capacity;
+
+
+        /// @brief 堆起始地址
+        char*       _StoredValue;
+    };
+
+} // namespace _Maple::Foundation
+#pragma pack(pop)
+#pragma warning(pop)
+
+
+#pragma warning(push)
+#pragma warning(disable: ___MAPLE_WARNING_DISABLE_IDS)
 #pragma pack(push, ___MAPLE_PACKING)
 namespace _Maple::Foundation
 {
@@ -93,7 +169,7 @@ namespace _Maple::Foundation
 
     protected:
         /// @brief Stack 上可以存储值的最大空间（包含'\0'）。
-        static constexpr const int8_t _StackMaxCapacity 		= 22;
+        static constexpr const int8_t _StackMaxCapacity 		= 23;
 
 
         /// @brief 额外预分配空间
@@ -134,72 +210,6 @@ namespace _Maple::Foundation
 
         /// @brief 栈上存储的字符串值
         char    _StoredValue[_StackMaxCapacity];
-    };
-
-
-    /// @brief 堆存储器，使用此对象在堆上保存数据
-    struct StringHeapStorage
-    {
-    public:
-        /// @brief 在堆上已申请的内存空间大小
-        inline
-        Int64 Capacity() const;
-
-
-        /// @brief 字符串中的字符数量
-        inline
-        Int64 Length() const;
-
-
-        /// @brief 值
-        inline
-        const char* Data() const;
-
-
-        inline
-        void Initialize();
-
-
-        /// @note 此函数只会设置 Length 和 Data 属性
-        MapleDeco(Maple, Api)
-        void Assign(const char* value, uint32_t len);
-
-
-        /// @brief 直接使用外部申请的内存空间进行替换
-        inline
-        void Replace(char* memory, uint32_t length, uint32_t capacity);
-
-
-        /// @brief 释放堆上申请的内存
-        MapleDeco(Maple, Api)
-        void Deallocate();
-
-
-        MapleDeco(Maple, Api)
-        void Catenate(const char* value, uint32_t len);
-
-
-        /// @brief 增大堆空间
-        MapleDeco(Maple, Api)
-        void Extend(uint32_t size);
-
-
-    protected:
-        /// @note 用于进行内存对齐
-        [[maybe_unused]]
-        bool        _IsOnStack;
-
-
-        /// @brief 字符串中的字符数量
-        uint32_t    _Length;
-
-
-        /// @brief 在堆上已申请的内存空间大小
-        uint32_t    _Capacity;
-
-
-        /// @brief 堆起始地址
-        char*       _StoredValue;
     };
 
 
@@ -370,12 +380,12 @@ namespace _Maple::Foundation
 
         /// @brief 将 Stack 上的内容转移到 Heap 上。
         /// @param reserved_space 需要预分配的空间大小
-        MapleDeco(Maple, Api)
+        MapleDeco(Maple, Runtime, Api)
         void _MoveToHeap(int64_t reserved_space);
 
 
         /// @brief 追加内容到堆上
-        MapleDeco(Maple, Api)
+        MapleDeco(Maple, Runtime, Api)
         void _CatenateOnHeap(const char* value, int64_t len);
 
 

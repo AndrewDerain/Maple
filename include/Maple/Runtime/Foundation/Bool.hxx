@@ -64,7 +64,7 @@ namespace _Maple::Foundation
         Bool& operator=(const bool value) noexcept;
 
 
-    protected:
+    public:
         bool _StoredValue;
     };
 

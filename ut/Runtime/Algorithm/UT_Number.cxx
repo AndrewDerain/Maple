@@ -11,10 +11,10 @@ using namespace _Maple;
 using namespace _Maple::Algorithm;
 
 
-namespace UnitTest::Basic
+namespace UnitTest::Algorithm
 {
 
-    TEST_CASE("Abs int8_t", "[Basic][Algorithm.Number]")
+    TEST_CASE("Abs int8_t", "[Algorithm][Number]")
     {
         CHECK(Abs(-78) == 78);
         CHECK(Abs(89) == 89);

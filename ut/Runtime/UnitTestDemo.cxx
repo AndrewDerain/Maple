@@ -4,6 +4,8 @@
 #include "Maple/Runtime.hxx"
 #include "Maple/Runtime/Internal/Algorithm/String.inl"
 
+#include <array>
+
 
 namespace Exp {
 
@@ -61,84 +63,28 @@ namespace Exp {
     };
 
 
-
-
-
-    class Something
+    struct Type
     {
-    public:
-        class ___TypeInfo__
-        {
-        public:
-//            static set<SymbolType> Register(set<SymbolType> types, initializer_list<SymbolType> list) {
-//                types.insert(list);
-//                return types;
-//            }
-//
-//            inline
-//            static const set<SymbolType> _Types {Register(set<SymbolType>(), {SymbolType::_Maple_Foundation_Bool}) };
 
+    };
 
-            static set<const char*> Register(set<const char*> types, initializer_list<set<const char*>> lists) {
-                for(auto& list: lists)
-                    types.insert(list.begin(), list.end());
-                return types;
-            }
+    struct TypeList
+    {
 
-
-            static constexpr const char* _RawName() {
-                return __PRETTY_FUNCTION__;
-            }
-
-
-            inline
-            static const set<const char*> _Parents {
-                Register(
-                    {_RawName()},
-                    {{""},{""},{""}}
-                )
-            };
-
-        };
-
-        constexpr static const char* FuncName() {
-
-            struct _t {
-                inline static void func() { }
-            };
-
-            return &__PRETTY_FUNCTION__[19];
-        }
     };
 
 
 
-    #define MyType(_T) ___MAPLE_MF_CAT(_T , ___MAPLE_MF_ARG(typeid(_T).hash_code()))
 
-
-
-
-    TEST_CASE("Demo") {
-
-        MyBool flag(true);
-        flag = true;
-        flag = MyBool(true);
-
-        //Foundation::Object b;
-        //MyType(Bool);
-
-        //MyObj obj;
-
-        MyBool x1;
-        x1 = flag;
-
-        constexpr auto& t = typeof(Object);
-
-
-        std::cout << IObject::ClassType().Equals(IObject::ClassType()) << std::endl;
-        std::cout << sizeof(std::function<void(int, int)>) << std::endl;
-
-       // std::cout << (*__IObject_TypeInfo::_Types.begin()).ToString() << std::endl;
+    TEST_CASE("Demo", "Demoxxx") {
+        //std::cout << Object::ClassType().RawName() << std::endl;
     }
+
+    template<typename _T>
+    void signature() {
+        std::cout << ___MAPLE_FUNCTION_SIGNATURE___ << std::endl;
+    }
+
+
 
 }
