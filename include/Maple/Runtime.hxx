@@ -14,6 +14,7 @@
 #include "Runtime/Foundation/StringT.hxx"
 
 #include "Runtime/Frame/Type.hxx"
+#include "Runtime/Frame/Interface.hxx"
 #include "Runtime/Frame/Object.hxx"
 
 

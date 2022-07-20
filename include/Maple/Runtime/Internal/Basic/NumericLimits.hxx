@@ -13,17 +13,21 @@ namespace _Maple
 {
 
     template<typename _Src, typename _Forms = _Src>
-    class NumericLimits {
+    class NumericLimits
+    {
     public:
         static constexpr _Forms Max() {
             return std::numeric_limits<_Src>::max();
         }
 
+
         static constexpr _Forms Min() {
             return std::numeric_limits<_Src>::min();
         }
 
+
         static constexpr _Forms MaxLength() {
+
             _Forms length = 1;
             _Src quotient = Max();
 

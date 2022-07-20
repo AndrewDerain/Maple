@@ -53,5 +53,4 @@ set_target_properties(
 #    项目安装配置
 #------------------------------------------------------------------------------
 install(TARGETS ${target_name_runtime})
-install(DIRECTORY "${CMAKE_SOURCE_DIR}/include/Maple" DESTINATION "include")
-
+install(DIRECTORY "${CMAKE_SOURCE_DIR}/include/Maple/Runtime" DESTINATION "include/Maple/Runtime")

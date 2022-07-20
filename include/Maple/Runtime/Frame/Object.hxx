@@ -15,13 +15,7 @@ namespace _Maple::Frame
                     ___MAPLE_TYPE_SYSTEM_USING_TYPEINFO(_TYPE)          \
                 public:                                                 \
                     ___MAPLE_TYPE_SYSTEM_QUERY_INTERFACE                \
-                                                                        \
 
-
-    /// @brief 使用此宏来定义 接口 类型的相关函数和类型定义
-    #define MapleInterface(_TYPE)                                       \
-                private:                                                \
-                    ___MAPLE_TYPE_SYSTEM_USING_TYPEINFO(Object)         \
 
 
     MapleDeco(TypeRegister)(Object)

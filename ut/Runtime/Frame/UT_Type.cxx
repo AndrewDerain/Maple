@@ -81,6 +81,24 @@ namespace UnitTest::Frame::TestType
     {
         typeof(X).RawName();
 
+        char name[256]; int len;
+        _Maple::Frame::___maple_extract_type_name(
+                name, 256,
+                "_Maple::Frame::___Maple_TypeInfo_Object::___Maple_TypeInfo_Object()",
+                sizeof("_Maple::Frame::___Maple_TypeInfo_Object::___Maple_TypeInfo_Object()")
+                );
+
+        std::cout << name << std::endl;
+
+
+        _Maple::Frame::___maple_extract_type_name(
+                name, 256,
+                "___Maple_TypeInfo_Object::___Maple_TypeInfo_Object()",
+                sizeof("___Maple_TypeInfo_Object::___Maple_TypeInfo_Object()")
+        );
+
+        std::cout << name << std::endl;
+
 
         constexpr auto count = Object::ClassType().Parents().Count();
         std::cout << count << std::endl;

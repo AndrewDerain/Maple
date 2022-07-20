@@ -36,7 +36,15 @@ file(GLOB_RECURSE srcs "${CMAKE_CURRENT_SOURCE_DIR}/*")
 #-----------------------------------------------------------------------------+
 #    配置项目输出库文件
 #------------------------------------------------------------------------------
-set(target_name_visual "Maple.Visual${fantasia_target_postfix}")
+set(target_name_visual "Maple.Visual")
+
+link_directories(
+    "${fantasia_library_out_dir}"
+)
+
+link_libraries(
+    "Maple.Runtime"
+)
 
 add_library(${target_name_visual} SHARED ${srcs})
 
@@ -54,4 +62,3 @@ set_target_properties(
 #------------------------------------------------------------------------------
 install(TARGETS ${target_name_runtime})
 install(DIRECTORY "${CMAKE_SOURCE_DIR}/include/Maple" DESTINATION "include")
-

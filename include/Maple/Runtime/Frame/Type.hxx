@@ -17,7 +17,7 @@ namespace _Maple::Frame
     {
         /// @brief 判断当前类型是否从 type 继承而来
         /// @note 暂未实现
-        virtual Bool IsInheritedFrom(const Type& type) const = 0;
+        virtual Bool Inherites(const Type& type) const = 0;
 
 
         /// @brief 判断指定的类型是否与当前类型相等
@@ -37,15 +37,21 @@ namespace _Maple::Frame
     };
 
 
+
     /// @brief 类型集合
     struct ITypeCollection
     {
+        /// @brief 获取集合中的元素数量
         virtual Int64 Count() const = 0;
 
+
+        /// @brief 判断类型 type 是否在此集合中
         virtual Bool IsContains(const Type& type) const = 0;
+
 
         virtual void Print() const = 0;
     };
+
 
 
     /// @brief 用于判断某个对象是否有成员变量 ___maple_typeinfo
@@ -53,17 +59,21 @@ namespace _Maple::Frame
     struct ___maple_has_typeinfo;
 
 
+
     template<typename T>
     using is_has_typeinfo = ___maple_has_typeinfo<T>;
+
 
 
     template<typename T>
     using is_has_typeinfo_v = typename ___maple_has_typeinfo<T>::value;
 
 
+
     /// @brief
     template<typename T>
     struct ___maple_typeof;
+
 
 
     #define typeof(_TYPE) ___maple_typeof<_TYPE>::instance()

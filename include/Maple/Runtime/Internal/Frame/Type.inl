@@ -75,102 +75,6 @@ namespace _Maple::Frame
     };
 
 
-    /// @brief  编译时集合类型
-    ///         _Key 元素会被排序，采用二分法对 _Key 进行查找
-    /// @param _Key
-    /// @param _Size 集合可容纳的最大元素数量
-    template<TypeCollectionTransfer _Transfer>
-    class TypeCollection: public ITypeCollection
-    {
-    public:
-        inline constexpr
-        TypeCollection();
-
-
-        inline constexpr
-        TypeCollection(Type* type, const char* name);
-
-
-        /// @brief 获取集合中的元素数量
-        inline constexpr
-        Int64 Count() const override;
-
-
-        /// @brief 判断类型 type 是否在此集合中
-        inline constexpr
-        Bool IsContains(const Type& type) const override;
-
-
-        void Print() const override {
-
-            std::cout << __FUNCTION__ << Count() << std::endl;
-
-            for(int i = 0; i <= Count(); ++i) {
-                std::cout << _Names[i] << "  [?=]  " << _Types[i]->RawName() << std::endl;
-            }
-        }
-
-    protected:
-        friend struct TypeCollectionTransfer;
-
-        template<typename _T>
-        friend struct ___maple_transfer_make;
-
-        /// @brief 类型信息集合
-        Type*       _Types[_Transfer.Count() + 1] = {0};
-
-        /// @brief 类型原始名，在数组中的位置与 _Types 保持同步
-        const char* _Names[_Transfer.Count() + 1] = {0};
-    };
-
-
-    template<typename T>
-    struct ___maple_has_typeinfo
-    {
-    protected:
-        template<class type>
-        constexpr
-        static bool checker(decltype(type::___maple_typeinfo::instance)*) {
-            return true;
-        };
-
-
-        template<typename type>
-        constexpr
-        static bool checker(type*) {
-            return false;
-        };
-
-
-    public:
-        static constexpr bool value = checker<T>(nullptr);
-    };
-
-
-    template<typename T>
-    struct ___maple_typeof
-    {
-    protected:
-        template<class type>
-        constexpr
-        static auto checker(decltype(type::___maple_typeinfo::instance)*) {
-            return type::___maple_typeinfo::instance;
-        };
-
-
-        template<typename type>
-        constexpr
-        static void checker(type*) {
-        };
-
-
-    public:
-        static constexpr auto instance() {
-            return checker<T>(nullptr);
-        }
-    };
-
-
     inline constexpr
     int TypeCollectionTransfer::Count() const {
         return _Count;
@@ -269,61 +173,48 @@ namespace _Maple::Frame
     }
 
 
-    template<typename _T>
-    struct ___maple_transfer_make {
-
-        template<typename type>
+    /// @brief  编译时集合类型
+    ///         _Key 元素会被排序，采用二分法对 _Key 进行查找
+    /// @param _Key
+    /// @param _Size 集合可容纳的最大元素数量
+    template<TypeCollectionTransfer _Transfer>
+    class TypeCollection: public ITypeCollection
+    {
+    public:
         inline constexpr
-        static std::enable_if_t<___maple_has_typeinfo<type>::value, void> Invoke(TypeCollectionTransfer& transfer) {
-            for(int i = 0; i < type::___maple_typeinfo::instance._Types.Count() + 1; ++i, ++transfer._Count) {
-                transfer._Types[transfer._Count] = type::___maple_typeinfo::instance._Types._Types[i];
-                transfer._Names[transfer._Count] = type::___maple_typeinfo::instance._Types._Names[i];
-            }
-        }
+        TypeCollection();
 
-        template<typename T>
+
         inline constexpr
-        static std::enable_if_t<!___maple_has_typeinfo<T>::value, void> Invoke(TypeCollectionTransfer& transfer) {
-        }
+        TypeCollection(Type* type, const char* name);
+
+
+        inline constexpr
+        Int64 Count() const override;
+
+
+        inline constexpr
+        Bool IsContains(const Type& type) const override;
+
+
+        void Print() const override;
+
+
+    protected:
+        friend struct TypeCollectionTransfer;
+
+
+        template<typename _T>
+        friend struct ___maple_transfer_make;
+
+
+        /// @brief 类型信息集合
+        Type*       _Types[_Transfer.Count() + 1] = {0};
+
+
+        /// @brief 类型原始名，在数组中的位置与 _Types 保持同步
+        const char* _Names[_Transfer.Count() + 1] = {0};
     };
-
-
-    template<typename _Object, typename... _Objects>
-    struct ___maple_transfer;
-
-
-    template<typename _Object>
-    struct ___maple_transfer<_Object>;
-
-
-    template<typename _Object, typename... _Objects>
-    struct ___maple_transfer {
-        constexpr
-        static void make(TypeCollectionTransfer& transfer) {
-            ___maple_transfer_make<_Object>::template Invoke<_Object>(transfer);
-            ___maple_transfer<_Objects...>::make(transfer);
-        }
-    };
-
-
-    template<typename _Object>
-    struct ___maple_transfer<_Object> {
-        constexpr
-        static void make(TypeCollectionTransfer& transfer) {
-            ___maple_transfer_make<_Object>::template Invoke<_Object>(transfer);
-        }
-    };
-
-
-    template<typename... _Objects>
-    inline constexpr
-    TypeCollectionTransfer ___maple_make_transfer() {
-        TypeCollectionTransfer transfer;
-        ___maple_transfer<_Objects..., void>::make(transfer);
-        transfer.Heapsort();
-        transfer.RemoveDuplicate();
-        return transfer;
-    }
 
 
     template<TypeCollectionTransfer _Transfer>
@@ -368,12 +259,177 @@ namespace _Maple::Frame
     }
 
 
+    template<TypeCollectionTransfer _Transfer>
+    inline
+    void TypeCollection<_Transfer>::Print() const {
+
+        for(int i = 0; i <= Count(); ++i) {
+            std::cout << _Names[i] << "  [?=]  " << _Types[i]->RawName() << std::endl;
+        }
+    }
+
+
+    template<typename T>
+    struct ___maple_has_typeinfo
+    {
+    protected:
+        template<class type>
+        constexpr
+        static bool checker(decltype(type::___maple_typeinfo::instance)*) {
+            return true;
+        };
+
+
+        template<typename type>
+        constexpr
+        static bool checker(type*) {
+            return false;
+        };
+
+
+    public:
+        static constexpr bool value = checker<T>(nullptr);
+    };
+
+
+
+    template<typename T>
+    struct ___maple_typeof
+    {
+    protected:
+        template<class type>
+        constexpr
+        static auto checker(decltype(type::___maple_typeinfo::instance)*) {
+            return type::___maple_typeinfo::instance;
+        };
+
+
+        template<typename type>
+        constexpr
+        static void checker(type*) {
+        };
+
+
+    public:
+        static constexpr auto instance() {
+            return checker<T>(nullptr);
+        }
+    };
+
+
+
+    template<typename _T>
+    struct ___maple_transfer_make {
+
+        template<typename type>
+        inline constexpr
+        static std::enable_if_t<___maple_has_typeinfo<type>::value, void> Invoke(TypeCollectionTransfer& transfer) {
+            for(int i = 0; i < type::___maple_typeinfo::instance._Types.Count() + 1; ++i, ++transfer._Count) {
+                transfer._Types[transfer._Count] = type::___maple_typeinfo::instance._Types._Types[i];
+                transfer._Names[transfer._Count] = type::___maple_typeinfo::instance._Types._Names[i];
+            }
+        }
+
+
+        template<typename T>
+        inline constexpr
+        static std::enable_if_t<!___maple_has_typeinfo<T>::value, void> Invoke(TypeCollectionTransfer& transfer) {
+        }
+    };
+
+
+
+    template<typename _Object, typename... _Objects>
+    struct ___maple_transfer;
+
+
+
+    template<typename _Object>
+    struct ___maple_transfer<_Object>;
+
+
+
+    template<typename _Object, typename... _Objects>
+    struct ___maple_transfer {
+        constexpr
+        static void make(TypeCollectionTransfer& transfer) {
+            ___maple_transfer_make<_Object>::template Invoke<_Object>(transfer);
+            ___maple_transfer<_Objects...>::make(transfer);
+        }
+    };
+
+
+
+    template<typename _Object>
+    struct ___maple_transfer<_Object> {
+        constexpr
+        static void make(TypeCollectionTransfer& transfer) {
+            ___maple_transfer_make<_Object>::template Invoke<_Object>(transfer);
+        }
+    };
+
+
+
+    template<typename... _Objects>
+    inline constexpr
+    TypeCollectionTransfer ___maple_make_transfer() {
+        TypeCollectionTransfer transfer;
+        ___maple_transfer<_Objects..., void>::make(transfer);
+        transfer.Heapsort();
+        transfer.RemoveDuplicate();
+        return transfer;
+    }
+
+
+
+    /// @example raw: _Maple::Frame::___Maple_TypeInfo_Object::___Maple_TypeInfo_Object()
+    inline constexpr
+    int ___maple_extract_type_name(char* name, int capacity, const char * raw, int raw_len) {
+
+        int name_len = 0;
+
+        // namespace start end position
+        int nspos = 0, nepos = 0;
+
+        // type name start end position
+        int tspos = 0, tepos = raw_len - 3;
+
+
+        while(raw[tepos] != ':') --tepos;
+        tepos -= 2;
+
+        tspos = raw_len - (raw_len - tepos - 3) * 2 + 1;
+        nepos = tspos == 0 ? -1 : tspos - 1;
+        tspos = tspos + sizeof("___Maple_TypeInfo_") - 1;
+
+        for(; nspos <= nepos && name_len < capacity; ++nspos, ++name_len)
+            name[name_len] = raw[nspos];
+
+        for(; tspos <= tepos && name_len < capacity; ++tspos, ++name_len)
+            name[name_len] = raw[tspos];
+
+        name[name_len] = '\0';
+
+        return name_len;
+    }
+
+
+
+#define ___MAPLE_TYPE_SYSTEM_TYPEINFO_NAME_PREFIX                       \
+            ___Maple_TypeInfo_                                          \
+
+
+
 #define ___MAPLE_TYPE_SYSTEM_TYPEINFO_NAME(_T)                          \
-            ___Maple_TypeInfo_ ## _T                                    \
+            ___MAPLE_MF_CAT(                                            \
+                ___MAPLE_TYPE_SYSTEM_TYPEINFO_NAME_PREFIX, _T)          \
+
 
 
 #define ___MAPLE_TYPE_SYSTEM_TYPEINFO_INSTANCE_NAME(_T)                 \
-            ____Maple_TypeInfo_ ## _T ## _Instance                      \
+            ___MAPLE_MF_CAT(                                            \
+                ___MAPLE_TYPE_SYSTEM_TYPEINFO_NAME(_T), _Instance)      \
+
 
 
 #define ___MAPLE_TYPE_SYSTEM_USING_TYPEINFO(_T)                         \
@@ -390,6 +446,7 @@ namespace _Maple::Frame
                 ___MAPLE_TYPE_SYSTEM_TYPEINFO_NAME(_T);                 \
 
 
+
 #define ___MAPLE_TYPE_SYSTEM_QUERY_INTERFACE                            \
             inline constexpr static                                     \
             const Type& ClassType() noexcept {                          \
@@ -400,6 +457,7 @@ namespace _Maple::Frame
             const Type& ObjectType() const noexcept {                   \
                 return ___maple_typeinfo::instance;                     \
             }                                                           \
+
 
 
 #define ___MAPLE_TYPE_SYSTEM_TYPE_INFO(_TYPE, _INSTANCE, ...)           \
@@ -413,7 +471,7 @@ namespace _Maple::Frame
     public:                                                             \
         inline constexpr                                                \
         _TYPE() {                                                       \
-             Algorithm::CopyString(                                     \
+             ___maple_extract_type_name(                                \
                 _Name, 256,                                             \
                 ___MAPLE_FUNCTION_SIGNATURE___,                         \
                 sizeof(___MAPLE_FUNCTION_SIGNATURE___)                  \
@@ -421,7 +479,7 @@ namespace _Maple::Frame
         };                                                              \
                                                                         \
         inline constexpr                                                \
-        virtual Bool IsInheritedFrom(const Type& type) const override { \
+        virtual Bool Inherites(const Type& type) const override {       \
             return _Types.IsContains(type);                             \
         };                                                              \
                                                                         \
@@ -446,13 +504,15 @@ namespace _Maple::Frame
         }                                                               \
                                                                         \
     public:                                                             \
-        char _Name[256] = {};                                           \
+        char _Name[256]  = {};                                           \
+        int  _NameLength = 0;                                           \
         const _CollectionType _Types { this, _Name };                   \
                                                                         \
         static const _TYPE instance;                                    \
     };                                                                  \
                                                                         \
     constexpr _TYPE _TYPE::instance {};                                 \
+
 
 
 #define ___MAPLE_DECORATE_TypeRegister(_T, ...)                         \
