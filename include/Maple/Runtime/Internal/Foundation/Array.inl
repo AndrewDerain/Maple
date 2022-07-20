@@ -19,15 +19,15 @@ namespace _Maple::Foundation
     }
 
 
-    template<typename _Ty, Size _Capicity>
+    template<typename _Ty, Size _Capacity>
     inline constexpr
-    _Ty* end(Array<_Ty, _Capicity>& arr) {
-        return arr._Elements + _Capicity;
+    _Ty* end(Array<_Ty, _Capacity>& arr) {
+        return arr._Elements + _Capacity;
     }
 
 
     template<typename _Ty, int64_t _Capacity>
-    Int64 Array<_Ty, _Capacity>::Capicity() const {
+    Int64 Array<_Ty, _Capacity>::Capacity() const {
         return _Capacity;
     }
 

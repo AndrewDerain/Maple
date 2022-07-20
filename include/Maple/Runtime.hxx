@@ -28,8 +28,6 @@ namespace Maple
 
     using _Maple::Byte;
 
-    using _Maple::TypeCollection;
-
     using _Maple::Double;
 
     using _Maple::Int32;
@@ -41,6 +39,8 @@ namespace Maple
     using _Maple::StringT;
 
 
+
+    using _Maple::ITypeCollection;
 
     using _Maple::Object;
 

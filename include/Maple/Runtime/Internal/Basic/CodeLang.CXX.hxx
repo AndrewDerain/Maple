@@ -15,6 +15,7 @@
 #include <memory>
 #include <string>
 #include <thread>
+#include <vector>
 #include <sstream>
 #include <iostream>
 #include <type_traits>

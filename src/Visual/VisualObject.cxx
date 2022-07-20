@@ -1,5 +1,5 @@
 ﻿
-#include "Maple/Visual/VisualObject.hxx"
+#include "Maple/Visual/Controls/VisualObject.hxx"
 #include "Maple/Runtime/Foundation/String.hxx"
 
 
@@ -10,7 +10,6 @@ namespace _Maple::Visual
 {
 
     VisualObject::~VisualObject() noexcept {
-
     }
 
 

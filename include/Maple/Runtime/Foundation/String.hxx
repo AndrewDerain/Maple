@@ -64,7 +64,6 @@ namespace _Maple::Foundation
 
     protected:
         /// @note 用于进行内存对齐
-        [[maybe_unused]]
         bool        _IsOnStack;
 
 

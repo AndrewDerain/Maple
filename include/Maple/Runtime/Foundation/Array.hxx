@@ -40,7 +40,7 @@ namespace _Maple::Foundation
         Array(const Array&) = default;
 
 
-        Int64 Capicity() const;
+        Int64 Capacity() const;
 
 
         inline constexpr
@@ -77,4 +77,4 @@ namespace _Maple::Foundation
 #pragma pack(pop)
 #pragma warning(pop)
 
-#include "../Internal/Foundation/ArrayT.inl"
+#include "../Internal/Foundation/Array.inl"

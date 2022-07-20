@@ -1,6 +1,5 @@
 ﻿#pragma once
-#include "../Runtime/Internal/Foundation/Predeclars.hxx"
-#include "../Runtime/Frame/Object.hxx"
+#include "../Internal/Controls/Predeclars.hxx"
 
 
 #pragma warning(push)
@@ -9,9 +8,12 @@
 namespace _Maple::Visual
 {
 
-    MapleDeco(Maple, ApiClass)
+    MapleDeco(TypeRegister)(VisualObject, Object)
+    MapleDeco(Maple, Visual, ApiClass)
     Class VisualObject: Object
     {
+    MapleObject(VisualObject)
+
     public:
         virtual ~VisualObject() noexcept;
 

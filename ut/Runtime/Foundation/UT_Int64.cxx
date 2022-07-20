@@ -16,6 +16,15 @@ namespace UnitTest::Foundation::TestInt64
         CHECK(std::is_standard_layout_v<Int64>);
     }
 
+    template<Int64 value>
+    struct v
+    {
+    };
+
+    TEST_CASE("Int64 should able to be template's parameter", "[Foundation][Int64]")
+    {
+        v<32> v1;
+    }
 
     TEST_CASE("Int64 value range", "[Foundation][Int64]")
     {

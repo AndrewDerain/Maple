@@ -8,10 +8,6 @@
 namespace _Maple::Frame
 {
 
-    Object::~Object() noexcept {
-    }
-
-
     String Object::ToString() const noexcept {
         return "Object";
     }

@@ -7,11 +7,12 @@
 #include <array>
 
 
-namespace Exp {
+using namespace _Maple;
+using namespace _Maple::Foundation;
 
-    using namespace _Maple;
-    using namespace _Maple::Foundation;
 
+namespace Exp
+{
 
     constexpr bool IsEqual(const char *lstr, const char *rstr) {
         for (int i = 0; lstr[i] != '\0' && rstr[i] != '\0'; i++)
@@ -68,23 +69,20 @@ namespace Exp {
 
     };
 
+
     struct TypeList
     {
 
     };
 
 
-
-
     TEST_CASE("Demo", "Demoxxx") {
         //std::cout << Object::ClassType().RawName() << std::endl;
     }
+
 
     template<typename _T>
     void signature() {
         std::cout << ___MAPLE_FUNCTION_SIGNATURE___ << std::endl;
     }
-
-
-
 }

@@ -17,6 +17,14 @@ namespace UnitTest::Foundation::TestInt32
     }
 
 
+    template<Int32 value>
+    struct v {};
+
+    TEST_CASE("Int32 should able to be template's parameter", "[Foundation][Int32]")
+    {
+        v<32> v1;
+    }
+
     TEST_CASE("Int32 value range", "[Foundation][Int32]")
     {
         CHECK(Int32::Max() == std::numeric_limits<int32_t>::max());

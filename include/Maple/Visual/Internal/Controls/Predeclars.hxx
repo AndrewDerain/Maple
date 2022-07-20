@@ -3,26 +3,21 @@
 //
 
 #pragma once
+#include "../Basic/Preconfig.hxx"
+
 #include "../../../Runtime/Foundation/Bool.hxx"
 #include "../../../Runtime/Foundation/Enum.hxx"
 #include "../../../Runtime/Foundation/String.hxx"
-#include "../Algorithm/Sort.inl"
+
+#include "../../../Runtime/Frame/Object.hxx"
 
 
 #pragma warning(push)
 #pragma warning(disable: ___MAPLE_WARNING_DISABLE_IDS)
 #pragma pack(push, ___MAPLE_PACKING)
-namespace _Maple::Frame
+namespace _Maple::Visual
 {
 
-    class Object;
-
-    class Type;
-
-    class ITypeCollection;
-
 } // _Maple::Foundation
-
-namespace _Maple { using namespace _Maple::Frame; }
 #pragma pack(pop)
 #pragma warning(pop)

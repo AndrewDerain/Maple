@@ -15,6 +15,13 @@ namespace UnitTest::Foundation::TestDouble
         CHECK(std::is_standard_layout_v<Double>);
     }
 
+    template<Double value>
+    struct v {};
+
+    TEST_CASE("Double should able to be template's parameter", "[Foundation][Double]")
+    {
+        v<32.8> v1;
+    }
 
     TEST_CASE("Double value range", "[Foundation][Double]")
     {
