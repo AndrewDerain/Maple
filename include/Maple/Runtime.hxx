@@ -14,7 +14,7 @@
 #include "Runtime/Foundation/StringT.hxx"
 
 #include "Runtime/Frame/Type.hxx"
-#include "Runtime/Frame/Interface.hxx"
+#include "Runtime/Frame/IInterface.hxx"
 #include "Runtime/Frame/Object.hxx"
 
 
@@ -40,11 +40,14 @@ namespace Maple
     using _Maple::StringT;
 
 
-
-    using _Maple::ITypeCollection;
+    using _Maple::IInterface;
 
     using _Maple::Object;
 
     using _Maple::Type;
 
+    // HasTypeInfo
+    using _Maple::is_has_typeinfo;
+
+    using _Maple::is_has_typeinfo_v;
 }

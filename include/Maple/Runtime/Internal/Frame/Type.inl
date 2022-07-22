@@ -269,6 +269,7 @@ namespace _Maple::Frame
     }
 
 
+
     template<typename T>
     struct ___maple_has_typeinfo
     {
@@ -447,65 +448,79 @@ namespace _Maple::Frame
 
 
 
-#define ___MAPLE_TYPE_SYSTEM_QUERY_INTERFACE                            \
+#define ___MAPLE_TYPE_SYSTEM_INTERFACE                                  \
             inline constexpr static                                     \
-            const Type& ClassType() noexcept {                          \
+            const _Maple::Frame::Type&                                  \
+            ClassType() noexcept {                                      \
                 return ___maple_typeinfo::instance;                     \
             }                                                           \
                                                                         \
             virtual                                                     \
-            const Type& ObjectType() const noexcept {                   \
+            const _Maple::Frame::Type&                                  \
+            ObjectType() const noexcept {                               \
                 return ___maple_typeinfo::instance;                     \
             }                                                           \
 
 
 
-#define ___MAPLE_TYPE_SYSTEM_TYPE_INFO(_TYPE, _INSTANCE, ...)           \
-                                                                        \
-    class _TYPE: public Type                                            \
+#define ___MAPLE_TYPE_SYSTEM_TYPE_INFO(_CLASS, _TYPE, _INSTANCE, ...)   \
+    class _TYPE: public _Maple::Frame::Type                             \
     {                                                                   \
     public:                                                             \
+        friend class _CLASS;                                            \
+                                                                        \
+        template<typename T>                                            \
+        friend struct _Maple::Frame::___maple_typeof;                   \
+                                                                        \
         using _CollectionType =                                         \
-            TypeCollection<___maple_make_transfer<__VA_ARGS__>()>;      \
+            _Maple::Frame::TypeCollection<                              \
+                _Maple::Frame::___maple_make_transfer<                  \
+                    __VA_ARGS__>()>;                                    \
                                                                         \
     public:                                                             \
         inline constexpr                                                \
         _TYPE() {                                                       \
-             ___maple_extract_type_name(                                \
+             _Maple::Frame::___maple_extract_type_name(                 \
                 _Name, 256,                                             \
                 ___MAPLE_FUNCTION_SIGNATURE___,                         \
                 sizeof(___MAPLE_FUNCTION_SIGNATURE___)                  \
              );                                                         \
         };                                                              \
                                                                         \
-        inline constexpr                                                \
-        virtual Bool Inherites(const Type& type) const override {       \
+        inline constexpr virtual                                        \
+        _Maple::Foundation::Bool                                        \
+        Inherits(const _Maple::Frame::Type& type) const override {      \
             return _Types.IsContains(type);                             \
         };                                                              \
                                                                         \
-        inline constexpr                                                \
-        virtual Bool Equals(const Type& type) const override{           \
+        inline constexpr virtual                                        \
+        _Maple::Foundation::Bool                                        \
+        Equals(const _Maple::Frame::Type& type) const override{         \
             return false;                                               \
         };                                                              \
                                                                         \
-        inline constexpr                                                \
-        virtual const _CollectionType& Parents() const override {       \
+        inline constexpr virtual                                        \
+        const _CollectionType&                                          \
+        Parents() const override {                                      \
             return _Types;                                              \
         }                                                               \
                                                                         \
-        inline constexpr                                                \
-        virtual const char* RawName() const override {                  \
+        inline constexpr virtual                                        \
+        const char*                                                     \
+        RawName() const override {                                      \
             return _Name;                                               \
         }                                                               \
                                                                         \
-        inline constexpr                                                \
-        virtual bool operator==(const Type& type) const override {      \
+        inline constexpr virtual                                        \
+        bool                                                            \
+        operator==(const _Maple::Frame::Type& type) const override {    \
             return RawName() == type.RawName();                         \
         }                                                               \
                                                                         \
-    public:                                                             \
-        char _Name[256]  = {};                                           \
-        int  _NameLength = 0;                                           \
+    protected:                                                          \
+        char    _Name[256]   {};                                        \
+        int     _NameLength  {};                                        \
+                                                                        \
         const _CollectionType _Types { this, _Name };                   \
                                                                         \
         static const _TYPE instance;                                    \
@@ -517,6 +532,7 @@ namespace _Maple::Frame
 
 #define ___MAPLE_DECORATE_TypeRegister(_T, ...)                         \
             ___MAPLE_TYPE_SYSTEM_TYPE_INFO(                             \
+                _T,                                                     \
                 ___MAPLE_TYPE_SYSTEM_TYPEINFO_NAME(_T),                 \
                 ___MAPLE_TYPE_SYSTEM_TYPEINFO_INSTANCE_NAME(_T),        \
                 __VA_ARGS__)                                            \

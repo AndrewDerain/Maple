@@ -428,24 +428,6 @@ namespace _Maple::Foundation
         }
     }
 
-//
-//    inline constexpr
-//    void String::_Assign(int64_t value) {
-//
-//        char sbuf[NumericLimits<int64_t>::MaxLength() + 1];
-//        auto slen = Algorithm::ConvertSignedIntegerToString(value, sbuf);
-//        _Assign(sbuf, slen);
-//    }
-//
-//
-//    inline constexpr
-//    void String::_Assign(uint64_t value) {
-//
-//        char sbuf[NumericLimits<uint64_t>::MaxLength() + 1];
-//        auto slen = Algorithm::ConvertUnsignedIntegerToString(value, sbuf);
-//        _Assign(sbuf, slen);
-//    }
-
 
     inline
     void String::_Catenate(const char* value, std::int64_t len) {

@@ -64,8 +64,66 @@ namespace Exp
     };
 
 
-    struct Type
+    template<typename _Value>
+    struct Storage
     {
+        inline constexpr
+        Storage() = default;
+
+        inline constexpr
+        ~Storage() = default;
+
+        inline constexpr
+        Storage(Storage&&) = default;
+
+        inline constexpr
+        Storage(const Storage&) = default;
+
+        inline constexpr
+        Storage& operator=(const Storage&) = default;
+
+        inline constexpr
+        Storage(const _Value& value) {
+            _StoredValue = value;
+        }
+
+        _Value _StoredValue;
+    };
+
+
+    template<typename _Child>
+    struct IntegerT
+    {
+        inline constexpr
+        IntegerT() = default;
+
+        inline constexpr
+        ~IntegerT() = default;
+
+        inline constexpr
+        IntegerT(IntegerT&&) = default;
+
+        inline constexpr
+        IntegerT(const IntegerT&) = default;
+
+        inline constexpr
+        IntegerT& operator=(const IntegerT&) = default;
+        
+        inline constexpr
+        IntegerT(const int& value){
+                //_Child::_StoredValue = 9;
+        }
+
+        inline constexpr
+        _Child operator+(const _Child& child) const {
+            //return _Child(_StoredValue + child._StoredValue);
+        }
+
+    };
+
+    struct MyInt32: IntegerT<MyInt32>, Storage<int>
+    {
+        using IntegerT<MyInt32>::IntegerT;
 
     };
 
@@ -77,7 +135,8 @@ namespace Exp
 
 
     TEST_CASE("Demo", "Demoxxx") {
-        //std::cout << Object::ClassType().RawName() << std::endl;
+
+        
     }
 
 

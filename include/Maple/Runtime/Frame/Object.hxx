@@ -14,7 +14,7 @@ namespace _Maple::Frame
                 private:                                                \
                     ___MAPLE_TYPE_SYSTEM_USING_TYPEINFO(_TYPE)          \
                 public:                                                 \
-                    ___MAPLE_TYPE_SYSTEM_QUERY_INTERFACE                \
+                    ___MAPLE_TYPE_SYSTEM_INTERFACE                      \
 
 
 

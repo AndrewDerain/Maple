@@ -9,30 +9,35 @@
 #include <iostream>
 
 
-using namespace _Maple;
+//
 using namespace _Maple::Algorithm;
+
+//using _Maple::Object;
+using _Maple::Foundation::Bool;
+using _Maple::String;
+
+MapleDeco(TypeRegister)(X, _Maple::Object)
+MapleDeco(Maple, Runtime, ApiClass)
+        Class X: virtual public _Maple::Object
+{
+MapleObject(X)
+
+public:
+    X() = default;
+
+    virtual ~X() noexcept{};
+
+
+    virtual String ToString() const noexcept{return "";};
+
+
+    virtual Bool Equals(const Object *o) const noexcept{return false;};
+};
 
 
 namespace UnitTest::Frame::TestType
 {
-
-    MapleDeco(TypeRegister)(X, Object)
-    MapleDeco(Maple, Runtime, ApiClass)
-    Class X: virtual public Object
-    {
-    MapleObject(X)
-
-    public:
-        X() = default;
-
-        virtual ~X() noexcept{};
-
-
-        virtual String ToString() const noexcept{return "";};
-
-
-        virtual Bool Equals(const Object *o) const noexcept{return false;};
-    };
+    using namespace _Maple;
 
 
     MapleDeco(TypeRegister)(Object2, X, Object)
@@ -79,7 +84,6 @@ namespace UnitTest::Frame::TestType
 
     TEST_CASE("TypeCollection", "[Frame][TypeCollection]")
     {
-        typeof(X).RawName();
 
         char name[256]; int len;
         _Maple::Frame::___maple_extract_type_name(
@@ -97,12 +101,15 @@ namespace UnitTest::Frame::TestType
                 sizeof("___Maple_TypeInfo_Object::___Maple_TypeInfo_Object()")
         );
 
+        //constexpr auto x1 = typeof(X)._RawName();
+        //constexpr TypeName<___maple_make_typename_transfer(___Maple_TypeInfo_X::_RawName())> x;
+
         std::cout << name << std::endl;
 
 
-        constexpr auto count = Object::ClassType().Parents().Count();
+        constexpr auto count = typeof(Object).Parents().Count();
         std::cout << count << std::endl;
-        std::cout << Object::ClassType().RawName() << std::endl;
+        std::cout << typeof(Object).RawName() << std::endl;
 
         constexpr auto count2 = X::ClassType().RawName();
         std::cout << count2 << std::endl;

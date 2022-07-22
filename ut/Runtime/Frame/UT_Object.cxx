@@ -82,11 +82,23 @@ namespace UnitTest::Frame::TestObject
         constexpr static Ob x{};
     };
 
+
+    template<typename... Ts> void print(Ts... args) {
+
+        std::initializer_list<int> {
+            ([&args]() { std::cout << args << std::endl; }(), 0)...
+        };
+    }
+
+
     TEST_CASE("Animal", "[Frame][Object]")
     {
-
+        char _Name[34];
         constexpr auto m = Action<true>::Invoke();
 
+        std::cout << sizeof(_Name) << std::endl;
+        std::cout << sizeof(typeof(Object)) << std::endl;
+        std::cout << sizeof(typeof(Animal)) << std::endl;
 
         Animal cendy;
 

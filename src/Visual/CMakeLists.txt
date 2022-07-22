@@ -36,7 +36,7 @@ file(GLOB_RECURSE srcs "${CMAKE_CURRENT_SOURCE_DIR}/*")
 #-----------------------------------------------------------------------------+
 #    配置项目输出库文件
 #------------------------------------------------------------------------------
-set(target_name_visual "Maple.Visual")
+set(target_name "Maple.Visual")
 
 link_directories(
     "${fantasia_library_out_dir}"
@@ -46,10 +46,10 @@ link_libraries(
     "Maple.Runtime"
 )
 
-add_library(${target_name_visual} SHARED ${srcs})
+add_library(${target_name} SHARED ${srcs})
 
 set_target_properties(
-    ${target_name_visual}
+    ${target_name}
     PROPERTIES 
     
     CXX_VISIBILITY_PRESET		hidden
@@ -60,5 +60,5 @@ set_target_properties(
 #-----------------------------------------------------------------------------+
 #    项目安装配置
 #------------------------------------------------------------------------------
-install(TARGETS ${target_name_runtime})
+install(TARGETS ${target_name})
 install(DIRECTORY "${CMAKE_SOURCE_DIR}/include/Maple" DESTINATION "include")

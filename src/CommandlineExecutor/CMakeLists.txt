@@ -17,7 +17,7 @@ file(GLOB_RECURSE srcs "${CMAKE_CURRENT_SOURCE_DIR}/*")
 #-----------------------------------------------------------------------------+
 #    配置项目输出库文件
 #------------------------------------------------------------------------------
-set(target_name_command_executor "maple")
+set(target_name "maple")
 
 link_directories(
     "${fantasia_library_out_dir}"
@@ -28,11 +28,11 @@ link_libraries(
 )
 
 add_executable(
-    ${target_name_command_executor} ${srcs}
+    ${target_name} ${srcs}
 )
 
 set_target_properties(
-    ${target_name_command_executor} 
+    ${target_name} 
     PROPERTIES 
     
     CXX_VISIBILITY_PRESET      hidden
@@ -43,4 +43,4 @@ set_target_properties(
 #-----------------------------------------------------------------------------+
 #    项目安装配置
 #------------------------------------------------------------------------------
-install(TARGETS ${target_name_command_executor})
+install(TARGETS ${target_name})

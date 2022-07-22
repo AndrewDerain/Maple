@@ -32,16 +32,20 @@ endif()
 #------------------------------------------------------------------------------
 file(GLOB_RECURSE srcs "${CMAKE_CURRENT_SOURCE_DIR}/*")
 
+file(GLOB_RECURSE hdrs 
+	"${CMAKE_SOURCE_DIR}/include/Maple/Runtime.hxx" 
+	"${CMAKE_SOURCE_DIR}/include/Maple/Runtime/*")
+
 
 #-----------------------------------------------------------------------------+
 #    配置项目输出库文件
 #------------------------------------------------------------------------------
-set(target_name_runtime "Maple.Runtime${fantasia_target_postfix}")
+set(target_name "Maple.Runtime${fantasia_target_postfix}")
 
-add_library(${target_name_runtime} SHARED ${srcs})
-
+add_library(${target_name} SHARED ${srcs} ${hdrs})
+ 
 set_target_properties(
-    ${target_name_runtime}
+    ${target_name}
     PROPERTIES 
     
     CXX_VISIBILITY_PRESET		hidden
@@ -52,5 +56,5 @@ set_target_properties(
 #-----------------------------------------------------------------------------+
 #    项目安装配置
 #------------------------------------------------------------------------------
-install(TARGETS ${target_name_runtime})
+install(TARGETS ${target_name})
 install(DIRECTORY "${CMAKE_SOURCE_DIR}/include/Maple/Runtime" DESTINATION "include/Maple/Runtime")

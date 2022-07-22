@@ -17,7 +17,7 @@ namespace _Maple::Frame
     {
         /// @brief 判断当前类型是否从 type 继承而来
         /// @note 暂未实现
-        virtual Bool Inherites(const Type& type) const = 0;
+        virtual Bool Inherits(const Type& type) const = 0;
 
 
         /// @brief 判断指定的类型是否与当前类型相等
