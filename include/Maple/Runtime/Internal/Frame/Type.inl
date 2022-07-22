@@ -464,15 +464,21 @@ namespace _Maple::Frame
 
 
 #define ___MAPLE_TYPE_SYSTEM_TYPE_INFO(_CLASS, _TYPE, _INSTANCE, ...)   \
-    class _TYPE: public _Maple::Frame::Type                             \
+    class _TYPE final: public _Maple::Frame::Type                       \
     {                                                                   \
-    public:                                                             \
+    private:                                                            \
         friend class _CLASS;                                            \
+                                                                        \
+        template<typename T>                                            \
+        friend struct _Maple::Frame::___maple_has_typeinfo;             \
+                                                                        \
+        template<typename T>                                            \
+        friend struct _Maple::Frame::___maple_transfer_make;            \
                                                                         \
         template<typename T>                                            \
         friend struct _Maple::Frame::___maple_typeof;                   \
                                                                         \
-        using _CollectionType =                                         \
+        using ClassTypes = const                                        \
             _Maple::Frame::TypeCollection<                              \
                 _Maple::Frame::___maple_make_transfer<                  \
                     __VA_ARGS__>()>;                                    \
@@ -500,7 +506,7 @@ namespace _Maple::Frame
         };                                                              \
                                                                         \
         inline constexpr virtual                                        \
-        const _CollectionType&                                          \
+        ClassTypes&                                                     \
         Parents() const override {                                      \
             return _Types;                                              \
         }                                                               \
@@ -517,24 +523,23 @@ namespace _Maple::Frame
             return RawName() == type.RawName();                         \
         }                                                               \
                                                                         \
-    protected:                                                          \
-        char    _Name[256]   {};                                        \
-        int     _NameLength  {};                                        \
-                                                                        \
-        const _CollectionType _Types { this, _Name };                   \
-                                                                        \
+    private:                                                            \
         static const _TYPE instance;                                    \
+                                                                        \
+        char        _Name[256]      { };                                \
+        int         _NameLength     { };                                \
+        ClassTypes  _Types          { this, _Name };                    \
     };                                                                  \
                                                                         \
     constexpr _TYPE _TYPE::instance {};                                 \
 
 
 
-#define ___MAPLE_DECORATE_TypeRegister(_T, ...)                         \
+#define ___MAPLE_DECORATE_TypeRegister(_CLASS, ...)                     \
             ___MAPLE_TYPE_SYSTEM_TYPE_INFO(                             \
-                _T,                                                     \
-                ___MAPLE_TYPE_SYSTEM_TYPEINFO_NAME(_T),                 \
-                ___MAPLE_TYPE_SYSTEM_TYPEINFO_INSTANCE_NAME(_T),        \
+                _CLASS,                                                 \
+                ___MAPLE_TYPE_SYSTEM_TYPEINFO_NAME(_CLASS),             \
+                ___MAPLE_TYPE_SYSTEM_TYPEINFO_INSTANCE_NAME(_CLASS),    \
                 __VA_ARGS__)                                            \
 
 } // namespace _Maple::Frame

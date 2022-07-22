@@ -18,7 +18,7 @@ using _Maple::String;
 
 MapleDeco(TypeRegister)(X, _Maple::Object)
 MapleDeco(Maple, Runtime, ApiClass)
-        Class X: virtual public _Maple::Object
+Class X : virtual public _Maple::Object
 {
 MapleObject(X)
 
@@ -107,8 +107,8 @@ namespace UnitTest::Frame::TestType
         std::cout << name << std::endl;
 
 
-        constexpr auto count = typeof(Object).Parents().Count();
-        std::cout << count << std::endl;
+        constexpr auto count = typeof(Object);
+
         std::cout << typeof(Object).RawName() << std::endl;
 
         constexpr auto count2 = X::ClassType().RawName();
